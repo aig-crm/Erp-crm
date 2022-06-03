@@ -195,6 +195,7 @@ h2 {
 
 .textLeft {
   text-align: left;
+  padding: 10px;
 }
 
 .loadingDiv {
@@ -223,7 +224,7 @@ h2 {
   color: #000 !important;
 }
 
-.articles {
+.rate {
   font-size: 10px;
   color: #a1aab9;
 }
@@ -233,7 +234,7 @@ h2 {
   padding: 10px;
 }
 
-.followers {
+.nbp {
   font-size: 10px;
   color: #a1aab9;
 }
@@ -243,12 +244,22 @@ h2 {
   padding: 10px;
 }
 
-.rating {
+.gst {
   font-size: 10px;
   color: #a1aab9;
 }
 
 .number3 {
+  font-weight: 500;
+  padding: 10px;
+}
+
+.tbc {
+  font-size: 10px;
+  color: #a1aab9;
+}
+
+.number4 {
   font-weight: 500;
   padding: 10px;
 }

@@ -10,7 +10,7 @@ function PostForm(){
         { label: "Delete", value: 3 }
       ];
 
-    const url="https://2aee-2402-3a80-122f-8b47-6833-999f-b374-2cec.in.ngrok.io/api/customer";
+    const url="https://01f3-2402-3a80-122f-8b47-4118-d13-fa2d-b9d9.in.ngrok.io/api/customer";
     const [data, setData] = useState({
         s_no:0,
         booking_date:"",
