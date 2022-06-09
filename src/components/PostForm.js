@@ -10,16 +10,19 @@ function PostForm(){
         { label: "Delete", value: 3 }
       ];
 
-    const url="https://01f3-2402-3a80-122f-8b47-4118-d13-fa2d-b9d9.in.ngrok.io/api/customer";
+    const url="https://7279-2401-4900-1c60-81e6-5171-75fa-5f61-7c3a.in.ngrok.io/api/customer";
     const [data, setData] = useState({
         s_no:0,
         booking_date:"",
         tower:"",
         unit_no:"", 
         area_sqft:0, 
-        name:"", 
-        mob_no:"", 
-        email:"", 
+        applicant_name:"", 
+        applicant_mob_no:"", 
+        applicant_email:"",
+        coapplicant_name:"", 
+        coapplicant_mob_no:"", 
+        coapplicant_email:"",
         broker:"", 
         plan:"", 
         loan:"", 
@@ -37,9 +40,12 @@ function PostForm(){
             tower:data.tower,
             unit_no:data.unit_no,
             area_sqft:parseInt(data.area_sqft),
-            name:data.name,
-            mob_no:data.mob_no,
-            email:data.email,
+            applicant_name:data.applicant_name,
+            applicant_mob_no:data.applicant_mob_no,
+            applicant_email:data.applicant_email,
+            coapplicant_name:data.coapplicant_name,
+            coapplicant_mob_no:data.coapplicant_mob_no,
+            coapplicant_email:data.coapplicant_email,
             broker:data.broker,
             plan:data.plan,
             loan:data.loan,
@@ -68,9 +74,12 @@ function PostForm(){
                 <input onChange={(e)=>handle(e)} id="tower" value={data.tower} placeholder="Tower" type="text"></input>
                 <input onChange={(e)=>handle(e)} id="unit_no" value={data.unit_no} placeholder="Unit No" type="text"></input>
                 <input onChange={(e)=>handle(e)} id="area_sqft" value={data.area_sqft} placeholder="Area Sq ft" type="number"></input>
-                <input onChange={(e)=>handle(e)} id="name" value={data.name} placeholder="Name" type="text"></input>
-                <input onChange={(e)=>handle(e)} id="mob_no" value={data.mob_no} placeholder="Mobile No" type="text"></input>
-                <input onChange={(e)=>handle(e)} id="email" value={data.email} placeholder="Email" type="text"></input>
+                <input onChange={(e)=>handle(e)} id="applicant_name" value={data.applicant_name} placeholder="Applicant name" type="text"></input>
+                <input onChange={(e)=>handle(e)} id="applicant_mob_no" value={data.applicant_mob_no} placeholder="Applicant mobile no" type="text"></input>
+                <input onChange={(e)=>handle(e)} id="applicant_email" value={data.applicant_email} placeholder="Applicant email" type="text"></input>
+                <input onChange={(e)=>handle(e)} id="coapplicant_name" value={data.coapplicant_name} placeholder="Co-Applicant Name" type="text"></input>
+                <input onChange={(e)=>handle(e)} id="coapplicant_mob_no" value={data.coapplicant_mob_no} placeholder="Co-Applicant Mobile No" type="text"></input>
+                <input onChange={(e)=>handle(e)} id="coapplicant_email" value={data.coapplicant_email} placeholder="Co-Applicant Email" type="text"></input>
                 <input onChange={(e)=>handle(e)} id="broker" value={data.broker} placeholder="Broker" type="text"></input>
                 <input onChange={(e)=>handle(e)} id="plan" value={data.plan} placeholder="Plan" type="text"></input>
                 <input onChange={(e)=>handle(e)} id="loan" value={data.loan} placeholder="Loan" type="text"></input>
