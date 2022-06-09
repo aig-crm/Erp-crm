@@ -68,6 +68,7 @@ function PostForm(){
 
     return(
         <div>
+            <h2>Booking Form</h2>
             <form onSubmit={(e)=> submit(e)}>
                 <input onChange={(e)=>handle(e)} id="s_no" value={data.s_no} placeholder="S No" type="number"></input>
                 <input onChange={(e)=>handle(e)} id="booking_date" value={data.booking_date} placeholder="Booking Date" type="date"></input>
