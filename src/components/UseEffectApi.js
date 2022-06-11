@@ -5,7 +5,7 @@ const UseEffectApi = () =>{
     const [users, setUsers] = useState([]);
 
     const getUsers = async () =>{
-        const response = await fetch('https://7279-2401-4900-1c60-81e6-5171-75fa-5f61-7c3a.in.ngrok.io/api/main');
+        const response = await fetch('https://c834-2401-4900-1f3a-6e3c-9ce2-c4d8-92f6-75e6.in.ngrok.io//api/main');
         setUsers(await response.json());
 
     }
