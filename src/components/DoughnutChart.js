@@ -30,12 +30,12 @@ const DoughnutChart = () => {
             label: `${chart.length} Unit Types Available`,
             data: chart.map(x => x.count),
             backgroundColor: [
-                'rgba(153, 102, 255, 0.2)',
-                'rgba(255, 159, 64, 0.2)'
+                'rgba(200, 102, 255, 0.5)',
+                'rgba(150, 159, 64, 0.5)'
             ],
             borderColor: [
-                'rgba(153, 102, 255, 1)',
-                'rgba(255, 159, 64, 1)'
+                'rgba(200, 102, 255, 1)',
+                'rgba(150, 159, 64, 1)'
             ],
             borderWidth: 1
         }]

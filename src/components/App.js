@@ -1,11 +1,11 @@
 import './App.css';
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
-import UseEffectApi from './UseEffectApi';
 import PostForm from './PostForm';
 import PieChart from './PieChart';
 import 'bootstrap';
 import BarChart from './BarChart';
 import DoughnutChart from './DoughnutChart';
+import Table from './Table';
 
 function App() {
   return (
@@ -21,18 +21,18 @@ function App() {
     <>
       <BrowserRouter>
         <Routes>
-          <Route exact path='/' element={<UseEffectApi />} />
           <Route exact path='/bookingForm' element={<PostForm />} />
-          <Route exact path='/reports' 
+          <Route exact path='/' 
             element={
               <>
-                <h2><b>REPORTS</b></h2>
-                <h3>Unit report :</h3>
+                <h2 className="mt-3 text-dark"><b>REPORTS</b></h2>
+                <h3 className="mt-3 text-dark">Unit report :</h3>
                 <PieChart />
-                <h3>Demand-Reminder report :</h3>
+                <h3 className="mt-3 text-dark">Demand-Reminder report :</h3>
                 <DoughnutChart />
-                <h3>Unit type report :</h3>
+                <h3 className="mt-3 text-dark">Unit type report :</h3>
                 <BarChart />
+                <Table />
               </>
             } 
           />
