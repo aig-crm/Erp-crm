@@ -1,20 +1,34 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {Chart as ChartJS, BarElement, CategoryScale, LinearScale} from 'chart.js';
 import { Bar } from "react-chartjs-2";
 
 ChartJS.register(
     CategoryScale,
     LinearScale,
-    BarElement
+    BarElement,
 )
 
 const BarChart = () => {
 
+    const [chart, setChart] = useState([])
+
+    const getChart = async () =>{
+        const response = await fetch('https://3cb3-2401-4900-1c5e-d332-401c-1182-840a-b049.in.ngrok.io/api/unittypecount');
+        setChart(await response.json());
+
+    }
+    
+    useEffect(() => {
+        getChart()
+    }, [])
+
+    console.log('chart', chart)
+
     var data = {
-        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+        labels: chart.map(x => x.unit_type),
         datasets: [{
-            label: '# of Votes',
-            data: [12, 19, 3, 5, 2, 3],
+            label: `${chart.length} Unit Types Available`,
+            data: chart.map(x => x.empty_units),
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
                 'rgba(54, 162, 235, 0.2)',

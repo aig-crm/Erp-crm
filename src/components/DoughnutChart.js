@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import {Chart as ChartJS, ArcElement, Tooltip, Legend} from 'chart.js';
-import { Pie } from "react-chartjs-2";
+import { Doughnut } from "react-chartjs-2";
 
 ChartJS.register(
     Tooltip,
@@ -8,12 +8,12 @@ ChartJS.register(
     ArcElement
 )
 
-const PieChart = () => {
+const DoughnutChart = () => {
 
     const [chart, setChart] = useState([])
 
     const getChart = async () =>{
-        const response = await fetch('https://3cb3-2401-4900-1c5e-d332-401c-1182-840a-b049.in.ngrok.io/api/unitscount');
+        const response = await fetch('https://3cb3-2401-4900-1c5e-d332-401c-1182-840a-b049.in.ngrok.io/api/reportDR');
         setChart(await response.json());
 
     }
@@ -30,14 +30,10 @@ const PieChart = () => {
             label: `${chart.length} Unit Types Available`,
             data: chart.map(x => x.count),
             backgroundColor: [
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
                 'rgba(153, 102, 255, 0.2)',
                 'rgba(255, 159, 64, 0.2)'
             ],
             borderColor: [
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
                 'rgba(153, 102, 255, 1)',
                 'rgba(255, 159, 64, 1)'
             ],
@@ -59,7 +55,7 @@ const PieChart = () => {
 
         return (
             <div>
-                <Pie
+                <Doughnut
                 data={data}
                 height={400}
                 options={options}
@@ -68,5 +64,5 @@ const PieChart = () => {
         );
 }
 
-export default PieChart;
+export default DoughnutChart;
 
