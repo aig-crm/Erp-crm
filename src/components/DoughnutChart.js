@@ -13,7 +13,7 @@ const DoughnutChart = () => {
     const [chart, setChart] = useState([])
 
     const getChart = async () =>{
-        const response = await fetch('https://3cb3-2401-4900-1c5e-d332-401c-1182-840a-b049.in.ngrok.io/api/reportDR');
+        const response = await fetch('https://6705-2401-4900-1c5f-11bd-a580-15e1-4fad-d5c7.in.ngrok.io/api/reportDR');
         setChart(await response.json());
 
     }

@@ -7,14 +7,14 @@ function Table(){
  
     const getData = ()=>
     {
-        fetch('https://3cb3-2401-4900-1c5e-d332-401c-1182-840a-b049.in.ngrok.io/api/main')
+        fetch('https://6705-2401-4900-1c5f-11bd-a580-15e1-4fad-d5c7.in.ngrok.io/api/main')
         .then(response => response.json())
         .then(res => setResult( res));
     }
     
     useEffect(() => {
         getData();
-    },)
+    }, [])
  
         return (
             <div className="container">
