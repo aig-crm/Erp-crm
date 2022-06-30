@@ -1,5 +1,6 @@
 import {useState,useEffect} from 'react';
 import ReactHTMLTableToExcel from 'react-html-table-to-excel';
+import Api from "./Api";
   
 function Table(){
  
@@ -7,9 +8,11 @@ function Table(){
  
     const getData = ()=>
     {
-        fetch('https://6705-2401-4900-1c5f-11bd-a580-15e1-4fad-d5c7.in.ngrok.io/api/main')
-        .then(response => response.json())
-        .then(res => setResult( res));
+
+        return Api.get('/main').then(result => {
+            const res = result.data;
+            return setResult(res);
+        })
     }
     
     useEffect(() => {

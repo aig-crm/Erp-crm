@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import {Chart as ChartJS, ArcElement, Tooltip, Legend} from 'chart.js';
 import { Doughnut } from "react-chartjs-2";
+import Api from "./Api";
 
 ChartJS.register(
     Tooltip,
@@ -13,8 +14,11 @@ const DoughnutChart = () => {
     const [chart, setChart] = useState([])
 
     const getChart = async () =>{
-        const response = await fetch('https://6705-2401-4900-1c5f-11bd-a580-15e1-4fad-d5c7.in.ngrok.io/api/reportDR');
-        setChart(await response.json());
+
+        return Api.get('/reportDR').then(result => {
+            const res = result.data;
+            return setChart(res);
+        })
 
     }
     
