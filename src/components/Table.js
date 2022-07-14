@@ -20,15 +20,15 @@ function Table(){
     }, [])
  
         return (
-            <div className="container">
+            <div >
                 <h3 className="mt-3 text-dark"><b><u><center>Booked units sheet</center></u></b></h3>
                 <div >
                 <ReactHTMLTableToExcel
                     id="test-table-xls-button"
                     className="download-table-xls-button btn btn-success mb-3"
                     table="table-to-xls"
-                    filename="tablexls"
-                    sheet="tablexls"
+                    filename="table"
+                    sheet="table"
                     buttonText="Export Data"/>
                    <table className="table" id="table-to-xls">
                     <thead className="thead-dark">

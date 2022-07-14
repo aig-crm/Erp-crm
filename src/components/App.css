@@ -7,8 +7,8 @@ body {
   width: 100vw;
   background-color: #98bce0;
    display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: left;
+  align-items: left;
   flex-direction: column; 
    color: aliceblue;
   font-family: "Raleway", sans-serif;
@@ -55,4 +55,9 @@ body {
   border-collapse: collapse;
   border: 3px solid #ddd;
   width: 100%;
+}
+
+.Postform{
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  padding: 10px;
 }
