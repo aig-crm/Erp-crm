@@ -2,6 +2,7 @@ import Axios from "axios";
 import React,{useState}from"react";
 import AsyncSelect from 'react-select/async';
 import api from './Api'
+import Navbar from "./Navbar";
 function PostForm(){
 
     const[bd,setbd]=useState("");
@@ -19,11 +20,11 @@ function PostForm(){
     const[cae,setcae]=useState("");
     const[floor,setfloor]=useState("");
 
-    const [inputValue1, setValue1] = useState('');
+    const [inputValue1, setValue1] = useState("");
     const [selectedValue1, setSelectedValue1] = useState(null);
-    const [inputValue2, setValue2] = useState('');
+    const [inputValue2, setValue2] = useState("");
     const [selectedValue2, setSelectedValue2] = useState(null);
-    const [inputValue3, setValue3] = useState('');
+    const [inputValue3, setValue3] = useState("");
     const [selectedValue3, setSelectedValue3] = useState(null);
     // const [inputValue4, setValue4] = useState('');
     // const [selectedValue4, setSelectedValue4] = useState(null);
@@ -35,6 +36,7 @@ function PostForm(){
   // handle selection
   const handleChange1 = value => {
     setSelectedValue1(value);
+    console.log('value', value);
   }
   const fetchData1 = () => {
     return  api.get('/bookingApi/unit_no').then(result => {
@@ -88,15 +90,16 @@ function PostForm(){
 //     });
 //   }
 
-    const register=()=>{
-        Axios.post("https://a1f6-2401-4900-1f3a-332c-e01b-6cde-a32f-8fbd.in.ngrok.io/api/customer", {
+    const register=(e)=>{
+        e.preventDefault();
+        Axios.post("https://585a-2401-4900-1f3a-ec0-b87d-1595-7e80-32f2.in.ngrok.io/api/customer", {
         booking_date:bd,
         tower:t,
         broker:broker,
-        unit_no: inputValue1,
+        unit_no: JSON.stringify(selectedValue1),
         floor:floor,
-        area_sqft: inputValue2,
-        plan: inputValue3,
+        area_sqft: JSON.stringify(selectedValue2),
+        plan: JSON.stringify(selectedValue3),
         applicant_name:an, 
         applicant_mob_no:amn, 
         applicant_email:ae,
@@ -116,7 +119,7 @@ function PostForm(){
   return(
    <div>
       <div className="registration">
-        <h1 className="mt-3 text-dark">Booking Form</h1>
+        <h1 className="mt-3 text-dark"><b>BOOKING FORM</b></h1>
         <h6 className="mt-3 text-dark"><b><u>Flat details</u></b></h6>
         <div className="mt-3 text-dark">
             <label className="Postform"><b>booking date:</b></label>

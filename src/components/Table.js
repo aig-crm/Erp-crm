@@ -9,7 +9,7 @@ function Table(){
     const getData = ()=>
     {
 
-        return Api.get('/main').then(result => {
+        return Api.get('/main/').then(result => {
             const res = result.data;
             return setResult(res);
         })
