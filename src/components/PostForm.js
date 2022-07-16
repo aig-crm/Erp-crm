@@ -1,8 +1,8 @@
 import Axios from "axios";
 import React,{useState}from"react";
 import AsyncSelect from 'react-select/async';
-import api from './Api'
-import Navbar from "./Navbar";
+import api from './Api';
+
 function PostForm(){
 
     const[bd,setbd]=useState("");
@@ -92,7 +92,7 @@ function PostForm(){
 
     const register=(e)=>{
         e.preventDefault();
-        Axios.post("https://585a-2401-4900-1f3a-ec0-b87d-1595-7e80-32f2.in.ngrok.io/api/customer", {
+        Axios.post("https://c5c1-2401-4900-1c60-1962-7019-291-6ede-f1bd.in.ngrok.io/api/customer", {
         booking_date:bd,
         tower:t,
         broker:broker,
@@ -119,7 +119,7 @@ function PostForm(){
   return(
    <div>
       <div className="registration">
-        <h1 className="mt-3 text-dark"><b>BOOKING FORM</b></h1>
+        <h2 className="mt-3 text-dark"><b>BOOKING FORM</b></h2>
         <h6 className="mt-3 text-dark"><b><u>Flat details</u></b></h6>
         <div className="mt-3 text-dark">
             <label className="Postform"><b>booking date:</b></label>
