@@ -2,6 +2,7 @@ import Axios from "axios";
 import React,{useState}from"react";
 import AsyncSelect from 'react-select/async';
 import api from './Api';
+import { NavBtn, NavBtnLink } from "./NavbarElements";
 
 function PostForm(){
 
@@ -92,7 +93,7 @@ function PostForm(){
 
     const register=(e)=>{
         e.preventDefault();
-        Axios.post("https://a73c-2401-4900-1f3b-894d-55a5-74c-bc09-cbcd.in.ngrok.io/api/customer", {
+        Axios.post("https://71ea-2401-4900-1c60-b669-5969-c276-c7a3-6e76.in.ngrok.io/api/customer", {
         booking_date:bd,
         tower:t,
         broker:broker,
@@ -118,7 +119,7 @@ function PostForm(){
 
   return(
    <div>
-      <div className="registration">
+      <div className='Postform'>
         <h2 className="mt-3 text-dark"><b>BOOKING FORM</b></h2>
         <h6 className="mt-3 text-dark"><b><u>Flat details</u></b></h6>
         <div className="mt-3 text-dark">
@@ -262,7 +263,9 @@ function PostForm(){
                     setcae(e.target.value)
                 }}/>
         </div>
-        <button onClick={register}>SUBMIT</button>
+        <NavBtn onClick={register}>
+		<NavBtnLink to='/'><b>Submit</b></NavBtnLink>
+		</NavBtn>
       </div>
 
    </div>

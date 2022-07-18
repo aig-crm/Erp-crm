@@ -17,7 +17,7 @@ function Home() {
     //      <DoughnutChart />
     //    </header>
     //  </div> 
-            <>
+            <div className='Postform'>
                 <h2 className="mt-3 text-dark"><b>REPORTS</b></h2>
                 <h3 className="mt-3 text-dark">Unit report :</h3>
                 <PieChart />
@@ -26,7 +26,7 @@ function Home() {
                 <h3 className="mt-3 text-dark">Unit type report :</h3>
                 <BarChart />
                 <Table />
-            </>
+            </div>
   );
 }
 

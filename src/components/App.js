@@ -5,9 +5,10 @@ import 'bootstrap';
 import React from 'react';
 import Navbar from './Navbar';
 import Home from './Home';
-import PieChart from './PieChart';
+import C from './C'
 import DoughnutChart from './DoughnutChart';
 import BarChart from './BarChart';
+import PieChart from './PieChart';
 
 function App() {
   return (
