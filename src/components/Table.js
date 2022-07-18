@@ -1,35 +1,34 @@
 import React, { useState, useEffect } from "react";
-import { CSVLink} from 'react-csv';
+import { CSVLink } from 'react-csv';
 import Api from "./Api";
-  
-function Table(){
- 
-    const[result,setResult]= useState([]);
- 
-    const getData = ()=>
-    {
+
+function Table() {
+
+    const [result, setResult] = useState([]);
+
+    const getData = () => {
 
         return Api.get('/main/').then(result => {
             const res = result.data;
             return setResult(res);
         })
     }
-    
+
     useEffect(() => {
         getData();
     }, [])
- 
-        return (
-            <React.Fragment>
-                <div className="row">
-                    <div className="col-sm-8">
+
+    return (
+        <React.Fragment>
+            <div className="row">
+                <div className="col-sm-8">
                     <h3 className="mt-3 text-dark"><b><u><center>Booked units sheet</center></u></b></h3>
 
-                        <CSVLink data={ result} filename="Customers" className="btn btn-success mb-3" style={{ color: "#000" }}>
-                            Export Data
-                        </CSVLink>
+                    <CSVLink data={result} filename="Customers" className="btn btn-success mb-3" style={{ color: "#000" }}>
+                        Export Data
+                    </CSVLink>
 
-                        <table className="table table-bordered text-black">
+                    <table className="table table-bordered text-black">
                         <thead>
                             <tr className="mt-3 text-dark">
                                 <th style={{ backgroundColor: "#89CFF0" }}>Tower</th>
@@ -58,8 +57,8 @@ function Table(){
                                 <th style={{ backgroundColor: "#5D3FD3" }}>Outstandings</th>
                             </tr>
                         </thead>
-                        <tbody>                    
-                            {result.map((res)=>
+                        <tbody>
+                            {result.map((res) =>
                                 <tr className="mt-3 text-dark">
                                     <td>{res.tower}</td>
                                     <td>{res.booking_date}</td>
@@ -88,11 +87,11 @@ function Table(){
                                 </tr>
                             )}
                         </tbody>
-                        </table>
-                    </div>
+                    </table>
                 </div>
-            </React.Fragment>
-        );
-    }
-  
+            </div>
+        </React.Fragment>
+    );
+}
+
 export default Table

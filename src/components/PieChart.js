@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import {Chart as ChartJS, ArcElement, Tooltip, Legend} from 'chart.js';
+import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Pie } from "react-chartjs-2";
 import Api from "./Api";
 
@@ -13,7 +13,7 @@ const PieChart = () => {
 
     const [chart, setChart] = useState([])
 
-    const getChart = async () =>{
+    const getChart = async () => {
 
         return Api.get('/unitscount').then(result => {
             const res = result.data;
@@ -21,7 +21,7 @@ const PieChart = () => {
         })
 
     }
-    
+
     useEffect(() => {
         getChart()
     }, [])
@@ -49,7 +49,7 @@ const PieChart = () => {
         }]
     }
 
-    var options= {
+    var options = {
         maintainAspectRatio: false,
         scales: {
             y: {
@@ -61,15 +61,15 @@ const PieChart = () => {
         }
     }
 
-        return (
-            <div>
-                <Pie
+    return (
+        <div>
+            <Pie
                 data={data}
                 height={400}
                 options={options}
-                />
-            </div>
-        );
+            />
+        </div>
+    );
 }
 
 export default PieChart;

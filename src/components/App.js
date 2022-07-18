@@ -1,5 +1,5 @@
 import './App.css';
-import {BrowserRouter, Routes, Route} from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import PostForm from './PostForm';
 import 'bootstrap';
 import React from 'react';
@@ -21,7 +21,7 @@ function App() {
     //      <DoughnutChart />
     //    </header>
     //  </div> 
-    <>         
+    <>
       <BrowserRouter>
         <Navbar />
         <Routes>

@@ -6,13 +6,13 @@ body {
   min-height: 100vh;
   width: 100vw;
   background-color: #98bce0;
-   display: flex;
+  display: flex;
   justify-content: left;
   align-items: left;
-  flex-direction: column; 
-   color: aliceblue;
+  flex-direction: column;
+  color: aliceblue;
   font-family: "Raleway", sans-serif;
-} 
+}
 
 .App-logo {
   height: 40vmin;
@@ -44,10 +44,11 @@ body {
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
-} 
+}
 
 #etatFnc {
   text-align: center;
@@ -57,7 +58,7 @@ body {
   width: 100%;
 }
 
-.Postform{
+.Postform {
   align-items: center;
   font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
   padding: 10px;

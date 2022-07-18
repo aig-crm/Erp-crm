@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import {Chart as ChartJS, ArcElement, Tooltip, Legend} from 'chart.js';
+import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Doughnut } from "react-chartjs-2";
 import Api from "./Api";
 
@@ -13,7 +13,7 @@ const DoughnutChart = () => {
 
     const [chart, setChart] = useState([])
 
-    const getChart = async () =>{
+    const getChart = async () => {
 
         return Api.get('/reportDR').then(result => {
             const res = result.data;
@@ -21,7 +21,7 @@ const DoughnutChart = () => {
         })
 
     }
-    
+
     useEffect(() => {
         getChart()
     }, [])
@@ -45,7 +45,7 @@ const DoughnutChart = () => {
         }]
     }
 
-    var options= {
+    var options = {
         maintainAspectRatio: false,
         scales: {
             y: {
@@ -57,15 +57,15 @@ const DoughnutChart = () => {
         }
     }
 
-        return (
-            <div>
-                <Doughnut
+    return (
+        <div>
+            <Doughnut
                 data={data}
                 height={400}
                 options={options}
-                />
-            </div>
-        );
+            />
+        </div>
+    );
 }
 
 export default DoughnutChart;

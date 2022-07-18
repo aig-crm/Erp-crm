@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import {Chart as ChartJS, BarElement, CategoryScale, LinearScale} from 'chart.js';
+import { Chart as ChartJS, BarElement, CategoryScale, LinearScale } from 'chart.js';
 import { Bar } from "react-chartjs-2";
 import Api from "./Api";
 
@@ -13,7 +13,7 @@ const BarChart = () => {
 
     const [chart, setChart] = useState([])
 
-    const getChart = async () =>{
+    const getChart = async () => {
 
         return Api.get('/unittypecount').then(result => {
             const res = result.data;
@@ -21,7 +21,7 @@ const BarChart = () => {
         })
 
     }
-    
+
     useEffect(() => {
         getChart()
     }, [])
@@ -53,7 +53,7 @@ const BarChart = () => {
         }]
     }
 
-    var options= {
+    var options = {
         maintainAspectRatio: false,
         scales: {
             y: {
@@ -65,15 +65,15 @@ const BarChart = () => {
         }
     }
 
-        return (
-            <div>
-                <Bar
+    return (
+        <div>
+            <Bar
                 data={data}
                 height={400}
                 options={options}
-                />
-            </div>
-        );
+            />
+        </div>
+    );
 }
 
 export default BarChart;
