@@ -4,7 +4,7 @@ import AsyncSelect from 'react-select/async';
 import api from './Api';
 import { NavBtn, NavBtnLink } from "./NavbarElements";
 
-function PostForm() {
+function PostForm(props) {
 
     const [bd, setbd] = useState("");
     const [t, sett] = useState("");
@@ -93,7 +93,7 @@ function PostForm() {
 
     const register = (e) => {
         e.preventDefault();
-        Axios.post("https://71ea-2401-4900-1c60-b669-5969-c276-c7a3-6e76.in.ngrok.io/api/customer", {
+        Axios.post("https://7613-2401-4900-1c5e-b0ff-b559-8b8c-f103-94f3.in.ngrok.io/api/customer", {
             booking_date: bd,
             tower: t,
             broker: broker,
@@ -120,7 +120,7 @@ function PostForm() {
     return (
         <div>
             <div className='Postform'>
-                <h2 className="mt-3 text-dark"><b>BOOKING FORM</b></h2>
+                <h2 className="mt-3 text-dark"><b>BOOKING FORM {props.value}</b></h2>
                 <h6 className="mt-3 text-dark"><b><u>Flat details</u></b></h6>
                 <div className="mt-3 text-dark">
                     <label className="Postform"><b>booking date:</b></label>

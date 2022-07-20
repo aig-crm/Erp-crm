@@ -28,9 +28,6 @@ const Navbar = (props) => {
 					<NavLink to='/A' activeStyle><b>
 						A Tower</b>
 					</NavLink>
-					<NavLink to='/bookingForm' activeStyle><b>
-						Booking Form</b>
-					</NavLink>
 					{/* Second Nav */}
 					{/* <NavBtnLink to='/sign-in'>Sign In</NavBtnLink> */}
 				</NavMenu>

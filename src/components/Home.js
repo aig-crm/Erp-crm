@@ -6,7 +6,7 @@ import DoughnutChart from './DoughnutChart';
 import Table from './Table';
 import React from 'react';
 
-function Home() {
+function Home(props) {
   return (
     //  <div className="App">
     //    <header className="App-header">
@@ -18,14 +18,14 @@ function Home() {
     //    </header>
     //  </div> 
     <div className='Postform'>
-      <h2 className="mt-3 text-dark"><b>REPORTS</b></h2>
-      <h3 className="mt-3 text-dark">Unit report :</h3>
-      <PieChart />
-      <h3 className="mt-3 text-dark">Demand-Reminder report :</h3>
-      <DoughnutChart />
-      <h3 className="mt-3 text-dark">Unit type report :</h3>
-      <BarChart />
-      <Table />
+      <h2 className="mt-3 text-dark"><b>{props.value} Tower REPORTS</b></h2>
+      <h3 className="mt-3 text-dark">{props.value} Tower Unit report :</h3>
+      <PieChart value={props.value}/>
+      <h3 className="mt-3 text-dark">{props.value} Tower Demand-Reminder report :</h3>
+      <DoughnutChart value={props.value}/>
+      <h3 className="mt-3 text-dark">{props.value} Tower Unit type report :</h3>
+      <BarChart value={props.value}/>
+      <Table value={props.value}/>
     </div>
   );
 }

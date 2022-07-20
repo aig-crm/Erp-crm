@@ -9,16 +9,23 @@ ChartJS.register(
     ArcElement
 )
 
-const DoughnutChart = () => {
+const DoughnutChart = (props) => {
 
     const [chart, setChart] = useState([])
 
     const getChart = async () => {
 
-        return Api.get('/reportDR').then(result => {
-            const res = result.data;
-            return setChart(res);
-        })
+        if (props.value != null) {
+            return Api.get('/reportDR/' + "'" + (props.value) + "'").then(result => {
+                const res = result.data;
+                return setChart(res);
+            })
+        } else {
+            return Api.get('/reportDR').then(result => {
+                const res = result.data;
+                return setChart(res);
+            })
+        }
 
     }
 

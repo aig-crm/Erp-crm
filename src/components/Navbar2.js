@@ -1,4 +1,5 @@
 import React from 'react';
+import { Outlet } from 'react-router-dom';
 import {
 	Nav,
 	NavLink,
@@ -7,13 +8,15 @@ import {
 } from './NavbarElements';
 
 const Navbar2 = (props) => {
+
+	const url=((props.value));
 	return (
 		<>
 
 			<Nav>
 				<Bars />
 				<NavMenu>
-					<NavLink to='/bookingForm' activeStyle><b>
+					<NavLink to={url} activeStyle><b>
 						Booking Form</b>
 					</NavLink>
 					{/* Second Nav */}
@@ -23,6 +26,8 @@ const Navbar2 = (props) => {
 		<NavBtnLink to='/home'>Home</NavBtnLink>
 		</NavBtn> */}
 			</Nav>
+			<Outlet />
+
 		</>
 	);
 };

@@ -4,7 +4,7 @@ import React from 'react';
 import Navbar2 from './Navbar2';
 import Home from './Home';
 
-function C(props) {
+function A(props) {
 
   return (
     //  <div className="App">
@@ -23,5 +23,5 @@ function C(props) {
   );
 }
 
-export default C;
+export default A;
 

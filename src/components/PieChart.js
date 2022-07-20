@@ -9,16 +9,23 @@ ChartJS.register(
     ArcElement
 )
 
-const PieChart = () => {
+const PieChart = (props) => {
 
     const [chart, setChart] = useState([])
 
     const getChart = async () => {
 
-        return Api.get('/unitscount').then(result => {
-            const res = result.data;
-            return setChart(res);
-        })
+        if (props.value != null) {
+            return Api.get('/unitscount/' + "'" + (props.value) + "'").then(result => {
+                const res = result.data;
+                return setChart(res);
+            })
+        } else {
+            return Api.get('/unitscount').then(result => {
+                const res = result.data;
+                return setChart(res);
+            })
+        }
 
     }
 

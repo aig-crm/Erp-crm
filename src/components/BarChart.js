@@ -9,16 +9,23 @@ ChartJS.register(
     BarElement,
 )
 
-const BarChart = () => {
+const BarChart = (props) => {
 
     const [chart, setChart] = useState([])
 
     const getChart = async () => {
 
-        return Api.get('/unittypecount').then(result => {
-            const res = result.data;
-            return setChart(res);
-        })
+        if (props.value != null) {
+            return Api.get("/unittypecount/" + "'" + (props.value) + "'").then(result => {
+                const res = result.data;
+                return setChart(res);
+            })
+        } else {
+            return Api.get("/unittypecount").then(result => {
+                const res = result.data;
+                return setChart(res);
+            })
+        }
 
     }
 

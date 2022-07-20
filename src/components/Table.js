@@ -2,16 +2,23 @@ import React, { useState, useEffect } from "react";
 import { CSVLink } from 'react-csv';
 import Api from "./Api";
 
-function Table() {
+function Table(props) {
 
     const [result, setResult] = useState([]);
 
     const getData = () => {
 
-        return Api.get('/main/').then(result => {
-            const res = result.data;
-            return setResult(res);
-        })
+        if (props.value != null) {
+            return Api.get('/main/' + "'" + (props.value) + "'").then(result => {
+                const res = result.data;
+                return setResult(res);
+            })
+        } else {
+            return Api.get('/main/').then(result => {
+                const res = result.data;
+                return setResult(res);
+            })
+        }
     }
 
     useEffect(() => {
