@@ -93,7 +93,7 @@ function PostForm(props) {
 
     const register = (e) => {
         e.preventDefault();
-        Axios.post("https://7613-2401-4900-1c5e-b0ff-b559-8b8c-f103-94f3.in.ngrok.io/api/customer", {
+        Axios.post("https://deae-2401-4900-1c60-a349-6c7c-e338-237d-a950.in.ngrok.io/api/customer", {
             booking_date: bd,
             tower: t,
             broker: broker,

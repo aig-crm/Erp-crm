@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { CSVLink } from 'react-csv';
+import { Link } from "react-router-dom";
 import Api from "./Api";
 
 function Table(props) {
 
     const [result, setResult] = useState([]);
-
+    
     const getData = () => {
 
         if (props.value != null) {
@@ -24,6 +25,8 @@ function Table(props) {
     useEffect(() => {
         getData();
     }, [])
+
+    
 
     return (
         <React.Fragment>
@@ -66,10 +69,11 @@ function Table(props) {
                         </thead>
                         <tbody>
                             {result.map((res) =>
+                            
                                 <tr className="mt-3 text-dark">
                                     <td>{res.tower}</td>
                                     <td>{res.booking_date}</td>
-                                    <td>{res.unit_no}</td>
+                                    <Link to='/unit' state={{ from: (res.unit_no) }}>{res.unit_no}</Link>
                                     <td>{res.area_sqft}</td>
                                     <td>{res.applicant_name}</td>
                                     <td>{res.applicant_mob_no}</td>

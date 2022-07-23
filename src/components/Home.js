@@ -8,15 +8,6 @@ import React from 'react';
 
 function Home(props) {
   return (
-    //  <div className="App">
-    //    <header className="App-header">
-    //      <UseEffectApi />
-    //      <PostForm />
-    //      <PieChart />
-    //      <BarChart />
-    //      <DoughnutChart />
-    //    </header>
-    //  </div> 
     <div className='Postform'>
       <h2 className="mt-3 text-dark"><b>{props.value} Tower REPORTS</b></h2>
       <h3 className="mt-3 text-dark">{props.value} Tower Unit report :</h3>

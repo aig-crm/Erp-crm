@@ -9,7 +9,7 @@ import {
 
 const Navbar2 = (props) => {
 
-	const url=((props.value));
+	const url=(props.value);
 	return (
 		<>
 

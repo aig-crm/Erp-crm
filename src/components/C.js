@@ -7,15 +7,6 @@ import Home from './Home';
 function C(props) {
 
   return (
-    //  <div className="App">
-    //    <header className="App-header">
-    //      <UseEffectApi />
-    //      <PostForm />
-    //      <PieChart />
-    //      <BarChart />
-    //      <DoughnutChart />
-    //    </header>
-    //  </div> 
     <>
       <Navbar2 value={'bookingform'} />
       <Home value={props.value} />

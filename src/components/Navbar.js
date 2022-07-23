@@ -1,4 +1,5 @@
 import React from 'react';
+import { Outlet } from 'react-router-dom';
 import {
 	Nav,
 	NavLink,
@@ -35,6 +36,7 @@ const Navbar = (props) => {
 		<NavBtnLink to='/home'>Home</NavBtnLink>
 		</NavBtn> */}
 			</Nav>
+			<Outlet />
 		</>
 	);
 };
