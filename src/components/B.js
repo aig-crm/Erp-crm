@@ -7,10 +7,10 @@ import Home from './Home';
 function B(props) {
 
   return (
-    <>
+    <div>
       <Navbar2 value={'bookingform'} />
       <Home value={props.value} />
-    </>
+    </div>
   );
 }
 

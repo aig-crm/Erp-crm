@@ -7,7 +7,6 @@ import { NavBtn, NavBtnLink } from "./NavbarElements";
 function PostForm(props) {
 
     const [bd, setbd] = useState("");
-    const [t, sett] = useState("");
     const [l, setl] = useState("");
     const [broker, setbroker] = useState("");
     const [nbp, setnbp] = useState("");
@@ -40,7 +39,7 @@ function PostForm(props) {
         console.log('value', value);
     }
     const fetchData1 = () => {
-        return api.get('/bookingApi/unit_no').then(result => {
+        return api.get('/bookingApi/unit_no/' + "'" + (props.value) + "'").then(result => {
             const res = result.data;
             return res;
         });
@@ -55,7 +54,7 @@ function PostForm(props) {
         setSelectedValue2(value);
     }
     const fetchData2 = () => {
-        return api.get('/bookingApi/area_sqft').then(result => {
+        return api.get('/bookingApi/area_sqft/' + "'" + (props.value) + "'").then(result => {
             const res = result.data;
             return res;
         });
@@ -93,9 +92,9 @@ function PostForm(props) {
 
     const register = (e) => {
         e.preventDefault();
-        Axios.post("https://deae-2401-4900-1c60-a349-6c7c-e338-237d-a950.in.ngrok.io/api/customer", {
+        Axios.post("https://deb5-2401-4900-1c61-8078-d42c-bcb6-cf56-4b2b.in.ngrok.io/api/customer", {
             booking_date: bd,
-            tower: t,
+            tower: (props.value),
             broker: broker,
             unit_no: JSON.stringify(selectedValue1),
             floor: floor,
@@ -135,12 +134,7 @@ function PostForm(props) {
                         onChange={(e) => {
                             setbroker(e.target.value)
                         }} />
-                    <label className="Postform"><b>tower:</b></label>
-                    <input
-                        type="text"
-                        onChange={(e) => {
-                            sett(e.target.value)
-                        }} />
+                    <label className="Postform"><b>tower: {props.value}</b></label>
                     <label className="Postform"><b>floor:</b></label>
                     <input
                         type="text"

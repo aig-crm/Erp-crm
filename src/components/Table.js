@@ -29,6 +29,7 @@ function Table(props) {
     
 
     return (
+        
         <React.Fragment>
             <div className="row">
                 <div className="col-sm-8">
@@ -40,7 +41,7 @@ function Table(props) {
 
                     <table className="table table-bordered text-black">
                         <thead>
-                            <tr className="mt-3 text-dark">
+                            <tr className="Postform">
                                 <th style={{ backgroundColor: "#89CFF0" }}>Tower</th>
                                 <th style={{ backgroundColor: "#7393B3" }}>Booking Date</th>
                                 <th style={{ backgroundColor: "#088F8F" }}>Unit No.</th>
@@ -70,7 +71,7 @@ function Table(props) {
                         <tbody>
                             {result.map((res) =>
                             
-                                <tr className="mt-3 text-dark">
+                                <tr className="Postform">
                                     <td>{res.tower}</td>
                                     <td>{res.booking_date}</td>
                                     <Link to='/unit' state={{ from: (res.unit_no) }}>{res.unit_no}</Link>

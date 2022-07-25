@@ -9,30 +9,10 @@ import B from './B';
 import A from './A';
 import Unit from './Unit';
 import PostForm from './PostForm';
-import html2canvas from 'html2canvas';
-import jsPDF from 'jspdf';
 
 function App() {
-
-    const printRef = React.useRef();
-
-    const handleDownloadPdf = async () => {
-    const element = printRef.current;
-    const canvas = await html2canvas(element);
-    const data = canvas.toDataURL('image/png');
-
-    const pdf = new jsPDF();
-    const imgProperties = pdf.getImageProperties(data);
-    const pdfWidth = pdf.internal.pageSize.getWidth();
-    const pdfHeight = pdf.internal.pageSize.getHeight();
-
-    pdf.addImage(data, 'PNG', 0, 0, pdfWidth, pdfHeight);
-    pdf.save('App.pdf');
-  };
-
-
   return (
-    <div ref={printRef}>
+    <div>
         <Navbar />
         <Routes>
           <Route exact path='/' element={<Home />} />
@@ -47,10 +27,6 @@ function App() {
           </Route>
           <Route exact path='/unit' element={<Unit />} />
         </Routes>
-
-        <button type="button" onClick={handleDownloadPdf}>
-          Download as PDF
-        </button>
     </div>
   );
 }
