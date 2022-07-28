@@ -19,6 +19,9 @@ const Navbar2 = (props) => {
 					<NavLink to={url} activeStyle><b>
 						Booking Form</b>
 					</NavLink>
+					<NavLink to='applicant' activeStyle><b>
+						Applicants</b>
+					</NavLink>
 					{/* Second Nav */}
 					{/* <NavBtnLink to='/sign-in'>Sign In</NavBtnLink> */}
 				</NavMenu>
