@@ -13,20 +13,20 @@ import PostForm from './PostForm';
 function App() {
   return (
     <div>
-        <Navbar />
-        <Routes>
-          <Route exact path='/' element={<Home />} />
-          <Route exact path='/C' element={<C value={'C'}/>} >
-            <Route exact path='/C/bookingform/' element={<PostForm value={'C'}/>} />
-          </Route>
-          <Route exact path='/B' element={<B value={'B'}/>} >
-            <Route exact path='/B/bookingform/' element={<PostForm value={'B'}/>} />
-          </Route>
-          <Route exact path='/A' element={<A value={'A'}/>} >
-            <Route exact path='/A/bookingform/' element={<PostForm value={'A'}/>} />
-          </Route>
-          <Route exact path='/unit' element={<Unit />} />
-        </Routes>
+      <Navbar />
+      <Routes>
+        <Route exact path='/' element={<Home />} />
+        <Route exact path='/C' element={<C value={'C'} />} >
+          <Route exact path='/C/bookingform/' element={<PostForm value={'C'} />} />
+        </Route>
+        <Route exact path='/B' element={<B value={'B'} />} >
+          <Route exact path='/B/bookingform/' element={<PostForm value={'B'} />} />
+        </Route>
+        <Route exact path='/A' element={<A value={'A'} />} >
+          <Route exact path='/A/bookingform/' element={<PostForm value={'A'} />} />
+        </Route>
+        <Route exact path='/unit' element={<Unit />} />
+      </Routes>
     </div>
   );
 }

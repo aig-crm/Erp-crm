@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Pie } from "react-chartjs-2";
 import Api from "./Api";
+import ChartDataLabels from 'chartjs-plugin-datalabels';
 
 ChartJS.register(
     Tooltip,
@@ -58,22 +59,18 @@ const PieChart = (props) => {
 
     var options = {
         maintainAspectRatio: false,
-        scales: {
-            y: {
-                beginAtZero: true
-            }
-        },
         legend: {
             fontSize: 26
-        }
+        },
     }
 
     return (
-        <div>
+        <div className="body">
             <Pie
                 data={data}
                 height={400}
                 options={options}
+                plugins={[ChartDataLabels]}
             />
         </div>
     );

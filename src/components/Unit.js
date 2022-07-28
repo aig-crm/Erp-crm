@@ -7,12 +7,12 @@ import jsPDF from 'jspdf';
 
 function Unit() {
 
-    const location = useLocation();
-    const { from } = location.state;
+  const location = useLocation();
+  const { from } = location.state;
 
-    const printRef = React.useRef();
+  const printRef = React.useRef();
 
-    const handleDownloadPdf = async () => {
+  const handleDownloadPdf = async () => {
     const element = printRef.current;
     const canvas = await html2canvas(element);
     const data = canvas.toDataURL('image/png');
@@ -31,9 +31,9 @@ function Unit() {
     <div className='Postform' ref={printRef}>
       <h2 className="mt-3 text-dark"><b>{from}</b></h2>
 
-<button type="button" onClick={handleDownloadPdf}>
-  Download as PDF
-</button>
+      <button type="button" onClick={handleDownloadPdf}>
+        Download as PDF
+      </button>
     </div>
   );
 }

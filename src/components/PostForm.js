@@ -92,27 +92,32 @@ function PostForm(props) {
 
     const register = (e) => {
         e.preventDefault();
-        Axios.post("https://deb5-2401-4900-1c61-8078-d42c-bcb6-cf56-4b2b.in.ngrok.io/api/customer", {
-            booking_date: bd,
-            tower: (props.value),
-            broker: broker,
-            unit_no: JSON.stringify(selectedValue1),
-            floor: floor,
-            area_sqft: JSON.stringify(selectedValue2),
-            plan: JSON.stringify(selectedValue3),
-            applicant_name: an,
-            applicant_mob_no: amn,
-            applicant_email: ae,
-            coapplicant_name: can,
-            coapplicant_mob_no: camn,
-            coapplicant_email: cae,
-            loan: l,
-            nbp: nbp,
-            tbc: tbp,
-            basement: bt
-        }).then((response) => {
-            console.log(response);
-        });
+        if(e.target.value==='' || e.target.value===null){
+            alert("Form has errors for tower - " + (props.value));
+        }else{
+            alert("Form submited for tower - " + (props.value));
+            Axios.post("https://aebe-2401-4900-1c60-f3eb-d66-385c-623c-9815.in.ngrok.io/api/customer", {
+                booking_date: bd,
+                tower: (props.value),
+                broker: broker,
+                unit_no: JSON.stringify(selectedValue1),
+                floor: floor,
+                area_sqft: JSON.stringify(selectedValue2),
+                plan: JSON.stringify(selectedValue3),
+                applicant_name: an,
+                applicant_mob_no: amn,
+                applicant_email: ae,
+                coapplicant_name: can,
+                coapplicant_mob_no: camn,
+                coapplicant_email: cae,
+                loan: l,
+                nbp: nbp,
+                tbc: tbp,
+                basement: bt
+            }).then((response) => {
+                console.log(response);
+            });
+        }
 
     }
 
@@ -127,20 +132,20 @@ function PostForm(props) {
                         type="date"
                         onChange={(e) => {
                             setbd(e.target.value)
-                        }} />
+                        }} required />
                     <label className="Postform"><b>broker:</b></label>
                     <input
                         type="text"
                         onChange={(e) => {
                             setbroker(e.target.value)
-                        }} />
+                        }} required />
                     <label className="Postform"><b>tower: {props.value}</b></label>
                     <label className="Postform"><b>floor:</b></label>
                     <input
                         type="text"
                         onChange={(e) => {
                             setfloor(e.target.value)
-                        }} />
+                        }} required />
                     {/*unit_no
             area_sqft
             broker
@@ -159,7 +164,7 @@ function PostForm(props) {
                                     loadOptions={fetchData1}
                                     on InputChange={handleInputChange1}
                                     onChange={handleChange1}
-                                />
+                                    required />
                             </div>
                             <div className="col-md-4">
                                 <label className="Postform"><b>unit type:</b></label>
@@ -172,7 +177,7 @@ function PostForm(props) {
                                     loadOptions={fetchData2}
                                     on InputChange={handleInputChange2}
                                     onChange={handleChange2}
-                                />
+                                    required />
                             </div>
                             <div className="col-md-4">
                                 <label className="Postform"><b>payment plan:</b></label>
@@ -185,7 +190,7 @@ function PostForm(props) {
                                     loadOptions={fetchData3}
                                     on InputChange={handleInputChange3}
                                     onChange={handleChange3}
-                                />
+                                    required />
                             </div>
                         </div>
                     </div>
@@ -195,25 +200,25 @@ function PostForm(props) {
                         type="text"
                         onChange={(e) => {
                             setl(e.target.value)
-                        }} />
+                        }} required />
                     <label className="Postform"><b>net base price:</b></label>
                     <input
                         type="text"
                         onChange={(e) => {
                             setnbp(e.target.value)
-                        }} />
+                        }} required />
                     <label className="Postform"><b>total base price:</b></label>
                     <input
                         type="text"
                         onChange={(e) => {
                             settbp(e.target.value)
-                        }} />
+                        }} required />
                     <label className="Postform"><b>basement:</b></label>
                     <input
                         type="text"
                         onChange={(e) => {
                             setbt(e.target.value)
-                        }} />
+                        }} required />
                 </div>
                 <h6 className="mt-3 text-dark"><b><u>Applicant details</u></b></h6>
                 <div className="mt-3 text-dark">
@@ -222,19 +227,19 @@ function PostForm(props) {
                         type="text"
                         onChange={(e) => {
                             setan(e.target.value)
-                        }} />
+                        }} required />
                     <label className="Postform"><b>applicant mobile no:</b></label>
                     <input
-                        type="text"
+                        type="phone"
                         onChange={(e) => {
                             setamn(e.target.value)
-                        }} />
+                        }} required />
                     <label className="Postform"><b>applicant email:</b></label>
                     <input
                         type="email"
                         onChange={(e) => {
                             setae(e.target.value)
-                        }} />
+                        }} required />
                 </div>
                 <h6 className="mt-3 text-dark"><b><u>Co-applicant details</u></b></h6>
                 <div className="mt-3 text-dark">
@@ -243,19 +248,19 @@ function PostForm(props) {
                         type="text"
                         onChange={(e) => {
                             setcan(e.target.value)
-                        }} />
+                        }} required />
                     <label className="Postform"><b>coapplicant mobile no:</b></label>
                     <input
-                        type="text"
+                        type="phone"
                         onChange={(e) => {
                             setcamn(e.target.value)
-                        }} />
+                        }} required />
                     <label className="Postform"><b>coapplicant email:</b></label>
                     <input
                         type="email"
                         onChange={(e) => {
                             setcae(e.target.value)
-                        }} />
+                        }} required />
                 </div>
                 <NavBtn onClick={register}>
                     <NavBtnLink to='/'><b>Submit</b></NavBtnLink>

@@ -4,7 +4,8 @@ import styled from 'styled-components';
 
 export const Nav = styled.nav`
 background: #0180b6cb;
-height: 85px;
+height: 55px;
+width: max-width;
 display: flex;
 justify-content: space-between;
 padding: 0.2rem calc((100vw - 1000px) / 2);
@@ -44,6 +45,7 @@ color: #808080;
 
 export const NavMenu = styled.div`
 display: flex;
+width: 100%;
 align-items: center;
 margin-right: -24px;
 /* Second Nav */

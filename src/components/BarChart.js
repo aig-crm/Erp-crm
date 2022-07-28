@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Chart as ChartJS, BarElement, CategoryScale, LinearScale } from 'chart.js';
 import { Bar } from "react-chartjs-2";
 import Api from "./Api";
+import ChartDataLabels from 'chartjs-plugin-datalabels';
 
 ChartJS.register(
     CategoryScale,
@@ -73,11 +74,12 @@ const BarChart = (props) => {
     }
 
     return (
-        <div>
+        <div className="body">
             <Bar
                 data={data}
                 height={400}
                 options={options}
+                plugins={[ChartDataLabels]}
             />
         </div>
     );
