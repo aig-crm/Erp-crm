@@ -24,7 +24,7 @@ function Unit() {
       (imgProperties.height * pdfWidth) / imgProperties.width;
 
     pdf.addImage(data, 'PNG', 0, 0, pdfWidth, pdfHeight);
-    pdf.save('App.pdf');
+    pdf.save((from) + '.pdf');
   };
 
   return (

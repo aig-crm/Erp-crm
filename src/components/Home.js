@@ -24,7 +24,11 @@ function Home(props) {
       (imgProperties.height * pdfWidth) / imgProperties.width;
 
     pdf.addImage(data, 'PNG', 0, 0, pdfWidth, pdfHeight);
-    pdf.save('App.pdf');
+    if (props.value != null) {
+      pdf.save((props.value) + '-tower.pdf');
+    }else{
+      pdf.save('Home.pdf');
+    }
   };
 
   return (

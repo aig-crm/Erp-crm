@@ -1,6 +1,6 @@
 import './App.css';
 import 'bootstrap';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Autocomplete } from '@material-ui/lab';
 import { TextField } from '@material-ui/core';
 import Api from "./Api";
@@ -23,7 +23,8 @@ function Applicants(props) {
     }
 
   return (
-    <div className='Postform'>
+    <div className='col'>
+      <div className='Postform'>
         <h2 className="mt-3 text-dark"><b>{props.value} Tower Applicants</b></h2>
         <Autocomplete
         style={{ width: 500 }}
@@ -49,7 +50,10 @@ function Applicants(props) {
             />
         )}
         />
+      </div>
+      <div>
         <Link className='Postform' to='/unit' state={{ from: (next) }}><b>Next</b></Link>
+      </div>
   </div>
   );
 }
