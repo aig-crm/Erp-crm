@@ -96,7 +96,7 @@ function PostForm(props) {
             alert("Form has errors for tower - " + (props.value));
         }else{
             alert("Form submited for tower - " + (props.value));
-            Axios.post("https://6f0e-2401-4900-1c60-f3eb-9de0-384f-8bc7-52ad.in.ngrok.io/api/customer", {
+            Axios.post("https://8c1d-223-233-69-226.in.ngrok.io/api/customer", {
                 booking_date: bd,
                 tower: (props.value),
                 broker: broker,

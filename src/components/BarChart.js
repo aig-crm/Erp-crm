@@ -60,7 +60,7 @@ const BarChart = (props) => {
     var data = {
         labels: chart.map(x => x.unit_type),
         datasets: [{
-            label: `${chart.length} Unit Types Available`,
+            label: `Unit Types Available`,
             data: chart.map(x => x.empty_units),
             backgroundColor: [
                 'rgba(255, 99, 132, 0.5)',
@@ -80,7 +80,7 @@ const BarChart = (props) => {
             ],
             borderWidth: 1
         },{
-            label: `${chart2.length} Unit Types Available`,
+            label: `Unit Types Booked`,
             data: chart2.map(x => x.booked_units),
             backgroundColor: [
                 'rgba(255,0,0, 0.5)',
