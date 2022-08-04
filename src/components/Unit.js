@@ -9,6 +9,7 @@ import CustomerDetails from './CustomerDetails';
 import { Grid, Paper } from '@material-ui/core';
 import pic1 from '../assets/pic1.jpg';
 import pic2 from '../assets/pic2.png';
+import ReceiptTable from './ReceiptTable';
 
 function Unit() {
 
@@ -38,7 +39,7 @@ function Unit() {
 
   return (
     <div className='Postform' ref={printRef}>
-      <Grid container spacing={3} className='applicant'>
+      <Grid container spacing={3} className='Postform'>
         <Grid item xs={12}>
           <img className='img' src={pic1} alt="project"/>
           <img src={pic2} alt="project2"/>
@@ -65,6 +66,7 @@ function Unit() {
           <Paper ></Paper>
         </Grid>
       </Grid>
+      <ReceiptTable value={from} value2={tower} />
       <button type="button" onClick={handleDownloadPdf}>
         Download as PDF
       </button>
