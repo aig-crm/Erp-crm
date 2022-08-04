@@ -8,6 +8,14 @@ function Table(props) {
 
     let PageSize = 10;
 
+    const [filename, setFilename] = useState("");
+    
+    if (props.value != null) {
+        setFilename((props.value) + "Tower Data");
+    } else {
+        setFilename("Tower Data");
+    }
+
     const [currentPage, setCurrentPage] = useState(1);
 
     const [result, setResult] = useState([]);
@@ -46,7 +54,7 @@ function Table(props) {
                 <div className="col-sm-8">
                     <h3 className="mt-3 text-dark"><b><u><center>Booked {props.value} tower units sheet</center></u></b></h3>
 
-                    <CSVLink data={result} filename="Customers" className="btn btn-success mb-3" style={{ color: "#000" }}>
+                    <CSVLink data={result} filename={filename} className="btn btn-success mb-3" style={{ color: "#000" }}>
                         Export {props.value} Tower Data
                     </CSVLink>
 
@@ -85,7 +93,7 @@ function Table(props) {
                                 <tr className="Postform" style={{ backgroundColor: "#FFFDD0" }}>
                                     <td>{res.tower}</td>
                                     <td>{res.booking_date}</td>
-                                    <Link to='/unit' state={{ from: (res.unit_no) }}>{res.unit_no}</Link>
+                                    <Link to='/unit' state={{ from: (res.unit_no), tower: (res.tower) }}>{res.unit_no}</Link>
                                     <td>{res.area_sqft}</td>
                                     <td>{res.applicant_name}</td>
                                     <td>{res.applicant_mob_no}</td>

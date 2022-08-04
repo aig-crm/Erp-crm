@@ -7,7 +7,7 @@ import {
 	NavMenu
 } from './NavbarElements';
 
-const Navbar = (props) => {
+const Navbar = () => {
 	return (
 		<>
 

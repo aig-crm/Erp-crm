@@ -55,8 +55,6 @@ const BarChart = (props) => {
         getChart2()
     }, [])
 
-    console.log('chart', chart)
-
     var data = {
         labels: chart.map(x => x.unit_type),
         datasets: [{

@@ -52,7 +52,7 @@ function Applicants(props) {
         />
       </div>
       <div>
-        <Link className='Postform' to='/unit' state={{ from: (next) }}><b>Next</b></Link>
+        <Link className='Postform' to='/unit' state={{ from: (next), tower: (props.value) }}><b>Next</b></Link>
       </div>
   </div>
   );

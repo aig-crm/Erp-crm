@@ -4,7 +4,8 @@ import React from 'react';
 import { useLocation } from 'react-router-dom';
 import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
-import ApplicantProfile from './ApplicantProfile';
+import FlatDetails from './FlatDetails';
+import CustomerDetails from './CustomerDetails';
 import { Grid, Paper } from '@material-ui/core';
 import pic1 from '../assets/pic1.jpg';
 import pic2 from '../assets/pic2.png';
@@ -13,6 +14,7 @@ function Unit() {
 
   const location = useLocation();
   const { from } = location.state;
+  const { tower } = location.state;
 
   const printRef = React.useRef();
   const current = new Date();
@@ -36,7 +38,7 @@ function Unit() {
 
   return (
     <div className='Postform' ref={printRef}>
-      <Grid container spacing={3}>
+      <Grid container spacing={3} className='applicant'>
         <Grid item xs={12}>
           <img className='img' src={pic1} alt="project"/>
           <img src={pic2} alt="project2"/>
@@ -54,16 +56,10 @@ function Unit() {
           <h6 className="img"><b>{date} || {time}</b></h6>
         </Grid>
         <Grid item xs={12} sm={6}>
-          <Paper ><ApplicantProfile value={from} /></Paper>
+          <Paper ><FlatDetails value={from} value2={tower} /></Paper>
         </Grid>
         <Grid item xs={12} sm={6}>
-          <Paper ><ApplicantProfile value={from} /></Paper>
-        </Grid>
-        <Grid item xs={12} sm={6}>
-          <Paper ><ApplicantProfile value={from} /></Paper>
-        </Grid>
-        <Grid item xs={12} sm={6}>
-          <Paper ><ApplicantProfile value={from} /></Paper>
+          <Paper ><CustomerDetails value={from} value2={tower} /></Paper>
         </Grid>
         <Grid item xs={12}>
           <Paper ></Paper>

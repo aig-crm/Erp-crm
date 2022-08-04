@@ -19,6 +19,8 @@ function PostForm(props) {
     const [camn, setcamn] = useState("");
     const [cae, setcae] = useState("");
     const [floor, setfloor] = useState("");
+    const [address, setaddress] = useState("");
+    const [card, setcard] = useState("");
 
     const [inputValue1, setValue1] = useState("");
     const [selectedValue1, setSelectedValue1] = useState(null);
@@ -26,8 +28,8 @@ function PostForm(props) {
     const [selectedValue2, setSelectedValue2] = useState(null);
     const [inputValue3, setValue3] = useState("");
     const [selectedValue3, setSelectedValue3] = useState(null);
-    // const [inputValue4, setValue4] = useState('');
-    // const [selectedValue4, setSelectedValue4] = useState(null);
+    const [inputValue4, setValue4] = useState('');
+    const [selectedValue4, setSelectedValue4] = useState(null);
 
     // handle input change event
     const handleInputChange1 = value => {
@@ -75,49 +77,47 @@ function PostForm(props) {
         });
     }
 
-    //   // handle input change event
-    //   const handleInputChange4 = value => {
-    //     setValue4(value);
-    //   };
-    //   // handle selection
-    //   const handleChange4 = value => {
-    //     setSelectedValue4(value);
-    //   }
-    //   const fetchData4 = () => {
-    //     return  api.get('/users?page=1').then(result => {
-    //       const res =  result.data.data;
-    //       return res;
-    //     });
-    //   }
+    // handle input change event
+    const handleInputChange4 = value => {
+        setValue4(value);
+    };
+    // handle selection
+    const handleChange4 = value => {
+        setSelectedValue4(value);
+    }
+    const fetchData4 = () => {
+        return api.get('/bookingApi/broker').then(result => {
+            const res = result.data;
+            return res;
+        });
+    }
 
     const register = (e) => {
         e.preventDefault();
-        if(e.target.value==='' || e.target.value===null){
-            alert("Form has errors for tower - " + (props.value));
-        }else{
-            alert("Form submited for tower - " + (props.value));
-            Axios.post("https://8c1d-223-233-69-226.in.ngrok.io/api/customer", {
-                booking_date: bd,
-                tower: (props.value),
-                broker: broker,
-                unit_no: JSON.stringify(selectedValue1),
-                floor: floor,
-                area_sqft: JSON.stringify(selectedValue2),
-                plan: JSON.stringify(selectedValue3),
-                applicant_name: an,
-                applicant_mob_no: amn,
-                applicant_email: ae,
-                coapplicant_name: can,
-                coapplicant_mob_no: camn,
-                coapplicant_email: cae,
-                loan: l,
-                nbp: nbp,
-                tbc: tbp,
-                basement: bt
-            }).then((response) => {
-                console.log(response);
-            });
-        }
+        alert("Form submitted for tower - " + (props.value));
+        Axios.post("https://829d-2401-4900-1c60-681c-5976-928d-f64a-af29.in.ngrok.io/api/customer", {
+            booking_date: bd,
+            tower: (props.value),
+            broker: JSON.stringify(selectedValue4),
+            unit_no: JSON.stringify(selectedValue1),
+            floor: floor,
+            card: card,
+            address: address,
+            area_sqft: JSON.stringify(selectedValue2),
+            plan: JSON.stringify(selectedValue3),
+            applicant_name: an,
+            applicant_mob_no: amn,
+            applicant_email: ae,
+            coapplicant_name: can,
+            coapplicant_mob_no: camn,
+            coapplicant_email: cae,
+            loan: l,
+            nbp: nbp,
+            tbc: tbp,
+            basement: bt
+        }).then((response) => {
+            console.log(response);
+        });
 
     }
 
@@ -131,25 +131,36 @@ function PostForm(props) {
                     <input
                         type="date"
                         onChange={(e) => {
-                            setbd(e.target.value)
-                        }} required />
-                    <label className="Postform"><b>broker:</b></label>
-                    <input
-                        type="text"
-                        onChange={(e) => {
-                            setbroker(e.target.value)
+                            if (e.target.value === '' || e.target.value === null) {
+                                alert("Form has errors for tower - " + (props.value));
+                            } else { setbd(e.target.value) }
                         }} required />
                     <label className="Postform"><b>tower: {props.value}</b></label>
                     <label className="Postform"><b>floor:</b></label>
                     <input
                         type="text"
                         onChange={(e) => {
-                            setfloor(e.target.value)
+                            if (e.target.value === '' || e.target.value === null) {
+                                alert("Form has errors for tower - " + (props.value));
+                            } else { setfloor(e.target.value) }
                         }} required />
-                    {/*unit_no
-            area_sqft
-            broker
-            plan*/}
+                    <label className="Postform"><b>Pan card / Aadhaar card No.</b></label>
+                    <input
+                        type="text"
+                        onChange={(e) => {
+                            if (e.target.value === '' || e.target.value === null) {
+                                alert("Form has errors for tower - " + (props.value));
+                            } else { setcard(e.target.value) }
+                        }} required />
+                    <label className="Postform"><b>address:</b></label>
+                    <input
+                        type="text"
+                        onChange={(e) => {
+                            if (e.target.value === '' || e.target.value === null) {
+                                setaddress('NA');
+                            } else { setaddress(e.target.value) }
+                        }} required />
+                    {/*broker*/}
 
                     <div className="mt-3 text-dark">
                         <div className="row">
@@ -192,6 +203,20 @@ function PostForm(props) {
                                     onChange={handleChange3}
                                     required />
                             </div>
+                            <div className="col-md-4">
+                                <label className="Postform"><b>broker:</b></label>
+                                <AsyncSelect
+                                    cacheOptions
+                                    className="col-md-4"
+                                    defaultOptions
+                                    value={selectedValue4}
+                                    getOptionLabel={e => e.bcn}
+                                    getOptionValue={e => e.bcn}
+                                    loadOptions={fetchData4}
+                                    on InputChange={handleInputChange4}
+                                    onChange={handleChange4}
+                                    required />
+                            </div>
                         </div>
                     </div>
 
@@ -199,25 +224,33 @@ function PostForm(props) {
                     <input
                         type="text"
                         onChange={(e) => {
-                            setl(e.target.value)
+                            if (e.target.value === '' || e.target.value === null) {
+                                alert("Form has errors for tower - " + (props.value));
+                            } else { setl(e.target.value) }
                         }} required />
                     <label className="Postform"><b>net base price:</b></label>
                     <input
                         type="text"
                         onChange={(e) => {
-                            setnbp(e.target.value)
+                            if (e.target.value === '' || e.target.value === null) {
+                                alert("Form has errors for tower - " + (props.value));
+                            } else { setnbp(e.target.value) }
                         }} required />
                     <label className="Postform"><b>total base price:</b></label>
                     <input
                         type="text"
                         onChange={(e) => {
-                            settbp(e.target.value)
+                            if (e.target.value === '' || e.target.value === null) {
+                                alert("Form has errors for tower - " + (props.value));
+                            } else { settbp(e.target.value) }
                         }} required />
                     <label className="Postform"><b>basement:</b></label>
                     <input
                         type="text"
                         onChange={(e) => {
-                            setbt(e.target.value)
+                            if (e.target.value === '' || e.target.value === null) {
+                                setbt('NA');
+                            } else { setbt(e.target.value) }
                         }} required />
                 </div>
                 <h6 className="mt-3 text-dark"><b><u>Applicant details</u></b></h6>
@@ -226,19 +259,25 @@ function PostForm(props) {
                     <input
                         type="text"
                         onChange={(e) => {
-                            setan(e.target.value)
+                            if (e.target.value === '' || e.target.value === null) {
+                                alert("Form has errors for tower - " + (props.value));
+                            } else { setan(e.target.value) }
                         }} required />
                     <label className="Postform"><b>applicant mobile no:</b></label>
                     <input
                         type="phone"
                         onChange={(e) => {
-                            setamn(e.target.value)
+                            if (e.target.value === '' || e.target.value === null) {
+                                alert("Form has errors for tower - " + (props.value));
+                            } else { setamn(e.target.value) }
                         }} required />
                     <label className="Postform"><b>applicant email:</b></label>
                     <input
                         type="email"
                         onChange={(e) => {
-                            setae(e.target.value)
+                            if (e.target.value === '' || e.target.value === null) {
+                                alert("Form has errors for tower - " + (props.value));
+                            } else { setae(e.target.value) }
                         }} required />
                 </div>
                 <h6 className="mt-3 text-dark"><b><u>Co-applicant details</u></b></h6>
@@ -247,19 +286,31 @@ function PostForm(props) {
                     <input
                         type="text"
                         onChange={(e) => {
-                            setcan(e.target.value)
+                            if (e.target.value === '') {
+                                setcan('NA')
+                            } else {
+                                setcan(e.target.value)
+                            }
                         }} required />
                     <label className="Postform"><b>coapplicant mobile no:</b></label>
                     <input
                         type="phone"
                         onChange={(e) => {
-                            setcamn(e.target.value)
+                            if (e.target.value === '') {
+                                setcamn('NA')
+                            } else {
+                                setcamn(e.target.value)
+                            }
                         }} required />
                     <label className="Postform"><b>coapplicant email:</b></label>
                     <input
                         type="email"
                         onChange={(e) => {
-                            setcae(e.target.value)
+                            if (e.target.value === '') {
+                                setcae('NA')
+                            } else {
+                                setcae(e.target.value)
+                            }
                         }} required />
                 </div>
                 <NavBtn onClick={register}>

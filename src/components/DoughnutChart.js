@@ -34,8 +34,6 @@ const DoughnutChart = (props) => {
         getChart()
     }, [])
 
-    console.log('chart', chart)
-
     var data = {
         labels: chart.map(x => x.params),
         datasets: [{
