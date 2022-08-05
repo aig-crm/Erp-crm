@@ -12,18 +12,34 @@ function ReceiptTable(props) {
     const [currentPage, setCurrentPage] = useState(1);
 
     const [result, setResult] = useState([]);
+    const [result2, setResult2] = useState([]);
 
     const getData = () => {
 
         if (props.value != null) {
-            return Api.get('/receipt/' + "'" + (props.value2) + "'/" + "'" + (props.value) + "'").then(result => {
+            return Api.get('/receipt_approved/' + "'" + (props.value2) + "'/" + "'" + (props.value) + "'").then(result => {
                 const res = result.data;
                 return setResult(res);
             })
         } else {
-            return Api.get('/receipt/').then(result => {
+            return Api.get('/receipt_approved/').then(result => {
                 const res = result.data;
                 return setResult(res);
+            })
+        }
+    }
+
+    const getData2 = () => {
+
+        if (props.value != null) {
+            return Api.get('/receipt_pending/' + "'" + (props.value2) + "'/" + "'" + (props.value) + "'").then(result => {
+                const res = result.data;
+                return setResult2(res);
+            })
+        } else {
+            return Api.get('/receipt_pending/').then(result => {
+                const res = result.data;
+                return setResult2(res);
             })
         }
     }
@@ -32,11 +48,21 @@ function ReceiptTable(props) {
         getData()
     }, []);
 
+    useEffect(() => {
+        getData2()
+    }, []);
+
     const currentTableData = useMemo(() => {
         const firstPageIndex = (currentPage - 1) * PageSize;
         const lastPageIndex = firstPageIndex + PageSize;
         return result.slice(firstPageIndex, lastPageIndex);
     }, [PageSize, result, currentPage]);
+
+    const currentTableData2 = useMemo(() => {
+        const firstPageIndex = (currentPage - 1) * PageSize;
+        const lastPageIndex = firstPageIndex + PageSize;
+        return result2.slice(firstPageIndex, lastPageIndex);
+    }, [PageSize, result2, currentPage]);
 
     const printRef = React.useRef();
 
@@ -86,8 +112,20 @@ function ReceiptTable(props) {
                         </thead>
                         <tbody className="table">
                             {currentTableData.map((res) =>
-
                                 <tr className="Postform" style={{ backgroundColor: "#FFFDD0" }}>
+                                    <td>{res.tower}</td>
+                                    <td>{res.unit_no}</td>
+                                    <td>{res.payment_mode}</td>
+                                    <td>{res.date}</td>
+                                    <td>{res.bank_name}</td>
+                                    <td>{res.rwgst}</td>
+                                    <td>{res.rgst}</td>
+                                    <td>{res.receipt_no}</td>
+                                    <td>{res.status}</td>
+                                </tr>
+                            )}
+                            {currentTableData2.map((res) =>
+                                <tr className="Postform" style={{ backgroundColor: "#c61a09" }}>
                                     <td>{res.tower}</td>
                                     <td>{res.unit_no}</td>
                                     <td>{res.payment_mode}</td>
