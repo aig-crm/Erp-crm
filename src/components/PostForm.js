@@ -95,7 +95,7 @@ function PostForm(props) {
     const register = (e) => {
         e.preventDefault();
         alert("Form submitted for tower - " + (props.value));
-        Axios.post("https://2c70-2401-4900-1c60-681c-f54f-b849-baf3-4b4a.in.ngrok.io/api/customer", {
+        Axios.post("https://1dba-2401-4900-1c61-299e-599c-4c96-c944-971d.in.ngrok.io/api/customer", {
             booking_date: bd,
             tower: (props.value),
             broker: JSON.stringify(selectedValue4),

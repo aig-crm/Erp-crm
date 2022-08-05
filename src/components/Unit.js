@@ -10,6 +10,7 @@ import { Grid, Paper } from '@material-ui/core';
 import pic1 from '../assets/pic1.jpg';
 import pic2 from '../assets/pic2.png';
 import ReceiptTable from './ReceiptTable';
+import DemandReminderTable from './DemandReminderTable';
 
 function Unit() {
 
@@ -67,6 +68,7 @@ function Unit() {
         </Grid>
       </Grid>
       <ReceiptTable value={from} value2={tower} />
+      <DemandReminderTable value={from} value2={tower} />
       <button type="button" onClick={handleDownloadPdf}>
         Download as PDF
       </button>

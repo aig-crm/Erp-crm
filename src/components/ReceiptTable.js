@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useMemo } from "react";
 import Pagination from "./pagination";
 import { CSVLink } from 'react-csv';
-import { Link } from "react-router-dom";
 import Api from "./Api";
 import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
