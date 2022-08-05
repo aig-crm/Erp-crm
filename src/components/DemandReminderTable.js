@@ -4,6 +4,8 @@ import { CSVLink } from 'react-csv';
 import Api from "./Api";
 import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
+import Popup from "reactjs-popup";
+import DueDate from './DueDate';
 
 function DemandReminderTable(props) {
 
@@ -152,6 +154,10 @@ function DemandReminderTable(props) {
                     <button type="button" onClick={handleDownloadPdf}>
                         Download as PDF
                     </button>
+
+                    <Popup trigger={<button> Update due date </button>} position="right center">
+                        <DueDate value={props.value} value2={props.value2}/>
+                    </Popup>
                 </div>
             </div>
         </React.Fragment>

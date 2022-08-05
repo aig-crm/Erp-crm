@@ -8,7 +8,6 @@ function PostForm(props) {
 
     const [bd, setbd] = useState("");
     const [l, setl] = useState("");
-    const [broker, setbroker] = useState("");
     const [nbp, setnbp] = useState("");
     const [tbp, settbp] = useState("");
     const [bt, setbt] = useState("");
@@ -95,7 +94,7 @@ function PostForm(props) {
     const register = (e) => {
         e.preventDefault();
         alert("Form submitted for tower - " + (props.value));
-        Axios.post("https://1dba-2401-4900-1c61-299e-599c-4c96-c944-971d.in.ngrok.io/api/customer", {
+        Axios.post("https://893d-2401-4900-1c61-299e-e088-1734-2978-c41d.in.ngrok.io/api/customer", {
             booking_date: bd,
             tower: (props.value),
             broker: JSON.stringify(selectedValue4),
