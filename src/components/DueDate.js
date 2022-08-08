@@ -6,6 +6,9 @@ import Axios from "axios";
 import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
 import { useLocation } from 'react-router-dom';
+import { Grid } from '@material-ui/core';
+import pic1 from '../assets/pic1.jpg';
+import pic2 from '../assets/pic2.png';
 
 function DueDate() {
 
@@ -38,7 +41,7 @@ function DueDate() {
 
     const register = (e) => {
       e.preventDefault();
-      alert("Form submitted for tower - " + (from));
+      alert((from) + '-demand filed for ' + (unit_no));
       Axios.put("https://0b61-2401-4900-1c61-299e-2440-7005-c383-15ce.in.ngrok.io/api/payments/" + "'" + (from) + "'", {
           due_date: result
       }).then((response) => {
@@ -52,7 +55,13 @@ function DueDate() {
     <div className='applicant' ref={printRef}>
 
         <div className="Postform">
-            <h5><b><u>FILE DEMAND</u></b></h5>
+        <Grid container spacing={3} className='Postform'>
+        <Grid item xs={12}>
+          <img className='img' src={pic1} alt="project"/>
+          <img src={pic2} alt="project2"/>
+        </Grid>
+        </Grid>
+            <h5><b><u>{from}-FILE DEMAND for {unit_no}</u></b></h5>
             <label className="Postform"><b>Due Date:</b></label>
               <input
                 type="date"
