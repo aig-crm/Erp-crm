@@ -10,6 +10,7 @@ import A from './A';
 import Unit from './Unit';
 import PostForm from './PostForm';
 import Applicants from './Applicants';
+import DueDate from './DueDate';
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
           <Route exact path='/A/applicant/' element={<Applicants value={'A'} />} />
         </Route>
         <Route exact path='/unit' element={<Unit />} />
+        <Route exact path='/dueDate' element={<DueDate />} />
       </Routes>
     </div>
   );

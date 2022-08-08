@@ -142,7 +142,7 @@ function ReceiptTable(props) {
                     <Pagination
                         className="pagination-bar"
                         currentPage={currentPage}
-                        totalCount={result.length}
+                        totalCount={result.length + result2.length}
                         pageSize={PageSize}
                         onPageChange={page => setCurrentPage(page)}
                     />

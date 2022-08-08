@@ -6,6 +6,7 @@ import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
 import Popup from "reactjs-popup";
 import DueDate from './DueDate';
+import { Link } from "react-router-dom";
 
 function DemandReminderTable(props) {
 
@@ -14,6 +15,7 @@ function DemandReminderTable(props) {
     const [currentPage, setCurrentPage] = useState(1);
 
     const [result, setResult] = useState([]);
+    const [result1, setResult1] = useState([]);
     const [result2, setResult2] = useState([]);
 
     const getData = () => {
@@ -27,6 +29,21 @@ function DemandReminderTable(props) {
             return Api.get('/demand/').then(result => {
                 const res = result.data;
                 return setResult(res);
+            })
+        }
+    }
+
+    const getData1 = () => {
+
+        if (props.value != null) {
+            return Api.get('/cpp/' + "'" + (props.value2) + "'/" + "'" + (props.value) + "'").then(result => {
+                const res = result.data;
+                return setResult1(res);
+            })
+        } else {
+            return Api.get('/cpp/').then(result => {
+                const res = result.data;
+                return setResult1(res);
             })
         }
     }
@@ -51,6 +68,10 @@ function DemandReminderTable(props) {
     }, []);
 
     useEffect(() => {
+        getData1()
+    }, []);
+
+    useEffect(() => {
         getData2()
     }, []);
 
@@ -59,6 +80,12 @@ function DemandReminderTable(props) {
         const lastPageIndex = firstPageIndex + PageSize;
         return result.slice(firstPageIndex, lastPageIndex);
     }, [PageSize, result, currentPage]);
+
+    const currentTableData1 = useMemo(() => {
+        const firstPageIndex = (currentPage - 1) * PageSize;
+        const lastPageIndex = firstPageIndex + PageSize;
+        return result1.slice(firstPageIndex, lastPageIndex);
+    }, [PageSize, result1, currentPage]);
 
     const currentTableData2 = useMemo(() => {
         const firstPageIndex = (currentPage - 1) * PageSize;
@@ -101,6 +128,7 @@ function DemandReminderTable(props) {
                     <table className="table-bordered text-black">
                         <thead>
                             <tr style={{ backgroundColor: "#0078AA" }}>
+                                <th className="table">ID</th>
                                 <th className="table">Tower</th>
                                 <th className="table">Unit No.</th>
                                 <th className="table">Due Date</th>
@@ -116,6 +144,22 @@ function DemandReminderTable(props) {
                         <tbody className="table">
                             {currentTableData.map((res) =>
                                 <tr className="Postform" style={{ backgroundColor: "#FFFDD0" }}>
+                                    <Link to='/dueDate' state={{ from: (res.id), unit_no: (props.value), tower: (props.value2) }}>{res.id}</Link>
+                                    <td>{res.tower}</td>
+                                    <td>{res.unit_no}</td>
+                                    <td>{res.due_date}</td>
+                                    <td>{res.particulars}</td>
+                                    <td>{res.percentage}</td>
+                                    <td>{res.net_bsp}</td>
+                                    <td>{res.gst}</td>
+                                    <td>{res.net_due}</td>
+                                    <td>{res.recieved}</td>
+                                    <td>{res.pending_amount}</td>
+                                </tr>
+                            )}
+                            {currentTableData1.map((res) =>
+                                <tr className="Postform" style={{ backgroundColor: "#7FFFD4" }}>
+                                    <Link to='/dueDate' state={{ from: (res.id), unit_no: (props.value), tower: (props.value2) }}>{res.id}</Link>
                                     <td>{res.tower}</td>
                                     <td>{res.unit_no}</td>
                                     <td>{res.due_date}</td>
@@ -130,6 +174,7 @@ function DemandReminderTable(props) {
                             )}
                             {currentTableData2.map((res) =>
                                 <tr className="Postform" style={{ backgroundColor: "#c61a09" }}>
+                                    <Link to='/dueDate' state={{ from: (res.id), unit_no: (props.value), tower: (props.value2) }}>{res.id}</Link>
                                     <td>{res.tower}</td>
                                     <td>{res.unit_no}</td>
                                     <td>{res.due_date}</td>
@@ -154,10 +199,6 @@ function DemandReminderTable(props) {
                     <button type="button" onClick={handleDownloadPdf}>
                         Download as PDF
                     </button>
-
-                    <Popup trigger={<button> Update due date </button>} position="right center">
-                        <DueDate value={props.value} value2={props.value2}/>
-                    </Popup>
                 </div>
             </div>
         </React.Fragment>
