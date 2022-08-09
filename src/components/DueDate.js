@@ -16,7 +16,6 @@ function DueDate() {
   const printRef = React.useRef();
   const { from } = location.state;
   const { unit_no } = location.state;
-  const { tower } = location.state;
 
     const handleDownloadPdf = async () => {
         const element = printRef.current;
@@ -42,7 +41,7 @@ function DueDate() {
     const register = (e) => {
       e.preventDefault();
       alert((from) + '-demand filed for ' + (unit_no));
-      Axios.put("https://0b61-2401-4900-1c61-299e-2440-7005-c383-15ce.in.ngrok.io/api/payments/" + "'" + (from) + "'", {
+      Axios.put("https://df6a-2401-4900-1c61-299e-553b-9c0a-a3de-87c7.in.ngrok.io/api/payments/" + "'" + (from) + "'", {
           due_date: result
       }).then((response) => {
           console.log(response);

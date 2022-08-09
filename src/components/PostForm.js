@@ -94,7 +94,7 @@ function PostForm(props) {
     const register = (e) => {
         e.preventDefault();
         alert("Form submitted for tower - " + (props.value));
-        Axios.post("https://0b61-2401-4900-1c61-299e-2440-7005-c383-15ce.in.ngrok.io/api/customer", {
+        Axios.post("https://df6a-2401-4900-1c61-299e-553b-9c0a-a3de-87c7.in.ngrok.io/api/customer", {
             booking_date: bd,
             tower: (props.value),
             broker: JSON.stringify(selectedValue4),
@@ -143,23 +143,6 @@ function PostForm(props) {
                                 alert("Form has errors for tower - " + (props.value));
                             } else { setfloor(e.target.value) }
                         }} required />
-                    <label className="Postform"><b>Pan card / Aadhaar card No.</b></label>
-                    <input
-                        type="text"
-                        onChange={(e) => {
-                            if (e.target.value === '' || e.target.value === null) {
-                                alert("Form has errors for tower - " + (props.value));
-                            } else { setcard(e.target.value) }
-                        }} required />
-                    <label className="Postform"><b>address:</b></label>
-                    <input
-                        type="text"
-                        onChange={(e) => {
-                            if (e.target.value === '' || e.target.value === null) {
-                                setaddress('NA');
-                            } else { setaddress(e.target.value) }
-                        }} required />
-                    {/*broker*/}
 
                     <div className="mt-3 text-dark">
                         <div className="row">
@@ -277,6 +260,22 @@ function PostForm(props) {
                             if (e.target.value === '' || e.target.value === null) {
                                 alert("Form has errors for tower - " + (props.value));
                             } else { setae(e.target.value) }
+                        }} required />
+                    <label className="Postform"><b>Pan card / Aadhaar card No.</b></label>
+                    <input
+                        type="text"
+                        onChange={(e) => {
+                            if (e.target.value === '' || e.target.value === null) {
+                                alert("Form has errors for tower - " + (props.value));
+                            } else { setcard(e.target.value) }
+                        }} required />
+                    <label className="Postform"><b>address:</b></label>
+                    <input
+                        type="text"
+                        onChange={(e) => {
+                            if (e.target.value === '' || e.target.value === null) {
+                                setaddress('NA');
+                            } else { setaddress(e.target.value) }
                         }} required />
                 </div>
                 <h6 className="mt-3 text-dark"><b><u>Co-applicant details</u></b></h6>

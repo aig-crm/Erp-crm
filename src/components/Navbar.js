@@ -15,7 +15,7 @@ const Navbar = () => {
 				<Bars />
 				<NavMenu>
 					<div className="mt-3 text-dark">
-						<h1 className='Postform'><b>AIG Royal</b></h1>
+						<h1 className='Postform'><b>AIGIN Royal</b></h1>
 					</div>
 					<NavLink to='/' activeStyle><b>
 						Home</b>

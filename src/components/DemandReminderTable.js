@@ -4,94 +4,95 @@ import { CSVLink } from 'react-csv';
 import Api from "./Api";
 import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
-import Popup from "reactjs-popup";
-import DueDate from './DueDate';
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
-function DemandReminderTable(props) {
+function DemandReminderTable() {
 
     let PageSize = 10;
 
     const [currentPage, setCurrentPage] = useState(1);
 
-    const [result, setResult] = useState([]);
-    const [result1, setResult1] = useState([]);
-    const [result2, setResult2] = useState([]);
+    const [resultDemand, setresultDemand] = useState([]);
+    const [resultDemand1, setresultDemand1] = useState([]);
+    const [resultDemand2, setresultDemand2] = useState([]);
+    const location = useLocation();
+    const { tower } = location.state;
+    const { unit_no } = location.state;
 
-    const getData = () => {
+    const getDataDemand = () => {
 
-        if (props.value != null) {
-            return Api.get('/demand/' + "'" + (props.value2) + "'/" + "'" + (props.value) + "'").then(result => {
-                const res = result.data;
-                return setResult(res);
+        if (unit_no != null) {
+            return Api.get('/demand/' + "'" + (tower) + "'/" + "'" + (unit_no) + "'").then(resultDemand => {
+                const res = resultDemand.data;
+                return setresultDemand(res);
             })
         } else {
-            return Api.get('/demand/').then(result => {
-                const res = result.data;
-                return setResult(res);
+            return Api.get('/demand/').then(resultDemand => {
+                const res = resultDemand.data;
+                return setresultDemand(res);
             })
         }
     }
 
-    const getData1 = () => {
+    const getDataDemand1 = () => {
 
-        if (props.value != null) {
-            return Api.get('/cpp/' + "'" + (props.value2) + "'/" + "'" + (props.value) + "'").then(result => {
-                const res = result.data;
-                return setResult1(res);
+        if (unit_no != null) {
+            return Api.get('/cpp/' + "'" + (tower) + "'/" + "'" + (unit_no) + "'").then(resultDemand => {
+                const res = resultDemand.data;
+                return setresultDemand1(res);
             })
         } else {
-            return Api.get('/cpp/').then(result => {
-                const res = result.data;
-                return setResult1(res);
+            return Api.get('/cpp/').then(resultDemand => {
+                const res = resultDemand.data;
+                return setresultDemand1(res);
             })
         }
     }
 
-    const getData2 = () => {
+    const getDataDemand2 = () => {
 
-        if (props.value != null) {
-            return Api.get('/reminder/' + "'" + (props.value2) + "'/" + "'" + (props.value) + "'").then(result => {
-                const res = result.data;
-                return setResult2(res);
+        if (unit_no != null) {
+            return Api.get('/reminder/' + "'" + (tower) + "'/" + "'" + (unit_no) + "'").then(resultDemand => {
+                const res = resultDemand.data;
+                return setresultDemand2(res);
             })
         } else {
-            return Api.get('/reminder/').then(result => {
-                const res = result.data;
-                return setResult2(res);
+            return Api.get('/reminder/').then(resultDemand => {
+                const res = resultDemand.data;
+                return setresultDemand2(res);
             })
         }
     }
 
     useEffect(() => {
-        getData()
+        getDataDemand()
     }, []);
 
     useEffect(() => {
-        getData1()
+        getDataDemand1()
     }, []);
 
     useEffect(() => {
-        getData2()
+        getDataDemand2()
     }, []);
 
-    const currentTableData = useMemo(() => {
+    const currentTableDataDemand = useMemo(() => {
         const firstPageIndex = (currentPage - 1) * PageSize;
         const lastPageIndex = firstPageIndex + PageSize;
-        return result.slice(firstPageIndex, lastPageIndex);
-    }, [PageSize, result, currentPage]);
+        return resultDemand.slice(firstPageIndex, lastPageIndex);
+    }, [PageSize, resultDemand, currentPage]);
 
-    const currentTableData1 = useMemo(() => {
+    const currentTableDataDemand1 = useMemo(() => {
         const firstPageIndex = (currentPage - 1) * PageSize;
         const lastPageIndex = firstPageIndex + PageSize;
-        return result1.slice(firstPageIndex, lastPageIndex);
-    }, [PageSize, result1, currentPage]);
+        return resultDemand1.slice(firstPageIndex, lastPageIndex);
+    }, [PageSize, resultDemand1, currentPage]);
 
-    const currentTableData2 = useMemo(() => {
+    const currentTableDataDemand2 = useMemo(() => {
         const firstPageIndex = (currentPage - 1) * PageSize;
         const lastPageIndex = firstPageIndex + PageSize;
-        return result2.slice(firstPageIndex, lastPageIndex);
-    }, [PageSize, result2, currentPage]);
+        return resultDemand2.slice(firstPageIndex, lastPageIndex);
+    }, [PageSize, resultDemand2, currentPage]);
 
     const printRef = React.useRef();
 
@@ -107,8 +108,8 @@ function DemandReminderTable(props) {
           (imgProperties.height * pdfWidth) / imgProperties.width;
     
         pdf.addImage(data, 'PNG', 0, 0, pdfWidth, pdfHeight);
-        if (props.value != null) {
-          pdf.save((props.value) + '-demand reminder report.pdf');
+        if (unit_no != null) {
+          pdf.save((unit_no) + '-demand reminder report.pdf');
         }else{
           pdf.save('Demand reminder report.pdf');
         }
@@ -119,20 +120,18 @@ function DemandReminderTable(props) {
         <React.Fragment>
             <div className="row" ref={printRef}>
                 <div className="col-sm-8">
-                    <h3 className="mt-3 text-dark"><b><u><center>Demand-Reminder of {props.value} unit</center></u></b></h3>
+                    <h3 className="mt-3 text-dark"><b><u><center>Demand-Reminder of {unit_no} unit</center></u></b></h3>
 
-                    <CSVLink data={result} filename="Demand-Reminder Data" className="btn btn-success mb-3" style={{ color: "#000" }}>
-                        Export {props.value} Demand-Reminder Data
+                    <CSVLink data={resultDemand} filename="Demand-Reminder Data" className="btn btn-success mb-3" style={{ color: "#000" }}>
+                        Export {unit_no} Demand-Reminder Data
                     </CSVLink>
 
                     <table className="table-bordered text-black">
                         <thead>
                             <tr style={{ backgroundColor: "#0078AA" }}>
-                                <th className="table">ID</th>
-                                <th className="table">Tower</th>
-                                <th className="table">Unit No.</th>
-                                <th className="table">Due Date</th>
                                 <th className="table">Perticulars</th>
+                                <th className="table">ID</th>
+                                <th className="table">Due Date</th>
                                 <th className="table">Percentage</th>
                                 <th className="table">Net Base Selling Price</th>
                                 <th className="table">GST</th>
@@ -142,13 +141,11 @@ function DemandReminderTable(props) {
                             </tr>
                         </thead>
                         <tbody className="table">
-                            {currentTableData.map((res) =>
+                            {currentTableDataDemand.map((res) =>
                                 <tr className="Postform" style={{ backgroundColor: "#FFFDD0" }}>
-                                    <Link to='/dueDate' state={{ from: (res.id), unit_no: (props.value), tower: (props.value2) }}>{res.id}</Link>
-                                    <td>{res.tower}</td>
-                                    <td>{res.unit_no}</td>
-                                    <td>{res.due_date}</td>
                                     <td>{res.particulars}</td>
+                                    <Link to='/dueDate' state={{ from: (res.id), unit_no: (unit_no), tower: (tower) }}>{res.id}</Link>
+                                    <td>{res.due_date}</td>
                                     <td>{res.percentage}</td>
                                     <td>{res.net_bsp}</td>
                                     <td>{res.gst}</td>
@@ -157,13 +154,11 @@ function DemandReminderTable(props) {
                                     <td>{res.pending_amount}</td>
                                 </tr>
                             )}
-                            {currentTableData1.map((res) =>
-                                <tr className="Postform" style={{ backgroundColor: "#7FFFD4" }}>
-                                    <Link to='/dueDate' state={{ from: (res.id), unit_no: (props.value), tower: (props.value2) }}>{res.id}</Link>
-                                    <td>{res.tower}</td>
-                                    <td>{res.unit_no}</td>
-                                    <td>{res.due_date}</td>
+                            {currentTableDataDemand1.map((res) =>
+                                <tr className="Postform" style={{ backgroundColor: "#FFFDD0" }}>
                                     <td>{res.particulars}</td>
+                                    <Link to='/dueDate' state={{ from: (res.id), unit_no: (unit_no), tower: (tower) }}>{res.id}</Link>
+                                    <td>{res.due_date}</td>
                                     <td>{res.percentage}</td>
                                     <td>{res.net_bsp}</td>
                                     <td>{res.gst}</td>
@@ -172,13 +167,11 @@ function DemandReminderTable(props) {
                                     <td>{res.pending_amount}</td>
                                 </tr>
                             )}
-                            {currentTableData2.map((res) =>
-                                <tr className="Postform" style={{ backgroundColor: "#c61a09" }}>
-                                    <Link to='/dueDate' state={{ from: (res.id), unit_no: (props.value), tower: (props.value2) }}>{res.id}</Link>
-                                    <td>{res.tower}</td>
-                                    <td>{res.unit_no}</td>
-                                    <td>{res.due_date}</td>
+                            {currentTableDataDemand2.map((res) =>
+                                <tr className="Postform" style={{ backgroundColor: "#FFFDD0" }}>
                                     <td>{res.particulars}</td>
+                                    <Link to='/dueDate' state={{ from: (res.id), unit_no: (unit_no), tower: (tower) }}>{res.id}</Link>
+                                    <td>{res.due_date}</td>
                                     <td>{res.percentage}</td>
                                     <td>{res.net_bsp}</td>
                                     <td>{res.gst}</td>
@@ -192,7 +185,7 @@ function DemandReminderTable(props) {
                     <Pagination
                         className="pagination-bar"
                         currentPage={currentPage}
-                        totalCount={result.length}
+                        totalCount={resultDemand.length}
                         pageSize={PageSize}
                         onPageChange={page => setCurrentPage(page)}
                     />

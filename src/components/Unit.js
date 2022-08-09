@@ -1,6 +1,6 @@
 import './App.css';
 import 'bootstrap';
-import React from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
@@ -9,8 +9,11 @@ import CustomerDetails from './CustomerDetails';
 import { Grid, Paper } from '@material-ui/core';
 import pic1 from '../assets/pic1.jpg';
 import pic2 from '../assets/pic2.png';
-import ReceiptTable from './ReceiptTable';
-import DemandReminderTable from './DemandReminderTable';
+import { CSVLink } from 'react-csv';
+import { Pagination } from 'react-bootstrap';
+import Api from './Api';
+import { Link } from "react-router-dom";
+import { NavBtn, NavBtnLink } from './NavbarElements';
 
 function Unit() {
 
@@ -37,6 +40,142 @@ function Unit() {
     pdf.addImage(data, 'PNG', 0, 0, pdfWidth, pdfHeight);
     pdf.save((from) + '.pdf');
   };
+
+  let PageSize = 10;
+
+    const [currentPage, setCurrentPage] = useState(1);
+
+    const [result, setResult] = useState([]);
+    const [result2, setResult2] = useState([]);
+
+    const getData = () => {
+
+        if (from != null) {
+            return Api.get('/receipt_approved/' + "'" + (tower) + "'/" + "'" + (from) + "'").then(result => {
+                const res = result.data;
+                return setResult(res);
+            })
+        } else {
+            return Api.get('/receipt_approved/').then(result => {
+                const res = result.data;
+                return setResult(res);
+            })
+        }
+    }
+
+    const getData2 = () => {
+
+        if (from != null) {
+            return Api.get('/receipt_pending/' + "'" + (tower) + "'/" + "'" + (from) + "'").then(result => {
+                const res = result.data;
+                return setResult2(res);
+            })
+        } else {
+            return Api.get('/receipt_pending/').then(result => {
+                const res = result.data;
+                return setResult2(res);
+            })
+        }
+    }
+
+    useEffect(() => {
+        getData()
+    }, []);
+
+    useEffect(() => {
+        getData2()
+    }, []);
+
+    const currentTableData = useMemo(() => {
+        const firstPageIndex = (currentPage - 1) * PageSize;
+        const lastPageIndex = firstPageIndex + PageSize;
+        return result.slice(firstPageIndex, lastPageIndex);
+    }, [PageSize, result, currentPage]);
+
+    const currentTableData2 = useMemo(() => {
+        const firstPageIndex = (currentPage - 1) * PageSize;
+        const lastPageIndex = firstPageIndex + PageSize;
+        return result2.slice(firstPageIndex, lastPageIndex);
+    }, [PageSize, result2, currentPage]);
+
+    const [resultDemand, setresultDemand] = useState([]);
+    const [resultDemand1, setresultDemand1] = useState([]);
+    const [resultDemand2, setresultDemand2] = useState([]);
+
+    const getDataDemand = () => {
+
+        if (from != null) {
+            return Api.get('/demand/' + "'" + (tower) + "'/" + "'" + (from) + "'").then(resultDemand => {
+                const res = resultDemand.data;
+                return setresultDemand(res);
+            })
+        } else {
+            return Api.get('/demand/').then(resultDemand => {
+                const res = resultDemand.data;
+                return setresultDemand(res);
+            })
+        }
+    }
+
+    const getDataDemand1 = () => {
+
+        if (from != null) {
+            return Api.get('/cpp/' + "'" + (tower) + "'/" + "'" + (from) + "'").then(resultDemand => {
+                const res = resultDemand.data;
+                return setresultDemand1(res);
+            })
+        } else {
+            return Api.get('/cpp/').then(resultDemand => {
+                const res = resultDemand.data;
+                return setresultDemand1(res);
+            })
+        }
+    }
+
+    const getDataDemand2 = () => {
+
+        if (from != null) {
+            return Api.get('/reminder/' + "'" + (tower) + "'/" + "'" + (from) + "'").then(resultDemand => {
+                const res = resultDemand.data;
+                return setresultDemand2(res);
+            })
+        } else {
+            return Api.get('/reminder/').then(resultDemand => {
+                const res = resultDemand.data;
+                return setresultDemand2(res);
+            })
+        }
+    }
+
+    useEffect(() => {
+        getDataDemand()
+    }, []);
+
+    useEffect(() => {
+        getDataDemand1()
+    }, []);
+
+    useEffect(() => {
+        getDataDemand2()
+    }, []);
+
+    const currentTableDataDemand = useMemo(() => {
+        const firstPageIndex = (currentPage - 1) * PageSize;
+        const lastPageIndex = firstPageIndex + PageSize;
+        return resultDemand.slice(firstPageIndex, lastPageIndex);
+    }, [PageSize, resultDemand, currentPage]);
+
+    const currentTableDataDemand1 = useMemo(() => {
+        const firstPageIndex = (currentPage - 1) * PageSize;
+        const lastPageIndex = firstPageIndex + PageSize;
+        return resultDemand1.slice(firstPageIndex, lastPageIndex);
+    }, [PageSize, resultDemand1, currentPage]);
+
+    const currentTableDataDemand2 = useMemo(() => {
+        const firstPageIndex = (currentPage - 1) * PageSize;
+        const lastPageIndex = firstPageIndex + PageSize;
+        return resultDemand2.slice(firstPageIndex, lastPageIndex);
+    }, [PageSize, resultDemand2, currentPage]);
 
   return (
     <div className='Postform' ref={printRef}>
@@ -67,11 +206,148 @@ function Unit() {
           <Paper ></Paper>
         </Grid>
       </Grid>
-      <ReceiptTable value={from} value2={tower} />
-      <DemandReminderTable value={from} value2={tower} />
-      <button type="button" onClick={handleDownloadPdf}>
+      {/* <ReceiptTable value={from} value2={tower} />
+      <DemandReminderTable value={from} value2={tower} /> */}
+
+      <React.Fragment>
+            <div className="row">
+                <div className="col-sm-8">
+                    <h3 className="mt-3 text-dark"><b><u><center>Receipts of {from} unit</center></u></b></h3>
+
+                    <CSVLink data={result} filename="Receipts Data" className="btn btn-success mb-3" style={{ color: "#000" }}>
+                        Export {from} Receipts Data
+                    </CSVLink>
+
+                    <table className="table-bordered text-black">
+                        <thead>
+                            <tr style={{ backgroundColor: "#0078AA" }}>
+                                <th className="table">Date</th>
+                                <th className="table">Payment Mode</th>
+                                <th className="table">Bank Name</th>
+                                <th className="table">Amt. Received with GST</th>
+                                <th className="table">Received GST</th>
+                                <th className="table">Receipt No.</th>
+                                <th className="table">Status</th>
+                            </tr>
+                        </thead>
+                        <tbody className="table">
+                            {currentTableData.map((res) =>
+                                <tr className="Postform" style={{ backgroundColor: "#FFFDD0" }}>
+                                    <td>{res.date}</td>
+                                    <td>{res.payment_mode}</td>
+                                    <td>{res.bank_name}</td>
+                                    <td>{res.rwgst}</td>
+                                    <td>{res.rgst}</td>
+                                    <td>{res.receipt_no}</td>
+                                    <td>{res.status}</td>
+                                </tr>
+                            )}
+                            {currentTableData2.map((res) =>
+                                <tr className="Postform" style={{ backgroundColor: "#c61a09" }}>
+                                    <td>{res.date}</td>
+                                    <td>{res.payment_mode}</td>
+                                    <td>{res.bank_name}</td>
+                                    <td>{res.rwgst}</td>
+                                    <td>{res.rgst}</td>
+                                    <td>{res.receipt_no}</td>
+                                    <td>{res.status}</td>
+                                </tr>
+                            )}
+                        </tbody>
+                    </table>
+                    <Pagination
+                        className="pagination-bar"
+                        currentPage={currentPage}
+                        totalCount={result.length + result2.length}
+                        pageSize={PageSize}
+                        onPageChange={page => setCurrentPage(page)}
+                    />
+                </div>
+            </div>
+      </React.Fragment>
+
+      <React.Fragment>
+            <div className="row">
+                <div className="col-sm-8">
+                    <h3 className="mt-3 text-dark"><b><u><center>Demand-Reminder of {from} unit</center></u></b></h3>
+
+                    <CSVLink data={resultDemand} filename="Demand-Reminder Data" className="btn btn-success mb-3" style={{ color: "#000" }}>
+                        Export {from} Demand-Reminder Data
+                    </CSVLink>
+
+                    <table className="table-bordered text-black">
+                        <thead>
+                            <tr style={{ backgroundColor: "#0078AA" }}>
+                                <th className="table">Perticulars</th>
+                                <th className="table">ID</th>
+                                <th className="table">Due Date</th>
+                                <th className="table">Percentage</th>
+                                <th className="table">Net Base Selling Price</th>
+                                <th className="table">GST</th>
+                                <th className="table">Net Due Amount</th>
+                                <th className="table">Received Amount</th>
+                                <th className="table">Pending Amount</th>
+                            </tr>
+                        </thead>
+                        <tbody className="table">
+                            {currentTableDataDemand.map((res) =>
+                                <tr className="Postform" style={{ backgroundColor: "#FFFDD0" }}>
+                                    <td>{res.particulars}</td>
+                                    <Link to='/dueDate' state={{ from: (res.id), unit_no: (from), tower: (tower) }}>{res.id}</Link>
+                                    <td>{res.due_date}</td>
+                                    <td>{res.percentage}</td>
+                                    <td>{res.net_bsp}</td>
+                                    <td>{res.gst}</td>
+                                    <td>{res.net_due}</td>
+                                    <td>{res.recieved}</td>
+                                    <td>{res.pending_amount}</td>
+                                </tr>
+                            )}
+                            {currentTableDataDemand1.map((res) =>
+                                <tr className="Postform" style={{ backgroundColor: "#FFFDD0" }}>
+                                    <td>{res.particulars}</td>
+                                    <Link to='/dueDate' state={{ from: (res.id), unit_no: (from), tower: (tower) }}>{res.id}</Link>
+                                    <td>{res.due_date}</td>
+                                    <td>{res.percentage}</td>
+                                    <td>{res.net_bsp}</td>
+                                    <td>{res.gst}</td>
+                                    <td>{res.net_due}</td>
+                                    <td>{res.recieved}</td>
+                                    <td>{res.pending_amount}</td>
+                                </tr>
+                            )}
+                            {currentTableDataDemand2.map((res) =>
+                                <tr className="Postform" style={{ backgroundColor: "#FFFDD0" }}>
+                                    <td>{res.particulars}</td>
+                                    <Link to='/dueDate' state={{ from: (res.id), unit_no: (from), tower: (tower) }}>{res.id}</Link>
+                                    <td>{res.due_date}</td>
+                                    <td>{res.percentage}</td>
+                                    <td>{res.net_bsp}</td>
+                                    <td>{res.gst}</td>
+                                    <td>{res.net_due}</td>
+                                    <td>{res.recieved}</td>
+                                    <td>{res.pending_amount}</td>
+                                </tr>
+                            )}
+                        </tbody>
+                    </table>
+                    <Pagination
+                        className="pagination-bar"
+                        currentPage={currentPage}
+                        totalCount={resultDemand.length}
+                        pageSize={PageSize}
+                        onPageChange={page => setCurrentPage(page)}
+                    />
+                </div>
+            </div>
+      </React.Fragment>
+
+      <Link to='/receipt' state={{ unit_no: (from), tower: (tower) }} className='applicant' style={{ backgroundColor: "#3AB4F2" }}><b>See Receipt Report</b></Link>
+      <Link to='/reportDR' state={{ unit_no: (from), tower: (tower) }} className='applicant' style={{ backgroundColor: "#3AB4F2" }}><b>See Demand Report</b></Link>
+
+      <button type="button" onClick={handleDownloadPdf} className='applicant' style={{ backgroundColor: "#3AB4F2" }}><b>
         Download as PDF
-      </button>
+        </b></button>
     </div>
   );
 }

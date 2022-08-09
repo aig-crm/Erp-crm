@@ -11,6 +11,8 @@ import Unit from './Unit';
 import PostForm from './PostForm';
 import Applicants from './Applicants';
 import DueDate from './DueDate';
+import ReceiptTable from './ReceiptTable';
+import DemandReminderTable from './DemandReminderTable';
 
 function App() {
   return (
@@ -32,6 +34,8 @@ function App() {
         </Route>
         <Route exact path='/unit' element={<Unit />} />
         <Route exact path='/dueDate' element={<DueDate />} />
+        <Route exact path='/receipt' element={<ReceiptTable />} />
+        <Route exact path='/reportDR' element={<DemandReminderTable />} />
       </Routes>
     </div>
   );

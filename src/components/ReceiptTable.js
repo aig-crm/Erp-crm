@@ -4,8 +4,9 @@ import { CSVLink } from 'react-csv';
 import Api from "./Api";
 import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
+import { useLocation } from "react-router-dom";
 
-function ReceiptTable(props) {
+function ReceiptTable() {
 
     let PageSize = 10;
 
@@ -13,11 +14,14 @@ function ReceiptTable(props) {
 
     const [result, setResult] = useState([]);
     const [result2, setResult2] = useState([]);
+    const location = useLocation();
+    const { tower } = location.state;
+    const { unit_no } = location.state;
 
     const getData = () => {
 
-        if (props.value != null) {
-            return Api.get('/receipt_approved/' + "'" + (props.value2) + "'/" + "'" + (props.value) + "'").then(result => {
+        if (unit_no != null) {
+            return Api.get('/receipt_approved/' + "'" + (tower) + "'/" + "'" + (unit_no) + "'").then(result => {
                 const res = result.data;
                 return setResult(res);
             })
@@ -31,8 +35,8 @@ function ReceiptTable(props) {
 
     const getData2 = () => {
 
-        if (props.value != null) {
-            return Api.get('/receipt_pending/' + "'" + (props.value2) + "'/" + "'" + (props.value) + "'").then(result => {
+        if (unit_no != null) {
+            return Api.get('/receipt_pending/' + "'" + (tower) + "'/" + "'" + (unit_no) + "'").then(result => {
                 const res = result.data;
                 return setResult2(res);
             })
@@ -78,8 +82,8 @@ function ReceiptTable(props) {
           (imgProperties.height * pdfWidth) / imgProperties.width;
     
         pdf.addImage(data, 'PNG', 0, 0, pdfWidth, pdfHeight);
-        if (props.value != null) {
-          pdf.save((props.value) + '-receipt.pdf');
+        if (unit_no != null) {
+          pdf.save((unit_no) + '-receipt.pdf');
         }else{
           pdf.save('Receipt.pdf');
         }
@@ -90,19 +94,17 @@ function ReceiptTable(props) {
         <React.Fragment>
             <div className="row" ref={printRef}>
                 <div className="col-sm-8">
-                    <h3 className="mt-3 text-dark"><b><u><center>Receipts of {props.value} unit</center></u></b></h3>
+                    <h3 className="mt-3 text-dark"><b><u><center>Receipts of {unit_no} unit</center></u></b></h3>
 
                     <CSVLink data={result} filename="Receipts Data" className="btn btn-success mb-3" style={{ color: "#000" }}>
-                        Export {props.value} Receipts Data
+                        Export {unit_no} Receipts Data
                     </CSVLink>
 
                     <table className="table-bordered text-black">
                         <thead>
                             <tr style={{ backgroundColor: "#0078AA" }}>
-                                <th className="table">Tower</th>
-                                <th className="table">Unit No.</th>
-                                <th className="table">Payment Mode</th>
                                 <th className="table">Date</th>
+                                <th className="table">Payment Mode</th>
                                 <th className="table">Bank Name</th>
                                 <th className="table">Amt. Received with GST</th>
                                 <th className="table">Received GST</th>
@@ -113,10 +115,8 @@ function ReceiptTable(props) {
                         <tbody className="table">
                             {currentTableData.map((res) =>
                                 <tr className="Postform" style={{ backgroundColor: "#FFFDD0" }}>
-                                    <td>{res.tower}</td>
-                                    <td>{res.unit_no}</td>
-                                    <td>{res.payment_mode}</td>
                                     <td>{res.date}</td>
+                                    <td>{res.payment_mode}</td>
                                     <td>{res.bank_name}</td>
                                     <td>{res.rwgst}</td>
                                     <td>{res.rgst}</td>
@@ -126,10 +126,8 @@ function ReceiptTable(props) {
                             )}
                             {currentTableData2.map((res) =>
                                 <tr className="Postform" style={{ backgroundColor: "#c61a09" }}>
-                                    <td>{res.tower}</td>
-                                    <td>{res.unit_no}</td>
-                                    <td>{res.payment_mode}</td>
                                     <td>{res.date}</td>
+                                    <td>{res.payment_mode}</td>
                                     <td>{res.bank_name}</td>
                                     <td>{res.rwgst}</td>
                                     <td>{res.rgst}</td>
