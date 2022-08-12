@@ -7,6 +7,7 @@ import Table from './Table';
 import React from 'react';
 import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
+import { Link } from 'react-router-dom';
 
 function Home(props) {
 
@@ -38,6 +39,9 @@ function Home(props) {
         <div className='col'>
           <h3 className="mt-3 text-dark">{props.value} Tower Unit report :</h3>
           <PieChart value={props.value} />
+          <div>
+            <Link to='/inventory' className='applicant' style={{ backgroundColor: "#3AB4F2" }} state={{ tower: (props.value) }}><b>See Full Report</b></Link>
+          </div>
         </div>
         <div className='col'>
           <h3 className="mt-3 text-dark">{props.value} Tower Demand-Reminder report :</h3>

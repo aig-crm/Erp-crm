@@ -41,7 +41,7 @@ function DueDate() {
     const register = (e) => {
       e.preventDefault();
       alert((from) + '-demand filed for ' + (unit_no));
-      Axios.put("https://df6a-2401-4900-1c61-299e-553b-9c0a-a3de-87c7.in.ngrok.io/api/payments/" + "'" + (from) + "'", {
+      Axios.put("https://869e-2401-4900-1c60-52fd-596a-20d7-20aa-1952.in.ngrok.io/api/payments/" + "'" + (from) + "'", {
           due_date: result
       }).then((response) => {
           console.log(response);

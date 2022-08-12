@@ -9,11 +9,9 @@ import CustomerDetails from './CustomerDetails';
 import { Grid, Paper } from '@material-ui/core';
 import pic1 from '../assets/pic1.jpg';
 import pic2 from '../assets/pic2.png';
-import { CSVLink } from 'react-csv';
 import { Pagination } from 'react-bootstrap';
 import Api from './Api';
 import { Link } from "react-router-dom";
-import { NavBtn, NavBtnLink } from './NavbarElements';
 
 function Unit() {
 
@@ -206,25 +204,20 @@ function Unit() {
           <Paper ></Paper>
         </Grid>
       </Grid>
-      {/* <ReceiptTable value={from} value2={tower} />
-      <DemandReminderTable value={from} value2={tower} /> */}
 
       <React.Fragment>
             <div className="row">
                 <div className="col-sm-8">
                     <h3 className="mt-3 text-dark"><b><u><center>Receipts of {from} unit</center></u></b></h3>
 
-                    <CSVLink data={result} filename="Receipts Data" className="btn btn-success mb-3" style={{ color: "#000" }}>
-                        Export {from} Receipts Data
-                    </CSVLink>
-
                     <table className="table-bordered text-black">
-                        <thead>
+                    <thead>
                             <tr style={{ backgroundColor: "#0078AA" }}>
                                 <th className="table">Date</th>
                                 <th className="table">Payment Mode</th>
                                 <th className="table">Bank Name</th>
                                 <th className="table">Amt. Received with GST</th>
+                                <th className="table">Amt. Received without GST</th>
                                 <th className="table">Received GST</th>
                                 <th className="table">Receipt No.</th>
                                 <th className="table">Status</th>
@@ -237,6 +230,7 @@ function Unit() {
                                     <td>{res.payment_mode}</td>
                                     <td>{res.bank_name}</td>
                                     <td>{res.rwgst}</td>
+                                    <td>{res.rwogst}</td>
                                     <td>{res.rgst}</td>
                                     <td>{res.receipt_no}</td>
                                     <td>{res.status}</td>
@@ -248,6 +242,7 @@ function Unit() {
                                     <td>{res.payment_mode}</td>
                                     <td>{res.bank_name}</td>
                                     <td>{res.rwgst}</td>
+                                    <td>{res.rwogst}</td>
                                     <td>{res.rgst}</td>
                                     <td>{res.receipt_no}</td>
                                     <td>{res.status}</td>
@@ -271,17 +266,12 @@ function Unit() {
                 <div className="col-sm-8">
                     <h3 className="mt-3 text-dark"><b><u><center>Demand-Reminder of {from} unit</center></u></b></h3>
 
-                    <CSVLink data={resultDemand} filename="Demand-Reminder Data" className="btn btn-success mb-3" style={{ color: "#000" }}>
-                        Export {from} Demand-Reminder Data
-                    </CSVLink>
-
                     <table className="table-bordered text-black">
                         <thead>
                             <tr style={{ backgroundColor: "#0078AA" }}>
                                 <th className="table">Perticulars</th>
                                 <th className="table">ID</th>
                                 <th className="table">Due Date</th>
-                                <th className="table">Percentage</th>
                                 <th className="table">Net Base Selling Price</th>
                                 <th className="table">GST</th>
                                 <th className="table">Net Due Amount</th>
@@ -295,7 +285,6 @@ function Unit() {
                                     <td>{res.particulars}</td>
                                     <Link to='/dueDate' state={{ from: (res.id), unit_no: (from), tower: (tower) }}>{res.id}</Link>
                                     <td>{res.due_date}</td>
-                                    <td>{res.percentage}</td>
                                     <td>{res.net_bsp}</td>
                                     <td>{res.gst}</td>
                                     <td>{res.net_due}</td>
@@ -308,7 +297,6 @@ function Unit() {
                                     <td>{res.particulars}</td>
                                     <Link to='/dueDate' state={{ from: (res.id), unit_no: (from), tower: (tower) }}>{res.id}</Link>
                                     <td>{res.due_date}</td>
-                                    <td>{res.percentage}</td>
                                     <td>{res.net_bsp}</td>
                                     <td>{res.gst}</td>
                                     <td>{res.net_due}</td>
@@ -321,7 +309,6 @@ function Unit() {
                                     <td>{res.particulars}</td>
                                     <Link to='/dueDate' state={{ from: (res.id), unit_no: (from), tower: (tower) }}>{res.id}</Link>
                                     <td>{res.due_date}</td>
-                                    <td>{res.percentage}</td>
                                     <td>{res.net_bsp}</td>
                                     <td>{res.gst}</td>
                                     <td>{res.net_due}</td>
@@ -345,9 +332,9 @@ function Unit() {
       <Link to='/receipt' state={{ unit_no: (from), tower: (tower) }} className='applicant' style={{ backgroundColor: "#3AB4F2" }}><b>See Receipt Report</b></Link>
       <Link to='/reportDR' state={{ unit_no: (from), tower: (tower) }} className='applicant' style={{ backgroundColor: "#3AB4F2" }}><b>See Demand Report</b></Link>
 
-      <button type="button" onClick={handleDownloadPdf} className='applicant' style={{ backgroundColor: "#3AB4F2" }}><b>
+      <button type="button" onClick={handleDownloadPdf} className='applicant' style={{ backgroundColor: "#3AB4F2" }}><b><u>
         Download as PDF
-        </b></button>
+      </u></b></button>
     </div>
   );
 }

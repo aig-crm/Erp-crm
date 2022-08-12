@@ -13,6 +13,7 @@ import Applicants from './Applicants';
 import DueDate from './DueDate';
 import ReceiptTable from './ReceiptTable';
 import DemandReminderTable from './DemandReminderTable';
+import InventoryTable from './InventoryTable';
 
 function App() {
   return (
@@ -36,6 +37,7 @@ function App() {
         <Route exact path='/dueDate' element={<DueDate />} />
         <Route exact path='/receipt' element={<ReceiptTable />} />
         <Route exact path='/reportDR' element={<DemandReminderTable />} />
+        <Route exact path='/inventory' element={<InventoryTable />} />
       </Routes>
     </div>
   );

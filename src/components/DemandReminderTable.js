@@ -1,10 +1,12 @@
 import React, { useState, useEffect, useMemo } from "react";
 import Pagination from "./pagination";
-import { CSVLink } from 'react-csv';
 import Api from "./Api";
 import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
-import { Link, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
+import { Grid } from '@material-ui/core';
+import pic1 from '../assets/pic1.jpg';
+import pic2 from '../assets/pic2.png';
 
 function DemandReminderTable() {
 
@@ -119,20 +121,20 @@ function DemandReminderTable() {
 
         <React.Fragment>
             <div className="row" ref={printRef}>
+                <Grid container spacing={3} className='Postform'>
+                    <Grid item xs={12}>
+                    <img className='img' src={pic1} alt="project"/>
+                    <img src={pic2} alt="project2"/>
+                    </Grid>
+                </Grid>
                 <div className="col-sm-8">
                     <h3 className="mt-3 text-dark"><b><u><center>Demand-Reminder of {unit_no} unit</center></u></b></h3>
-
-                    <CSVLink data={resultDemand} filename="Demand-Reminder Data" className="btn btn-success mb-3" style={{ color: "#000" }}>
-                        Export {unit_no} Demand-Reminder Data
-                    </CSVLink>
 
                     <table className="table-bordered text-black">
                         <thead>
                             <tr style={{ backgroundColor: "#0078AA" }}>
                                 <th className="table">Perticulars</th>
-                                <th className="table">ID</th>
                                 <th className="table">Due Date</th>
-                                <th className="table">Percentage</th>
                                 <th className="table">Net Base Selling Price</th>
                                 <th className="table">GST</th>
                                 <th className="table">Net Due Amount</th>
@@ -144,9 +146,7 @@ function DemandReminderTable() {
                             {currentTableDataDemand.map((res) =>
                                 <tr className="Postform" style={{ backgroundColor: "#FFFDD0" }}>
                                     <td>{res.particulars}</td>
-                                    <Link to='/dueDate' state={{ from: (res.id), unit_no: (unit_no), tower: (tower) }}>{res.id}</Link>
                                     <td>{res.due_date}</td>
-                                    <td>{res.percentage}</td>
                                     <td>{res.net_bsp}</td>
                                     <td>{res.gst}</td>
                                     <td>{res.net_due}</td>
@@ -157,9 +157,7 @@ function DemandReminderTable() {
                             {currentTableDataDemand1.map((res) =>
                                 <tr className="Postform" style={{ backgroundColor: "#FFFDD0" }}>
                                     <td>{res.particulars}</td>
-                                    <Link to='/dueDate' state={{ from: (res.id), unit_no: (unit_no), tower: (tower) }}>{res.id}</Link>
                                     <td>{res.due_date}</td>
-                                    <td>{res.percentage}</td>
                                     <td>{res.net_bsp}</td>
                                     <td>{res.gst}</td>
                                     <td>{res.net_due}</td>
@@ -170,9 +168,7 @@ function DemandReminderTable() {
                             {currentTableDataDemand2.map((res) =>
                                 <tr className="Postform" style={{ backgroundColor: "#FFFDD0" }}>
                                     <td>{res.particulars}</td>
-                                    <Link to='/dueDate' state={{ from: (res.id), unit_no: (unit_no), tower: (tower) }}>{res.id}</Link>
                                     <td>{res.due_date}</td>
-                                    <td>{res.percentage}</td>
                                     <td>{res.net_bsp}</td>
                                     <td>{res.gst}</td>
                                     <td>{res.net_due}</td>

@@ -1,10 +1,12 @@
 import React, { useState, useEffect, useMemo } from "react";
 import Pagination from "./pagination";
-import { CSVLink } from 'react-csv';
 import Api from "./Api";
 import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
 import { useLocation } from "react-router-dom";
+import { Grid } from '@material-ui/core';
+import pic1 from '../assets/pic1.jpg';
+import pic2 from '../assets/pic2.png';
 
 function ReceiptTable() {
 
@@ -93,12 +95,14 @@ function ReceiptTable() {
 
         <React.Fragment>
             <div className="row" ref={printRef}>
+                <Grid container spacing={3} className='Postform'>
+                    <Grid item xs={12}>
+                    <img className='img' src={pic1} alt="project"/>
+                    <img src={pic2} alt="project2"/>
+                    </Grid>
+                </Grid>
                 <div className="col-sm-8">
                     <h3 className="mt-3 text-dark"><b><u><center>Receipts of {unit_no} unit</center></u></b></h3>
-
-                    <CSVLink data={result} filename="Receipts Data" className="btn btn-success mb-3" style={{ color: "#000" }}>
-                        Export {unit_no} Receipts Data
-                    </CSVLink>
 
                     <table className="table-bordered text-black">
                         <thead>
@@ -107,6 +111,7 @@ function ReceiptTable() {
                                 <th className="table">Payment Mode</th>
                                 <th className="table">Bank Name</th>
                                 <th className="table">Amt. Received with GST</th>
+                                <th className="table">Amt. Received without GST</th>
                                 <th className="table">Received GST</th>
                                 <th className="table">Receipt No.</th>
                                 <th className="table">Status</th>
@@ -119,6 +124,7 @@ function ReceiptTable() {
                                     <td>{res.payment_mode}</td>
                                     <td>{res.bank_name}</td>
                                     <td>{res.rwgst}</td>
+                                    <td>{res.rwogst}</td>
                                     <td>{res.rgst}</td>
                                     <td>{res.receipt_no}</td>
                                     <td>{res.status}</td>
@@ -130,6 +136,7 @@ function ReceiptTable() {
                                     <td>{res.payment_mode}</td>
                                     <td>{res.bank_name}</td>
                                     <td>{res.rwgst}</td>
+                                    <td>{res.rwogst}</td>
                                     <td>{res.rgst}</td>
                                     <td>{res.receipt_no}</td>
                                     <td>{res.status}</td>
