@@ -6,17 +6,24 @@ import {
 	Bars,
 	NavMenu
 } from './NavbarElements';
+import logo from '../assets/logo.png';
+import { Grid } from '@material-ui/core';
 
 const Navbar = () => {
 	return (
-		<>
+		<div>
+			<Grid container spacing={3} className='Postform' style={{ backgroundColor: "#F1E5AC" }}>
+				<Grid item xs={12} sm={2}>
+					<img className='img' src={logo} alt="logo"/>
+				</Grid>
+				<Grid item xs={12} sm={2}>
+					<h2 className='postform'><b>AIGIN Royal</b></h2>
+				</Grid>
+			</Grid>
 
 			<Nav>
 				<Bars />
 				<NavMenu>
-					<div className="mt-3 text-dark">
-						<h1 className='Postform'><b>AIGIN Royal</b></h1>
-					</div>
 					<NavLink to='/' activeStyle><b>
 						Home</b>
 					</NavLink>
@@ -37,7 +44,7 @@ const Navbar = () => {
 		</NavBtn> */}
 			</Nav>
 			<Outlet />
-		</>
+		</div>
 	);
 };
 
