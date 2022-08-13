@@ -67,7 +67,7 @@ function InventoryTable() {
 
         <React.Fragment>
             <div className="row" ref={printRef}>
-                <div className="col-sm-8">
+                <div >
                     <h3 className="mt-3 text-dark"><b><u><center>{tower} Tower Inventory Report</center></u></b></h3>
 
                     <CSVLink data={result} filename="Inventory Report" className="btn btn-success mb-3" style={{ color: "#000" }}>

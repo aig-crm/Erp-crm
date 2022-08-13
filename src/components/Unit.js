@@ -207,7 +207,7 @@ function Unit() {
 
       <React.Fragment>
             <div className="row">
-                <div className="col-sm-8">
+                <div>
                     <h3 className="mt-3 text-dark"><b><u><center>Receipts of {from} unit</center></u></b></h3>
 
                     <table className="table-bordered text-black">
@@ -263,7 +263,7 @@ function Unit() {
 
       <React.Fragment>
             <div className="row">
-                <div className="col-sm-8">
+                <div>
                     <h3 className="mt-3 text-dark"><b><u><center>Demand-Reminder of {from} unit</center></u></b></h3>
 
                     <table className="table-bordered text-black">
@@ -330,7 +330,6 @@ function Unit() {
       </React.Fragment>
 
       <Link to='/receipt' state={{ unit_no: (from), tower: (tower) }} className='applicant' style={{ backgroundColor: "#3AB4F2" }}><b>See Receipt Report</b></Link>
-      <Link to='/reportDR' state={{ unit_no: (from), tower: (tower) }} className='applicant' style={{ backgroundColor: "#3AB4F2" }}><b>See Demand Report</b></Link>
       <Link to='/addReceipt' state={{ unit_no: (from), tower: (tower) }} className='applicant' style={{ backgroundColor: "#3AB4F2" }}><b>Add Receipt</b></Link>
 
       <button type="button" onClick={handleDownloadPdf} className='applicant' style={{ backgroundColor: "#3AB4F2" }}><b><u>

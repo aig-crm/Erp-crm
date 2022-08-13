@@ -1,14 +1,14 @@
 import './App.css';
 import 'bootstrap';
 import React, { useState } from 'react';
-import { NavBtn, NavBtnLink } from './NavbarElements';
 import Axios from "axios";
 import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
-import { useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { Grid } from '@material-ui/core';
 import pic1 from '../assets/pic1.jpg';
 import pic2 from '../assets/pic2.png';
+import { NavBtn, NavBtnLink } from './NavbarElements';
 
 function DueDate() {
 
@@ -16,6 +16,7 @@ function DueDate() {
   const printRef = React.useRef();
   const { from } = location.state;
   const { unit_no } = location.state;
+  const { tower } = location.state;
 
     const handleDownloadPdf = async () => {
         const element = printRef.current;
@@ -51,9 +52,9 @@ function DueDate() {
     }
 
   return (
-    <div className='applicant' ref={printRef}>
+    <div className='postform'>
 
-        <div className="Postform">
+        <div className='applicant' ref={printRef}>
         <Grid container spacing={3} className='Postform'>
         <Grid item xs={12}>
           <img className='img' src={pic1} alt="project"/>
@@ -70,10 +71,10 @@ function DueDate() {
                   } else { setResult(e.target.value)
                     console.log(result); }
                 }} required />
-              <NavBtn onClick={register}>
-                  <NavBtnLink to='/'><b>Submit</b></NavBtnLink>
-              </NavBtn>
         </div>
+        <NavBtn onClick={register}>
+          <NavBtnLink to='/reportDR' state={{ unit_no: (unit_no), id: (from), tower: (tower) }}><b>Submit</b></NavBtnLink>
+        </NavBtn>
     </div>
   );
 }

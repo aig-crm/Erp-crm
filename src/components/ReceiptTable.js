@@ -101,7 +101,7 @@ function ReceiptTable() {
                     <img src={pic2} alt="project2"/>
                     </Grid>
                 </Grid>
-                <div className="col-sm-8">
+                <div >
                     <h3 className="mt-3 text-dark"><b><u><center>Receipts of {unit_no} unit</center></u></b></h3>
 
                     <table className="table-bordered text-black">

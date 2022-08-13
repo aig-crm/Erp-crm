@@ -43,7 +43,7 @@ function Table(props) {
 
         <React.Fragment>
             <div className="row">
-                <div className="col-sm-8">
+                <div>
                     <h3 className="mt-3 text-dark"><b><u><center>Booked {props.value} tower units sheet</center></u></b></h3>
 
                     <CSVLink data={result} filename="Tower Data" className="btn btn-success mb-3" style={{ color: "#000" }}>

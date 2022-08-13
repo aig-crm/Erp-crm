@@ -7,8 +7,6 @@ body {
   width: 100vw;
   background-color: #98bce0;
   display: flex;
-  justify-content: left;
-  align-items: left;
   flex-direction: column;
   flex: 1;
   color: aliceblue;
