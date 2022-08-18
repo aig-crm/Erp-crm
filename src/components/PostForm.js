@@ -20,6 +20,7 @@ function PostForm(props) {
     const [floor, setfloor] = useState("");
     const [address, setaddress] = useState("");
     const [card, setcard] = useState("");
+    const gst_choice = ["Incld GST", "Excld GST"];
 
     const [inputValue1, setValue1] = useState("");
     const [selectedValue1, setSelectedValue1] = useState(null);
@@ -29,6 +30,8 @@ function PostForm(props) {
     const [selectedValue3, setSelectedValue3] = useState(null);
     const [inputValue4, setValue4] = useState('');
     const [selectedValue4, setSelectedValue4] = useState(null);
+    const [inputValue5, setValue5] = useState('');
+    const [selectedValue5, setSelectedValue5] = useState(null);
 
     // handle input change event
     const handleInputChange1 = value => {
@@ -91,13 +94,29 @@ function PostForm(props) {
         });
     }
 
+    // handle input change event
+    const handleInputChange5 = value => {
+        setValue5(value);
+    };
+    // handle selection
+    const handleChange5 = value => {
+        setSelectedValue5(value);
+    }
+    const fetchData5 = () => {
+        return api.get('/gst_choice').then(result => {
+            const res = result.data;
+            return res;
+        });
+    }
+
     const register = (e) => {
         e.preventDefault();
         alert("Form submitted for tower - " + (props.value));
-        Axios.post("https://869e-2401-4900-1c60-52fd-596a-20d7-20aa-1952.in.ngrok.io/api/customer", {
+        Axios.post("https://0fbc-223-233-64-47.in.ngrok.io/api/customer", {
             booking_date: bd,
             tower: (props.value),
             broker: JSON.stringify(selectedValue4),
+            gst_choice: JSON.stringify(selectedValue5),
             unit_no: JSON.stringify(selectedValue1),
             floor: floor,
             card: card,
@@ -197,6 +216,20 @@ function PostForm(props) {
                                     loadOptions={fetchData4}
                                     on InputChange={handleInputChange4}
                                     onChange={handleChange4}
+                                    required />
+                            </div>
+                            <div className="col-md-4">
+                                <label className="Postform"><b>w/o GST:</b></label>
+                                <AsyncSelect
+                                    cacheOptions
+                                    className="col-md-4"
+                                    defaultOptions
+                                    value={selectedValue5}
+                                    getOptionLabel={e => e.gst_choice}
+                                    getOptionValue={e => e.gst_choice}
+                                    loadOptions={fetchData5}
+                                    on InputChange={handleInputChange5}
+                                    onChange={handleChange5}
                                     required />
                             </div>
                         </div>

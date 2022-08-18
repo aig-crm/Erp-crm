@@ -70,13 +70,11 @@ function Table(props) {
                                 <th className="table">Net Basic Price</th>
                                 <th className="table">Gst</th>
                                 <th className="table">Total Basic Cost</th>
-                                <th className="table">Till Date Total Due</th>
                                 <th className="table">Received with Gst</th>
                                 <th className="table">Received Gst</th>
                                 <th className="table">Received without Gst</th>
                                 <th className="table">Received Percentage</th>
                                 <th className="table">Balance</th>
-                                <th className="table">Outstandings</th>
                             </tr>
                         </thead>
                         <tbody className="table">
@@ -85,7 +83,7 @@ function Table(props) {
                                 <tr className="Postform" style={{ backgroundColor: "#FFFDD0" }}>
                                     <td>{res.tower}</td>
                                     <td>{res.booking_date}</td>
-                                    <Link to='/unit' state={{ from: (res.unit_no), tower: (res.tower) }}>{res.unit_no}</Link>
+                                    <Link to='/unit' state={{ from: (res.unit_no), tower: (res.tower), gst_choice: (res.gst_choice) }}>{res.unit_no}</Link>
                                     <td>{res.area_sqft}</td>
                                     <td>{res.applicant_name}</td>
                                     <td>{res.applicant_mob_no}</td>
@@ -100,13 +98,11 @@ function Table(props) {
                                     <td>{res.nbp}</td>
                                     <td>{res.gst}</td>
                                     <td>{res.tbc}</td>
-                                    <td>{res.tdtd}</td>
                                     <td>{res.rwgst}</td>
                                     <td>{res.rgst}</td>
                                     <td>{res.rwogst}</td>
                                     <td>{res.rec_per}</td>
                                     <td>{res.balance}</td>
-                                    <td>{res.o_t}</td>
                                 </tr>
                             )}
                         </tbody>

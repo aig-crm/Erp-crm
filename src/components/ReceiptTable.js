@@ -94,7 +94,7 @@ function ReceiptTable() {
     return (
 
         <React.Fragment>
-            <div className="row" ref={printRef}>
+            <div className='Demand' ref={printRef}>
                 <Grid container spacing={3} className='Postform'>
                     <Grid item xs={12}>
                     <img className='img' src={pic1} alt="project"/>
@@ -131,7 +131,7 @@ function ReceiptTable() {
                                 </tr>
                             )}
                             {currentTableData2.map((res) =>
-                                <tr className="Postform" style={{ backgroundColor: "#c61a09" }}>
+                                <tr className="Postform" style={{ backgroundColor: "#FFFDD0" }}>
                                     <td>{res.date}</td>
                                     <td>{res.payment_mode}</td>
                                     <td>{res.bank_name}</td>
@@ -139,7 +139,7 @@ function ReceiptTable() {
                                     <td>{res.rwogst}</td>
                                     <td>{res.rgst}</td>
                                     <td>{res.receipt_no}</td>
-                                    <td>{res.status}</td>
+                                    <td style={{ backgroundColor: "#c61a09" }}>{res.status}</td>
                                 </tr>
                             )}
                         </tbody>
