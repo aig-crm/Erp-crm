@@ -62,12 +62,13 @@ body {
   font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
   padding: 10px;
   color: black;
+  font-size: 20px;
 }
 
 .table {
   align-items: center;
   font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
-  padding-right: 4px;
+  padding: 10px;
   color: black;
   font-size: 10px;
 }

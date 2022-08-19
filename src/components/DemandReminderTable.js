@@ -205,6 +205,8 @@ function DemandReminderTable() {
                                             <th className="table">SGST</th>
                                             <th className="table">GST</th>
                                             <th className="table">Net Due Amount</th>
+                                            <th className="table">Received Amount</th>
+                                            <th className="table">Receivable Amount</th>
                                         </tr>
                                     </thead>
                                     <tbody className="table">
@@ -217,6 +219,8 @@ function DemandReminderTable() {
                                                 <td>{res.sgst}</td>
                                                 <td>{res.gst}</td>
                                                 <td>{res.net_due}</td>
+                                                <td>{res.recieved}</td>
+                                                <td>{res.pending_amount}</td>
                                             </tr>
                                         )}
                                         {currentTableDataDemand.map((res) =>
@@ -228,38 +232,21 @@ function DemandReminderTable() {
                                                 <td>{res.sgst}</td>
                                                 <td>{res.gst}</td>
                                                 <td>{res.net_due}</td>
+                                                <td>{res.recieved}</td>
+                                                <td>{res.pending_amount}</td>
                                             </tr>
                                         )}
-                                        {currentTableDataDemand1.map((res) =>
+                                        {currentTableDataDemand3.map((res) =>
                                             <tr className="Postform" style={{ backgroundColor: "#FFFDD0" }}>
-                                                <td>{res.description}</td>
+                                                <td className="Postform"><b>{res.description}</b></td>
                                                 <td>{res.due_date}</td>
-                                                <td>{res.net_bsp}</td>
-                                                <td>{res.cgst}</td>
-                                                <td>{res.sgst}</td>
-                                                <td>{res.gst}</td>
-                                                <td>{res.net_due}</td>
-                                            </tr>
-                                        )}
-                                        {currentTableDataDemand3.map((res) =>
-                                            <tr className="Postform" style={{ backgroundColor: "#FFFDD0" }}>
-                                                <td><b>{res.description}</b></td>
-                                                <td>{res.due_date}</td>
-                                                <td><b>{res.net_bsp}</b></td>
-                                                <td><b>{res.cgst}</b></td>
-                                                <td><b>{res.sgst}</b></td>
-                                                <td><b>{res.gst}</b></td>
-                                                <td><b>{res.net_due}</b></td>
-                                            </tr>
-                                        )}
-                                        {currentTableDataDemand3.map((res) =>
-                                            <tr className="Postform" style={{ backgroundColor: "#FFFDD0" }}>
-                                                <td><b>{res.description} Received Amount: {res.recieved}</b></td>
-                                            </tr>
-                                        )}
-                                        {currentTableDataDemand3.map((res) =>
-                                            <tr className="Postform" style={{ backgroundColor: "#FFFDD0" }}>
-                                                <td><b>{res.description} Pending Amount: {res.pending_amount}</b></td>
+                                                <td className="Postform"><b>₹{res.net_bsp}</b></td>
+                                                <td className="Postform"><b>₹{res.cgst}</b></td>
+                                                <td className="Postform"><b>₹{res.sgst}</b></td>
+                                                <td className="Postform"><b>₹{res.gst}</b></td>
+                                                <td className="Postform"><b>₹{res.net_due}</b></td>
+                                                <td className="Postform"><b>₹{res.recieved}</b></td>
+                                                <td className="Postform"><b>₹{res.pending_amount}</b></td>
                                             </tr>
                                         )}
                                     </tbody>
@@ -286,16 +273,16 @@ function DemandReminderTable() {
                 </button>
                     <div ref={printRef} className='Demand'>
                         <Grid container spacing={3} className='Postform'>
-                            <Grid item xs={12} sm={4}>
+                            <Grid item xs={12} sm={3}>
                                 <img src={pic1} alt="project"/>
                             </Grid>
-                            <Grid item xs={12} sm={4}>
-                                <div>
+                            <Grid item xs={12} sm={6}>
+                                <div className='Postform'>
                                     <h2 style={{ color: "#D18700" }}><b>ALPINE INFRA PROJECTS PVT LTD</b></h2>
                                     <h6 ><b>CIN- U70200UP2010PTC120257, GSTIN: O9AAICA7055L1Z8</b></h6>
                                 </div>
                             </Grid>
-                            <Grid item xs={12} sm={4}>
+                            <Grid item xs={12} sm={3}>
                                 <img className='img' src={pic2} alt="project2"/>
                             </Grid>
                             <Grid item xs={12}>
@@ -330,6 +317,8 @@ function DemandReminderTable() {
                                                 <th className="table">Due Date</th>
                                                 <th className="table">Net BSP</th>
                                                 <th className="table">Due Amount</th>
+                                                <th className="table">Received Amount</th>
+                                                <th className="table">Receivable Amount</th>
                                             </tr>
                                         </thead>
                                         <tbody className="table">
@@ -339,6 +328,8 @@ function DemandReminderTable() {
                                                     <td>{res.due_date}</td>
                                                     <td>{res.net_due}</td>
                                                     <td>{res.net_due}</td>
+                                                    <td>{res.recieved}</td>
+                                                    <td>{res.pending_amount}</td>
                                                 </tr>
                                             )}
                                             {currentTableDataDemand.map((res) =>
@@ -347,32 +338,18 @@ function DemandReminderTable() {
                                                     <td>{res.due_date}</td>
                                                     <td>{res.net_due}</td>
                                                     <td>{res.net_due}</td>
+                                                    <td>{res.recieved}</td>
+                                                    <td>{res.pending_amount}</td>
                                                 </tr>
                                             )}
-                                            {currentTableDataDemand1.map((res) =>
+                                            {currentTableDataDemand3.map((res) =>
                                                 <tr className="Postform" style={{ backgroundColor: "#FFFDD0" }}>
-                                                    <td>{res.description}</td>
+                                                    <td className="Postform"><b>{res.description}</b></td>
                                                     <td>{res.due_date}</td>
-                                                    <td>{res.net_due}</td>
-                                                    <td>{res.net_due}</td>
-                                                </tr>
-                                            )}
-                                            {currentTableDataDemand3.map((res) =>
-                                                <tr className="Postform" style={{ backgroundColor: "#FFFDD0" }}>
-                                                    <td><b>{res.description}</b></td>
-                                                    <td>{res.due_date}</td>
-                                                    <td><b>{res.net_due}</b></td>
-                                                    <td><b>{res.net_due}</b></td>
-                                                </tr>
-                                            )}
-                                            {currentTableDataDemand3.map((res) =>
-                                                <tr className="Postform" style={{ backgroundColor: "#FFFDD0" }}>
-                                                    <td><b>{res.description} Received Amount: {res.recieved}</b></td>
-                                                </tr>
-                                            )}
-                                            {currentTableDataDemand3.map((res) =>
-                                                <tr className="Postform" style={{ backgroundColor: "#FFFDD0" }}>
-                                                    <td><b>{res.description} Pending Amount: {res.pending_amount}</b></td>
+                                                    <td className="Postform"><b>₹{res.net_due}</b></td>
+                                                    <td className="Postform"><b>₹{res.net_due}</b></td>
+                                                    <td className="Postform"><b>₹{res.recieved}</b></td>
+                                                    <td className="Postform"><b>₹{res.pending_amount}</b></td>
                                                 </tr>
                                             )}
                                         </tbody>

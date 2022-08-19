@@ -53,34 +53,34 @@ function Table(props) {
                     <table className="table-bordered text-black">
                         <thead>
                             <tr style={{ backgroundColor: "#0078AA" }}>
-                                <th className="table">Tower</th>
-                                <th className="table">Booking Date</th>
-                                <th className="table">Unit No.</th>
-                                <th className="table">Area Sq. Ft.</th>
-                                <th className="table">Applicant Name</th>
-                                <th className="table">Applicant Mobile No.</th>
-                                <th className="table">Applicant Email No.</th>
-                                <th className="table">Co-Applicant Name</th>
-                                <th className="table">Co-Applicant Mobile No.</th>
-                                <th className="table">Co-Applicant Email No.</th>
-                                <th className="table">Broker</th>
-                                <th className="table">Plan</th>
-                                <th className="table">Loan</th>
-                                <th className="table">Rate</th>
-                                <th className="table">Net Basic Price</th>
-                                <th className="table">Gst</th>
-                                <th className="table">Total Basic Cost</th>
-                                <th className="table">Received with Gst</th>
-                                <th className="table">Received Gst</th>
-                                <th className="table">Received without Gst</th>
-                                <th className="table">Received Percentage</th>
-                                <th className="table">Balance</th>
+                                <th className="table"><b>Tower</b></th>
+                                <th className="table"><b>Booking Date</b></th>
+                                <th className="table"><b>Unit No.</b></th>
+                                <th className="table"><b>Area Sq. Ft.</b></th>
+                                <th className="table"><b>Applicant Name</b></th>
+                                <th className="table"><b>Applicant Mobile No.</b></th>
+                                <th className="table"><b>Applicant Email No.</b></th>
+                                <th className="table"><b>Co-Applicant Name</b></th>
+                                <th className="table"><b>Co-Applicant Mobile No.</b></th>
+                                <th className="table"><b>Co-Applicant Email No.</b></th>
+                                <th className="table"><b>Broker</b></th>
+                                <th className="table"><b>Plan</b></th>
+                                <th className="table"><b>Loan</b></th>
+                                <th className="table"><b>Rate</b></th>
+                                <th className="table"><b>Net Basic Price</b></th>
+                                <th className="table"><b>Gst</b></th>
+                                <th className="table"><b>Total Basic Cost</b></th>
+                                <th className="table"><b>Received with Gst</b></th>
+                                <th className="table"><b>Received Gst</b></th>
+                                <th className="table"><b>Received without Gst</b></th>
+                                <th className="table"><b>Received Percentage</b></th>
+                                <th className="table"><b>Balance</b></th>
                             </tr>
                         </thead>
                         <tbody className="table">
                             {currentTableData.map((res) =>
 
-                                <tr className="Postform" style={{ backgroundColor: "#FFFDD0" }}>
+                                <tr className="table" style={{ backgroundColor: "#FFFDD0" }}>
                                     <td>{res.tower}</td>
                                     <td>{res.booking_date}</td>
                                     <Link to='/unit' state={{ from: (res.unit_no), tower: (res.tower), gst_choice: (res.gst_choice) }}>{res.unit_no}</Link>

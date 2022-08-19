@@ -17,6 +17,7 @@ function DueDate() {
   const { from } = location.state;
   const { unit_no } = location.state;
   const { tower } = location.state;
+  const { gst_choice } = location.state;
 
     const handleDownloadPdf = async () => {
         const element = printRef.current;
@@ -73,7 +74,7 @@ function DueDate() {
                 }} required />
         </div>
         <NavBtn onClick={register}>
-          <NavBtnLink to='/reportDR' state={{ unit_no: (unit_no), id: (from), tower: (tower) }}><b>Submit</b></NavBtnLink>
+          <NavBtnLink to='/reportDR' state={{ unit_no: (unit_no), id: (from), tower: (tower), gst_choice: (gst_choice) }}><b>Submit</b></NavBtnLink>
         </NavBtn>
     </div>
   );
