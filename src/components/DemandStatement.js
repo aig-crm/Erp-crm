@@ -31,13 +31,13 @@ function DemandStatement(props) {
       {result.map((res) =>
 
         <div className="Postform">
-            <h6 >You are requested to remit the total dues of <b>₹ {res.net_due}/-</b> in favour of <b>"ALPINE INFRA PROJECTS PVT LTD"</b> payable at on or before {res.due_date}</h6>
-            <h6>Kindly note that in case of non-receipt of due amount within stipulated time, <b>interest @10% p.a.</b> shall be charged as per company's policy on delayed payments.</h6>
-            <h6>Thanking you & assuring you of our best services always.</h6>
-            <h6>for <b>ALPINE INFRA PROJECTS PVT LTD</b></h6>
+            <h6 className="Postform">You are requested to remit the total dues of <b>₹ {res.net_due}/-</b> in favour of <b>"ALPINE INFRA PROJECTS PVT LTD"</b> payable at on or before {res.due_date}</h6>
+            <h6 className="Postform">Kindly note that in case of non-receipt of due amount within stipulated time, <b>interest @10% p.a.</b> shall be charged as per company's policy on delayed payments.</h6>
+            <h6 className="Postform">Thanking you & assuring you of our best services always.</h6>
+            <h6 className="Postform">for <b>ALPINE INFRA PROJECTS PVT LTD</b></h6>
             <br></br>
             <br></br>
-            <h6>Authorized Signatory</h6>
+            <h6 className="Postform">Authorized Signatory</h6>
         </div>
         )}
     </div>

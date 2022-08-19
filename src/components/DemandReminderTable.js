@@ -171,7 +171,7 @@ function DemandReminderTable() {
                             <img className='img' src={pic2} alt="project2"/>
                         </Grid>
                         <Grid item xs={12}>
-                            <h6 className="mt-3 text-dark"><b><u><center>Demand Letter</center></u></b></h6>
+                            <h6 className="Postform"><b><u><center>Demand Letter</center></u></b></h6>
                         </Grid>
                         <Grid item xs={12} sm={6}>
                             <Paper ><ApplicantDetails value={unit_no} value2={tower} /></Paper>
@@ -295,14 +295,14 @@ function DemandReminderTable() {
                                 <Paper >
                                     <div className='applicant'>
                                         <div className="Postform">
-                                            <h6 ><b>Dated: </b>{date}</h6>
+                                            <h6 className="Postform"><b>Dated: </b>{date}</h6>
                                             <br></br>
-                                            <h6><b>ALPINE INFRA PROJECTS PVT LTD</b></h6>
-                                            <h6>PLOT NO. D-16, SECTOR-1, G.NOIDA WEST</h6>
-                                            <h6><b>Email: </b>alpineinfraprojects@gmail.com</h6>
-                                            <h6><b>Web: </b>www.aigroyal.in</h6>
-                                            <h6><b>State: </b>Uttar Pradesh</h6>
-                                            <h6><b>State Code: </b>09</h6>
+                                            <h6 className="Postform"><b>ALPINE INFRA PROJECTS PVT LTD</b></h6>
+                                            <h6 className="Postform">PLOT NO. D-16, SECTOR-1, G.NOIDA WEST</h6>
+                                            <h6 className="Postform"><b>Email: </b>alpineinfraprojects@gmail.com</h6>
+                                            <h6 className="Postform"><b>Web: </b>www.aigroyal.in</h6>
+                                            <h6 className="Postform"><b>State: </b>Uttar Pradesh</h6>
+                                            <h6 className="Postform"><b>State Code: </b>09</h6>
                                         </div>
                                     </div>
                                 </Paper> 

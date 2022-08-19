@@ -31,11 +31,11 @@ function ApplicantDetails(props) {
       {result.map((res) =>
 
         <div className="Postform">
-            <h6 ><b>Customer id: AR-{props.value}</b></h6>
-            <h6><b>{res.applicant_name}</b></h6>
-            <h6><b>{res.address}</b></h6>
-            <h6><b>(M): </b>{res.applicant_mob_no}</h6>
-            <h6><b>Email: </b>{res.applicant_email}</h6>
+            <h6 className="Postform"><b>Customer id: AR-{props.value}</b></h6>
+            <h6 className="Postform"><b>{res.applicant_name}</b></h6>
+            <h6 className="Postform"><b>{res.address}</b></h6>
+            <h6 className="Postform"><b>(M): </b>{res.applicant_mob_no}</h6>
+            <h6 className="Postform"><b>Email: </b>{res.applicant_email}</h6>
         </div>
         )}
     </div>
