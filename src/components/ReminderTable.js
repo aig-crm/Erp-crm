@@ -11,7 +11,7 @@ import ApplicantDetails from "./ApplicantDetails";
 import StatementSubject from "./StatementSubject";
 import DemandStatement from "./DemandStatement";
 
-function DemandReminderTable() {
+function ReminderTable() {
 
     let PageSize = 10;
 
@@ -171,7 +171,7 @@ function DemandReminderTable() {
                             <img className='img' src={pic2} alt="project2"/>
                         </Grid>
                         <Grid item xs={12}>
-                            <h6 className="Postform"><b><u><center>Demand Letter</center></u></b></h6>
+                            <h6 className="Postform"><b><u><center>Reminder Letter</center></u></b></h6>
                         </Grid>
                         <Grid item xs={12} sm={6}>
                             <Paper ><ApplicantDetails value={unit_no} value2={tower} /></Paper>
@@ -192,7 +192,7 @@ function DemandReminderTable() {
                                 </div>
                             </Paper> 
                         </Grid>
-                        <StatementSubject value={unit_no} value2={tower} />
+                        <StatementSubject value={unit_no} value2={tower} value3='Reminder' />
                         <Grid item xs={12}>
                             <div >
                                 <table className="table-bordered text-black">
@@ -260,7 +260,7 @@ function DemandReminderTable() {
                                 />
                             </div>
                         </Grid>
-                        <DemandStatement value={id}/>
+                        <DemandStatement value={id} value2='Reminder'/>
                     </Grid>
                 </div>
             </React.Fragment>
@@ -286,10 +286,10 @@ function DemandReminderTable() {
                                 <img className='img' src={pic2} alt="project2"/>
                             </Grid>
                             <Grid item xs={12}>
-                                <h6 className="mt-3 text-dark"><b><u><center>Demand Letter</center></u></b></h6>
+                                <h6 className="mt-3 text-dark"><b><u><center>Reminder Letter</center></u></b></h6>
                             </Grid>
                             <Grid item xs={12} sm={6}>
-                                <Paper ><ApplicantDetails value={unit_no} value2={tower} /></Paper>
+                                <Paper ><ApplicantDetails value={unit_no} value2={tower} value3='Reminder' /></Paper>
                             </Grid>
                             <Grid item xs={12} sm={6}>
                                 <Paper >
@@ -363,7 +363,7 @@ function DemandReminderTable() {
                                     />
                                 </div>
                             </Grid>
-                            <DemandStatement value={id}/>
+                            <DemandStatement value={id} value2='Reminder'/>
                         </Grid>
                     </div>
                 </React.Fragment>
@@ -371,4 +371,4 @@ function DemandReminderTable() {
         }
 }
 
-export default DemandReminderTable
+export default ReminderTable
