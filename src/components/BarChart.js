@@ -77,7 +77,7 @@ const BarChart = (props) => {
                 'rgba(255, 159, 64, 1)'
             ],
             borderWidth: 1
-        },{
+        }, {
             label: `Unit Types Booked`,
             data: chart2.map(x => x.booked_units),
             backgroundColor: [

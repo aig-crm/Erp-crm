@@ -7,9 +7,9 @@ import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
 
 function InventoryTable() {
-    
-  const location = useLocation();
-  const { tower } = location.state;
+
+    const location = useLocation();
+    const { tower } = location.state;
 
     let PageSize = 20;
 
@@ -45,22 +45,22 @@ function InventoryTable() {
     const printRef = React.useRef();
 
     const handleDownloadPdf = async () => {
-      const element = printRef.current;
-      const canvas = await html2canvas(element);
-      const data = canvas.toDataURL('image/png');
-  
-      const pdf = new jsPDF();
-      const imgProperties = pdf.getImageProperties(data);
-      const pdfWidth = pdf.internal.pageSize.getWidth();
-      const pdfHeight =
-        (imgProperties.height * pdfWidth) / imgProperties.width;
-  
-      pdf.addImage(data, 'PNG', 0, 0, pdfWidth, pdfHeight);
-      if (tower != null) {
-        pdf.save((tower) + '-Tower Inventory Report.pdf');
-      }else{
-        pdf.save('Tower Inventory Report.pdf');
-      }
+        const element = printRef.current;
+        const canvas = await html2canvas(element);
+        const data = canvas.toDataURL('image/png');
+
+        const pdf = new jsPDF();
+        const imgProperties = pdf.getImageProperties(data);
+        const pdfWidth = pdf.internal.pageSize.getWidth();
+        const pdfHeight =
+            (imgProperties.height * pdfWidth) / imgProperties.width;
+
+        pdf.addImage(data, 'PNG', 0, 0, pdfWidth, pdfHeight);
+        if (tower != null) {
+            pdf.save((tower) + '-Tower Inventory Report.pdf');
+        } else {
+            pdf.save('Tower Inventory Report.pdf');
+        }
     };
 
     return (
@@ -104,7 +104,7 @@ function InventoryTable() {
                         pageSize={PageSize}
                         onPageChange={page => setCurrentPage(page)}
                     />
-                    
+
                     <button type="button" onClick={handleDownloadPdf}>
                         Download as PDF
                     </button>

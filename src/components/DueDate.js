@@ -19,77 +19,81 @@ function DueDate() {
   const { tower } = location.state;
   const { gst_choice } = location.state;
 
-    const handleDownloadPdf = async () => {
-        const element = printRef.current;
-        const canvas = await html2canvas(element);
-        const data = canvas.toDataURL('image/png');
-    
-        const pdf = new jsPDF();
-        const imgProperties = pdf.getImageProperties(data);
-        const pdfWidth = pdf.internal.pageSize.getWidth();
-        const pdfHeight =
-          (imgProperties.height * pdfWidth) / imgProperties.width;
-    
-        pdf.addImage(data, 'PNG', 0, 0, pdfWidth, pdfHeight);
-        if (from != null) {
-          pdf.save((from) + '-demand filed for ' + (unit_no) + '.pdf');
-        }else{
-          pdf.save('Demand filed for.pdf');
-        }
-      };
+  const handleDownloadPdf = async () => {
+    const element = printRef.current;
+    const canvas = await html2canvas(element);
+    const data = canvas.toDataURL('image/png');
+
+    const pdf = new jsPDF();
+    const imgProperties = pdf.getImageProperties(data);
+    const pdfWidth = pdf.internal.pageSize.getWidth();
+    const pdfHeight =
+      (imgProperties.height * pdfWidth) / imgProperties.width;
+
+    pdf.addImage(data, 'PNG', 0, 0, pdfWidth, pdfHeight);
+    if (from != null) {
+      pdf.save((from) + '-demand filed for ' + (unit_no) + '.pdf');
+    } else {
+      pdf.save('Demand filed for.pdf');
+    }
+  };
 
   const [result, setResult] = useState("");
 
-    const register = (e) => {
-      e.preventDefault();
-      Axios.put("https://0fbc-223-233-64-47.in.ngrok.io/api/payments/" + "'" + (from) + "'", {
-          due_date: result
-      }).then((response) => {
-          console.log(response);
-      });
-      handleDownloadPdf();
+  const register = (e) => {
+    e.preventDefault();
+    Axios.put("https://0fbc-223-233-64-47.in.ngrok.io/api/payments/" + "'" + (from) + "'", {
+      due_date: result
+    }).then((response) => {
+      console.log(response);
+    });
+    handleDownloadPdf();
 
-    }
+  }
 
   return (
     <div className='Postform'>
 
-            <Grid container spacing={3} className='Postform'>
-            <Grid item xs={12}>
-              <img className='img' src={pic1} alt="project"/>
-              <img src={pic2} alt="project2"/>
-            </Grid>
-            </Grid>
-        <div className='applicant'>
-                <h5><b><u>{from}-FILE REMINDER for {unit_no}</u></b></h5>
-                <label className="Postform"><b>Due Date:</b></label>
-                  <input
-                    type="date"
-                    onChange={(e) => {
-                      if (e.target.value === '' || e.target.value === null) {
-                        setResult('NA');
-                      } else { setResult(e.target.value)
-                        console.log(result); }
-                    }} required />
-        </div>
-        <NavBtn onClick={register}>
-          <NavBtnLink to='/reportR' state={{ unit_no: (unit_no), id: (from), tower: (tower), gst_choice: (gst_choice) }}><b>Submit Reminder</b></NavBtnLink>
-        </NavBtn>
-        <div className='applicant'>
-            <h5><b><u>{from}-FILE DEMAND for {unit_no}</u></b></h5>
-            <label className="Postform"><b>Due Date:</b></label>
-              <input
-                type="date"
-                onChange={(e) => {
-                  if (e.target.value === '' || e.target.value === null) {
-                    setResult('NA');
-                  } else { setResult(e.target.value)
-                    console.log(result); }
-                }} required />
-        </div>
-        <NavBtn onClick={register}>
-          <NavBtnLink to='/reportD' state={{ unit_no: (unit_no), id: (from), tower: (tower), gst_choice: (gst_choice) }}><b>Submit Demand</b></NavBtnLink>
-        </NavBtn>
+      <Grid container spacing={3} className='Postform'>
+        <Grid item xs={12}>
+          <img className='img' src={pic1} alt="project" />
+          <img src={pic2} alt="project2" />
+        </Grid>
+      </Grid>
+      <div className='applicant'>
+        <h5><b><u>{from}-FILE REMINDER for {unit_no}</u></b></h5>
+        <label className="Postform"><b>Due Date:</b></label>
+        <input
+          type="date"
+          onChange={(e) => {
+            if (e.target.value === '' || e.target.value === null) {
+              setResult('NA');
+            } else {
+              setResult(e.target.value)
+              console.log(result);
+            }
+          }} required />
+      </div>
+      <NavBtn onClick={register}>
+        <NavBtnLink to='/reportR' state={{ unit_no: (unit_no), id: (from), tower: (tower), gst_choice: (gst_choice) }}><b>Submit Reminder</b></NavBtnLink>
+      </NavBtn>
+      <div className='applicant'>
+        <h5><b><u>{from}-FILE DEMAND for {unit_no}</u></b></h5>
+        <label className="Postform"><b>Due Date:</b></label>
+        <input
+          type="date"
+          onChange={(e) => {
+            if (e.target.value === '' || e.target.value === null) {
+              setResult('NA');
+            } else {
+              setResult(e.target.value)
+              console.log(result);
+            }
+          }} required />
+      </div>
+      <NavBtn onClick={register}>
+        <NavBtnLink to='/reportD' state={{ unit_no: (unit_no), id: (from), tower: (tower), gst_choice: (gst_choice) }}><b>Submit Demand</b></NavBtnLink>
+      </NavBtn>
     </div>
   );
 }

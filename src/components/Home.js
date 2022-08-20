@@ -27,7 +27,7 @@ function Home(props) {
     pdf.addImage(data, 'PNG', 0, 0, pdfWidth, pdfHeight);
     if (props.value != null) {
       pdf.save((props.value) + '-tower.pdf');
-    }else{
+    } else {
       pdf.save('Home.pdf');
     }
   };

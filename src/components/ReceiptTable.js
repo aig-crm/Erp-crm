@@ -76,20 +76,20 @@ function ReceiptTable() {
         const element = printRef.current;
         const canvas = await html2canvas(element);
         const data = canvas.toDataURL('image/png');
-    
+
         const pdf = new jsPDF();
         const imgProperties = pdf.getImageProperties(data);
         const pdfWidth = pdf.internal.pageSize.getWidth();
         const pdfHeight =
-          (imgProperties.height * pdfWidth) / imgProperties.width;
-    
+            (imgProperties.height * pdfWidth) / imgProperties.width;
+
         pdf.addImage(data, 'PNG', 0, 0, pdfWidth, pdfHeight);
         if (unit_no != null) {
-          pdf.save((unit_no) + '-receipt.pdf');
-        }else{
-          pdf.save('Receipt.pdf');
+            pdf.save((unit_no) + '-receipt.pdf');
+        } else {
+            pdf.save('Receipt.pdf');
         }
-      };
+    };
 
     return (
 
@@ -97,8 +97,8 @@ function ReceiptTable() {
             <div className='Demand' ref={printRef}>
                 <Grid container spacing={3} className='Postform'>
                     <Grid item xs={12}>
-                    <img className='img' src={pic1} alt="project"/>
-                    <img src={pic2} alt="project2"/>
+                        <img className='img' src={pic1} alt="project" />
+                        <img src={pic2} alt="project2" />
                     </Grid>
                 </Grid>
                 <div >

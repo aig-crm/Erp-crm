@@ -27,7 +27,7 @@ function DemandTable() {
     const { id } = location.state;
     const { gst_choice } = location.state;
     const current = new Date();
-    const date = `${current.getDate()}/${current.getMonth()+1}/${current.getFullYear()}`;
+    const date = `${current.getDate()}/${current.getMonth() + 1}/${current.getFullYear()}`;
 
     const getDataDemand = () => {
 
@@ -135,31 +135,32 @@ function DemandTable() {
         const element = printRef.current;
         const canvas = await html2canvas(element);
         const data = canvas.toDataURL('image/png');
-    
+
         const pdf = new jsPDF();
         const imgProperties = pdf.getImageProperties(data);
         const pdfWidth = pdf.internal.pageSize.getWidth();
         const pdfHeight =
-          (imgProperties.height * pdfWidth) / imgProperties.width;
-    
+            (imgProperties.height * pdfWidth) / imgProperties.width;
+
         pdf.addImage(data, 'PNG', 0, 0, pdfWidth, pdfHeight);
         if (unit_no != null) {
-          pdf.save((unit_no) + '-demand reminder report.pdf');
-        }else{
-          pdf.save('Demand reminder report.pdf');
+            pdf.save((unit_no) + '-demand reminder report.pdf');
+        } else {
+            pdf.save('Demand reminder report.pdf');
         }
-      };
+    };
 
-        if(gst_choice==='Excld GST'){return (
+    if (gst_choice === 'Excld GST') {
+        return (
 
             <React.Fragment>
-            <button type="button" onClick={handleDownloadPdf}>
-                Download as PDF
-            </button>
+                <button type="button" onClick={handleDownloadPdf}>
+                    Download as PDF
+                </button>
                 <div ref={printRef} className='Demand'>
                     <Grid container spacing={3} className='Postform'>
                         <Grid item xs={12} sm={4}>
-                            <img src={pic1} alt="project"/>
+                            <img src={pic1} alt="project" />
                         </Grid>
                         <Grid item xs={12} sm={4}>
                             <div>
@@ -168,7 +169,7 @@ function DemandTable() {
                             </div>
                         </Grid>
                         <Grid item xs={12} sm={4}>
-                            <img className='img' src={pic2} alt="project2"/>
+                            <img className='img' src={pic2} alt="project2" />
                         </Grid>
                         <Grid item xs={12}>
                             <h6 className="Postform"><b><u><center>Demand Letter</center></u></b></h6>
@@ -190,7 +191,7 @@ function DemandTable() {
                                         <h6><b>State Code: </b>09</h6>
                                     </div>
                                 </div>
-                            </Paper> 
+                            </Paper>
                         </Grid>
                         <StatementSubject value={unit_no} value2={tower} value3='Demand' />
                         <Grid item xs={12}>
@@ -260,115 +261,116 @@ function DemandTable() {
                                 />
                             </div>
                         </Grid>
-                        <DemandStatement value={id} value2='Demand'/>
+                        <DemandStatement value={id} value2='Demand' />
                     </Grid>
                 </div>
             </React.Fragment>
-        );}else{
-            return (
+        );
+    } else {
+        return (
 
-                <React.Fragment>
+            <React.Fragment>
                 <button type="button" onClick={handleDownloadPdf}>
                     Download as PDF
                 </button>
-                    <div ref={printRef} className='Demand'>
-                        <Grid container spacing={3} className='Postform'>
-                            <Grid item xs={12} sm={3}>
-                                <img src={pic1} alt="project"/>
-                            </Grid>
-                            <Grid item xs={12} sm={6}>
-                                <div className='Postform'>
-                                    <h2 style={{ color: "#D18700" }}><b>ALPINE INFRA PROJECTS PVT LTD</b></h2>
-                                    <h6 ><b>CIN- U70200UP2010PTC120257, GSTIN: O9AAICA7055L1Z8</b></h6>
-                                </div>
-                            </Grid>
-                            <Grid item xs={12} sm={3}>
-                                <img className='img' src={pic2} alt="project2"/>
-                            </Grid>
-                            <Grid item xs={12}>
-                                <h6 className="mt-3 text-dark"><b><u><center>Demand Letter</center></u></b></h6>
-                            </Grid>
-                            <Grid item xs={12} sm={6}>
-                                <Paper ><ApplicantDetails value={unit_no} value2={tower} /></Paper>
-                            </Grid>
-                            <Grid item xs={12} sm={6}>
-                                <Paper >
-                                    <div className='applicant'>
-                                        <div className="Postform">
-                                            <h6 className="Postform"><b>Dated: </b>{date}</h6>
-                                            <br></br>
-                                            <h6 className="Postform"><b>ALPINE INFRA PROJECTS PVT LTD</b></h6>
-                                            <h6 className="Postform">PLOT NO. D-16, SECTOR-1, G.NOIDA WEST</h6>
-                                            <h6 className="Postform"><b>Email: </b>alpineinfraprojects@gmail.com</h6>
-                                            <h6 className="Postform"><b>Web: </b>www.aigroyal.in</h6>
-                                            <h6 className="Postform"><b>State: </b>Uttar Pradesh</h6>
-                                            <h6 className="Postform"><b>State Code: </b>09</h6>
-                                        </div>
-                                    </div>
-                                </Paper> 
-                            </Grid>
-                            <StatementSubject value={unit_no} value2={tower} value3='Demand' />
-                            <Grid item xs={12}>
-                                <div >
-                                    <table className="table-bordered text-black">
-                                        <thead>
-                                            <tr style={{ backgroundColor: "#0078AA" }}>
-                                                <th className="table">Perticulars</th>
-                                                <th className="table">Due Date</th>
-                                                <th className="table">Net BSP</th>
-                                                <th className="table">Due Amount</th>
-                                                <th className="table">Received Amount</th>
-                                                <th className="table">Receivable Amount</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody className="table">
-                                            {currentTableDataDemand2.map((res) =>
-                                                <tr className="Postform" style={{ backgroundColor: "#FFFDD0" }}>
-                                                    <td>{res.description}</td>
-                                                    <td>{res.due_date}</td>
-                                                    <td>{res.net_due}</td>
-                                                    <td>{res.net_due}</td>
-                                                    <td>{res.recieved}</td>
-                                                    <td>{res.pending_amount}</td>
-                                                </tr>
-                                            )}
-                                            {currentTableDataDemand.map((res) =>
-                                                <tr className="Postform" style={{ backgroundColor: "#FFFDD0" }}>
-                                                    <td>{res.description}</td>
-                                                    <td>{res.due_date}</td>
-                                                    <td>{res.net_due}</td>
-                                                    <td>{res.net_due}</td>
-                                                    <td>{res.recieved}</td>
-                                                    <td>{res.pending_amount}</td>
-                                                </tr>
-                                            )}
-                                            {currentTableDataDemand3.map((res) =>
-                                                <tr className="Postform" style={{ backgroundColor: "#FFFDD0" }}>
-                                                    <td className="Postform"><b>{res.description}</b></td>
-                                                    <td>{res.due_date}</td>
-                                                    <td className="Postform"><b>₹{res.net_due}</b></td>
-                                                    <td className="Postform"><b>₹{res.net_due}</b></td>
-                                                    <td className="Postform"><b>₹{res.recieved}</b></td>
-                                                    <td className="Postform"><b>₹{res.pending_amount}</b></td>
-                                                </tr>
-                                            )}
-                                        </tbody>
-                                    </table>
-                                    <Pagination
-                                        className="pagination-bar"
-                                        currentPage={currentPage}
-                                        totalCount={resultDemand.length}
-                                        pageSize={PageSize}
-                                        onPageChange={page => setCurrentPage(page)}
-                                    />
-                                </div>
-                            </Grid>
-                            <DemandStatement value={id} value2='Demand'/>
+                <div ref={printRef} className='Demand'>
+                    <Grid container spacing={3} className='Postform'>
+                        <Grid item xs={12} sm={3}>
+                            <img src={pic1} alt="project" />
                         </Grid>
-                    </div>
-                </React.Fragment>
-            );
-        }
+                        <Grid item xs={12} sm={6}>
+                            <div className='Postform'>
+                                <h2 style={{ color: "#D18700" }}><b>ALPINE INFRA PROJECTS PVT LTD</b></h2>
+                                <h6 ><b>CIN- U70200UP2010PTC120257, GSTIN: O9AAICA7055L1Z8</b></h6>
+                            </div>
+                        </Grid>
+                        <Grid item xs={12} sm={3}>
+                            <img className='img' src={pic2} alt="project2" />
+                        </Grid>
+                        <Grid item xs={12}>
+                            <h6 className="mt-3 text-dark"><b><u><center>Demand Letter</center></u></b></h6>
+                        </Grid>
+                        <Grid item xs={12} sm={6}>
+                            <Paper ><ApplicantDetails value={unit_no} value2={tower} /></Paper>
+                        </Grid>
+                        <Grid item xs={12} sm={6}>
+                            <Paper >
+                                <div className='applicant'>
+                                    <div className="Postform">
+                                        <h6 className="Postform"><b>Dated: </b>{date}</h6>
+                                        <br></br>
+                                        <h6 className="Postform"><b>ALPINE INFRA PROJECTS PVT LTD</b></h6>
+                                        <h6 className="Postform">PLOT NO. D-16, SECTOR-1, G.NOIDA WEST</h6>
+                                        <h6 className="Postform"><b>Email: </b>alpineinfraprojects@gmail.com</h6>
+                                        <h6 className="Postform"><b>Web: </b>www.aigroyal.in</h6>
+                                        <h6 className="Postform"><b>State: </b>Uttar Pradesh</h6>
+                                        <h6 className="Postform"><b>State Code: </b>09</h6>
+                                    </div>
+                                </div>
+                            </Paper>
+                        </Grid>
+                        <StatementSubject value={unit_no} value2={tower} value3='Demand' />
+                        <Grid item xs={12}>
+                            <div >
+                                <table className="table-bordered text-black">
+                                    <thead>
+                                        <tr style={{ backgroundColor: "#0078AA" }}>
+                                            <th className="table">Perticulars</th>
+                                            <th className="table">Due Date</th>
+                                            <th className="table">Net BSP</th>
+                                            <th className="table">Due Amount</th>
+                                            <th className="table">Received Amount</th>
+                                            <th className="table">Receivable Amount</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody className="table">
+                                        {currentTableDataDemand2.map((res) =>
+                                            <tr className="Postform" style={{ backgroundColor: "#FFFDD0" }}>
+                                                <td>{res.description}</td>
+                                                <td>{res.due_date}</td>
+                                                <td>{res.net_due}</td>
+                                                <td>{res.net_due}</td>
+                                                <td>{res.recieved}</td>
+                                                <td>{res.pending_amount}</td>
+                                            </tr>
+                                        )}
+                                        {currentTableDataDemand.map((res) =>
+                                            <tr className="Postform" style={{ backgroundColor: "#FFFDD0" }}>
+                                                <td>{res.description}</td>
+                                                <td>{res.due_date}</td>
+                                                <td>{res.net_due}</td>
+                                                <td>{res.net_due}</td>
+                                                <td>{res.recieved}</td>
+                                                <td>{res.pending_amount}</td>
+                                            </tr>
+                                        )}
+                                        {currentTableDataDemand3.map((res) =>
+                                            <tr className="Postform" style={{ backgroundColor: "#FFFDD0" }}>
+                                                <td className="Postform"><b>{res.description}</b></td>
+                                                <td>{res.due_date}</td>
+                                                <td className="Postform"><b>₹{res.net_due}</b></td>
+                                                <td className="Postform"><b>₹{res.net_due}</b></td>
+                                                <td className="Postform"><b>₹{res.recieved}</b></td>
+                                                <td className="Postform"><b>₹{res.pending_amount}</b></td>
+                                            </tr>
+                                        )}
+                                    </tbody>
+                                </table>
+                                <Pagination
+                                    className="pagination-bar"
+                                    currentPage={currentPage}
+                                    totalCount={resultDemand.length}
+                                    pageSize={PageSize}
+                                    onPageChange={page => setCurrentPage(page)}
+                                />
+                            </div>
+                        </Grid>
+                        <DemandStatement value={id} value2='Demand' />
+                    </Grid>
+                </div>
+            </React.Fragment>
+        );
+    }
 }
 
 export default DemandTable

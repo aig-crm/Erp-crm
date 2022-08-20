@@ -14,7 +14,7 @@ const Navbar = () => {
 		<div>
 			<Grid container spacing={3} className='Postform' style={{ backgroundColor: "#F1E5AC" }}>
 				<Grid item xs={12} sm={1}>
-					<img className='img' src={logo} alt="logo"/>
+					<img className='img' src={logo} alt="logo" />
 				</Grid>
 				<Grid item xs={12} sm={2}>
 					<h3 className='postform'><b>AIGIN Royal</b></h3>
