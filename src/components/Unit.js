@@ -12,6 +12,7 @@ import pic2 from '../assets/pic2.png';
 import { Pagination } from 'react-bootstrap';
 import Api from './Api';
 import { Link } from "react-router-dom";
+import InterestTable from './InterestTable';
 
 function Unit() {
 
@@ -40,9 +41,10 @@ function Unit() {
         pdf.save((from) + '.pdf');
     };
 
-    let PageSize = 10;
+    let PageSize = 20;
 
     const [currentPage, setCurrentPage] = useState(1);
+    const [currentPage1, setCurrentPage1] = useState(1);
 
     const [result, setResult] = useState([]);
     const [result2, setResult2] = useState([]);
@@ -159,22 +161,22 @@ function Unit() {
     }, []);
 
     const currentTableDataDemand = useMemo(() => {
-        const firstPageIndex = (currentPage - 1) * PageSize;
+        const firstPageIndex = (currentPage1 - 1) * PageSize;
         const lastPageIndex = firstPageIndex + PageSize;
         return resultDemand.slice(firstPageIndex, lastPageIndex);
-    }, [PageSize, resultDemand, currentPage]);
+    }, [PageSize, resultDemand, currentPage1]);
 
     const currentTableDataDemand1 = useMemo(() => {
-        const firstPageIndex = (currentPage - 1) * PageSize;
+        const firstPageIndex = (currentPage1 - 1) * PageSize;
         const lastPageIndex = firstPageIndex + PageSize;
         return resultDemand1.slice(firstPageIndex, lastPageIndex);
-    }, [PageSize, resultDemand1, currentPage]);
+    }, [PageSize, resultDemand1, currentPage1]);
 
     const currentTableDataDemand2 = useMemo(() => {
-        const firstPageIndex = (currentPage - 1) * PageSize;
+        const firstPageIndex = (currentPage1 - 1) * PageSize;
         const lastPageIndex = firstPageIndex + PageSize;
         return resultDemand2.slice(firstPageIndex, lastPageIndex);
-    }, [PageSize, resultDemand2, currentPage]);
+    }, [PageSize, resultDemand2, currentPage1]);
 
     if (gst_choice === 'Excld GST') {
         return (
@@ -330,14 +332,16 @@ function Unit() {
                             </table>
                             <Pagination
                                 className="pagination-bar"
-                                currentPage={currentPage}
+                                currentPage={currentPage1}
                                 totalCount={resultDemand.length}
                                 pageSize={PageSize}
-                                onPageChange={page => setCurrentPage(page)}
+                                onPageChange={page => setCurrentPage1(page)}
                             />
                         </div>
                     </div>
                 </React.Fragment>
+
+                <InterestTable value={from}/>
 
                 <Link to='/receipt' state={{ unit_no: (from), tower: (tower) }} className='applicant' style={{ backgroundColor: "#3AB4F2" }}><b>See Receipt Report</b></Link>
                 <Link to='/reportD' state={{ unit_no: (from), tower: (tower), gst_choice: (gst_choice) }} className='applicant' style={{ backgroundColor: "#3AB4F2" }}><b>See Demand Report</b></Link>
@@ -490,14 +494,16 @@ function Unit() {
                             </table>
                             <Pagination
                                 className="pagination-bar"
-                                currentPage={currentPage}
+                                currentPage={currentPage1}
                                 totalCount={resultDemand.length}
                                 pageSize={PageSize}
-                                onPageChange={page => setCurrentPage(page)}
+                                onPageChange={page => setCurrentPage1(page)}
                             />
                         </div>
                     </div>
                 </React.Fragment>
+
+                <InterestTable value={from}/>
 
                 <Link to='/receipt' state={{ unit_no: (from), tower: (tower) }} className='applicant' style={{ backgroundColor: "#3AB4F2" }}><b>See Receipt Report</b></Link>
                 <Link to='/reportD' state={{ unit_no: (from), tower: (tower), gst_choice: (gst_choice) }} className='applicant' style={{ backgroundColor: "#3AB4F2" }}><b>See Demand Report</b></Link>
