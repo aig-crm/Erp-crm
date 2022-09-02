@@ -42,7 +42,7 @@ function DueDate() {
 
   const register = (e) => {
     e.preventDefault();
-    Axios.put("https://2307-2401-4900-1c5e-4cc9-996c-a5d5-df9f-4044.in.ngrok.io/api/payments/" + "'" + (from) + "'", {
+    Axios.put("https://8703-103-163-108-118.in.ngrok.io/api/payments/" + "'" + (from) + "'", {
       due_date: result
     }).then((response) => {
       console.log(response);
