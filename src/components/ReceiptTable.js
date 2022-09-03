@@ -155,9 +155,6 @@ function ReceiptTable() {
                     <button type="button" onClick={handleDownloadPdf}>
                         Download as PDF
                     </button>
-                    <button type="button" onClick={handleDownloadPdf}>
-                        Download as PDF
-                    </button>
                 </div>
             </div>
         </React.Fragment>
