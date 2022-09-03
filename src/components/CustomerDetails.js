@@ -33,13 +33,13 @@ function CustomerDetails(props) {
         <div className="Postform">
           <h5><b><u>APPLICANT and CO-APPLICANT DETAILS</u></b></h5>
           <h6><b><u>Applicant Name: </u></b>{res.applicant_name}</h6>
-          <h6><b><u>Applicant Mobile No. </u></b>{res.applicant_mob_no}</h6>
+          <h6><b><u>Applicant Mobile No: </u></b>{res.applicant_mob_no}</h6>
           <h6><b><u>Applicant Email Address: </u></b>{res.applicant_email}</h6>
           <h6><b><u>Co-Applicant Name: </u></b>{res.coapplicant_name}</h6>
-          <h6><b><u>Co-Applicant Mobile No. </u></b>{res.coapplicant_mob_no}</h6>
+          <h6><b><u>Co-Applicant Mobile No: </u></b>{res.coapplicant_mob_no}</h6>
           <h6><b><u>Co-Applicant Email Address: </u></b>{res.coapplicant_email}</h6>
           <h6><b><u>Address: </u></b>{res.address}</h6>
-          <h6><b><u>Card No. </u></b>{res.card}</h6>
+          <h6><b><u>Card No: </u></b>{res.card}</h6>
         </div>
       )}
     </div>

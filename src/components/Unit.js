@@ -13,6 +13,8 @@ import { Pagination } from 'react-bootstrap';
 import Api from './Api';
 import { Link } from "react-router-dom";
 import InterestTable from './InterestTable';
+import { PDFExport } from '@progress/kendo-react-pdf';
+import PageTemplate from './pageTemplate';
 
 function Unit() {
 
@@ -21,25 +23,10 @@ function Unit() {
     const { tower } = location.state;
     const { gst_choice } = location.state;
 
-    const printRef = React.useRef();
+    const pdfExportComponent = React.useRef(null);
     const current = new Date();
     const date = `${current.getDate()}/${current.getMonth() + 1}/${current.getFullYear()}`;
     const time = current.getHours() + ':' + current.getMinutes() + ':' + current.getSeconds();
-
-    const handleDownloadPdf = async () => {
-        const element = printRef.current;
-        const canvas = await html2canvas(element);
-        const data = canvas.toDataURL('image/png');
-
-        const pdf = new jsPDF();
-        const imgProperties = pdf.getImageProperties(data);
-        const pdfWidth = pdf.internal.pageSize.getWidth();
-        const pdfHeight =
-            (imgProperties.height * pdfWidth) / imgProperties.width;
-
-        pdf.addImage(data, 'PNG', 0, 0, pdfWidth, pdfHeight);
-        pdf.save((from) + '.pdf');
-    };
 
     let PageSize = 20;
 
@@ -180,7 +167,10 @@ function Unit() {
 
     if (gst_choice === 'Excld GST') {
         return (
-            <div className='Demand' ref={printRef}>
+            <div className='Demand'>
+                <PDFExport pageTemplate={PageTemplate} fileName={(from) + '.pdf'}
+        paperSize="A3"
+        ref={pdfExportComponent}>
                 <Grid container spacing={3} className='Postform'>
                     <Grid item xs={12}>
                         <img className='img' src={pic1} alt="project" />
@@ -274,7 +264,6 @@ function Unit() {
                                 <thead>
                                     <tr style={{ backgroundColor: "#0078AA" }}>
                                         <th className="table">Perticulars</th>
-                                        <th className="table">ID</th>
                                         <th className="table">Due Date</th>
                                         <th className="table">Net BSP</th>
                                         <th className="table">CGST</th>
@@ -283,13 +272,13 @@ function Unit() {
                                         <th className="table">Net Due Amount</th>
                                         <th className="table">Received Amount</th>
                                         <th className="table">Receivable Amount</th>
+                                        <th className="table">ID</th>
                                     </tr>
                                 </thead>
                                 <tbody className="table">
                                     {currentTableDataDemand2.map((res) =>
                                         <tr className="Postform" style={{ backgroundColor: "#FFFDD0" }}>
                                             <td>{res.description}</td>
-                                            <Link to='/dueDate' state={{ from: (res.id), unit_no: (from), tower: (tower), gst_choice: (gst_choice) }}>{res.id}</Link>
                                             <td>{res.due_date}</td>
                                             <td>{res.net_bsp}</td>
                                             <td>{res.cgst}</td>
@@ -298,12 +287,12 @@ function Unit() {
                                             <td>{res.net_due}</td>
                                             <td>{res.recieved}</td>
                                             <td>{res.pending_amount}</td>
+                                            <Link to='/dueDate' state={{ from: (res.id), unit_no: (from), tower: (tower), gst_choice: (gst_choice) }}>{res.id}</Link>
                                         </tr>
                                     )}
                                     {currentTableDataDemand.map((res) =>
                                         <tr className="Postform" style={{ backgroundColor: "#FFFDD0" }}>
                                             <td>{res.description}</td>
-                                            <Link to='/dueDate' state={{ from: (res.id), unit_no: (from), tower: (tower), gst_choice: (gst_choice) }}>{res.id}</Link>
                                             <td>{res.due_date}</td>
                                             <td>{res.net_bsp}</td>
                                             <td>{res.cgst}</td>
@@ -312,12 +301,12 @@ function Unit() {
                                             <td>{res.net_due}</td>
                                             <td>{res.recieved}</td>
                                             <td>{res.pending_amount}</td>
+                                            <Link to='/dueDate' state={{ from: (res.id), unit_no: (from), tower: (tower), gst_choice: (gst_choice) }}>{res.id}</Link>
                                         </tr>
                                     )}
                                     {currentTableDataDemand1.map((res) =>
                                         <tr className="Postform" style={{ backgroundColor: "#FFFDD0" }}>
                                             <td>{res.description}</td>
-                                            <Link to='/dueDate' state={{ from: (res.id), unit_no: (from), tower: (tower), gst_choice: (gst_choice) }}>{res.id}</Link>
                                             <td>{res.due_date}</td>
                                             <td>{res.net_bsp}</td>
                                             <td>{res.cgst}</td>
@@ -326,6 +315,7 @@ function Unit() {
                                             <td>{res.net_due}</td>
                                             <td>{res.recieved}</td>
                                             <td>{res.pending_amount}</td>
+                                            <Link to='/dueDate' state={{ from: (res.id), unit_no: (from), tower: (tower), gst_choice: (gst_choice) }}>{res.id}</Link>
                                         </tr>
                                     )}
                                 </tbody>
@@ -343,18 +333,28 @@ function Unit() {
 
                 <InterestTable value={from}/>
 
+                </PDFExport>
                 <Link to='/receipt' state={{ unit_no: (from), tower: (tower) }} className='applicant' style={{ backgroundColor: "#3AB4F2" }}><b>See Receipt Report</b></Link>
                 <Link to='/reportD' state={{ unit_no: (from), tower: (tower), gst_choice: (gst_choice) }} className='applicant' style={{ backgroundColor: "#3AB4F2" }}><b>See Demand Report</b></Link>
                 <Link to='/addReceipt' state={{ unit_no: (from), tower: (tower) }} className='applicant' style={{ backgroundColor: "#3AB4F2" }}><b>Add Receipt</b></Link>
 
-                <button type="button" onClick={handleDownloadPdf} className='applicant' style={{ backgroundColor: "#3AB4F2" }}><b><u>
-                    Download as PDF
-                </u></b></button>
+                <button
+                    className='applicant' style={{ backgroundColor: "#3AB4F2" }}
+                    onClick={() => {
+                        if (pdfExportComponent.current) {
+                        pdfExportComponent.current.save();
+                        }
+                    }}
+                    ><b><u>Export PDF</u></b>
+                </button>
             </div>
         );
     } else {
         return (
-            <div className='Demand' ref={printRef}>
+            <div className='Demand'>
+                <PDFExport pageTemplate={PageTemplate} fileName={(from) + '.pdf'}
+        paperSize="A3"
+        ref={pdfExportComponent}>
                 <Grid container spacing={3} className='Postform'>
                     <Grid item xs={12}>
                         <img className='img' src={pic1} alt="project" />
@@ -448,46 +448,46 @@ function Unit() {
                                 <thead>
                                     <tr style={{ backgroundColor: "#0078AA" }}>
                                         <th className="table">Perticulars</th>
-                                        <th className="table">ID</th>
                                         <th className="table">Due Date</th>
                                         <th className="table">Net BSP</th>
                                         <th className="table">Due Amount</th>
                                         <th className="table">Received Amount</th>
                                         <th className="table">Receivable Amount</th>
+                                        <th className="table">ID</th>
                                     </tr>
                                 </thead>
                                 <tbody className="table">
                                     {currentTableDataDemand2.map((res) =>
                                         <tr className="Postform" style={{ backgroundColor: "#FFFDD0" }}>
                                             <td>{res.description}</td>
-                                            <Link to='/dueDate' state={{ from: (res.id), unit_no: (from), tower: (tower), gst_choice: (gst_choice) }}>{res.id}</Link>
                                             <td>{res.due_date}</td>
                                             <td>{res.net_due}</td>
                                             <td>{res.net_due}</td>
                                             <td>{res.recieved}</td>
                                             <td>{res.pending_amount}</td>
+                                            <Link to='/dueDate' state={{ from: (res.id), unit_no: (from), tower: (tower), gst_choice: (gst_choice) }}>{res.id}</Link>
                                         </tr>
                                     )}
                                     {currentTableDataDemand.map((res) =>
                                         <tr className="Postform" style={{ backgroundColor: "#FFFDD0" }}>
                                             <td>{res.description}</td>
-                                            <Link to='/dueDate' state={{ from: (res.id), unit_no: (from), tower: (tower), gst_choice: (gst_choice) }}>{res.id}</Link>
                                             <td>{res.due_date}</td>
                                             <td>{res.net_due}</td>
                                             <td>{res.net_due}</td>
                                             <td>{res.recieved}</td>
                                             <td>{res.pending_amount}</td>
+                                            <Link to='/dueDate' state={{ from: (res.id), unit_no: (from), tower: (tower), gst_choice: (gst_choice) }}>{res.id}</Link>
                                         </tr>
                                     )}
                                     {currentTableDataDemand1.map((res) =>
                                         <tr className="Postform" style={{ backgroundColor: "#FFFDD0" }}>
                                             <td>{res.description}</td>
-                                            <Link to='/dueDate' state={{ from: (res.id), unit_no: (from), tower: (tower), gst_choice: (gst_choice) }}>{res.id}</Link>
                                             <td>{res.due_date}</td>
                                             <td>{res.due}</td>
                                             <td>{res.net_due}</td>
                                             <td>{res.recieved}</td>
                                             <td>{res.pending_amount}</td>
+                                            <Link to='/dueDate' state={{ from: (res.id), unit_no: (from), tower: (tower), gst_choice: (gst_choice) }}>{res.id}</Link>
                                         </tr>
                                     )}
                                 </tbody>
@@ -505,13 +505,21 @@ function Unit() {
 
                 <InterestTable value={from}/>
 
+                </PDFExport>
                 <Link to='/receipt' state={{ unit_no: (from), tower: (tower) }} className='applicant' style={{ backgroundColor: "#3AB4F2" }}><b>See Receipt Report</b></Link>
                 <Link to='/reportD' state={{ unit_no: (from), tower: (tower), gst_choice: (gst_choice) }} className='applicant' style={{ backgroundColor: "#3AB4F2" }}><b>See Demand Report</b></Link>
                 <Link to='/addReceipt' state={{ unit_no: (from), tower: (tower) }} className='applicant' style={{ backgroundColor: "#3AB4F2" }}><b>Add Receipt</b></Link>
 
-                <button type="button" onClick={handleDownloadPdf} className='applicant' style={{ backgroundColor: "#3AB4F2" }}><b><u>
-                    Download as PDF
-                </u></b></button>
+                <button
+                    className='applicant' style={{ backgroundColor: "#3AB4F2" }}
+                    onClick={() => {
+                        if (pdfExportComponent.current) {
+                        pdfExportComponent.current.save();
+                        }
+                    }}
+                    >
+                    <b><u>Export PDF</u></b>
+                </button>
             </div>
         );
     }
