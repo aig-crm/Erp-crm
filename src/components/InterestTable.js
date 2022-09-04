@@ -1,8 +1,6 @@
 import React, { useState, useEffect, useMemo } from "react";
 import Pagination from "./pagination";
 import Api from "./Api";
-import html2canvas from "html2canvas";
-import jsPDF from "jspdf";
 
 function InterestTable(props) {
 
@@ -35,18 +33,18 @@ function InterestTable(props) {
     function getDifferenceInDays(date1, date2) {
         const diffInMs = Math.ceil(date2 - date1);
         return diffInMs / (1000 * 60 * 60 * 24);
-      }
-    
-      function sumArray(array) {
+    }
+
+    function sumArray(array) {
         let sum = 0;
-      
+
         array.forEach(item => {
-          sum += item;
+            sum += item;
         });
-      
+
         console.log(sum);
         return sum;
-      }
+    }
 
     const currentTableData = useMemo(() => {
         const firstPageIndex = (currentPage - 1) * PageSize;
@@ -54,33 +52,13 @@ function InterestTable(props) {
         return result.slice(firstPageIndex, lastPageIndex);
     }, [PageSize, result, currentPage]);
 
-    const printRef = React.useRef();
-    console.log(result.map((res)=> getDifferenceInDays(new Date(res.due_date), new Date(res.received_date))));
+    console.log(result.map((res) => getDifferenceInDays(new Date(res.due_date), new Date(res.received_date))));
     console.log(arr);
-
-    const handleDownloadPdf = async () => {
-        const element = printRef.current;
-        const canvas = await html2canvas(element);
-        const data = canvas.toDataURL('image/png');
-
-        const pdf = new jsPDF();
-        const imgProperties = pdf.getImageProperties(data);
-        const pdfWidth = pdf.internal.pageSize.getWidth();
-        const pdfHeight =
-            (imgProperties.height * pdfWidth) / imgProperties.width;
-
-        pdf.addImage(data, 'PNG', 0, 0, pdfWidth, pdfHeight);
-        if (props.value != null) {
-            pdf.save((props.value) + '-Interest Report.pdf');
-        } else {
-            pdf.save('Interest Report.pdf');
-        }
-    };
 
     return (
 
         <React.Fragment>
-            <div className="row" ref={printRef}>
+            <div className="row">
                 <div >
                     <h3 className="mt-3 text-dark"><b><u><center>{props.value} Interest Report</center></u></b></h3>
 
@@ -101,83 +79,84 @@ function InterestTable(props) {
                             </tr>
                         </thead>
                         <tbody className="table">
-                            {currentTableData.map((res) =>
-                                {if(getDifferenceInDays(new Date(res.due_date), new Date(res.received_date))<0){
+                            {currentTableData.map((res) => {
+                                if (getDifferenceInDays(new Date(res.due_date), new Date(res.received_date)) < 0) {
                                     arr.push(0)
-                                    return(<tr className="Postform" style={{ backgroundColor: "#FFFDD0" }}>
-                                    <td>{res.description}</td>
-                                    <td>{res.due_date}</td>
-                                    <td>{res.due_amt}</td>
-                                    <td>{res.received_amt}</td>
-                                    <td>{res.received_date}</td>
-                                    <td>{parseInt(res.due_amt)-parseInt(res.received_amt)}</td>
-                                    <td>{getDifferenceInDays(new Date(res.due_date), new Date(res.received_date))}</td>
-                                    <td>0</td>
-                                    <td>{getDifferenceInDays(new Date(res.due_date), new Date(res.received_date))}</td>
-                                    <td>10</td>
-                                    <td>0</td>
-                                </tr>)}
-                                else if(parseInt(res.due_amt)<parseInt(res.received_amt) && getDifferenceInDays(new Date(res.due_date), new Date(res.received_date))>0){
-                                    arr.push(Math.round(res.due_amt*getDifferenceInDays(new Date(res.due_date), new Date(res.received_date))*0.1/365))
-                                    return(<tr className="Postform" style={{ backgroundColor: "#FFFDD0" }}>
-                                    <td>{res.description}</td>
-                                    <td>{res.due_date}</td>
-                                    <td>{res.due_amt}</td>
-                                    <td>{res.received_amt}</td>
-                                    <td>{res.received_date}</td>
-                                    <td>{parseInt(res.due_amt)-parseInt(res.received_amt)}</td>
-                                    <td>{getDifferenceInDays(new Date(res.due_date), new Date(res.received_date))}</td>
-                                    <td>0</td>
-                                    <td>{getDifferenceInDays(new Date(res.due_date), new Date(res.received_date))}</td>
-                                    <td>10</td>
-                                    <td>{Math.round(res.due_amt*getDifferenceInDays(new Date(res.due_date), new Date(res.received_date))*0.1/365)}</td>
-                                </tr>)
-                                }else if((res.due_date==='')){
-                                    return(<tr className="Postform" style={{ backgroundColor: "#FFFDD0" }}>
-                                    
-                                </tr>)
+                                    return (<tr className="Postform" style={{ backgroundColor: "#FFFDD0" }}>
+                                        <td>{res.description}</td>
+                                        <td>{res.due_date}</td>
+                                        <td>{res.due_amt}</td>
+                                        <td>{res.received_amt}</td>
+                                        <td>{res.received_date}</td>
+                                        <td>{parseInt(res.due_amt) - parseInt(res.received_amt)}</td>
+                                        <td>{getDifferenceInDays(new Date(res.due_date), new Date(res.received_date))}</td>
+                                        <td>0</td>
+                                        <td>{getDifferenceInDays(new Date(res.due_date), new Date(res.received_date))}</td>
+                                        <td>10</td>
+                                        <td>0</td>
+                                    </tr>)
                                 }
-                                else{
-                                    arr.push(Math.round(res.received_amt*getDifferenceInDays(new Date(res.due_date), new Date(res.received_date))*0.1/365))
-                                    return(<tr className="Postform" style={{ backgroundColor: "#FFFDD0" }}>
-                                    <td>{res.description}</td>
-                                    <td>{res.due_date}</td>
-                                    <td>{res.due_amt}</td>
-                                    <td>{res.received_amt}</td>
-                                    <td>{res.received_date}</td>
-                                    <td>{parseInt(res.due_amt)-parseInt(res.received_amt)}</td>
-                                    <td>{getDifferenceInDays(new Date(res.due_date), new Date(res.received_date))}</td>
-                                    <td>0</td>
-                                    <td>{getDifferenceInDays(new Date(res.due_date), new Date(res.received_date))}</td>
-                                    <td>10</td>
-                                    <td>{Math.round(res.received_amt*getDifferenceInDays(new Date(res.due_date), new Date(res.received_date))*0.1/365)}</td>
-                                </tr>)
+                                else if (parseInt(res.due_amt) < parseInt(res.received_amt) && getDifferenceInDays(new Date(res.due_date), new Date(res.received_date)) > 0) {
+                                    arr.push(Math.round(res.due_amt * getDifferenceInDays(new Date(res.due_date), new Date(res.received_date)) * 0.1 / 365))
+                                    return (<tr className="Postform" style={{ backgroundColor: "#FFFDD0" }}>
+                                        <td>{res.description}</td>
+                                        <td>{res.due_date}</td>
+                                        <td>{res.due_amt}</td>
+                                        <td>{res.received_amt}</td>
+                                        <td>{res.received_date}</td>
+                                        <td>{parseInt(res.due_amt) - parseInt(res.received_amt)}</td>
+                                        <td>{getDifferenceInDays(new Date(res.due_date), new Date(res.received_date))}</td>
+                                        <td>0</td>
+                                        <td>{getDifferenceInDays(new Date(res.due_date), new Date(res.received_date))}</td>
+                                        <td>10</td>
+                                        <td>{Math.round(res.due_amt * getDifferenceInDays(new Date(res.due_date), new Date(res.received_date)) * 0.1 / 365)}</td>
+                                    </tr>)
+                                } else if ((res.due_date === '')) {
+                                    return (<tr className="Postform" style={{ backgroundColor: "#FFFDD0" }}>
+
+                                    </tr>)
+                                }
+                                else {
+                                    arr.push(Math.round(res.received_amt * getDifferenceInDays(new Date(res.due_date), new Date(res.received_date)) * 0.1 / 365))
+                                    return (<tr className="Postform" style={{ backgroundColor: "#FFFDD0" }}>
+                                        <td>{res.description}</td>
+                                        <td>{res.due_date}</td>
+                                        <td>{res.due_amt}</td>
+                                        <td>{res.received_amt}</td>
+                                        <td>{res.received_date}</td>
+                                        <td>{parseInt(res.due_amt) - parseInt(res.received_amt)}</td>
+                                        <td>{getDifferenceInDays(new Date(res.due_date), new Date(res.received_date))}</td>
+                                        <td>0</td>
+                                        <td>{getDifferenceInDays(new Date(res.due_date), new Date(res.received_date))}</td>
+                                        <td>10</td>
+                                        <td>{Math.round(res.received_amt * getDifferenceInDays(new Date(res.due_date), new Date(res.received_date)) * 0.1 / 365)}</td>
+                                    </tr>)
                                 }
                             }
                             )}
                             {
-                                    
-                                    <tr className="Postform" style={{ backgroundColor: "#FFFDD0" }}>
-                                        <td className="Postform"><b>Total Interest</b></td>
-                                        <td className="Postform"><b></b></td>
-                                        <td className="Postform"><b></b></td>
-                                        <td className="Postform"><b></b></td>
-                                        <td className="Postform"><b></b></td>
-                                        <td className="Postform"><b></b></td>
-                                        <td className="Postform"><b></b></td>
-                                        <td className="Postform"><b></b></td>
-                                        <td className="Postform"><b></b></td>
-                                        <td className="Postform"><b></b></td>
-                                        <td className="Postform"><b>Rs. {sumArray(arr)}</b></td>
-                                    </tr>
-                                
+
+                                <tr className="Postform" style={{ backgroundColor: "#FFFDD0" }}>
+                                    <td className="Postform"><b>Total Interest</b></td>
+                                    <td className="Postform"><b></b></td>
+                                    <td className="Postform"><b></b></td>
+                                    <td className="Postform"><b></b></td>
+                                    <td className="Postform"><b></b></td>
+                                    <td className="Postform"><b></b></td>
+                                    <td className="Postform"><b></b></td>
+                                    <td className="Postform"><b></b></td>
+                                    <td className="Postform"><b></b></td>
+                                    <td className="Postform"><b></b></td>
+                                    <td className="Postform"><b>Rs. {sumArray(arr)}</b></td>
+                                </tr>
+
                             }
                         </tbody>
                     </table>
                     <Pagination
                         className="pagination-bar"
                         currentPage={currentPage}
-                        totalCount={result.length-1}
+                        totalCount={result.length - 1}
                         pageSize={PageSize}
                         onPageChange={page => setCurrentPage(page)}
                     />

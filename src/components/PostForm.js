@@ -19,7 +19,8 @@ function PostForm(props) {
     const [cae, setcae] = useState("");
     const [floor, setfloor] = useState("");
     const [address, setaddress] = useState("");
-    const [card, setcard] = useState("");
+    const [acard, setacard] = useState("");
+    const [pcard, setpcard] = useState("");
     const gst_choice = ["Incld GST", "Excld GST"];
 
     const [inputValue1, setValue1] = useState("");
@@ -119,7 +120,8 @@ function PostForm(props) {
             gst_choice: JSON.stringify(selectedValue5),
             unit_no: JSON.stringify(selectedValue1),
             floor: floor,
-            card: card,
+            aadhar_card: acard,
+            pan_card: pcard,
             address: address,
             area_sqft: JSON.stringify(selectedValue2),
             plan: JSON.stringify(selectedValue3),
@@ -294,13 +296,21 @@ function PostForm(props) {
                                 alert("Form has errors for tower - " + (props.value));
                             } else { setae(e.target.value) }
                         }} required />
-                    <label className="Postform"><b>Pan card / Aadhaar card No.</b></label>
+                    <label className="Postform"><b>Aadhaar card No.</b></label>
                     <input
                         type="text"
                         onChange={(e) => {
                             if (e.target.value === '' || e.target.value === null) {
                                 alert("Form has errors for tower - " + (props.value));
-                            } else { setcard(e.target.value) }
+                            } else { setacard(e.target.value) }
+                        }} required />
+                    <label className="Postform"><b>Pan card No.</b></label>
+                    <input
+                        type="text"
+                        onChange={(e) => {
+                            if (e.target.value === '' || e.target.value === null) {
+                                alert("Form has errors for tower - " + (props.value));
+                            } else { setpcard(e.target.value) }
                         }} required />
                     <label className="Postform"><b>address:</b></label>
                     <input

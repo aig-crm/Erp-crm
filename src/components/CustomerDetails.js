@@ -39,7 +39,8 @@ function CustomerDetails(props) {
           <h6><b><u>Co-Applicant Mobile No: </u></b>{res.coapplicant_mob_no}</h6>
           <h6><b><u>Co-Applicant Email Address: </u></b>{res.coapplicant_email}</h6>
           <h6><b><u>Address: </u></b>{res.address}</h6>
-          <h6><b><u>Card No: </u></b>{res.card}</h6>
+          <h6><b><u>Aadhar Card No: </u></b>{res.aadhar_card}</h6>
+          <h6><b><u>Pan Card No: </u></b>{res.pan_card}</h6>
         </div>
       )}
     </div>
