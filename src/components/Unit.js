@@ -25,7 +25,7 @@ function Unit() {
     const date = `${current.getDate()}/${current.getMonth() + 1}/${current.getFullYear()}`;
     const time = current.getHours() + ':' + current.getMinutes() + ':' + current.getSeconds();
 
-    let PageSize = 20;
+    let PageSize = 50;
 
     const [currentPage, setCurrentPage] = useState(1);
     const [currentPage1, setCurrentPage1] = useState(1);
@@ -35,6 +35,8 @@ function Unit() {
     const [result2, setResult2] = useState([]);
     const [resultInterest, setResultInterest] = useState([]);
     const arr = [];
+    const arrRwgst = [];
+    const arrRwogst = [];
 
     const getData = () => {
 
@@ -99,6 +101,26 @@ function Unit() {
     }
 
     function sumArray(array) {
+        let sum = 0;
+
+        for (let i = 0; i < array.length; i++) {
+            sum += array[i];
+        }
+
+        return sum;
+    }
+
+    function sumArrayRwgst(array) {
+        let sum = 0;
+
+        for (let i = 0; i < array.length; i++) {
+            sum += array[i];
+        }
+
+        return sum;
+    }
+
+    function sumArrayRwogst(array) {
         let sum = 0;
 
         for (let i = 0; i < array.length; i++) {
@@ -259,19 +281,23 @@ function Unit() {
                                     </thead>
                                     <tbody className="table">
                                         {currentTableData.map((res) =>
-                                            <tr className="Postform" style={{ backgroundColor: "#FFFDD0" }}>
-                                                <td>{res.date}</td>
-                                                <td>{res.payment_mode}</td>
-                                                <td>{res.bank_name}</td>
-                                                <td>{res.rwgst}</td>
-                                                <td>{res.rwogst}</td>
-                                                <td>{res.rgst}</td>
-                                                <td>{res.receipt_no}</td>
-                                                <td>{res.status}</td>
-                                            </tr>
+                                            {arrRwgst.push(res.rwgst)
+                                                arrRwogst.push(res.rwogst)
+                                                return(<tr className="Postform" style={{ backgroundColor: "#FFFDD0" }}>
+                                                    <td>{res.date}</td>
+                                                    <td>{res.payment_mode}</td>
+                                                    <td>{res.bank_name}</td>
+                                                    <td>{res.rwgst}</td>
+                                                    <td>{res.rwogst}</td>
+                                                    <td>{res.rgst}</td>
+                                                    <td>{res.receipt_no}</td>
+                                                    <td>{res.status}</td>
+                                                </tr>)}
                                         )}
                                         {currentTableData2.map((res) =>
-                                            <tr className="Postform" style={{ backgroundColor: "#FFFDD0" }}>
+                                            {arrRwgst.push(res.rwgst)
+                                                arrRwogst.push(res.rwogst)
+                                                return(<tr className="Postform" style={{ backgroundColor: "#FFFDD0" }}>
                                                 <td>{res.date}</td>
                                                 <td>{res.payment_mode}</td>
                                                 <td>{res.bank_name}</td>
@@ -280,8 +306,18 @@ function Unit() {
                                                 <td>{res.rgst}</td>
                                                 <td>{res.receipt_no}</td>
                                                 <td style={{ backgroundColor: "#c61a09" }}>{res.status}</td>
-                                            </tr>
+                                            </tr>)}
                                         )}
+                                            <tr className="Postform" style={{ backgroundColor: "#FFFDD0" }}>
+                                                <td className="Postform"><b>Total</b></td>
+                                                <td className="Postform"><b></b></td>
+                                                <td className="Postform"><b></b></td>
+                                                <td className="Postform"><b>Rs.{sumArrayRwgst(arrRwgst)}</b></td>
+                                                <td className="Postform"><b>Rs.{sumArrayRwogst(arrRwogst)}</b></td>
+                                                <td className="Postform"><b>Rs.{sumArrayRwgst(arrRwgst)-sumArrayRwogst(arrRwogst)}</b></td>
+                                                <td className="Postform"><b></b></td>
+                                                <td className="Postform"><b></b></td>
+                                            </tr>
                                     </tbody>
                                 </table>
                                 <Pagination
@@ -553,19 +589,23 @@ function Unit() {
                                     </thead>
                                     <tbody className="table">
                                         {currentTableData.map((res) =>
-                                            <tr className="Postform" style={{ backgroundColor: "#FFFDD0" }}>
-                                                <td>{res.date}</td>
-                                                <td>{res.payment_mode}</td>
-                                                <td>{res.bank_name}</td>
-                                                <td>{res.rwgst}</td>
-                                                <td>{res.rwogst}</td>
-                                                <td>{res.rgst}</td>
-                                                <td>{res.receipt_no}</td>
-                                                <td>{res.status}</td>
-                                            </tr>
+                                            {arrRwgst.push(res.rwgst)
+                                                arrRwogst.push(res.rwogst)
+                                                return(<tr className="Postform" style={{ backgroundColor: "#FFFDD0" }}>
+                                                    <td>{res.date}</td>
+                                                    <td>{res.payment_mode}</td>
+                                                    <td>{res.bank_name}</td>
+                                                    <td>{res.rwgst}</td>
+                                                    <td>{res.rwogst}</td>
+                                                    <td>{res.rgst}</td>
+                                                    <td>{res.receipt_no}</td>
+                                                    <td>{res.status}</td>
+                                                </tr>)}
                                         )}
                                         {currentTableData2.map((res) =>
-                                            <tr className="Postform" style={{ backgroundColor: "#FFFDD0" }}>
+                                            {arrRwgst.push(res.rwgst)
+                                                arrRwogst.push(res.rwogst)
+                                                return(<tr className="Postform" style={{ backgroundColor: "#FFFDD0" }}>
                                                 <td>{res.date}</td>
                                                 <td>{res.payment_mode}</td>
                                                 <td>{res.bank_name}</td>
@@ -574,8 +614,18 @@ function Unit() {
                                                 <td>{res.rgst}</td>
                                                 <td>{res.receipt_no}</td>
                                                 <td style={{ backgroundColor: "#c61a09" }}>{res.status}</td>
-                                            </tr>
+                                            </tr>)}
                                         )}
+                                            <tr className="Postform" style={{ backgroundColor: "#FFFDD0" }}>
+                                                <td className="Postform"><b>Total</b></td>
+                                                <td className="Postform"><b></b></td>
+                                                <td className="Postform"><b></b></td>
+                                                <td className="Postform"><b>Rs.{sumArrayRwgst(arrRwgst)}</b></td>
+                                                <td className="Postform"><b>Rs.{sumArrayRwogst(arrRwogst)}</b></td>
+                                                <td className="Postform"><b>Rs.{sumArrayRwgst(arrRwgst)-sumArrayRwogst(arrRwogst)}</b></td>
+                                                <td className="Postform"><b></b></td>
+                                                <td className="Postform"><b></b></td>
+                                            </tr>
                                     </tbody>
                                 </table>
                                 <Pagination

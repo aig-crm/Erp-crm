@@ -21,7 +21,6 @@ function PostForm(props) {
     const [address, setaddress] = useState("");
     const [acard, setacard] = useState("");
     const [pcard, setpcard] = useState("");
-    const gst_choice = ["Incld GST", "Excld GST"];
 
     const [inputValue1, setValue1] = useState("");
     const [selectedValue1, setSelectedValue1] = useState(null);

@@ -16,6 +16,8 @@ import DemandTable from './DemandTable';
 import ReminderTable from './ReminderTable';
 import InventoryTable from './InventoryTable';
 import ReceiptForm from './ReceiptForm';
+import Table from './Table';
+import Reports from './Reports';
 
 function App() {
   return (
@@ -26,14 +28,20 @@ function App() {
         <Route exact path='/C' element={<C value={'C'} />} >
           <Route exact path='/C/bookingform/' element={<PostForm value={'C'} />} />
           <Route exact path='/C/applicant/' element={<Applicants value={'C'} />} />
+          <Route exact path='/C/reports' element={<Reports />} />
+          <Route exact path='/C/bookings' element={<Table />} />
         </Route>
         <Route exact path='/B' element={<B value={'B'} />} >
           <Route exact path='/B/bookingform/' element={<PostForm value={'B'} />} />
           <Route exact path='/B/applicant/' element={<Applicants value={'B'} />} />
+          <Route exact path='/B/reports' element={<Reports />} />
+          <Route exact path='/B/bookings' element={<Table />} />
         </Route>
         <Route exact path='/A' element={<A value={'A'} />} >
           <Route exact path='/A/bookingform/' element={<PostForm value={'A'} />} />
           <Route exact path='/A/applicant/' element={<Applicants value={'A'} />} />
+          <Route exact path='/A/reports' element={<Reports />} />
+          <Route exact path='/A/bookings' element={<Table />} />
         </Route>
         <Route exact path='/unit' element={<Unit />} />
         <Route exact path='/dueDate' element={<DueDate />} />
@@ -42,6 +50,8 @@ function App() {
         <Route exact path='/reportR' element={<ReminderTable />} />
         <Route exact path='/inventory' element={<InventoryTable />} />
         <Route exact path='/addReceipt' element={<ReceiptForm />} />
+        <Route exact path='/reports' element={<Reports />} />
+        <Route exact path='/bookings' element={<Table />} />
       </Routes>
     </div>
   );
