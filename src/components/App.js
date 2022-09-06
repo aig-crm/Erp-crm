@@ -18,13 +18,17 @@ import InventoryTable from './InventoryTable';
 import ReceiptForm from './ReceiptForm';
 import Table from './Table';
 import Reports from './Reports';
+import ReceiptEdit from './ReceiptEdit';
 
 function App() {
   return (
     <div>
       <Navbar />
       <Routes>
-        <Route exact path='/' element={<Home />} />
+        <Route exact path='/' element={<Home />} >
+          <Route exact path='/reports' element={<Reports />} />
+          <Route exact path='/bookings' element={<Table />} />
+        </Route>
         <Route exact path='/C' element={<C value={'C'} />} >
           <Route exact path='/C/bookingform/' element={<PostForm value={'C'} />} />
           <Route exact path='/C/applicant/' element={<Applicants value={'C'} />} />
@@ -50,8 +54,7 @@ function App() {
         <Route exact path='/reportR' element={<ReminderTable />} />
         <Route exact path='/inventory' element={<InventoryTable />} />
         <Route exact path='/addReceipt' element={<ReceiptForm />} />
-        <Route exact path='/reports' element={<Reports />} />
-        <Route exact path='/bookings' element={<Table />} />
+        <Route exact path='/receiptEdit' element={<ReceiptEdit />} />
       </Routes>
     </div>
   );

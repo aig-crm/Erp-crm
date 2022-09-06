@@ -112,7 +112,7 @@ function PostForm(props) {
     const register = (e) => {
         e.preventDefault();
         alert("Form submitted for tower - " + (props.value));
-        Axios.post("https://8703-103-163-108-118.in.ngrok.io/api/customer", {
+        Axios.post("https://6fa9-103-163-108-128.in.ngrok.io/api/customer", {
             booking_date: bd,
             tower: (props.value),
             broker: JSON.stringify(selectedValue4),

@@ -3,27 +3,30 @@ import React, { useState } from "react";
 import { useLocation } from "react-router-dom";
 import { NavBtn, NavBtnLink } from "./NavbarElements";
 
-function ReceiptForm() {
+function ReceiptEdit() {
 
     const location = useLocation();
+    const { date } = location.state;
+    const { payment_mode } = location.state;
+    const { bank_name } = location.state;
+    const { rwgst } = location.state;
+    const { receipt_no } = location.state;
     const { unit_no } = location.state;
 
-    const [paymode, setpaymode] = useState("");
-    const [date, setdate] = useState("");
-    const [bn, setbn] = useState("");
-    const [rwgst, setrwgst] = useState("");
+    const [new_paymode, setnew_paymode] = useState("");
+    const [new_bn, setnew_bn] = useState("");
+    const [new_rwgst, setnew_rwgst] = useState("");
 
     const register = (e) => {
         e.preventDefault();
-        alert("Form submitted for unit - " + (unit_no));
-        Axios.post("https://6fa9-103-163-108-128.in.ngrok.io/api/" + (unit_no) + "/customer_account", {
+        alert("Form submitted for unit - " + (receipt_no));
+        Axios.put("https://6fa9-103-163-108-128.in.ngrok.io/api/receipt_edit/" + "'" + (receipt_no) + "'", {
             unit_no: (unit_no),
-            payment_mode: paymode,
-            date: date,
-            bank_name: bn,
-            rwgst: rwgst,
-            rgst: rwgst*0.05,
-            receipt_no: "[" + (unit_no) + "]" + "[" + rwgst + "]" + "[" + Math.round(rwgst*0.05) + "]"
+            payment_mode: new_paymode,
+            bank_name: new_bn,
+            rwgst: new_rwgst,
+            rgst: (new_rwgst*0.05),
+            receipt_no: (receipt_no)
         }).then((response) => {
             console.log(response);
         });
@@ -33,42 +36,37 @@ function ReceiptForm() {
     return (
         <div>
             <div className='Postform'>
-                <h2 className="mt-3 text-dark"><b>ADD RECEIPT FOR UNIT - {unit_no}</b></h2>
+                <h2 className="mt-3 text-dark"><b>EDIT RECEIPT FOR UNIT - {unit_no}</b></h2>
                 <div className="mt-3 text-dark">
                     <label className="Postform"><b>unit no: {unit_no}</b></label>
                     <label className="Postform"><b>payment mode:</b></label>
                     <input
+                        defaultValue={payment_mode}
                         type="text"
                         onChange={(e) => {
                             if (e.target.value === '' || e.target.value === null) {
                                 alert("Form has errors for unit - " + (unit_no));
-                            } else { setpaymode(e.target.value) }
+                            } else { setnew_paymode(e.target.value) }
                         }} required />
-                    <label className="Postform"><b>date:</b></label>
-                    <input
-                        type="date"
-                        onChange={(e) => {
-                            if (e.target.value === '' || e.target.value === null) {
-                                alert("Form has errors for unit - " + (unit_no));
-                            } else { setdate(e.target.value) }
-                        }} required />
+                    <label className="Postform"><b>date: {date}</b></label>
                     <label className="Postform"><b>bank name:</b></label>
                     <input
+                        defaultValue={bank_name}
                         type="text"
                         onChange={(e) => {
                             if (e.target.value === '' || e.target.value === null) {
                                 alert("Form has errors for unit - " + (unit_no));
-                            } else { setbn(e.target.value) }
+                            } else { setnew_bn(e.target.value) }
                         }} required />
                     <label className="Postform"><b>Amt. received with gst:</b></label>
                     <input
+                        defaultValue={rwgst}
                         type="text"
                         onChange={(e) => {
                             if (e.target.value === '' || e.target.value === null) {
                                 alert("Form has errors for unit - " + (unit_no));
-                            } else { setrwgst(e.target.value) }
+                            } else { setnew_rwgst(e.target.value) }
                         }} required />
-                    <label className="Postform"><b>Received gst amt: {rwgst*0.05}</b></label>
                 </div>
                 <NavBtn onClick={register}>
                     <NavBtnLink to='/'><b>Submit</b></NavBtnLink>
@@ -81,4 +79,4 @@ function ReceiptForm() {
     );
 }
 
-export default ReceiptForm;
+export default ReceiptEdit;
