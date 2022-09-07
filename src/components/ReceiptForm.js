@@ -16,7 +16,7 @@ function ReceiptForm() {
     const register = (e) => {
         e.preventDefault();
         alert("Form submitted for unit - " + (unit_no));
-        Axios.post("https://6fa9-103-163-108-128.in.ngrok.io/api/" + (unit_no) + "/customer_account", {
+        Axios.post("https://9905-103-163-109-164.in.ngrok.io/api/" + (unit_no) + "/customer_account", {
             unit_no: (unit_no),
             payment_mode: paymode,
             date: date,

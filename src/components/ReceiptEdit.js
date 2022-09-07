@@ -1,6 +1,7 @@
 import Axios from "axios";
 import React, { useState } from "react";
 import { useLocation } from "react-router-dom";
+import Api from "./Api";
 import { NavBtn, NavBtnLink } from "./NavbarElements";
 
 function ReceiptEdit() {
@@ -20,7 +21,7 @@ function ReceiptEdit() {
     const register = (e) => {
         e.preventDefault();
         alert("Form submitted for unit - " + (receipt_no));
-        Axios.put("https://6fa9-103-163-108-128.in.ngrok.io/api/receipt_edit/" + "'" + (receipt_no) + "'", {
+        Axios.put("https://9905-103-163-109-164.in.ngrok.io/api/receipt_edit/" + "'" + (receipt_no) + "'", {
             unit_no: (unit_no),
             payment_mode: new_paymode,
             bank_name: new_bn,
@@ -30,7 +31,15 @@ function ReceiptEdit() {
         }).then((response) => {
             console.log(response);
         });
+    }
 
+    const deletereceipt = () => {
+
+        Api.delete("/receipt_delete/" + "'" + (receipt_no) + "'")
+        .then(() => this.setState({ status: 'Delete successful' }))
+        .catch(error => {
+            console.error('There was an error!', error);
+        });
     }
 
     return (
@@ -69,7 +78,11 @@ function ReceiptEdit() {
                         }} required />
                 </div>
                 <NavBtn onClick={register}>
-                    <NavBtnLink to='/'><b>Submit</b></NavBtnLink>
+                    <NavBtnLink to='/'><b>Submit Edited Receipt</b></NavBtnLink>
+                </NavBtn>
+                <br />
+                <NavBtn onClick={deletereceipt}>
+                    <NavBtnLink to='/'><b>Delete Receipt</b></NavBtnLink>
                 </NavBtn>
             </div>
 

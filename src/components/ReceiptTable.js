@@ -7,6 +7,7 @@ import { Link, useLocation } from "react-router-dom";
 import { Grid } from '@material-ui/core';
 import pic1 from '../assets/pic1.jpg';
 import pic2 from '../assets/pic2.png';
+import { NavBtn, NavBtnLink } from "./NavbarElements";
 
 function ReceiptTable() {
 
