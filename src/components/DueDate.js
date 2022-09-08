@@ -1,7 +1,6 @@
 import './App.css';
 import 'bootstrap';
 import React, { useState } from 'react';
-import Axios from "axios";
 import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
 import { useLocation } from 'react-router-dom';
@@ -9,6 +8,7 @@ import { Grid } from '@material-ui/core';
 import pic1 from '../assets/pic1.jpg';
 import pic2 from '../assets/pic2.png';
 import { NavBtn, NavBtnLink } from './NavbarElements';
+import Api from './Api';
 
 function DueDate() {
 
@@ -43,7 +43,7 @@ function DueDate() {
 
   const register = (e) => {
     e.preventDefault();
-    Axios.put("https://9905-103-163-109-164.in.ngrok.io/api/payments/" + "'" + (from) + "'", {
+    Api.put("/payments/" + "'" + (from) + "'", {
       due_date: result
     }).then((response) => {
       console.log(response);

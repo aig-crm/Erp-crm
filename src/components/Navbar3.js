@@ -30,6 +30,12 @@ const Navbar3 = (props) => {
 					<NavLink to='applicant' activeStyle><b>
 						Applicants</b>
 					</NavLink>
+					<NavLink to='cancelBookings' activeStyle><b>
+						Cancel Bookings</b>
+					</NavLink>
+					<NavLink to='canceledBookings' activeStyle><b>
+						Canceled Bookings</b>
+					</NavLink>
 					{/* Third Nav */}
 					{/* <NavBtnLink to='/sign-in'>Sign In</NavBtnLink> */}
 				</NavMenu>

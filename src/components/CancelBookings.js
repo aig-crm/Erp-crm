@@ -1,60 +1,27 @@
 import React, { useState, useEffect } from "react";
-import { CSVLink } from 'react-csv';
-import { Link, useLocation } from "react-router-dom";
 import Api from "./Api";
 import PageTemplate from "./pageTemplate";
 import { PDFExport } from '@progress/kendo-react-pdf';
+import { NavBtn, NavLink } from "./NavbarElements";
 
-function Table() {
+function CancelBookings(props) {
 
     const pdfExportComponent = React.useRef();
 
-    const location = useLocation();
-    const { tower } = location.state;
-
     const [result, setResult] = useState([]);
-    const count_unit = [];
-    const arr_rate = [];
-    const arr_nbp = [];
-    const arr_gst = [];
-    const arr_rwgst = [];
-    const arr_rwogst = [];
-    const arr_balance = [];
 
     const fileName = () => {
-        if (tower != null) {
-            return (tower) + '-tower all bookings.pdf';
+        if (props.value != null) {
+            return (props.value) + '-tower all bookings.pdf';
         } else {
             return 'all bookings.pdf';
         }
     }
 
-    function sumArray(array) {
-        let sum = 0;
-
-        array.forEach(item => {
-            sum += item;
-        });
-
-        console.log(sum);
-        return sum;
-    }
-
-    function countArray(array) {
-        let count = 0;
-
-        for(var i = 0; i < array.length; ++i){
-            count++;
-        }
-
-        console.log(count);
-        return count;
-    }
-
     const getData = () => {
 
-        if (tower != null) {
-            return Api.get('/main/' + "'" + (tower) + "'").then(result => {
+        if (props.value != null) {
+            return Api.get('/main/' + "'" + (props.value) + "'").then(result => {
                 const res = result.data;
                 return setResult(res);
             })
@@ -79,11 +46,7 @@ function Table() {
                         paperSize="A1"
                         landscape='true'
                         ref={pdfExportComponent}>
-                        <h3 className="mt-3 text-dark"><b><u><center>Booked {tower} tower units sheet</center></u></b></h3>
-
-                        <CSVLink data={result} filename="Tower Data" className="btn btn-success mb-3" style={{ color: "#000" }}>
-                            Export {tower} Tower Data
-                        </CSVLink>
+                        <h3 className="mt-3 text-dark"><b><u><center>Booked {props.value} tower units sheet</center></u></b></h3>
 
                         <table className="table-bordered text-black">
                             <thead>
@@ -105,29 +68,15 @@ function Table() {
                                     <th className="table"><b>Net Basic Price</b></th>
                                     <th className="table"><b>Gst</b></th>
                                     <th className="table"><b>Total Basic Cost</b></th>
-                                    <th className="table"><b>Received with Gst</b></th>
-                                    <th className="table"><b>Received Gst</b></th>
-                                    <th className="table"><b>Received without Gst</b></th>
-                                    <th className="table"><b>Received Percentage</b></th>
-                                    <th className="table"><b>Balance</b></th>
+                                    <th className="table"><b>Cancel</b></th>
                                 </tr>
                             </thead>
                             <tbody className="table">
                                 {result.map((res) =>
-
-                                    {
-                                        count_unit.push(res.unit_no);
-                                        arr_rate.push(res.rate);
-                                        arr_nbp.push(res.nbp);
-                                        arr_gst.push(res.gst);
-                                        arr_rwgst.push(res.rwgst);
-                                        arr_rwogst.push(res.rwogst);
-                                        arr_balance.push(res.balance)
-                                        return(
                                         <tr className="table" style={{ backgroundColor: "#FFFDD0" }}>
                                             <td>{res.tower}</td>
                                             <td>{res.booking_date}</td>
-                                            <Link to='/unit' state={{ from: (res.unit_no), tower: (res.tower), gst_choice: (res.gst_choice) }}>{res.unit_no}</Link>
+                                            <td>{res.unit_no}</td>
                                             <td>{res.area_sqft}</td>
                                             <td>{res.applicant_name}</td>
                                             <td>{res.applicant_mob_no}</td>
@@ -142,40 +91,14 @@ function Table() {
                                             <td>{res.nbp}</td>
                                             <td>{res.gst}</td>
                                             <td>{res.tbc}</td>
-                                            <td>{res.rwgst}</td>
-                                            <td>{res.rgst}</td>
-                                            <td>{res.rwogst}</td>
-                                            <td>{res.rec_per}</td>
-                                            <td>{res.balance}</td>
+                                            <td>
+                                                <NavBtn >
+                                                    <NavLink to='/deleteBooking' state={{ tower: (res.tower), booking_date: (res.booking_date), unit_no: (res.unit_no), area_sqft: (res.area_sqft), applicant_name: (res.applicant_name), applicant_mob_no: (res.applicant_mob_no), applicant_email: (res.applicant_email), coapplicant_name: (res.coapplicant_name), coapplicant_mob_no: (res.coapplicant_mob_no), coapplicant_email: (res.coapplicant_email), broker: (res.broker), plan: (res.plan), loan: (res.loan), rate: (res.rate), nbp: (res.nbp), gst: (res.gst), tbc: (res.tbc) }}><b>
+                                                        Cancel</b>
+                                                    </NavLink>
+                                                </NavBtn></td>
                                         </tr>)
                                     }
-                                )}
-                                {
-                                    <tr className="Postform" style={{ backgroundColor: "#FFFDD0" }}>
-                                    <td>TOTAL</td>
-                                    <td></td>
-                                    <td>{countArray(count_unit)}</td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td>Rs.{sumArray(arr_rate)}</td>
-                                    <td>Rs.{sumArray(arr_nbp)}</td>
-                                    <td>Rs.{sumArray(arr_gst)}</td>
-                                    <td>Rs.{sumArray(arr_nbp) + sumArray(arr_gst)}</td>
-                                    <td>Rs.{sumArray(arr_rwgst)}</td>
-                                    <td>Rs.{sumArray(arr_rwgst)-sumArray(arr_rwogst)}</td>
-                                    <td>Rs.{sumArray(arr_rwogst)}</td>
-                                    <td></td>
-                                    <td>Rs.{sumArray(arr_balance)}</td>
-                                </tr>
-                                }
                             </tbody>
                         </table>
                     </PDFExport>
@@ -194,4 +117,4 @@ function Table() {
     );
 }
 
-export default Table
+export default CancelBookings

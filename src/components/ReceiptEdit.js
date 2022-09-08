@@ -1,4 +1,3 @@
-import Axios from "axios";
 import React, { useState } from "react";
 import { useLocation } from "react-router-dom";
 import Api from "./Api";
@@ -21,7 +20,7 @@ function ReceiptEdit() {
     const register = (e) => {
         e.preventDefault();
         alert("Form submitted for unit - " + (receipt_no));
-        Axios.put("https://9905-103-163-109-164.in.ngrok.io/api/receipt_edit/" + "'" + (receipt_no) + "'", {
+        Api.put("/receipt_edit/" + "'" + (receipt_no) + "'", {
             unit_no: (unit_no),
             payment_mode: new_paymode,
             bank_name: new_bn,

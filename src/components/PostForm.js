@@ -1,6 +1,6 @@
-import Axios from "axios";
 import React, { useState } from "react";
 import AsyncSelect from 'react-select/async';
+import Api from "./Api";
 import api from './Api';
 import { NavBtn, NavBtnLink } from "./NavbarElements";
 
@@ -112,7 +112,7 @@ function PostForm(props) {
     const register = (e) => {
         e.preventDefault();
         alert("Form submitted for tower - " + (props.value));
-        Axios.post("https://9905-103-163-109-164.in.ngrok.io/api/customer", {
+        Api.post("/customer", {
             booking_date: bd,
             tower: (props.value),
             broker: JSON.stringify(selectedValue4),

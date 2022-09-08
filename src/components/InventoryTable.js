@@ -81,7 +81,7 @@ function InventoryTable() {
                                 <th className="table">Unit No.</th>
                                 <th className="table">Tower</th>
                                 <th className="table">Area Sq. Ft.</th>
-                                <th className="table">Param</th>
+                                <th className="table">Booked/Empty</th>
                             </tr>
                         </thead>
                         <tbody className="table">
