@@ -34,7 +34,7 @@ const Navbar3 = (props) => {
 						Cancel Bookings</b>
 					</NavLink>
 					<NavLink to='canceledBookings' activeStyle><b>
-						Canceled Bookings</b>
+						Cancelled Bookings</b>
 					</NavLink>
 					{/* Third Nav */}
 					{/* <NavBtnLink to='/sign-in'>Sign In</NavBtnLink> */}

@@ -241,7 +241,7 @@ function PostForm(props) {
                         type="text"
                         onChange={(e) => {
                             if (e.target.value === '' || e.target.value === null) {
-                                alert("Form has errors for tower - " + (props.value));
+                                setl("");
                             } else { setl(e.target.value) }
                         }} required />
                     <label className="Postform"><b>net base price:</b></label>
@@ -292,7 +292,7 @@ function PostForm(props) {
                         type="email"
                         onChange={(e) => {
                             if (e.target.value === '' || e.target.value === null) {
-                                alert("Form has errors for tower - " + (props.value));
+                                setae("");
                             } else { setae(e.target.value) }
                         }} required />
                     <label className="Postform"><b>Aadhaar card No.</b></label>
@@ -347,7 +347,7 @@ function PostForm(props) {
                         type="email"
                         onChange={(e) => {
                             if (e.target.value === '') {
-                                setcae('NA')
+                                setcae('')
                             } else {
                                 setcae(e.target.value)
                             }

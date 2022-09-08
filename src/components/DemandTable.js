@@ -253,7 +253,7 @@ function DemandTable() {
                                             </tr>
                                         )}
                                         {currentTableDataDemand3.map((res) =>
-                                            <tr className="Postform" style={{ backgroundColor: "#FFFDD0" }}>
+                                            {if(sumArray(interest_val)>0){return(<tr className="Postform" style={{ backgroundColor: "#FFFDD0" }}>
                                                 <td className="Postform"><b>{res.description}</b></td>
                                                 <td>{res.due_date}</td>
                                                 <td className="Postform"><b>₹{res.net_bsp}</b></td>
@@ -264,7 +264,19 @@ function DemandTable() {
                                                 <td className="Postform"><b>₹{res.recieved}</b></td>
                                                 <td className="Postform"><b>₹{res.pending_amount}</b></td>
                                                 <td className="Postform"><b>₹{sumArray(interest_val)}</b></td>
-                                            </tr>
+                                            </tr>)}
+                                            else{return(<tr className="Postform" style={{ backgroundColor: "#FFFDD0" }}>
+                                            <td className="Postform"><b>{res.description}</b></td>
+                                            <td>{res.due_date}</td>
+                                            <td className="Postform"><b>₹{res.net_bsp}</b></td>
+                                            <td className="Postform"><b>₹{res.cgst}</b></td>
+                                            <td className="Postform"><b>₹{res.sgst}</b></td>
+                                            <td className="Postform"><b>₹{res.gst}</b></td>
+                                            <td className="Postform"><b>₹{res.net_due}</b></td>
+                                            <td className="Postform"><b>₹{res.recieved}</b></td>
+                                            <td className="Postform"><b>₹{res.pending_amount}</b></td>
+                                            <td className="Postform"><b>₹0</b></td>
+                                        </tr>)}}
                                         )}
                                     </tbody>
                                 </table>
