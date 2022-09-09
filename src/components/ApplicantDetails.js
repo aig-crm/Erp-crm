@@ -27,7 +27,7 @@ function ApplicantDetails(props) {
   }, []);
 
   return (
-    <div className='applicant'>
+    <div>
       {result.map((res) =>
 
         <div className="Postform">

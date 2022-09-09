@@ -420,7 +420,7 @@ function Unit() {
                                             <th className="table">DUE AMOUNT</th>
                                             <th className="table">AMOUNT RECEIVED</th>
                                             <th className="table">DATE OF RECEIVED</th>
-                                            <th className="table">DELAY AMOUNT</th>
+                                            <th className="table">BALANCE AMOUNT</th>
                                             <th className="table">DELAY DAYS</th>
                                             <th className="table">GRACE PERIOD</th>
                                             <th className="table">INTEREST PERIOD</th>
@@ -716,7 +716,7 @@ function Unit() {
                                             <th className="table">DUE AMOUNT</th>
                                             <th className="table">AMOUNT RECEIVED</th>
                                             <th className="table">DATE OF RECEIVED</th>
-                                            <th className="table">DELAY AMOUNT</th>
+                                            <th className="table">BALANCE AMOUNT</th>
                                             <th className="table">DELAY DAYS</th>
                                             <th className="table">GRACE PERIOD</th>
                                             <th className="table">INTEREST PERIOD</th>

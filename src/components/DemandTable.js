@@ -176,7 +176,7 @@ function DemandTable() {
                         </Grid>
                         <Grid item xs={12} sm={4}>
                             <div>
-                                <h2 style={{ color: "#D18700" }}><b>ALPINE INFRA PROJECTS PVT LTD</b></h2>
+                                <h2 style={{ color: "#D18700" }}><b>ALPINE INFRAPROJECTS PVT LTD</b></h2>
                                 <h6 ><b>CIN- U70200UP2010PTC120257, GSTIN: O9AAICA7055L1Z8</b></h6>
                             </div>
                         </Grid>
@@ -191,17 +191,15 @@ function DemandTable() {
                         </Grid>
                         <Grid item xs={12} sm={6}>
                             <Paper >
-                                <div className='applicant'>
                                     <div className="Postform">
                                         <h6 ><b>Dated: </b>{date}</h6>
                                         <br></br>
-                                        <h6><b>ALPINE INFRA PROJECTS PVT LTD</b></h6>
+                                        <h6><b>ALPINE INFRAPROJECTS PVT LTD</b></h6>
                                         <h6>PLOT NO. D-16, SECTOR-1, G.NOIDA WEST</h6>
                                         <h6><b>Email: </b>alpineinfraprojects@gmail.com</h6>
                                         <h6><b>Web: </b>www.aigroyal.in</h6>
                                         <h6><b>State: </b>Uttar Pradesh</h6>
                                         <h6><b>State Code: </b>09</h6>
-                                    </div>
                                 </div>
                             </Paper>
                         </Grid>
@@ -308,7 +306,7 @@ function DemandTable() {
                         </Grid>
                         <Grid item xs={12} sm={4}>
                             <div>
-                                <h2 style={{ color: "#D18700" }}><b>ALPINE INFRA PROJECTS PVT LTD</b></h2>
+                                <h2 style={{ color: "#D18700" }}><b>ALPINE INFRAPROJECTS PVT LTD</b></h2>
                                 <h6 ><b>CIN- U70200UP2010PTC120257, GSTIN: O9AAICA7055L1Z8</b></h6>
                             </div>
                         </Grid>
@@ -323,18 +321,16 @@ function DemandTable() {
                         </Grid>
                         <Grid item xs={12} sm={6}>
                             <Paper >
-                                <div className='applicant'>
                                     <div className="Postform">
                                         <h6 ><b>Dated: </b>{date}</h6>
                                         <br></br>
-                                        <h6><b>ALPINE INFRA PROJECTS PVT LTD</b></h6>
+                                        <h6><b>ALPINE INFRAPROJECTS PVT LTD</b></h6>
                                         <h6>PLOT NO. D-16, SECTOR-1, G.NOIDA WEST</h6>
                                         <h6><b>Email: </b>alpineinfraprojects@gmail.com</h6>
                                         <h6><b>Web: </b>www.aigroyal.in</h6>
                                         <h6><b>State: </b>Uttar Pradesh</h6>
                                         <h6><b>State Code: </b>09</h6>
                                     </div>
-                                </div>
                             </Paper>
                         </Grid>
                         <StatementSubject value={unit_no} value2={tower} value3='Demand' />
@@ -424,7 +420,7 @@ function DemandTable() {
                         </Grid>
                         <Grid item xs={12} sm={6}>
                             <div className='Postform'>
-                                <h2 style={{ color: "#D18700" }}><b>ALPINE INFRA PROJECTS PVT LTD</b></h2>
+                                <h2 style={{ color: "#D18700" }}><b>ALPINE INFRAPROJECTS PVT LTD</b></h2>
                                 <h6 ><b>CIN- U70200UP2010PTC120257, GSTIN: O9AAICA7055L1Z8</b></h6>
                             </div>
                         </Grid>
@@ -439,18 +435,16 @@ function DemandTable() {
                         </Grid>
                         <Grid item xs={12} sm={6}>
                             <Paper >
-                                <div className='applicant'>
                                     <div className="Postform">
                                         <h6 className="Postform"><b>Dated: </b>{date}</h6>
                                         <br></br>
-                                        <h6 className="Postform"><b>ALPINE INFRA PROJECTS PVT LTD</b></h6>
+                                        <h6 className="Postform"><b>ALPINE INFRAPROJECTS PVT LTD</b></h6>
                                         <h6 className="Postform">PLOT NO. D-16, SECTOR-1, G.NOIDA WEST</h6>
                                         <h6 className="Postform"><b>Email: </b>alpineinfraprojects@gmail.com</h6>
                                         <h6 className="Postform"><b>Web: </b>www.aigroyal.in</h6>
                                         <h6 className="Postform"><b>State: </b>Uttar Pradesh</h6>
                                         <h6 className="Postform"><b>State Code: </b>09</h6>
                                     </div>
-                                </div>
                             </Paper>
                         </Grid>
                         <StatementSubject value={unit_no} value2={tower} value3='Demand' />
@@ -532,7 +526,7 @@ function DemandTable() {
                         </Grid>
                         <Grid item xs={12} sm={6}>
                             <div className='Postform'>
-                                <h2 style={{ color: "#D18700" }}><b>ALPINE INFRA PROJECTS PVT LTD</b></h2>
+                                <h2 style={{ color: "#D18700" }}><b>ALPINE INFRAPROJECTS PVT LTD</b></h2>
                                 <h6 ><b>CIN- U70200UP2010PTC120257, GSTIN: O9AAICA7055L1Z8</b></h6>
                             </div>
                         </Grid>
@@ -547,18 +541,16 @@ function DemandTable() {
                         </Grid>
                         <Grid item xs={12} sm={6}>
                             <Paper >
-                                <div className='applicant'>
                                     <div className="Postform">
                                         <h6 className="Postform"><b>Dated: </b>{date}</h6>
                                         <br></br>
-                                        <h6 className="Postform"><b>ALPINE INFRA PROJECTS PVT LTD</b></h6>
+                                        <h6 className="Postform"><b>ALPINE INFRAPROJECTS PVT LTD</b></h6>
                                         <h6 className="Postform">PLOT NO. D-16, SECTOR-1, G.NOIDA WEST</h6>
                                         <h6 className="Postform"><b>Email: </b>alpineinfraprojects@gmail.com</h6>
                                         <h6 className="Postform"><b>Web: </b>www.aigroyal.in</h6>
                                         <h6 className="Postform"><b>State: </b>Uttar Pradesh</h6>
                                         <h6 className="Postform"><b>State Code: </b>09</h6>
                                     </div>
-                                </div>
                             </Paper>
                         </Grid>
                         <StatementSubject value={unit_no} value2={tower} value3='Demand' />
