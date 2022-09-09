@@ -21,13 +21,13 @@ const Reports = () => {
         const imgProperties = pdf.getImageProperties(data);
         const pdfWidth = pdf.internal.pageSize.getWidth();
         const pdfHeight =
-        (imgProperties.height * pdfWidth) / imgProperties.width;
+            (imgProperties.height * pdfWidth) / imgProperties.width;
 
         pdf.addImage(data, 'PNG', 0, 0, pdfWidth, pdfHeight);
         if (tower != null) {
-        pdf.save((tower) + '-tower reports.pdf');
+            pdf.save((tower) + '-tower reports.pdf');
         } else {
-        pdf.save('reports.pdf');
+            pdf.save('reports.pdf');
         }
     };
 
@@ -37,15 +37,15 @@ const Reports = () => {
                 <h2 className="mt-3 text-dark"><b>{tower} Tower REPORTS</b></h2>
                 <div className='row'>
                     <div className='col'>
-                    <h3 className="mt-3 text-dark">{tower} Tower Unit report :</h3>
-                    <PieChart value={tower} />
-                    <div>
-                        <Link to='/inventory' className='applicant' style={{ backgroundColor: "#3AB4F2" }} state={{ tower: (tower) }}><b>See Full Report</b></Link>
-                    </div>
+                        <h3 className="mt-3 text-dark">{tower} Tower Unit report :</h3>
+                        <PieChart value={tower} />
+                        <div>
+                            <Link to='/inventory' className='applicant' style={{ backgroundColor: "#3AB4F2" }} state={{ tower: (tower) }}><b>See Full Report</b></Link>
+                        </div>
                     </div>
                     <div className='col'>
-                    <h3 className="mt-3 text-dark">{tower} Tower Demand-Reminder report :</h3>
-                    <DoughnutChart value={tower} />
+                        <h3 className="mt-3 text-dark">{tower} Tower Demand-Reminder report :</h3>
+                        <DoughnutChart value={tower} />
                     </div>
                 </div>
                 <h3 className="mt-3 text-dark">{tower} Tower Unit type report :</h3>
@@ -53,10 +53,10 @@ const Reports = () => {
             </div>
 
             <button type="button" onClick={handleDownloadPdf}>
-            Download as PDF
+                Download as PDF
             </button>
         </div>
-      )
+    )
 
 }
 

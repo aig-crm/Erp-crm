@@ -25,7 +25,7 @@ function ReceiptEdit() {
             payment_mode: new_paymode,
             bank_name: new_bn,
             rwgst: new_rwgst,
-            rgst: (new_rwgst*0.05),
+            rgst: (new_rwgst * 0.05),
             receipt_no: (receipt_no)
         }).then((response) => {
             console.log(response);
@@ -35,10 +35,10 @@ function ReceiptEdit() {
     const deletereceipt = () => {
 
         Api.delete("/receipt_delete/" + "'" + (receipt_no) + "'")
-        .then(() => this.setState({ status: 'Delete successful' }))
-        .catch(error => {
-            console.error('There was an error!', error);
-        });
+            .then(() => this.setState({ status: 'Delete successful' }))
+            .catch(error => {
+                console.error('There was an error!', error);
+            });
     }
 
     return (

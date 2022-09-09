@@ -22,8 +22,8 @@ function ReceiptForm() {
             date: date,
             bank_name: bn,
             rwgst: rwgst,
-            rgst: rwgst*0.05,
-            receipt_no: "[" + (unit_no) + "]" + "[" + rwgst + "]" + "[" + Math.round(rwgst*0.05) + "]"
+            rgst: rwgst * 0.05,
+            receipt_no: "[" + (unit_no) + "]" + "[" + rwgst + "]" + "[" + Math.round(rwgst * 0.05) + "]"
         }).then((response) => {
             console.log(response);
         });
@@ -68,7 +68,7 @@ function ReceiptForm() {
                                 alert("Form has errors for unit - " + (unit_no));
                             } else { setrwgst(e.target.value) }
                         }} required />
-                    <label className="Postform"><b>Received gst amt: {rwgst*0.05}</b></label>
+                    <label className="Postform"><b>Received gst amt: {rwgst * 0.05}</b></label>
                 </div>
                 <NavBtn onClick={register}>
                     <NavBtnLink to='/'><b>Submit</b></NavBtnLink>

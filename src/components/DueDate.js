@@ -94,7 +94,7 @@ function DueDate() {
       </div>
       Submit Demand:
       <NavBtn onClick={register}>
-        <NavBtnLink to='/reportD' state={{ unit_no: (unit_no), id: (from), tower: (tower), gst_choice: (gst_choice), interest_val: {interest_value}, interest: 'with interest' }}><b>With Interest</b></NavBtnLink>
+        <NavBtnLink to='/reportD' state={{ unit_no: (unit_no), id: (from), tower: (tower), gst_choice: (gst_choice), interest_val: { interest_value }, interest: 'with interest' }}><b>With Interest</b></NavBtnLink>
       </NavBtn>
       <NavBtn onClick={register}>
         <NavBtnLink to='/reportD' state={{ unit_no: (unit_no), id: (from), tower: (tower), gst_choice: (gst_choice), interest: 'without interest' }}><b>Without Interest</b></NavBtnLink>

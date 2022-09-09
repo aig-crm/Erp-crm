@@ -187,21 +187,19 @@ function DemandTable() {
                             <h6 className="Postform"><b><u><center>Demand Letter</center></u></b></h6>
                         </Grid>
                         <Grid item xs={12} sm={6}>
-                            <Paper ><ApplicantDetails value={unit_no} value2={tower} /></Paper>
+                            <ApplicantDetails value={unit_no} value2={tower} />
                         </Grid>
                         <Grid item xs={12} sm={6}>
-                            <Paper >
-                                    <div className="Postform">
-                                        <h6 ><b>Dated: </b>{date}</h6>
-                                        <br></br>
-                                        <h6><b>ALPINE INFRAPROJECTS PVT LTD</b></h6>
-                                        <h6>PLOT NO. D-16, SECTOR-1, G.NOIDA WEST</h6>
-                                        <h6><b>Email: </b>alpineinfraprojects@gmail.com</h6>
-                                        <h6><b>Web: </b>www.aigroyal.in</h6>
-                                        <h6><b>State: </b>Uttar Pradesh</h6>
-                                        <h6><b>State Code: </b>09</h6>
-                                </div>
-                            </Paper>
+                            <div className="Postform">
+                                <h6 ><b>Dated: </b>{date}</h6>
+                                <br></br>
+                                <h6><b>ALPINE INFRAPROJECTS PVT LTD</b></h6>
+                                <h6>PLOT NO. D-16, SECTOR-1, G.NOIDA WEST</h6>
+                                <h6><b>Email: </b>alpineinfraprojects@gmail.com</h6>
+                                <h6><b>Web: </b>www.aigroyal.in</h6>
+                                <h6><b>State: </b>Uttar Pradesh</h6>
+                                <h6><b>State Code: </b>09</h6>
+                            </div>
                         </Grid>
                         <StatementSubject value={unit_no} value2={tower} value3='Demand' />
                         <Grid item xs={12}>
@@ -250,31 +248,36 @@ function DemandTable() {
                                                 <td></td>
                                             </tr>
                                         )}
-                                        {currentTableDataDemand3.map((res) =>
-                                            {if(sumArray(interest_val)>0){return(<tr className="Postform" style={{ backgroundColor: "#FFFDD0" }}>
-                                                <td className="Postform"><b>{res.description}</b></td>
-                                                <td>{res.due_date}</td>
-                                                <td className="Postform"><b>₹{res.net_bsp}</b></td>
-                                                <td className="Postform"><b>₹{res.cgst}</b></td>
-                                                <td className="Postform"><b>₹{res.sgst}</b></td>
-                                                <td className="Postform"><b>₹{res.gst}</b></td>
-                                                <td className="Postform"><b>₹{res.net_due}</b></td>
-                                                <td className="Postform"><b>₹{res.recieved}</b></td>
-                                                <td className="Postform"><b>₹{res.pending_amount}</b></td>
-                                                <td className="Postform"><b>₹{sumArray(interest_val)}</b></td>
-                                            </tr>)}
-                                            else{return(<tr className="Postform" style={{ backgroundColor: "#FFFDD0" }}>
-                                            <td className="Postform"><b>{res.description}</b></td>
-                                            <td>{res.due_date}</td>
-                                            <td className="Postform"><b>₹{res.net_bsp}</b></td>
-                                            <td className="Postform"><b>₹{res.cgst}</b></td>
-                                            <td className="Postform"><b>₹{res.sgst}</b></td>
-                                            <td className="Postform"><b>₹{res.gst}</b></td>
-                                            <td className="Postform"><b>₹{res.net_due}</b></td>
-                                            <td className="Postform"><b>₹{res.recieved}</b></td>
-                                            <td className="Postform"><b>₹{res.pending_amount}</b></td>
-                                            <td className="Postform"><b>₹0</b></td>
-                                        </tr>)}}
+                                        {currentTableDataDemand3.map((res) => {
+                                            if (sumArray(interest_val) > 0) {
+                                                return (<tr className="Postform" style={{ backgroundColor: "#FFFDD0" }}>
+                                                    <td className="Postform"><b>{res.description}</b></td>
+                                                    <td>{res.due_date}</td>
+                                                    <td className="Postform"><b>₹{res.net_bsp}</b></td>
+                                                    <td className="Postform"><b>₹{res.cgst}</b></td>
+                                                    <td className="Postform"><b>₹{res.sgst}</b></td>
+                                                    <td className="Postform"><b>₹{res.gst}</b></td>
+                                                    <td className="Postform"><b>₹{res.net_due}</b></td>
+                                                    <td className="Postform"><b>₹{res.recieved}</b></td>
+                                                    <td className="Postform"><b>₹{res.pending_amount}</b></td>
+                                                    <td className="Postform"><b>₹{sumArray(interest_val)}</b></td>
+                                                </tr>)
+                                            }
+                                            else {
+                                                return (<tr className="Postform" style={{ backgroundColor: "#FFFDD0" }}>
+                                                    <td className="Postform"><b>{res.description}</b></td>
+                                                    <td>{res.due_date}</td>
+                                                    <td className="Postform"><b>₹{res.net_bsp}</b></td>
+                                                    <td className="Postform"><b>₹{res.cgst}</b></td>
+                                                    <td className="Postform"><b>₹{res.sgst}</b></td>
+                                                    <td className="Postform"><b>₹{res.gst}</b></td>
+                                                    <td className="Postform"><b>₹{res.net_due}</b></td>
+                                                    <td className="Postform"><b>₹{res.recieved}</b></td>
+                                                    <td className="Postform"><b>₹{res.pending_amount}</b></td>
+                                                    <td className="Postform"><b>₹0</b></td>
+                                                </tr>)
+                                            }
+                                        }
                                         )}
                                     </tbody>
                                 </table>
@@ -317,21 +320,19 @@ function DemandTable() {
                             <h6 className="Postform"><b><u><center>Demand Letter</center></u></b></h6>
                         </Grid>
                         <Grid item xs={12} sm={6}>
-                            <Paper ><ApplicantDetails value={unit_no} value2={tower} /></Paper>
+                            <ApplicantDetails value={unit_no} value2={tower} />
                         </Grid>
                         <Grid item xs={12} sm={6}>
-                            <Paper >
-                                    <div className="Postform">
-                                        <h6 ><b>Dated: </b>{date}</h6>
-                                        <br></br>
-                                        <h6><b>ALPINE INFRAPROJECTS PVT LTD</b></h6>
-                                        <h6>PLOT NO. D-16, SECTOR-1, G.NOIDA WEST</h6>
-                                        <h6><b>Email: </b>alpineinfraprojects@gmail.com</h6>
-                                        <h6><b>Web: </b>www.aigroyal.in</h6>
-                                        <h6><b>State: </b>Uttar Pradesh</h6>
-                                        <h6><b>State Code: </b>09</h6>
-                                    </div>
-                            </Paper>
+                            <div className="Postform">
+                                <h6 ><b>Dated: </b>{date}</h6>
+                                <br></br>
+                                <h6><b>ALPINE INFRAPROJECTS PVT LTD</b></h6>
+                                <h6>PLOT NO. D-16, SECTOR-1, G.NOIDA WEST</h6>
+                                <h6><b>Email: </b>alpineinfraprojects@gmail.com</h6>
+                                <h6><b>Web: </b>www.aigroyal.in</h6>
+                                <h6><b>State: </b>Uttar Pradesh</h6>
+                                <h6><b>State Code: </b>09</h6>
+                            </div>
                         </Grid>
                         <StatementSubject value={unit_no} value2={tower} value3='Demand' />
                         <Grid item xs={12}>
@@ -431,21 +432,19 @@ function DemandTable() {
                             <h6 className="mt-3 text-dark"><b><u><center>Demand Letter</center></u></b></h6>
                         </Grid>
                         <Grid item xs={12} sm={6}>
-                            <Paper ><ApplicantDetails value={unit_no} value2={tower} /></Paper>
+                            <ApplicantDetails value={unit_no} value2={tower} />
                         </Grid>
                         <Grid item xs={12} sm={6}>
-                            <Paper >
-                                    <div className="Postform">
-                                        <h6 className="Postform"><b>Dated: </b>{date}</h6>
-                                        <br></br>
-                                        <h6 className="Postform"><b>ALPINE INFRAPROJECTS PVT LTD</b></h6>
-                                        <h6 className="Postform">PLOT NO. D-16, SECTOR-1, G.NOIDA WEST</h6>
-                                        <h6 className="Postform"><b>Email: </b>alpineinfraprojects@gmail.com</h6>
-                                        <h6 className="Postform"><b>Web: </b>www.aigroyal.in</h6>
-                                        <h6 className="Postform"><b>State: </b>Uttar Pradesh</h6>
-                                        <h6 className="Postform"><b>State Code: </b>09</h6>
-                                    </div>
-                            </Paper>
+                            <div className="Postform">
+                                <h6 className="Postform"><b>Dated: </b>{date}</h6>
+                                <br></br>
+                                <h6 className="Postform"><b>ALPINE INFRAPROJECTS PVT LTD</b></h6>
+                                <h6 className="Postform">PLOT NO. D-16, SECTOR-1, G.NOIDA WEST</h6>
+                                <h6 className="Postform"><b>Email: </b>alpineinfraprojects@gmail.com</h6>
+                                <h6 className="Postform"><b>Web: </b>www.aigroyal.in</h6>
+                                <h6 className="Postform"><b>State: </b>Uttar Pradesh</h6>
+                                <h6 className="Postform"><b>State Code: </b>09</h6>
+                            </div>
                         </Grid>
                         <StatementSubject value={unit_no} value2={tower} value3='Demand' />
                         <Grid item xs={12}>
@@ -537,21 +536,19 @@ function DemandTable() {
                             <h6 className="mt-3 text-dark"><b><u><center>Demand Letter</center></u></b></h6>
                         </Grid>
                         <Grid item xs={12} sm={6}>
-                            <Paper ><ApplicantDetails value={unit_no} value2={tower} /></Paper>
+                            <ApplicantDetails value={unit_no} value2={tower} />
                         </Grid>
                         <Grid item xs={12} sm={6}>
-                            <Paper >
-                                    <div className="Postform">
-                                        <h6 className="Postform"><b>Dated: </b>{date}</h6>
-                                        <br></br>
-                                        <h6 className="Postform"><b>ALPINE INFRAPROJECTS PVT LTD</b></h6>
-                                        <h6 className="Postform">PLOT NO. D-16, SECTOR-1, G.NOIDA WEST</h6>
-                                        <h6 className="Postform"><b>Email: </b>alpineinfraprojects@gmail.com</h6>
-                                        <h6 className="Postform"><b>Web: </b>www.aigroyal.in</h6>
-                                        <h6 className="Postform"><b>State: </b>Uttar Pradesh</h6>
-                                        <h6 className="Postform"><b>State Code: </b>09</h6>
-                                    </div>
-                            </Paper>
+                            <div className="Postform">
+                                <h6 className="Postform"><b>Dated: </b>{date}</h6>
+                                <br></br>
+                                <h6 className="Postform"><b>ALPINE INFRAPROJECTS PVT LTD</b></h6>
+                                <h6 className="Postform">PLOT NO. D-16, SECTOR-1, G.NOIDA WEST</h6>
+                                <h6 className="Postform"><b>Email: </b>alpineinfraprojects@gmail.com</h6>
+                                <h6 className="Postform"><b>Web: </b>www.aigroyal.in</h6>
+                                <h6 className="Postform"><b>State: </b>Uttar Pradesh</h6>
+                                <h6 className="Postform"><b>State Code: </b>09</h6>
+                            </div>
                         </Grid>
                         <StatementSubject value={unit_no} value2={tower} value3='Demand' />
                         <Grid item xs={12}>

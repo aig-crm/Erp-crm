@@ -73,32 +73,32 @@ function CancelBookings(props) {
                             </thead>
                             <tbody className="table">
                                 {result.map((res) =>
-                                        <tr className="table" style={{ backgroundColor: "#FFFDD0" }}>
-                                            <td>{res.tower}</td>
-                                            <td>{res.booking_date}</td>
-                                            <td>{res.unit_no}</td>
-                                            <td>{res.area_sqft}</td>
-                                            <td>{res.applicant_name}</td>
-                                            <td>{res.applicant_mob_no}</td>
-                                            <td>{res.applicant_email}</td>
-                                            <td>{res.coapplicant_name}</td>
-                                            <td>{res.coapplicant_mob_no}</td>
-                                            <td>{res.coapplicant_email}</td>
-                                            <td>{res.broker}</td>
-                                            <td>{res.plan}</td>
-                                            <td>{res.loan}</td>
-                                            <td>{res.rate}</td>
-                                            <td>{res.nbp}</td>
-                                            <td>{res.gst}</td>
-                                            <td>{res.tbc}</td>
-                                            <td>
-                                                <NavBtn >
-                                                    <NavLink to='/deleteBooking' state={{ tower: (res.tower), booking_date: (res.booking_date), unit_no: (res.unit_no), area_sqft: (res.area_sqft), applicant_name: (res.applicant_name), applicant_mob_no: (res.applicant_mob_no), applicant_email: (res.applicant_email), coapplicant_name: (res.coapplicant_name), coapplicant_mob_no: (res.coapplicant_mob_no), coapplicant_email: (res.coapplicant_email), broker: (res.broker), plan: (res.plan), loan: (res.loan), rate: (res.rate), nbp: (res.nbp), gst: (res.gst), tbc: (res.tbc) }}><b>
-                                                        Cancel</b>
-                                                    </NavLink>
-                                                </NavBtn></td>
-                                        </tr>)
-                                    }
+                                    <tr className="table" style={{ backgroundColor: "#FFFDD0" }}>
+                                        <td>{res.tower}</td>
+                                        <td>{res.booking_date}</td>
+                                        <td>{res.unit_no}</td>
+                                        <td>{res.area_sqft}</td>
+                                        <td>{res.applicant_name}</td>
+                                        <td>{res.applicant_mob_no}</td>
+                                        <td>{res.applicant_email}</td>
+                                        <td>{res.coapplicant_name}</td>
+                                        <td>{res.coapplicant_mob_no}</td>
+                                        <td>{res.coapplicant_email}</td>
+                                        <td>{res.broker}</td>
+                                        <td>{res.plan}</td>
+                                        <td>{res.loan}</td>
+                                        <td>{res.rate}</td>
+                                        <td>{res.nbp}</td>
+                                        <td>{res.gst}</td>
+                                        <td>{res.tbc}</td>
+                                        <td>
+                                            <NavBtn >
+                                                <NavLink to='/deleteBooking' state={{ tower: (res.tower), booking_date: (res.booking_date), unit_no: (res.unit_no), area_sqft: (res.area_sqft), applicant_name: (res.applicant_name), applicant_mob_no: (res.applicant_mob_no), applicant_email: (res.applicant_email), coapplicant_name: (res.coapplicant_name), coapplicant_mob_no: (res.coapplicant_mob_no), coapplicant_email: (res.coapplicant_email), broker: (res.broker), plan: (res.plan), loan: (res.loan), rate: (res.rate), nbp: (res.nbp), gst: (res.gst), tbc: (res.tbc) }}><b>
+                                                    Cancel</b>
+                                                </NavLink>
+                                            </NavBtn></td>
+                                    </tr>)
+                                }
                             </tbody>
                         </table>
                     </PDFExport>

@@ -71,26 +71,26 @@ function CanceledBookings(props) {
                             </thead>
                             <tbody className="table">
                                 {result.map((res) =>
-                                        <tr className="table" style={{ backgroundColor: "#FFFDD0" }}>
-                                            <td>{res.tower}</td>
-                                            <td>{res.booking_date}</td>
-                                            <td>{res.unit_no}</td>
-                                            <td>{res.area_sqft}</td>
-                                            <td>{res.applicant_name}</td>
-                                            <td>{res.applicant_mob_no}</td>
-                                            <td>{res.applicant_email}</td>
-                                            <td>{res.coapplicant_name}</td>
-                                            <td>{res.coapplicant_mob_no}</td>
-                                            <td>{res.coapplicant_email}</td>
-                                            <td>{res.broker}</td>
-                                            <td>{res.plan}</td>
-                                            <td>{res.loan}</td>
-                                            <td>{res.nbp}</td>
-                                            <td>{res.tbc}</td>
-                                            <td>{res.amt}</td>
-                                            <td>{res.remarks}</td>
-                                        </tr>)
-                                    }
+                                    <tr className="table" style={{ backgroundColor: "#FFFDD0" }}>
+                                        <td>{res.tower}</td>
+                                        <td>{res.booking_date}</td>
+                                        <td>{res.unit_no}</td>
+                                        <td>{res.area_sqft}</td>
+                                        <td>{res.applicant_name}</td>
+                                        <td>{res.applicant_mob_no}</td>
+                                        <td>{res.applicant_email}</td>
+                                        <td>{res.coapplicant_name}</td>
+                                        <td>{res.coapplicant_mob_no}</td>
+                                        <td>{res.coapplicant_email}</td>
+                                        <td>{res.broker}</td>
+                                        <td>{res.plan}</td>
+                                        <td>{res.loan}</td>
+                                        <td>{res.nbp}</td>
+                                        <td>{res.tbc}</td>
+                                        <td>{res.amt}</td>
+                                        <td>{res.remarks}</td>
+                                    </tr>)
+                                }
                             </tbody>
                         </table>
                     </PDFExport>

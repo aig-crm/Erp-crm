@@ -27,7 +27,7 @@ function DeleteBooking() {
     const [amt, setamt] = useState("");
     const [remarks, setremarks] = useState("");
 
-    async function register () {
+    async function register() {
         alert("Form submitted for unit - " + (unit_no));
 
         await Api.post("/cancel_booking/" + "'" + (unit_no) + "'", {
@@ -55,16 +55,16 @@ function DeleteBooking() {
         });
 
         await Api.delete("/booking_delete/" + "'" + (unit_no) + "'")
-        .then(() => this.setState({ status: 'Delete successful' }))
-        .catch(error => {
-            console.error('There was an error!', error);
-        });
+            .then(() => this.setState({ status: 'Delete successful' }))
+            .catch(error => {
+                console.error('There was an error!', error);
+            });
 
         await Api.delete("/cpp_delete/" + "'" + (unit_no) + "'")
-        .then(() => this.setState({ status: 'Delete successful' }))
-        .catch(error => {
-            console.error('There was an error!', error);
-        });
+            .then(() => this.setState({ status: 'Delete successful' }))
+            .catch(error => {
+                console.error('There was an error!', error);
+            });
     }
 
     return (

@@ -43,7 +43,7 @@ function Table() {
     function countArray(array) {
         let count = 0;
 
-        for(var i = 0; i < array.length; ++i){
+        for (var i = 0; i < array.length; ++i) {
             count++;
         }
 
@@ -113,17 +113,15 @@ function Table() {
                                 </tr>
                             </thead>
                             <tbody className="table">
-                                {result.map((res) =>
-
-                                    {
-                                        count_unit.push(res.unit_no);
-                                        arr_rate.push(res.rate);
-                                        arr_nbp.push(res.nbp);
-                                        arr_gst.push(res.gst);
-                                        arr_rwgst.push(res.rwgst);
-                                        arr_rwogst.push(res.rwogst);
-                                        arr_balance.push(res.balance)
-                                        return(
+                                {result.map((res) => {
+                                    count_unit.push(res.unit_no);
+                                    arr_rate.push(res.rate);
+                                    arr_nbp.push(res.nbp);
+                                    arr_gst.push(res.gst);
+                                    arr_rwgst.push(res.rwgst);
+                                    arr_rwogst.push(res.rwogst);
+                                    arr_balance.push(res.balance)
+                                    return (
                                         <tr className="table" style={{ backgroundColor: "#FFFDD0" }}>
                                             <td>{res.tower}</td>
                                             <td>{res.booking_date}</td>
@@ -148,33 +146,33 @@ function Table() {
                                             <td>{res.rec_per}</td>
                                             <td>{res.balance}</td>
                                         </tr>)
-                                    }
+                                }
                                 )}
                                 {
                                     <tr className="Postform" style={{ backgroundColor: "#FFFDD0" }}>
-                                    <td>TOTAL</td>
-                                    <td></td>
-                                    <td>{countArray(count_unit)}</td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td>Rs.{sumArray(arr_rate)}</td>
-                                    <td>Rs.{sumArray(arr_nbp)}</td>
-                                    <td>Rs.{sumArray(arr_gst)}</td>
-                                    <td>Rs.{sumArray(arr_nbp) + sumArray(arr_gst)}</td>
-                                    <td>Rs.{sumArray(arr_rwgst)}</td>
-                                    <td>Rs.{sumArray(arr_rwgst)-sumArray(arr_rwogst)}</td>
-                                    <td>Rs.{sumArray(arr_rwogst)}</td>
-                                    <td></td>
-                                    <td>Rs.{sumArray(arr_balance)}</td>
-                                </tr>
+                                        <td>TOTAL</td>
+                                        <td></td>
+                                        <td>{countArray(count_unit)}</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>Rs.{sumArray(arr_rate)}</td>
+                                        <td>Rs.{sumArray(arr_nbp)}</td>
+                                        <td>Rs.{sumArray(arr_gst)}</td>
+                                        <td>Rs.{sumArray(arr_nbp) + sumArray(arr_gst)}</td>
+                                        <td>Rs.{sumArray(arr_rwgst)}</td>
+                                        <td>Rs.{sumArray(arr_rwgst) - sumArray(arr_rwogst)}</td>
+                                        <td>Rs.{sumArray(arr_rwogst)}</td>
+                                        <td></td>
+                                        <td>Rs.{sumArray(arr_balance)}</td>
+                                    </tr>
                                 }
                             </tbody>
                         </table>
