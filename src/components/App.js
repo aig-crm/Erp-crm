@@ -4,6 +4,7 @@ import 'bootstrap';
 import React from 'react';
 import Navbar from './Navbar';
 import Home from './Home';
+import D from './D';
 import C from './C';
 import B from './B';
 import A from './A';
@@ -31,6 +32,14 @@ function App() {
         <Route exact path='/' element={<Home />} >
           <Route exact path='/reports' element={<Reports />} />
           <Route exact path='/bookings' element={<Table />} />
+        </Route>
+        <Route exact path='/D' element={<D value={'D'} />} >
+          <Route exact path='/D/bookingform/' element={<PostForm value={'D'} />} />
+          <Route exact path='/D/applicant/' element={<Applicants value={'D'} />} />
+          <Route exact path='/D/reports' element={<Reports />} />
+          <Route exact path='/D/bookings' element={<Table />} />
+          <Route exact path='/D/CancelBookings' element={<CancelBookings value={'D'} />} />
+          <Route exact path='/D/CanceledBookings' element={<CanceledBookings value={'D'} />} />
         </Route>
         <Route exact path='/C' element={<C value={'C'} />} >
           <Route exact path='/C/bookingform/' element={<PostForm value={'C'} />} />

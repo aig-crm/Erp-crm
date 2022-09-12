@@ -4,6 +4,7 @@
 
 body {
   min-height: 100vh;
+  background-image: url("../assets/bg.jpg");
   width: 100vw;
   background-color: #98bce0;
   display: flex;
@@ -68,7 +69,10 @@ body {
 .table {
   align-items: center;
   font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
-  padding: 10px;
+  padding-top: 10px;
+  padding-bottom: 20px;
+  padding-left: 30px;
+  padding-right: 30px;
   color: black;
   font-size: 10px;
 }

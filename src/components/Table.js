@@ -76,7 +76,7 @@ function Table() {
             <div>
                 <div >
                     <PDFExport pageTemplate={PageTemplate} fileName={fileName()}
-                        paperSize="A1"
+                        paperSize="A0"
                         landscape='true'
                         ref={pdfExportComponent}>
                         <h3 className="mt-3 text-dark"><b><u><center>Booked {tower} tower units sheet</center></u></b></h3>

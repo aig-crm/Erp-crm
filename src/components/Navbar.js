@@ -27,6 +27,9 @@ const Navbar = () => {
 					<NavLink to='/' activeStyle><b>
 						Home</b>
 					</NavLink>
+					<NavLink to='/D' activeStyle><b>
+						D Tower</b>
+					</NavLink>
 					<NavLink to='/C' activeStyle><b>
 						C Tower</b>
 					</NavLink>

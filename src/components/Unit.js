@@ -37,6 +37,8 @@ function Unit() {
     const arr = [];
     const arrRwgst = [];
     const arrRwogst = [];
+    const arrNet_bsp = [];
+    const arrNet_due = [];
 
     const getData = () => {
 
@@ -264,6 +266,105 @@ function Unit() {
                     <React.Fragment>
                         <div className="row">
                             <div>
+                                <h3 className="mt-3 text-dark"><b><u><center>Payment Structure of {from} unit</center></u></b></h3>
+
+                                <table className="table-bordered text-black">
+                                    <thead>
+                                        <tr style={{ backgroundColor: "#0078AA" }}>
+                                            <th className="table">Perticulars</th>
+                                            <th className="table">Due Date</th>
+                                            <th className="table">Net BSP</th>
+                                            <th className="table">CGST</th>
+                                            <th className="table">SGST</th>
+                                            <th className="table">GST</th>
+                                            <th className="table">Net Due Amount</th>
+                                            <th className="table">Received Amount</th>
+                                            <th className="table">Receivable Amount</th>
+                                            <th className="table">ID</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody className="table">
+                                        {currentTableDataDemand2.map((res) =>
+                                            {
+                                                arrNet_due.push(res.net_due)
+                                                arrNet_bsp.push(res.net_bsp)
+                                                return(<tr className="Postform" style={{ backgroundColor: "#FFFDD0" }}>
+                                                <td>{res.description}</td>
+                                                <td>{res.due_date}</td>
+                                                <td>{res.net_bsp}</td>
+                                                <td>{res.cgst}</td>
+                                                <td>{res.sgst}</td>
+                                                <td>{res.gst}</td>
+                                                <td>{res.net_due}</td>
+                                                <td>{res.recieved}</td>
+                                                <td>{res.pending_amount}</td>
+                                                <Link to='/dueDate' state={{ from: (res.id), unit_no: (from), tower: (tower), gst_choice: (gst_choice), interest_value: arr }}>{res.id}</Link>
+                                            </tr>)}
+                                        )}
+                                        {currentTableDataDemand.map((res) =>
+                                            {
+                                                arrNet_due.push(res.net_due)
+                                                arrNet_bsp.push(res.net_bsp)
+                                                return(<tr className="Postform" style={{ backgroundColor: "#FFFDD0" }}>
+                                                <td>{res.description}</td>
+                                                <td>{res.due_date}</td>
+                                                <td>{res.net_bsp}</td>
+                                                <td>{res.cgst}</td>
+                                                <td>{res.sgst}</td>
+                                                <td>{res.gst}</td>
+                                                <td>{res.net_due}</td>
+                                                <td>{res.recieved}</td>
+                                                <td>{res.pending_amount}</td>
+                                                <Link to='/dueDate' state={{ from: (res.id), unit_no: (from), tower: (tower), gst_choice: (gst_choice), interest_value: arr }}>{res.id}</Link>
+                                            </tr>)}
+                                        )}
+                                        {currentTableDataDemand1.map((res) =>
+                                            {
+                                                arrNet_due.push(res.net_due)
+                                                arrNet_bsp.push(res.net_bsp)
+                                                return(<tr className="Postform" style={{ backgroundColor: "#FFFDD0" }}>
+                                                <td>{res.description}</td>
+                                                <td>{res.due_date}</td>
+                                                <td>{res.net_bsp}</td>
+                                                <td>{res.cgst}</td>
+                                                <td>{res.sgst}</td>
+                                                <td>{res.gst}</td>
+                                                <td>{res.net_due}</td>
+                                                <td>{res.recieved}</td>
+                                                <td>{res.pending_amount}</td>
+                                                <Link to='/dueDate' state={{ from: (res.id), unit_no: (from), tower: (tower), gst_choice: (gst_choice), interest_value: arr }}>{res.id}</Link>
+                                            </tr>)}
+                                        )}
+                                        {
+                                            <tr className="Postform" style={{ backgroundColor: "#FFFDD0" }}>
+                                                <td>Total</td>
+                                                <td></td>
+                                                <td>Rs. {sumArray(arrNet_bsp)}</td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td>Rs. {sumArray(arrNet_due)}</td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                                <Pagination
+                                    className="pagination-bar"
+                                    currentPage={currentPage1}
+                                    totalCount={resultDemand.length}
+                                    pageSize={PageSize}
+                                    onPageChange={page => setCurrentPage1(page)}
+                                />
+                            </div>
+                        </div>
+                    </React.Fragment>
+
+                    <React.Fragment>
+                        <div className="row">
+                            <div>
                                 <h3 className="mt-3 text-dark"><b><u><center>Receipts of {from} unit</center></u></b></h3>
 
                                 <table className="table-bordered text-black">
@@ -328,82 +429,6 @@ function Unit() {
                                     totalCount={result.length + result2.length}
                                     pageSize={PageSize}
                                     onPageChange={page => setCurrentPage(page)}
-                                />
-                            </div>
-                        </div>
-                    </React.Fragment>
-
-                    <React.Fragment>
-                        <div className="row">
-                            <div>
-                                <h3 className="mt-3 text-dark"><b><u><center>Payment Structure of {from} unit</center></u></b></h3>
-
-                                <table className="table-bordered text-black">
-                                    <thead>
-                                        <tr style={{ backgroundColor: "#0078AA" }}>
-                                            <th className="table">Perticulars</th>
-                                            <th className="table">Due Date</th>
-                                            <th className="table">Net BSP</th>
-                                            <th className="table">CGST</th>
-                                            <th className="table">SGST</th>
-                                            <th className="table">GST</th>
-                                            <th className="table">Net Due Amount</th>
-                                            <th className="table">Received Amount</th>
-                                            <th className="table">Receivable Amount</th>
-                                            <th className="table">ID</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody className="table">
-                                        {currentTableDataDemand2.map((res) =>
-                                            <tr className="Postform" style={{ backgroundColor: "#FFFDD0" }}>
-                                                <td>{res.description}</td>
-                                                <td>{res.due_date}</td>
-                                                <td>{res.net_bsp}</td>
-                                                <td>{res.cgst}</td>
-                                                <td>{res.sgst}</td>
-                                                <td>{res.gst}</td>
-                                                <td>{res.net_due}</td>
-                                                <td>{res.recieved}</td>
-                                                <td>{res.pending_amount}</td>
-                                                <Link to='/dueDate' state={{ from: (res.id), unit_no: (from), tower: (tower), gst_choice: (gst_choice), interest_value: arr }}>{res.id}</Link>
-                                            </tr>
-                                        )}
-                                        {currentTableDataDemand.map((res) =>
-                                            <tr className="Postform" style={{ backgroundColor: "#FFFDD0" }}>
-                                                <td>{res.description}</td>
-                                                <td>{res.due_date}</td>
-                                                <td>{res.net_bsp}</td>
-                                                <td>{res.cgst}</td>
-                                                <td>{res.sgst}</td>
-                                                <td>{res.gst}</td>
-                                                <td>{res.net_due}</td>
-                                                <td>{res.recieved}</td>
-                                                <td>{res.pending_amount}</td>
-                                                <Link to='/dueDate' state={{ from: (res.id), unit_no: (from), tower: (tower), gst_choice: (gst_choice), interest_value: arr }}>{res.id}</Link>
-                                            </tr>
-                                        )}
-                                        {currentTableDataDemand1.map((res) =>
-                                            <tr className="Postform" style={{ backgroundColor: "#FFFDD0" }}>
-                                                <td>{res.description}</td>
-                                                <td>{res.due_date}</td>
-                                                <td>{res.net_bsp}</td>
-                                                <td>{res.cgst}</td>
-                                                <td>{res.sgst}</td>
-                                                <td>{res.gst}</td>
-                                                <td>{res.net_due}</td>
-                                                <td>{res.recieved}</td>
-                                                <td>{res.pending_amount}</td>
-                                                <Link to='/dueDate' state={{ from: (res.id), unit_no: (from), tower: (tower), gst_choice: (gst_choice), interest_value: arr }}>{res.id}</Link>
-                                            </tr>
-                                        )}
-                                    </tbody>
-                                </table>
-                                <Pagination
-                                    className="pagination-bar"
-                                    currentPage={currentPage1}
-                                    totalCount={resultDemand.length}
-                                    pageSize={PageSize}
-                                    onPageChange={page => setCurrentPage1(page)}
                                 />
                             </div>
                         </div>
@@ -574,6 +599,90 @@ function Unit() {
                     <React.Fragment>
                         <div className="row">
                             <div>
+                                <h3 className="mt-3 text-dark"><b><u><center>Payment Structure of {from} unit</center></u></b></h3>
+
+                                <table className="table-bordered text-black">
+                                    <thead>
+                                        <tr style={{ backgroundColor: "#0078AA" }}>
+                                            <th className="table">Perticulars</th>
+                                            <th className="table">Due Date</th>
+                                            <th className="table">Net BSP</th>
+                                            <th className="table">Due Amount</th>
+                                            <th className="table">Received Amount</th>
+                                            <th className="table">Receivable Amount</th>
+                                            <th className="table">ID</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody className="table">
+                                        {currentTableDataDemand2.map((res) =>
+                                            {
+                                                arrNet_due.push(res.net_due)
+                                                arrNet_bsp.push(res.net_due)
+                                                return(<tr className="Postform" style={{ backgroundColor: "#FFFDD0" }}>
+                                                <td>{res.description}</td>
+                                                <td>{res.due_date}</td>
+                                                <td>{res.net_due}</td>
+                                                <td>{res.net_due}</td>
+                                                <td>{res.recieved}</td>
+                                                <td>{res.pending_amount}</td>
+                                                <Link to='/dueDate' state={{ from: (res.id), unit_no: (from), tower: (tower), gst_choice: (gst_choice), interest_value: arr }}>{res.id}</Link>
+                                            </tr>)}
+                                        )}
+                                        {currentTableDataDemand.map((res) =>
+                                            {
+                                                arrNet_due.push(res.net_due)
+                                                arrNet_bsp.push(res.net_due)
+                                                return(<tr className="Postform" style={{ backgroundColor: "#FFFDD0" }}>
+                                                <td>{res.description}</td>
+                                                <td>{res.due_date}</td>
+                                                <td>{res.net_due}</td>
+                                                <td>{res.net_due}</td>
+                                                <td>{res.recieved}</td>
+                                                <td>{res.pending_amount}</td>
+                                                <Link to='/dueDate' state={{ from: (res.id), unit_no: (from), tower: (tower), gst_choice: (gst_choice), interest_value: arr }}>{res.id}</Link>
+                                            </tr>)}
+                                        )}
+                                        {currentTableDataDemand1.map((res) =>
+                                            {
+                                                arrNet_due.push(res.net_due)
+                                                arrNet_bsp.push(res.due)
+                                                return(<tr className="Postform" style={{ backgroundColor: "#FFFDD0" }}>
+                                                <td>{res.description}</td>
+                                                <td>{res.due_date}</td>
+                                                <td>{res.due}</td>
+                                                <td>{res.net_due}</td>
+                                                <td>{res.recieved}</td>
+                                                <td>{res.pending_amount}</td>
+                                                <Link to='/dueDate' state={{ from: (res.id), unit_no: (from), tower: (tower), gst_choice: (gst_choice), interest_value: arr }}>{res.id}</Link>
+                                            </tr>)}
+                                        )}
+                                        {
+                                            <tr className="Postform" style={{ backgroundColor: "#FFFDD0" }}>
+                                                <td>Total</td>
+                                                <td></td>
+                                                <td>Rs. {sumArray(arrNet_bsp)}</td>
+                                                <td>Rs. {sumArray(arrNet_due)}</td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                                <Pagination
+                                    className="pagination-bar"
+                                    currentPage={currentPage1}
+                                    totalCount={resultDemand.length}
+                                    pageSize={PageSize}
+                                    onPageChange={page => setCurrentPage1(page)}
+                                />
+                            </div>
+                        </div>
+                    </React.Fragment>
+
+                    <React.Fragment>
+                        <div className="row">
+                            <div>
                                 <h3 className="mt-3 text-dark"><b><u><center>Receipts of {from} unit</center></u></b></h3>
 
                                 <table className="table-bordered text-black">
@@ -638,70 +747,6 @@ function Unit() {
                                     totalCount={result.length + result2.length}
                                     pageSize={PageSize}
                                     onPageChange={page => setCurrentPage(page)}
-                                />
-                            </div>
-                        </div>
-                    </React.Fragment>
-
-                    <React.Fragment>
-                        <div className="row">
-                            <div>
-                                <h3 className="mt-3 text-dark"><b><u><center>Payment Structure of {from} unit</center></u></b></h3>
-
-                                <table className="table-bordered text-black">
-                                    <thead>
-                                        <tr style={{ backgroundColor: "#0078AA" }}>
-                                            <th className="table">Perticulars</th>
-                                            <th className="table">Due Date</th>
-                                            <th className="table">Net BSP</th>
-                                            <th className="table">Due Amount</th>
-                                            <th className="table">Received Amount</th>
-                                            <th className="table">Receivable Amount</th>
-                                            <th className="table">ID</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody className="table">
-                                        {currentTableDataDemand2.map((res) =>
-                                            <tr className="Postform" style={{ backgroundColor: "#FFFDD0" }}>
-                                                <td>{res.description}</td>
-                                                <td>{res.due_date}</td>
-                                                <td>{res.net_due}</td>
-                                                <td>{res.net_due}</td>
-                                                <td>{res.recieved}</td>
-                                                <td>{res.pending_amount}</td>
-                                                <Link to='/dueDate' state={{ from: (res.id), unit_no: (from), tower: (tower), gst_choice: (gst_choice), interest_value: arr }}>{res.id}</Link>
-                                            </tr>
-                                        )}
-                                        {currentTableDataDemand.map((res) =>
-                                            <tr className="Postform" style={{ backgroundColor: "#FFFDD0" }}>
-                                                <td>{res.description}</td>
-                                                <td>{res.due_date}</td>
-                                                <td>{res.net_due}</td>
-                                                <td>{res.net_due}</td>
-                                                <td>{res.recieved}</td>
-                                                <td>{res.pending_amount}</td>
-                                                <Link to='/dueDate' state={{ from: (res.id), unit_no: (from), tower: (tower), gst_choice: (gst_choice), interest_value: arr }}>{res.id}</Link>
-                                            </tr>
-                                        )}
-                                        {currentTableDataDemand1.map((res) =>
-                                            <tr className="Postform" style={{ backgroundColor: "#FFFDD0" }}>
-                                                <td>{res.description}</td>
-                                                <td>{res.due_date}</td>
-                                                <td>{res.due}</td>
-                                                <td>{res.net_due}</td>
-                                                <td>{res.recieved}</td>
-                                                <td>{res.pending_amount}</td>
-                                                <Link to='/dueDate' state={{ from: (res.id), unit_no: (from), tower: (tower), gst_choice: (gst_choice), interest_value: arr }}>{res.id}</Link>
-                                            </tr>
-                                        )}
-                                    </tbody>
-                                </table>
-                                <Pagination
-                                    className="pagination-bar"
-                                    currentPage={currentPage1}
-                                    totalCount={resultDemand.length}
-                                    pageSize={PageSize}
-                                    onPageChange={page => setCurrentPage1(page)}
                                 />
                             </div>
                         </div>
