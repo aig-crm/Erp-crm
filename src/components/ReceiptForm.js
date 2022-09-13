@@ -7,6 +7,7 @@ function ReceiptForm() {
 
     const location = useLocation();
     const { unit_no } = location.state;
+    const { tower } = location.state;
 
     const [paymode, setpaymode] = useState("");
     const [date, setdate] = useState("");
@@ -71,7 +72,7 @@ function ReceiptForm() {
                     <label className="Postform"><b>Received gst amt: {rwgst * 0.05}</b></label>
                 </div>
                 <NavBtn onClick={register}>
-                    <NavBtnLink to='/'><b>Submit</b></NavBtnLink>
+                    <NavBtnLink to='/unit' state={{ from: (unit_no), tower: (tower) }}><b>Submit</b></NavBtnLink>
                 </NavBtn>
             </div>
 

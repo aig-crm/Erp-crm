@@ -12,6 +12,7 @@ function ReceiptEdit() {
     const { rwgst } = location.state;
     const { receipt_no } = location.state;
     const { unit_no } = location.state;
+    const { tower } = location.state;
 
     const [new_paymode, setnew_paymode] = useState("");
     const [new_bn, setnew_bn] = useState("");
@@ -77,11 +78,11 @@ function ReceiptEdit() {
                         }} required />
                 </div>
                 <NavBtn onClick={register}>
-                    <NavBtnLink to='/'><b>Submit Edited Receipt</b></NavBtnLink>
+                    <NavBtnLink to='/unit' state={{ from: (unit_no), tower: (tower) }}><b>Submit Edited Receipt</b></NavBtnLink>
                 </NavBtn>
                 <br />
                 <NavBtn onClick={deletereceipt}>
-                    <NavBtnLink to='/'><b>Delete Receipt</b></NavBtnLink>
+                    <NavBtnLink to='/unit' state={{ from: (unit_no), tower: (tower) }}><b>Delete Receipt</b></NavBtnLink>
                 </NavBtn>
             </div>
 

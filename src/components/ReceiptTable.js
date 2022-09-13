@@ -7,7 +7,6 @@ import { Link, useLocation } from "react-router-dom";
 import { Grid } from '@material-ui/core';
 import pic1 from '../assets/pic1.jpg';
 import pic2 from '../assets/pic2.png';
-import { NavBtn, NavBtnLink } from "./NavbarElements";
 
 function ReceiptTable() {
 
@@ -139,7 +138,7 @@ function ReceiptTable() {
                                     <td>{res.rwgst}</td>
                                     <td>{res.rwogst}</td>
                                     <td>{res.rgst}</td>
-                                    <Link to='/receiptEdit' state={{ date: (res.date), payment_mode: (res.payment_mode), bank_name: (res.bank_name), rwgst: (res.rwgst), rwogst: (res.rwogst), rgst: (res.rgst), receipt_no: (res.receipt_no), unit_no: (unit_no) }}>{res.receipt_no}</Link>
+                                    <Link to='/receiptEdit' state={{ date: (res.date), payment_mode: (res.payment_mode), bank_name: (res.bank_name), rwgst: (res.rwgst), rwogst: (res.rwogst), rgst: (res.rgst), receipt_no: (res.receipt_no), unit_no: (unit_no), tower: (tower) }}>{res.receipt_no}</Link>
                                     <td style={{ backgroundColor: "#c61a09" }}>{res.status}</td>
                                 </tr>
                             )}
