@@ -45,7 +45,7 @@ function CanceledBookings(props) {
                         paperSize="A1"
                         landscape='true'
                         ref={pdfExportComponent}>
-                        <h3 className="mt-3 text-dark"><b><u><center>Booked {props.value} tower units sheet</center></u></b></h3>
+                        <h3 className="mt-3 text-dark"><b><u><center>Cancelled {props.value} tower units sheet</center></u></b></h3>
 
                         <table className="table-bordered text-black">
                             <thead>

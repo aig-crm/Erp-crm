@@ -6,17 +6,7 @@ import { NavBtn, NavLink } from "./NavbarElements";
 
 function CancelBookings(props) {
 
-    const pdfExportComponent = React.useRef();
-
     const [result, setResult] = useState([]);
-
-    const fileName = () => {
-        if (props.value != null) {
-            return (props.value) + '-tower all bookings.pdf';
-        } else {
-            return 'all bookings.pdf';
-        }
-    }
 
     const getData = () => {
 
@@ -42,10 +32,6 @@ function CancelBookings(props) {
         <React.Fragment>
             <div>
                 <div >
-                    <PDFExport pageTemplate={PageTemplate} fileName={fileName()}
-                        paperSize="A1"
-                        landscape='true'
-                        ref={pdfExportComponent}>
                         <h3 className="mt-3 text-dark"><b><u><center>Booked {props.value} tower units sheet</center></u></b></h3>
 
                         <table className="table-bordered text-black">
@@ -101,17 +87,7 @@ function CancelBookings(props) {
                                 }
                             </tbody>
                         </table>
-                    </PDFExport>
                 </div>
-                <button
-                    className='applicant' style={{ backgroundColor: "#3AB4F2" }}
-                    onClick={() => {
-                        if (pdfExportComponent.current) {
-                            pdfExportComponent.current.save();
-                        }
-                    }}
-                ><b><u>Export PDF</u></b>
-                </button>
             </div>
         </React.Fragment>
     );
