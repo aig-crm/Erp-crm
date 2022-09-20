@@ -462,10 +462,10 @@ function Unit() {
                                                 return (<tr className="Postform" style={{ backgroundColor: "#FFFDD0" }}>
                                                     <td>{res.description}</td>
                                                     <td>{res.due_date}</td>
-                                                    <td>{res.due_amt}</td>
+                                                    <td>{parseInt(res.due_amt)*100/105}</td>
                                                     <td>{res.received_amt}</td>
                                                     <td>{res.received_date}</td>
-                                                    <td>{parseInt(res.due_amt) - parseInt(res.received_amt)}</td>
+                                                    <td>{parseInt(parseInt(res.due_amt)*100/105) - parseInt(res.received_amt)}</td>
                                                     <td>{getDifferenceInDays(new Date(res.due_date), new Date(res.received_date))}</td>
                                                     <td>0</td>
                                                     <td>{getDifferenceInDays(new Date(res.due_date), new Date(res.received_date))}</td>
@@ -473,20 +473,20 @@ function Unit() {
                                                     <td>0</td>
                                                 </tr>)
                                             }
-                                            else if (parseInt(res.due_amt) < parseInt(res.received_amt) && getDifferenceInDays(new Date(res.due_date), new Date(res.received_date)) > 0) {
-                                                arr.push(Math.round(res.due_amt * getDifferenceInDays(new Date(res.due_date), new Date(res.received_date)) * 0.1 / 365))
+                                            else if (parseInt(parseInt(res.due_amt)*100/105) < parseInt(res.received_amt) && getDifferenceInDays(new Date(res.due_date), new Date(res.received_date)) > 0) {
+                                                arr.push(Math.round((parseInt(res.due_amt)*100/105) * getDifferenceInDays(new Date(res.due_date), new Date(res.received_date)) * 0.1 / 365))
                                                 return (<tr className="Postform" style={{ backgroundColor: "#FFFDD0" }}>
                                                     <td>{res.description}</td>
                                                     <td>{res.due_date}</td>
-                                                    <td>{res.due_amt}</td>
+                                                    <td>{parseInt(res.due_amt)*100/105}</td>
                                                     <td>{res.received_amt}</td>
                                                     <td>{res.received_date}</td>
-                                                    <td>{parseInt(res.due_amt) - parseInt(res.received_amt)}</td>
+                                                    <td>{parseInt(parseInt(res.due_amt)*100/105) - parseInt(res.received_amt)}</td>
                                                     <td>{getDifferenceInDays(new Date(res.due_date), new Date(res.received_date))}</td>
                                                     <td>0</td>
                                                     <td>{getDifferenceInDays(new Date(res.due_date), new Date(res.received_date))}</td>
                                                     <td>10</td>
-                                                    <td>{Math.round(res.due_amt * getDifferenceInDays(new Date(res.due_date), new Date(res.received_date)) * 0.1 / 365)}</td>
+                                                    <td>{Math.round((parseInt(res.due_amt)*100/105) * getDifferenceInDays(new Date(res.due_date), new Date(res.received_date)) * 0.1 / 365)}</td>
                                                 </tr>)
                                             } else if ((res.due_date === '')) {
                                                 return (<tr className="Postform" style={{ backgroundColor: "#FFFDD0" }}>
@@ -502,10 +502,10 @@ function Unit() {
                                                 return (<tr className="Postform" style={{ backgroundColor: "#FFFDD0" }}>
                                                     <td>{res.description}</td>
                                                     <td>{res.due_date}</td>
-                                                    <td>{res.due_amt}</td>
+                                                    <td>{(parseInt(res.due_amt)*100/105)}</td>
                                                     <td>{res.received_amt}</td>
                                                     <td>{res.received_date}</td>
-                                                    <td>{parseInt(res.due_amt) - parseInt(res.received_amt)}</td>
+                                                    <td>{parseInt(parseInt(res.due_amt)*100/105) - parseInt(res.received_amt)}</td>
                                                     <td>{getDifferenceInDays(new Date(res.due_date), new Date(res.received_date))}</td>
                                                     <td>0</td>
                                                     <td>{getDifferenceInDays(new Date(res.due_date), new Date(res.received_date))}</td>
