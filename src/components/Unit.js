@@ -383,14 +383,14 @@ function Unit() {
                                     <tbody className="table">
                                         {currentTableData.map((res) => {
                                             arrRwgst.push(res.rwgst)
-                                            arrRwogst.push(res.rwogst)
+                                            arrRwogst.push(Math.round((res.rwgst)*100/105))
                                             return (<tr className="Postform" style={{ backgroundColor: "#FFFDD0" }}>
                                                 <td>{res.date}</td>
                                                 <td>{res.payment_mode}</td>
                                                 <td>{res.bank_name}</td>
                                                 <td>{res.rwgst}</td>
-                                                <td>{res.rwogst}</td>
-                                                <td>{res.rgst}</td>
+                                                <td>{Math.round((res.rwgst)*100/105)}</td>
+                                                <td>{Math.round(res.rwgst-(res.rwgst)*100/105)}</td>
                                                 <td>{res.receipt_no}</td>
                                                 <td>{res.status}</td>
                                             </tr>)
@@ -398,14 +398,14 @@ function Unit() {
                                         )}
                                         {currentTableData2.map((res) => {
                                             arrRwgst.push(res.rwgst)
-                                            arrRwogst.push(res.rwogst)
+                                            arrRwogst.push(Math.round((res.rwgst)*100/105))
                                             return (<tr className="Postform" style={{ backgroundColor: "#FFFDD0" }}>
                                                 <td>{res.date}</td>
                                                 <td>{res.payment_mode}</td>
                                                 <td>{res.bank_name}</td>
                                                 <td>{res.rwgst}</td>
-                                                <td>{res.rwogst}</td>
-                                                <td>{res.rgst}</td>
+                                                <td>{Math.round((res.rwgst)*100/105)}</td>
+                                                <td>{Math.round(res.rwgst-(res.rwgst)*100/105)}</td>
                                                 <td>{res.receipt_no}</td>
                                                 <td style={{ backgroundColor: "#c61a09" }}>{res.status}</td>
                                             </tr>)
@@ -462,10 +462,10 @@ function Unit() {
                                                 return (<tr className="Postform" style={{ backgroundColor: "#FFFDD0" }}>
                                                     <td>{res.description}</td>
                                                     <td>{res.due_date}</td>
-                                                    <td>{parseInt(res.due_amt)*100/105}</td>
-                                                    <td>{res.received_amt}</td>
+                                                    <td>{Math.round(parseInt(res.due_amt)*100/105)}</td>
+                                                    <td>{Math.round(parseInt(res.received_amt)*100/105)}</td>
                                                     <td>{res.received_date}</td>
-                                                    <td>{parseInt(parseInt(res.due_amt)*100/105) - parseInt(res.received_amt)}</td>
+                                                    <td>{Math.round((parseInt(res.due_amt)*100/105) - (parseInt(res.received_amt)*100/105))}</td>
                                                     <td>{getDifferenceInDays(new Date(res.due_date), new Date(res.received_date))}</td>
                                                     <td>0</td>
                                                     <td>{getDifferenceInDays(new Date(res.due_date), new Date(res.received_date))}</td>
@@ -473,15 +473,15 @@ function Unit() {
                                                     <td>0</td>
                                                 </tr>)
                                             }
-                                            else if (parseInt(parseInt(res.due_amt)*100/105) < parseInt(res.received_amt) && getDifferenceInDays(new Date(res.due_date), new Date(res.received_date)) > 0) {
+                                            else if (parseInt(parseInt(res.due_amt)*100/105) < (parseInt(res.received_amt)*100/105) && getDifferenceInDays(new Date(res.due_date), new Date(res.received_date)) > 0) {
                                                 arr.push(Math.round((parseInt(res.due_amt)*100/105) * getDifferenceInDays(new Date(res.due_date), new Date(res.received_date)) * 0.1 / 365))
                                                 return (<tr className="Postform" style={{ backgroundColor: "#FFFDD0" }}>
                                                     <td>{res.description}</td>
                                                     <td>{res.due_date}</td>
-                                                    <td>{parseInt(res.due_amt)*100/105}</td>
-                                                    <td>{res.received_amt}</td>
+                                                    <td>{Math.round(parseInt(res.due_amt)*100/105)}</td>
+                                                    <td>{Math.round(parseInt(res.received_amt)*100/105)}</td>
                                                     <td>{res.received_date}</td>
-                                                    <td>{parseInt(parseInt(res.due_amt)*100/105) - parseInt(res.received_amt)}</td>
+                                                    <td>{Math.round((parseInt(res.due_amt)*100/105) - (parseInt(res.received_amt)*100/105))}</td>
                                                     <td>{getDifferenceInDays(new Date(res.due_date), new Date(res.received_date))}</td>
                                                     <td>0</td>
                                                     <td>{getDifferenceInDays(new Date(res.due_date), new Date(res.received_date))}</td>
@@ -498,19 +498,19 @@ function Unit() {
                                                 </tr>)
                                             }
                                             else {
-                                                arr.push(Math.round(res.received_amt * getDifferenceInDays(new Date(res.due_date), new Date(res.received_date)) * 0.1 / 365))
+                                                arr.push(Math.round((parseInt(res.received_amt)*100/105) * getDifferenceInDays(new Date(res.due_date), new Date(res.received_date)) * 0.1 / 365))
                                                 return (<tr className="Postform" style={{ backgroundColor: "#FFFDD0" }}>
                                                     <td>{res.description}</td>
                                                     <td>{res.due_date}</td>
-                                                    <td>{(parseInt(res.due_amt)*100/105)}</td>
-                                                    <td>{res.received_amt}</td>
+                                                    <td>{Math.round(parseInt(res.due_amt)*100/105)}</td>
+                                                    <td>{Math.round(parseInt(res.received_amt)*100/105)}</td>
                                                     <td>{res.received_date}</td>
-                                                    <td>{parseInt(parseInt(res.due_amt)*100/105) - parseInt(res.received_amt)}</td>
+                                                    <td>{Math.round((parseInt(res.due_amt)*100/105) - (parseInt(res.received_amt)*100/105))}</td>
                                                     <td>{getDifferenceInDays(new Date(res.due_date), new Date(res.received_date))}</td>
                                                     <td>0</td>
                                                     <td>{getDifferenceInDays(new Date(res.due_date), new Date(res.received_date))}</td>
                                                     <td>10</td>
-                                                    <td>{Math.round(res.received_amt * getDifferenceInDays(new Date(res.due_date), new Date(res.received_date)) * 0.1 / 365)}</td>
+                                                    <td>{Math.round(parseInt(res.received_amt)*100/105 * getDifferenceInDays(new Date(res.due_date), new Date(res.received_date)) * 0.1 / 365)}</td>
                                                 </tr>)
                                             }
                                         }
@@ -547,7 +547,7 @@ function Unit() {
                     </React.Fragment>
 
                 </PDFExport>
-                <Link to='/receipt' state={{ unit_no: (from), tower: (tower) }} className='applicant' style={{ backgroundColor: "#3AB4F2" }}><b>See Receipt Report</b></Link>
+                <Link to='/receipt' state={{ unit_no: (from), tower: (tower), gst_choice: (gst_choice) }} className='applicant' style={{ backgroundColor: "#3AB4F2" }}><b>See Receipt Report</b></Link>
                 <Link to='/reportD' state={{ unit_no: (from), tower: (tower), gst_choice: (gst_choice) }} className='applicant' style={{ backgroundColor: "#3AB4F2" }}><b>See Demand Report</b></Link>
                 <Link to='/addReceipt' state={{ unit_no: (from), tower: (tower) }} className='applicant' style={{ backgroundColor: "#3AB4F2" }}><b>Add Receipt</b></Link>
 
@@ -865,7 +865,7 @@ function Unit() {
                     </React.Fragment>
 
                 </PDFExport>
-                <Link to='/receipt' state={{ unit_no: (from), tower: (tower) }} className='applicant' style={{ backgroundColor: "#3AB4F2" }}><b>See Receipt Report</b></Link>
+                <Link to='/receipt' state={{ unit_no: (from), tower: (tower), gst_choice: (gst_choice) }} className='applicant' style={{ backgroundColor: "#3AB4F2" }}><b>See Receipt Report</b></Link>
                 <Link to='/reportD' state={{ unit_no: (from), tower: (tower), gst_choice: (gst_choice) }} className='applicant' style={{ backgroundColor: "#3AB4F2" }}><b>See Demand Report</b></Link>
                 <Link to='/addReceipt' state={{ unit_no: (from), tower: (tower) }} className='applicant' style={{ backgroundColor: "#3AB4F2" }}><b>Add Receipt</b></Link>
 
