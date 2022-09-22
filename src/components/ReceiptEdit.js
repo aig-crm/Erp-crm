@@ -78,11 +78,11 @@ function ReceiptEdit() {
                         }} required />
                 </div>
                 <NavBtn onClick={register}>
-                    <NavBtnLink to='/unit' state={{ from: (unit_no), tower: (tower) }}><b>Submit Edited Receipt</b></NavBtnLink>
+                    <NavBtnLink to='/' ><b>Submit Edited Receipt</b></NavBtnLink>
                 </NavBtn>
                 <br />
                 <NavBtn onClick={deletereceipt}>
-                    <NavBtnLink to='/unit' state={{ from: (unit_no), tower: (tower) }}><b>Delete Receipt</b></NavBtnLink>
+                    <NavBtnLink to='/' ><b>Delete Receipt</b></NavBtnLink>
                 </NavBtn>
             </div>
 

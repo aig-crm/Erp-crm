@@ -92,135 +92,149 @@ function ReceiptTable() {
         }
     };
 
-    if(gst_choice === 'Excld GST'){
-        return(
+    if (gst_choice === 'Excld GST') {
+        return (
             <React.Fragment>
-                        <div className="row">
-                            <div>
-                                <h3 className="mt-3 text-dark"><b><u><center>Receipts of {unit_no} unit</center></u></b></h3>
+                <div className="row">
+                    <div>
+                        <h3 className="mt-3 text-dark"><b><u><center>Receipts of {unit_no} unit</center></u></b></h3>
 
-                                <table className="table-bordered text-black">
-                                    <thead>
-                                        <tr style={{ backgroundColor: "#0078AA" }}>
-                                            <th className="table">Date</th>
-                                            <th className="table">Payment Mode</th>
-                                            <th className="table">Bank Name</th>
-                                            <th className="table">Amt. Received with GST</th>
-                                            <th className="table">Amt. Received without GST</th>
-                                            <th className="table">Received GST</th>
-                                            <th className="table">Receipt No.</th>
-                                            <th className="table">Status</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody className="table">
-                                        {currentTableData.map((res) => {
-                                            return (<tr className="Postform" style={{ backgroundColor: "#FFFDD0" }}>
-                                                <td>{res.date}</td>
-                                                <td>{res.payment_mode}</td>
-                                                <td>{res.bank_name}</td>
-                                                <td>{res.rwgst}</td>
-                                                <td>{Math.round((res.rwgst)*100/105)}</td>
-                                                <td>{Math.round(res.rwgst-(res.rwgst)*100/105)}</td>
-                                                <td>{res.receipt_no}</td>
-                                                <td>{res.status}</td>
-                                            </tr>)
-                                        }
-                                        )}
-                                        {currentTableData2.map((res) => {
-                                            return (<tr className="Postform" style={{ backgroundColor: "#FFFDD0" }}>
-                                                <td>{res.date}</td>
-                                                <td>{res.payment_mode}</td>
-                                                <td>{res.bank_name}</td>
-                                                <td>{res.rwgst}</td>
-                                                <td>{Math.round((res.rwgst)*100/105)}</td>
-                                                <td>{Math.round(res.rwgst-(res.rwgst)*100/105)}</td>
-                                                <td>{res.receipt_no}</td>
-                                                <td style={{ backgroundColor: "#c61a09" }}>{res.status}</td>
-                                            </tr>)
-                                        }
-                                        )}
-                                    </tbody>
-                                </table>
-                                <Pagination
-                                    className="pagination-bar"
-                                    currentPage={currentPage}
-                                    totalCount={result.length + result2.length}
-                                    pageSize={PageSize}
-                                    onPageChange={page => setCurrentPage(page)}
-                                />
-                            </div>
-                        </div>
-                    </React.Fragment>
+                        <table className="table-bordered text-black">
+                            <thead>
+                                <tr style={{ backgroundColor: "#0078AA" }}>
+                                    <th className="table">Date</th>
+                                    <th className="table">Payment Mode</th>
+                                    <th className="table">Bank Name</th>
+                                    <th className="table">Amt. Received with GST</th>
+                                    <th className="table">Amt. Received without GST</th>
+                                    <th className="table">Received GST</th>
+                                    <th className="table">Clearing Bank</th>
+                                    <th className="table">Clearing Date</th>
+                                    <th className="table">Receipt No.</th>
+                                    <th className="table">Status</th>
+                                </tr>
+                            </thead>
+                            <tbody className="table">
+                                {currentTableData.map((res) => {
+                                    return (<tr className="Postform" style={{ backgroundColor: "#FFFDD0" }}>
+                                        <td>{res.date}</td>
+                                        <td>{res.payment_mode}</td>
+                                        <td>{res.bank_name}</td>
+                                        <td>{res.rwgst}</td>
+                                        <td>{Math.round((res.rwgst) * 100 / 105)}</td>
+                                        <td>{Math.round(res.rwgst - (res.rwgst) * 100 / 105)}</td>
+                                        <td>{res.clearing_bank}</td>
+                                        <td>{res.clearing_date}</td>
+                                        <td>{res.receipt_no}</td>
+                                        <td>{res.status}</td>
+                                    </tr>)
+                                }
+                                )}
+                                {currentTableData2.map((res) => {
+                                    return (<tr className="Postform" style={{ backgroundColor: "#FFFDD0" }}>
+                                        <td>{res.date}</td>
+                                        <td>{res.payment_mode}</td>
+                                        <td>{res.bank_name}</td>
+                                        <td>{res.rwgst}</td>
+                                        <td>{Math.round((res.rwgst) * 100 / 105)}</td>
+                                        <td>{Math.round(res.rwgst - (res.rwgst) * 100 / 105)}</td>
+                                        <td>{res.clearing_bank}</td>
+                                        <td>{res.clearing_date}</td>
+                                        <Link to='/receiptEdit' state={{ date: (res.date), payment_mode: (res.payment_mode), bank_name: (res.bank_name), rwgst: (res.rwgst), rwogst: (res.rwogst), rgst: (res.rgst), receipt_no: (res.receipt_no), unit_no: (unit_no), tower: (tower) }}>{res.receipt_no}</Link>
+                                        <td style={{ backgroundColor: "#c61a09" }}>{res.status}</td>
+                                    </tr>)
+                                }
+                                )}
+                            </tbody>
+                        </table>
+                        <Pagination
+                            className="pagination-bar"
+                            currentPage={currentPage}
+                            totalCount={result.length + result2.length}
+                            pageSize={PageSize}
+                            onPageChange={page => setCurrentPage(page)}
+                        />
+                    </div>
+                </div>
+            </React.Fragment>
         )
     }
-    else{return (
+    else {
+        return (
 
-        <React.Fragment>
-            <div className='Demand' ref={printRef}>
-                <Grid container spacing={3} className='Postform'>
-                    <Grid item xs={12}>
-                        <img className='img' src={pic1} alt="project" />
-                        <img src={pic2} alt="project2" />
+            <React.Fragment>
+                <div className='Demand' ref={printRef}>
+                    <Grid container spacing={3} className='Postform'>
+                        <Grid item xs={12}>
+                            <img className='img' src={pic1} alt="project" />
+                            <img src={pic2} alt="project2" />
+                        </Grid>
                     </Grid>
-                </Grid>
-                <div >
-                    <h3 className="mt-3 text-dark"><b><u><center>Receipts of {unit_no} unit</center></u></b></h3>
+                    <div >
+                        <h3 className="mt-3 text-dark"><b><u><center>Receipts of {unit_no} unit</center></u></b></h3>
 
-                    <table className="table-bordered text-black">
-                        <thead>
-                            <tr style={{ backgroundColor: "#0078AA" }}>
-                                <th className="table">Date</th>
-                                <th className="table">Payment Mode</th>
-                                <th className="table">Bank Name</th>
-                                <th className="table">Amt. Received with GST</th>
-                                <th className="table">Amt. Received without GST</th>
-                                <th className="table">Received GST</th>
-                                <th className="table">Receipt No.</th>
-                                <th className="table">Status</th>
-                            </tr>
-                        </thead>
-                        <tbody className="table">
-                            {currentTableData.map((res) =>
-                                <tr className="Postform" style={{ backgroundColor: "#FFFDD0" }}>
-                                    <td>{res.date}</td>
-                                    <td>{res.payment_mode}</td>
-                                    <td>{res.bank_name}</td>
-                                    <td>{res.rwgst}</td>
-                                    <td>{res.rwogst}</td>
-                                    <td>{res.rgst}</td>
-                                    <td>{res.receipt_no}</td>
-                                    <td>{res.status}</td>
+                        <table className="table-bordered text-black">
+                            <thead>
+                                <tr style={{ backgroundColor: "#0078AA" }}>
+                                    <th className="table">Date</th>
+                                    <th className="table">Payment Mode</th>
+                                    <th className="table">Bank Name</th>
+                                    <th className="table">Amt. Received with GST</th>
+                                    <th className="table">Amt. Received without GST</th>
+                                    <th className="table">Received GST</th>
+                                    <th className="table">Clearing Bank</th>
+                                    <th className="table">Clearing Date</th>
+                                    <th className="table">Receipt No.</th>
+                                    <th className="table">Status</th>
                                 </tr>
-                            )}
-                            {currentTableData2.map((res) =>
-                                <tr className="Postform" style={{ backgroundColor: "#FFFDD0" }}>
-                                    <td>{res.date}</td>
-                                    <td>{res.payment_mode}</td>
-                                    <td>{res.bank_name}</td>
-                                    <td>{res.rwgst}</td>
-                                    <td>{res.rwogst}</td>
-                                    <td>{res.rgst}</td>
-                                    <Link to='/receiptEdit' state={{ date: (res.date), payment_mode: (res.payment_mode), bank_name: (res.bank_name), rwgst: (res.rwgst), rwogst: (res.rwogst), rgst: (res.rgst), receipt_no: (res.receipt_no), unit_no: (unit_no), tower: (tower) }}>{res.receipt_no}</Link>
-                                    <td style={{ backgroundColor: "#c61a09" }}>{res.status}</td>
-                                </tr>
-                            )}
-                        </tbody>
-                    </table>
-                    <Pagination
-                        className="pagination-bar"
-                        currentPage={currentPage}
-                        totalCount={result.length + result2.length}
-                        pageSize={PageSize}
-                        onPageChange={page => setCurrentPage(page)}
-                    />
+                            </thead>
+                            <tbody className="table">
+                                {currentTableData.map((res) =>
+                                    <tr className="Postform" style={{ backgroundColor: "#FFFDD0" }}>
+                                        <td>{res.date}</td>
+                                        <td>{res.payment_mode}</td>
+                                        <td>{res.bank_name}</td>
+                                        <td>{res.rwgst}</td>
+                                        <td>{res.rwogst}</td>
+                                        <td>{res.rgst}</td>
+                                        <td>{res.clearing_bank}</td>
+                                        <td>{res.clearing_date}</td>
+                                        <td>{res.receipt_no}</td>
+                                        <td>{res.status}</td>
+                                    </tr>
+                                )}
+                                {currentTableData2.map((res) =>
+                                    <tr className="Postform" style={{ backgroundColor: "#FFFDD0" }}>
+                                        <td>{res.date}</td>
+                                        <td>{res.payment_mode}</td>
+                                        <td>{res.bank_name}</td>
+                                        <td>{res.rwgst}</td>
+                                        <td>{res.rwogst}</td>
+                                        <td>{res.rgst}</td>
+                                        <td>{res.clearing_bank}</td>
+                                        <td>{res.clearing_date}</td>
+                                        <Link to='/receiptEdit' state={{ date: (res.date), payment_mode: (res.payment_mode), bank_name: (res.bank_name), rwgst: (res.rwgst), rwogst: (res.rwogst), rgst: (res.rgst), receipt_no: (res.receipt_no), unit_no: (unit_no), tower: (tower) }}>{res.receipt_no}</Link>
+                                        <td style={{ backgroundColor: "#c61a09" }}>{res.status}</td>
+                                    </tr>
+                                )}
+                            </tbody>
+                        </table>
+                        <Pagination
+                            className="pagination-bar"
+                            currentPage={currentPage}
+                            totalCount={result.length + result2.length}
+                            pageSize={PageSize}
+                            onPageChange={page => setCurrentPage(page)}
+                        />
 
-                    <button type="button" onClick={handleDownloadPdf}>
-                        Download as PDF
-                    </button>
+                        <button type="button" onClick={handleDownloadPdf}>
+                            Download as PDF
+                        </button>
+                    </div>
                 </div>
-            </div>
-        </React.Fragment>
-    );}
+            </React.Fragment>
+        );
+    }
 }
 
 export default ReceiptTable

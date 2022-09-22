@@ -337,13 +337,13 @@ function Unit() {
                                         )}
                                         {
                                             <tr className="Postform" style={{ backgroundColor: "#FFFDD0" }}>
-                                                <td>Total</td>
+                                                <td><b>Total</b></td>
                                                 <td></td>
-                                                <td>Rs. {sumArray(arrNet_bsp)}</td>
+                                                <td><b>Rs. {sumArray(arrNet_bsp)}</b></td>
                                                 <td></td>
                                                 <td></td>
                                                 <td></td>
-                                                <td>Rs. {sumArray(arrNet_due)}</td>
+                                                <td><b>Rs. {sumArray(arrNet_due)}</b></td>
                                                 <td></td>
                                                 <td></td>
                                                 <td></td>
@@ -376,6 +376,8 @@ function Unit() {
                                             <th className="table">Amt. Received with GST</th>
                                             <th className="table">Amt. Received without GST</th>
                                             <th className="table">Received GST</th>
+                                            <th className="table">Clearing Bank</th>
+                                            <th className="table">Clearing Date</th>
                                             <th className="table">Receipt No.</th>
                                             <th className="table">Status</th>
                                         </tr>
@@ -391,6 +393,8 @@ function Unit() {
                                                 <td>{res.rwgst}</td>
                                                 <td>{Math.round((res.rwgst)*100/105)}</td>
                                                 <td>{Math.round(res.rwgst-(res.rwgst)*100/105)}</td>
+                                                <td>{res.clearing_bank}</td>
+                                                <td>{res.clearing_date}</td>
                                                 <td>{res.receipt_no}</td>
                                                 <td>{res.status}</td>
                                             </tr>)
@@ -406,6 +410,8 @@ function Unit() {
                                                 <td>{res.rwgst}</td>
                                                 <td>{Math.round((res.rwgst)*100/105)}</td>
                                                 <td>{Math.round(res.rwgst-(res.rwgst)*100/105)}</td>
+                                                <td>{res.clearing_bank}</td>
+                                                <td>{res.clearing_date}</td>
                                                 <td>{res.receipt_no}</td>
                                                 <td style={{ backgroundColor: "#c61a09" }}>{res.status}</td>
                                             </tr>)
@@ -418,6 +424,8 @@ function Unit() {
                                             <td className="Postform"><b>Rs.{sumArrayRwgst(arrRwgst)}</b></td>
                                             <td className="Postform"><b>Rs.{sumArrayRwogst(arrRwogst)}</b></td>
                                             <td className="Postform"><b>Rs.{sumArrayRwgst(arrRwgst) - sumArrayRwogst(arrRwogst)}</b></td>
+                                            <td className="Postform"><b></b></td>
+                                            <td className="Postform"><b></b></td>
                                             <td className="Postform"><b></b></td>
                                             <td className="Postform"><b></b></td>
                                         </tr>
@@ -460,17 +468,7 @@ function Unit() {
                                             if (getDifferenceInDays(new Date(res.due_date), new Date(res.received_date)) < 0) {
                                                 arr.push(0)
                                                 return (<tr className="Postform" style={{ backgroundColor: "#FFFDD0" }}>
-                                                    <td>{res.description}</td>
-                                                    <td>{res.due_date}</td>
-                                                    <td>{Math.round(parseInt(res.due_amt)*100/105)}</td>
-                                                    <td>{Math.round(parseInt(res.received_amt)*100/105)}</td>
-                                                    <td>{res.received_date}</td>
-                                                    <td>{Math.round((parseInt(res.due_amt)*100/105) - (parseInt(res.received_amt)*100/105))}</td>
-                                                    <td>{getDifferenceInDays(new Date(res.due_date), new Date(res.received_date))}</td>
-                                                    <td>0</td>
-                                                    <td>{getDifferenceInDays(new Date(res.due_date), new Date(res.received_date))}</td>
-                                                    <td>10</td>
-                                                    <td>0</td>
+
                                                 </tr>)
                                             }
                                             else if (parseInt(parseInt(res.due_amt)*100/105) < (parseInt(res.received_amt)*100/105) && getDifferenceInDays(new Date(res.due_date), new Date(res.received_date)) > 0) {
@@ -658,10 +656,10 @@ function Unit() {
                                         )}
                                         {
                                             <tr className="Postform" style={{ backgroundColor: "#FFFDD0" }}>
-                                                <td>Total</td>
+                                                <td><b>Total</b></td>
                                                 <td></td>
-                                                <td>Rs. {sumArray(arrNet_bsp)}</td>
-                                                <td>Rs. {sumArray(arrNet_due)}</td>
+                                                <td><b>Rs. {sumArray(arrNet_bsp)}</b></td>
+                                                <td><b>Rs. {sumArray(arrNet_due)}</b></td>
                                                 <td></td>
                                                 <td></td>
                                                 <td></td>
@@ -694,6 +692,8 @@ function Unit() {
                                             <th className="table">Amt. Received with GST</th>
                                             <th className="table">Amt. Received without GST</th>
                                             <th className="table">Received GST</th>
+                                            <th className="table">Clearing Bank</th>
+                                            <th className="table">Clearing Date</th>
                                             <th className="table">Receipt No.</th>
                                             <th className="table">Status</th>
                                         </tr>
@@ -709,6 +709,8 @@ function Unit() {
                                                 <td>{res.rwgst}</td>
                                                 <td>{res.rwogst}</td>
                                                 <td>{res.rgst}</td>
+                                                <td>{res.clearing_bank}</td>
+                                                <td>{res.clearing_date}</td>
                                                 <td>{res.receipt_no}</td>
                                                 <td>{res.status}</td>
                                             </tr>)
@@ -724,6 +726,8 @@ function Unit() {
                                                 <td>{res.rwgst}</td>
                                                 <td>{res.rwogst}</td>
                                                 <td>{res.rgst}</td>
+                                                <td>{res.clearing_bank}</td>
+                                                <td>{res.clearing_date}</td>
                                                 <td>{res.receipt_no}</td>
                                                 <td style={{ backgroundColor: "#c61a09" }}>{res.status}</td>
                                             </tr>)
@@ -736,6 +740,8 @@ function Unit() {
                                             <td className="Postform"><b>Rs.{sumArrayRwgst(arrRwgst)}</b></td>
                                             <td className="Postform"><b>Rs.{sumArrayRwogst(arrRwogst)}</b></td>
                                             <td className="Postform"><b>Rs.{sumArrayRwgst(arrRwgst) - sumArrayRwogst(arrRwogst)}</b></td>
+                                            <td className="Postform"><b></b></td>
+                                            <td className="Postform"><b></b></td>
                                             <td className="Postform"><b></b></td>
                                             <td className="Postform"><b></b></td>
                                         </tr>
@@ -778,17 +784,7 @@ function Unit() {
                                             if (getDifferenceInDays(new Date(res.due_date), new Date(res.received_date)) < 0) {
                                                 arr.push(0)
                                                 return (<tr className="Postform" style={{ backgroundColor: "#FFFDD0" }}>
-                                                    <td>{res.description}</td>
-                                                    <td>{res.due_date}</td>
-                                                    <td>{res.due_amt}</td>
-                                                    <td>{res.received_amt}</td>
-                                                    <td>{res.received_date}</td>
-                                                    <td>{parseInt(res.due_amt) - parseInt(res.received_amt)}</td>
-                                                    <td>{getDifferenceInDays(new Date(res.due_date), new Date(res.received_date))}</td>
-                                                    <td>0</td>
-                                                    <td>{getDifferenceInDays(new Date(res.due_date), new Date(res.received_date))}</td>
-                                                    <td>10</td>
-                                                    <td>0</td>
+
                                                 </tr>)
                                             }
                                             else if (parseInt(res.due_amt) < parseInt(res.received_amt) && getDifferenceInDays(new Date(res.due_date), new Date(res.received_date)) > 0) {
