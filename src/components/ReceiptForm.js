@@ -24,7 +24,7 @@ function ReceiptForm() {
             bank_name: bn,
             rwgst: rwgst,
             rgst: rwgst * 0.05,
-            receipt_no: "[" + (unit_no) + "]" + "[" + rwgst + "]" + "[" + Math.round(rwgst * 0.05) + "]"
+            receipt_no: (unit_no) + "-" + Math.random()
         }).then((response) => {
             console.log(response);
         });

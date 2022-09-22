@@ -468,7 +468,17 @@ function Unit() {
                                             if (getDifferenceInDays(new Date(res.due_date), new Date(res.received_date)) < 0) {
                                                 arr.push(0)
                                                 return (<tr className="Postform" style={{ backgroundColor: "#FFFDD0" }}>
-
+                                                    <td>{res.description}</td>
+                                                    <td>{res.due_date}</td>
+                                                    <td>{Math.round(parseInt(res.due_amt)*100/105)}</td>
+                                                    <td>{Math.round(parseInt(res.received_amt)*100/105)}</td>
+                                                    <td>{res.received_date}</td>
+                                                    <td>{Math.round((parseInt(res.due_amt)*100/105) - (parseInt(res.received_amt)*100/105))}</td>
+                                                    <td>{getDifferenceInDays(new Date(res.due_date), new Date(res.received_date))}</td>
+                                                    <td>0</td>
+                                                    <td>{getDifferenceInDays(new Date(res.due_date), new Date(res.received_date))}</td>
+                                                    <td>10</td>
+                                                    <td>0</td>
                                                 </tr>)
                                             }
                                             else if (parseInt(parseInt(res.due_amt)*100/105) < (parseInt(res.received_amt)*100/105) && getDifferenceInDays(new Date(res.due_date), new Date(res.received_date)) > 0) {
@@ -784,7 +794,17 @@ function Unit() {
                                             if (getDifferenceInDays(new Date(res.due_date), new Date(res.received_date)) < 0) {
                                                 arr.push(0)
                                                 return (<tr className="Postform" style={{ backgroundColor: "#FFFDD0" }}>
-
+                                                    <td>{res.description}</td>
+                                                    <td>{res.due_date}</td>
+                                                    <td>{res.due_amt}</td>
+                                                    <td>{res.received_amt}</td>
+                                                    <td>{res.received_date}</td>
+                                                    <td>{parseInt(res.due_amt) - parseInt(res.received_amt)}</td>
+                                                    <td>{getDifferenceInDays(new Date(res.due_date), new Date(res.received_date))}</td>
+                                                    <td>0</td>
+                                                    <td>{getDifferenceInDays(new Date(res.due_date), new Date(res.received_date))}</td>
+                                                    <td>10</td>
+                                                    <td>0</td>
                                                 </tr>)
                                             }
                                             else if (parseInt(res.due_amt) < parseInt(res.received_amt) && getDifferenceInDays(new Date(res.due_date), new Date(res.received_date)) > 0) {
