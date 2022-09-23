@@ -12,6 +12,8 @@ function ReceiptForm() {
     const [paymode, setpaymode] = useState("");
     const [date, setdate] = useState("");
     const [bn, setbn] = useState("");
+    const [bb, setbb] = useState("");
+    const [rn, setrn] = useState("");
     const [rwgst, setrwgst] = useState("");
 
     const register = (e) => {
@@ -22,6 +24,8 @@ function ReceiptForm() {
             payment_mode: paymode,
             date: date,
             bank_name: bn,
+            bank_branch: bb,
+            ref_no: rn,
             rwgst: rwgst,
             rgst: rwgst * 0.05,
             receipt_no: (unit_no) + "-" + Math.random()
@@ -60,6 +64,22 @@ function ReceiptForm() {
                             if (e.target.value === '' || e.target.value === null) {
                                 alert("Form has errors for unit - " + (unit_no));
                             } else { setbn(e.target.value) }
+                        }} required />
+                    <label className="Postform"><b>bank branch:</b></label>
+                    <input
+                        type="text"
+                        onChange={(e) => {
+                            if (e.target.value === '' || e.target.value === null) {
+                                alert("Form has errors for unit - " + (unit_no));
+                            } else { setbb(e.target.value) }
+                        }} required />
+                    <label className="Postform"><b>ref no:</b></label>
+                    <input
+                        type="text"
+                        onChange={(e) => {
+                            if (e.target.value === '' || e.target.value === null) {
+                                alert("Form has errors for unit - " + (unit_no));
+                            } else { setrn(e.target.value) }
                         }} required />
                     <label className="Postform"><b>Amt. received with gst:</b></label>
                     <input
