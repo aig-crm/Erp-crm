@@ -10,6 +10,7 @@ function Applicants(props) {
 
   const [myOptions, setMyOptions] = useState([]);
   const [next, setNext] = useState("");
+  const [gst_choice, setGst_choice] = useState("");
 
   const getDataFromAPI = async () => {
 
@@ -40,10 +41,15 @@ function Applicants(props) {
               onSelect={(e) => {
                 if (e.target.value === '') {
                   setNext('');
-                  console.log(next);
+                  console.log(e.target.value);
                 } else {
                   setNext(e.target.value);
-                  console.log(next);
+                  console.log(e.target.value);
+                  return Api.get('/bookingApi/gst_choice/' + "'" + (props.value) + "'/" + "'" + (e.target.value) + "'").then(result => {
+                    const dt = result.data;
+                    console.log(dt[0].gst_choice)
+                    return setGst_choice(dt[0].gst_choice);
+                  })
                 }
               }}
             />
@@ -51,7 +57,7 @@ function Applicants(props) {
         />
       </div>
       <div>
-        <Link className='Postform' to='/unit' state={{ from: (next), tower: (props.value) }}><b>Next</b></Link>
+        <Link className='Postform' to='/unit' state={{ from: (next), tower: (props.value), gst_choice: (gst_choice) }}><b>Next</b></Link>
       </div>
     </div>
   );
