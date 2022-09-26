@@ -7,7 +7,7 @@ function ReceiptForm() {
 
     const location = useLocation();
     const { unit_no } = location.state;
-    const { tower } = location.state;
+    const { gst_choice } = location.state;
 
     const [paymode, setpaymode] = useState("");
     const [date, setdate] = useState("");
@@ -35,71 +35,139 @@ function ReceiptForm() {
 
     }
 
-    return (
-        <div>
-            <div className='Postform'>
-                <h2 className="mt-3 text-dark"><b>ADD RECEIPT FOR UNIT - {unit_no}</b></h2>
-                <div className="mt-3 text-dark">
-                    <label className="Postform"><b>unit no: {unit_no}</b></label>
-                    <label className="Postform"><b>payment mode:</b></label>
-                    <input
-                        type="text"
-                        onChange={(e) => {
-                            if (e.target.value === '' || e.target.value === null) {
-                                alert("Form has errors for unit - " + (unit_no));
-                            } else { setpaymode(e.target.value) }
-                        }} required />
-                    <label className="Postform"><b>date:</b></label>
-                    <input
-                        type="date"
-                        onChange={(e) => {
-                            if (e.target.value === '' || e.target.value === null) {
-                                alert("Form has errors for unit - " + (unit_no));
-                            } else { setdate(e.target.value) }
-                        }} required />
-                    <label className="Postform"><b>bank name:</b></label>
-                    <input
-                        type="text"
-                        onChange={(e) => {
-                            if (e.target.value === '' || e.target.value === null) {
-                                alert("Form has errors for unit - " + (unit_no));
-                            } else { setbn(e.target.value) }
-                        }} required />
-                    <label className="Postform"><b>bank branch:</b></label>
-                    <input
-                        type="text"
-                        onChange={(e) => {
-                            if (e.target.value === '' || e.target.value === null) {
-                                alert("Form has errors for unit - " + (unit_no));
-                            } else { setbb(e.target.value) }
-                        }} required />
-                    <label className="Postform"><b>ref no:</b></label>
-                    <input
-                        type="text"
-                        onChange={(e) => {
-                            if (e.target.value === '' || e.target.value === null) {
-                                alert("Form has errors for unit - " + (unit_no));
-                            } else { setrn(e.target.value) }
-                        }} required />
-                    <label className="Postform"><b>Amt. received with gst:</b></label>
-                    <input
-                        type="text"
-                        onChange={(e) => {
-                            if (e.target.value === '' || e.target.value === null) {
-                                alert("Form has errors for unit - " + (unit_no));
-                            } else { setrwgst(e.target.value) }
-                        }} required />
-                    <label className="Postform"><b>Received gst amt: {rwgst * 0.05}</b></label>
+    if (gst_choice === 'Excld GST') {
+        return (
+            <div>
+                <div className='Postform'>
+                    <h2 className="mt-3 text-dark"><b>ADD RECEIPT FOR UNIT - {unit_no}</b></h2>
+                    <div className="mt-3 text-dark">
+                        <label className="Postform"><b>unit no: {unit_no}</b></label>
+                        <label className="Postform"><b>payment mode:</b></label>
+                        <input
+                            type="text"
+                            onChange={(e) => {
+                                if (e.target.value === '' || e.target.value === null) {
+                                    alert("Form has errors for unit - " + (unit_no));
+                                } else { setpaymode(e.target.value) }
+                            }} required />
+                        <label className="Postform"><b>date:</b></label>
+                        <input
+                            type="date"
+                            onChange={(e) => {
+                                if (e.target.value === '' || e.target.value === null) {
+                                    alert("Form has errors for unit - " + (unit_no));
+                                } else { setdate(e.target.value) }
+                            }} required />
+                        <label className="Postform"><b>bank name:</b></label>
+                        <input
+                            type="text"
+                            onChange={(e) => {
+                                if (e.target.value === '' || e.target.value === null) {
+                                    alert("Form has errors for unit - " + (unit_no));
+                                } else { setbn(e.target.value) }
+                            }} required />
+                        <label className="Postform"><b>bank branch:</b></label>
+                        <input
+                            type="text"
+                            onChange={(e) => {
+                                if (e.target.value === '' || e.target.value === null) {
+                                    alert("Form has errors for unit - " + (unit_no));
+                                } else { setbb(e.target.value) }
+                            }} required />
+                        <label className="Postform"><b>ref no:</b></label>
+                        <input
+                            type="text"
+                            onChange={(e) => {
+                                if (e.target.value === '' || e.target.value === null) {
+                                    alert("Form has errors for unit - " + (unit_no));
+                                } else { setrn(e.target.value) }
+                            }} required />
+                        <label className="Postform"><b>Amt. received with gst:</b></label>
+                        <input
+                            type="text"
+                            onChange={(e) => {
+                                if (e.target.value === '' || e.target.value === null) {
+                                    alert("Form has errors for unit - " + (unit_no));
+                                } else { setrwgst(e.target.value) }
+                            }} required />
+                        <label className="Postform"><b>Received gst amt: {rwgst * 0.05}</b></label>
+                    </div>
+                    <NavBtn onClick={register}>
+                        <NavBtnLink to='/' ><b>Submit</b></NavBtnLink>
+                    </NavBtn>
                 </div>
-                <NavBtn onClick={register}>
-                    <NavBtnLink to='/' ><b>Submit</b></NavBtnLink>
-                </NavBtn>
+
             </div>
 
-        </div>
+
+        );
+    }
+    else {
+        return (
+            <div>
+                <div className='Postform'>
+                    <h2 className="mt-3 text-dark"><b>ADD RECEIPT FOR UNIT - {unit_no}</b></h2>
+                    <div className="mt-3 text-dark">
+                        <label className="Postform"><b>unit no: {unit_no}</b></label>
+                        <label className="Postform"><b>payment mode:</b></label>
+                        <input
+                            type="text"
+                            onChange={(e) => {
+                                if (e.target.value === '' || e.target.value === null) {
+                                    alert("Form has errors for unit - " + (unit_no));
+                                } else { setpaymode(e.target.value) }
+                            }} required />
+                        <label className="Postform"><b>date:</b></label>
+                        <input
+                            type="date"
+                            onChange={(e) => {
+                                if (e.target.value === '' || e.target.value === null) {
+                                    alert("Form has errors for unit - " + (unit_no));
+                                } else { setdate(e.target.value) }
+                            }} required />
+                        <label className="Postform"><b>bank name:</b></label>
+                        <input
+                            type="text"
+                            onChange={(e) => {
+                                if (e.target.value === '' || e.target.value === null) {
+                                    alert("Form has errors for unit - " + (unit_no));
+                                } else { setbn(e.target.value) }
+                            }} required />
+                        <label className="Postform"><b>bank branch:</b></label>
+                        <input
+                            type="text"
+                            onChange={(e) => {
+                                if (e.target.value === '' || e.target.value === null) {
+                                    alert("Form has errors for unit - " + (unit_no));
+                                } else { setbb(e.target.value) }
+                            }} required />
+                        <label className="Postform"><b>ref no:</b></label>
+                        <input
+                            type="text"
+                            onChange={(e) => {
+                                if (e.target.value === '' || e.target.value === null) {
+                                    alert("Form has errors for unit - " + (unit_no));
+                                } else { setrn(e.target.value) }
+                            }} required />
+                        <label className="Postform"><b>Amt. received with gst:</b></label>
+                        <input
+                            type="text"
+                            onChange={(e) => {
+                                if (e.target.value === '' || e.target.value === null) {
+                                    alert("Form has errors for unit - " + (unit_no));
+                                } else { setrwgst(e.target.value) }
+                            }} required />
+                    </div>
+                    <NavBtn onClick={register}>
+                        <NavBtnLink to='/' ><b>Submit</b></NavBtnLink>
+                    </NavBtn>
+                </div>
+
+            </div>
 
 
-    );
+        );
+    }
 }
 
 export default ReceiptForm;
