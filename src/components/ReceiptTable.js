@@ -105,6 +105,8 @@ function ReceiptTable() {
                                     <th className="table">Date</th>
                                     <th className="table">Payment Mode</th>
                                     <th className="table">Bank Name</th>
+                                    <th className="table">Bank Branch</th>
+                                    <th className="table">Instrument No.</th>
                                     <th className="table">Amt. Received with GST</th>
                                     <th className="table">Amt. Received without GST</th>
                                     <th className="table">Received GST</th>
@@ -120,6 +122,8 @@ function ReceiptTable() {
                                         <td>{res.date}</td>
                                         <td>{res.payment_mode}</td>
                                         <td>{res.bank_name}</td>
+                                        <td>{res.bank_branch}</td>
+                                        <td>{res.ref_no}</td>
                                         <td>{res.rwgst}</td>
                                         <td>{Math.round((res.rwgst) * 100 / 105)}</td>
                                         <td>{Math.round(res.rwgst - (res.rwgst) * 100 / 105)}</td>
@@ -135,6 +139,8 @@ function ReceiptTable() {
                                         <td>{res.date}</td>
                                         <td>{res.payment_mode}</td>
                                         <td>{res.bank_name}</td>
+                                        <td>{res.bank_branch}</td>
+                                        <td>{res.ref_no}</td>
                                         <td>{res.rwgst}</td>
                                         <td>{Math.round((res.rwgst) * 100 / 105)}</td>
                                         <td>{Math.round(res.rwgst - (res.rwgst) * 100 / 105)}</td>
@@ -179,6 +185,8 @@ function ReceiptTable() {
                                     <th className="table">Date</th>
                                     <th className="table">Payment Mode</th>
                                     <th className="table">Bank Name</th>
+                                    <th className="table">Bank Branch</th>
+                                    <th className="table">Instrument No.</th>
                                     <th className="table">Amt. Received with GST</th>
                                     <th className="table">Amt. Received without GST</th>
                                     <th className="table">Received GST</th>
@@ -194,6 +202,8 @@ function ReceiptTable() {
                                         <td>{res.date}</td>
                                         <td>{res.payment_mode}</td>
                                         <td>{res.bank_name}</td>
+                                        <td>{res.bank_branch}</td>
+                                        <td>{res.ref_no}</td>
                                         <td>{res.rwgst}</td>
                                         <td>{res.rwogst}</td>
                                         <td>{res.rgst}</td>
@@ -208,6 +218,8 @@ function ReceiptTable() {
                                         <td>{res.date}</td>
                                         <td>{res.payment_mode}</td>
                                         <td>{res.bank_name}</td>
+                                        <td>{res.bank_branch}</td>
+                                        <td>{res.ref_no}</td>
                                         <td>{res.rwgst}</td>
                                         <td>{res.rwogst}</td>
                                         <td>{res.rgst}</td>
