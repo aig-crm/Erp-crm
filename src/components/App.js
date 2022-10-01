@@ -23,6 +23,7 @@ import ReceiptEdit from './ReceiptEdit';
 import CancelBookings from './CancelBookings';
 import CanceledBookings from './CanceledBookings';
 import DeleteBooking from './DeleteBooking';
+import OtherCharges from './OtherCharges';
 
 function App() {
   return (
@@ -74,6 +75,7 @@ function App() {
         <Route exact path='/addReceipt' element={<ReceiptForm />} />
         <Route exact path='/receiptEdit' element={<ReceiptEdit />} />
         <Route exact path='/deleteBooking' element={<DeleteBooking />} />
+        <Route exact path='/otherCharges' element={<OtherCharges />} />
       </Routes>
     </div>
   );

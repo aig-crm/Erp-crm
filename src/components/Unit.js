@@ -39,6 +39,12 @@ function Unit() {
     const arrRwogst = [];
     const arrNet_bsp = [];
     const arrNet_due = [];
+    const [resultOtherCharges, setResultOtherCharges] = useState([]);
+    const arrbasic_cost = [];
+    const arrgst = [];
+    const arrtotal_cost = [];
+    const arrpaid_cost = [];
+    const arrbalance = [];
 
     const getData = () => {
 
@@ -85,6 +91,21 @@ function Unit() {
         }
     }
 
+    const getDataOtherCharges = () => {
+
+        if ((from) != null) {
+            return Api.get('/other_charges/' + "'" + (from) + "'").then(result => {
+                const res = result.data;
+                return setResultOtherCharges(res);
+            })
+        } else {
+            return Api.get('/other_charges/').then(result => {
+                const res = result.data;
+                return setResultOtherCharges(res);
+            })
+        }
+    }
+
     useEffect(() => {
         getData()
     }, []);
@@ -95,6 +116,10 @@ function Unit() {
 
     useEffect(() => {
         getDataInterest()
+    }, []);
+
+    useEffect(() => {
+        getDataOtherCharges()
     }, []);
 
     function getDifferenceInDays(date1, date2) {
@@ -149,6 +174,12 @@ function Unit() {
         const lastPageIndex = firstPageIndex + PageSize;
         return resultInterest.slice(firstPageIndex, lastPageIndex);
     }, [PageSize, resultInterest, currentPage2]);
+
+    const currentTableDataOtherCharges = useMemo(() => {
+        const firstPageIndex = (currentPage2 - 1) * PageSize;
+        const lastPageIndex = firstPageIndex + PageSize;
+        return resultOtherCharges.slice(firstPageIndex, lastPageIndex);
+    }, [PageSize, resultOtherCharges, currentPage2]);
 
     const [resultDemand, setresultDemand] = useState([]);
     const [resultDemand1, setresultDemand1] = useState([]);
@@ -284,11 +315,10 @@ function Unit() {
                                         </tr>
                                     </thead>
                                     <tbody className="table">
-                                        {currentTableDataDemand2.map((res) =>
-                                            {
-                                                arrNet_due.push(res.net_due)
-                                                arrNet_bsp.push(res.net_bsp)
-                                                return(<tr className="Postform" style={{ backgroundColor: "#FFFDD0" }}>
+                                        {currentTableDataDemand2.map((res) => {
+                                            arrNet_due.push(res.net_due)
+                                            arrNet_bsp.push(res.net_bsp)
+                                            return (<tr className="Postform" style={{ backgroundColor: "#FFFDD0" }}>
                                                 <td>{res.description}</td>
                                                 <td>{res.due_date}</td>
                                                 <td>{res.net_bsp}</td>
@@ -299,13 +329,13 @@ function Unit() {
                                                 <td>{res.recieved}</td>
                                                 <td>{res.pending_amount}</td>
                                                 <Link to='/dueDate' state={{ from: (res.id), unit_no: (from), tower: (tower), gst_choice: (gst_choice), interest_value: arr }}>{res.id}</Link>
-                                            </tr>)}
+                                            </tr>)
+                                        }
                                         )}
-                                        {currentTableDataDemand.map((res) =>
-                                            {
-                                                arrNet_due.push(res.net_due)
-                                                arrNet_bsp.push(res.net_bsp)
-                                                return(<tr className="Postform" style={{ backgroundColor: "#FFFDD0" }}>
+                                        {currentTableDataDemand.map((res) => {
+                                            arrNet_due.push(res.net_due)
+                                            arrNet_bsp.push(res.net_bsp)
+                                            return (<tr className="Postform" style={{ backgroundColor: "#FFFDD0" }}>
                                                 <td>{res.description}</td>
                                                 <td>{res.due_date}</td>
                                                 <td>{res.net_bsp}</td>
@@ -316,13 +346,13 @@ function Unit() {
                                                 <td>{res.recieved}</td>
                                                 <td>{res.pending_amount}</td>
                                                 <Link to='/dueDate' state={{ from: (res.id), unit_no: (from), tower: (tower), gst_choice: (gst_choice), interest_value: arr }}>{res.id}</Link>
-                                            </tr>)}
+                                            </tr>)
+                                        }
                                         )}
-                                        {currentTableDataDemand1.map((res) =>
-                                            {
-                                                arrNet_due.push(res.net_due)
-                                                arrNet_bsp.push(res.net_bsp)
-                                                return(<tr className="Postform" style={{ backgroundColor: "#FFFDD0" }}>
+                                        {currentTableDataDemand1.map((res) => {
+                                            arrNet_due.push(res.net_due)
+                                            arrNet_bsp.push(res.net_bsp)
+                                            return (<tr className="Postform" style={{ backgroundColor: "#FFFDD0" }}>
                                                 <td>{res.description}</td>
                                                 <td>{res.due_date}</td>
                                                 <td>{res.net_bsp}</td>
@@ -333,7 +363,8 @@ function Unit() {
                                                 <td>{res.recieved}</td>
                                                 <td>{res.pending_amount}</td>
                                                 <Link to='/dueDate' state={{ from: (res.id), unit_no: (from), tower: (tower), gst_choice: (gst_choice), interest_value: arr }}>{res.id}</Link>
-                                            </tr>)}
+                                            </tr>)
+                                        }
                                         )}
                                         {
                                             <tr className="Postform" style={{ backgroundColor: "#FFFDD0" }}>
@@ -385,14 +416,14 @@ function Unit() {
                                     <tbody className="table">
                                         {currentTableData.map((res) => {
                                             arrRwgst.push(res.rwgst)
-                                            arrRwogst.push(Math.round((res.rwgst)*100/105))
+                                            arrRwogst.push(Math.round((res.rwgst) * 100 / 105))
                                             return (<tr className="Postform" style={{ backgroundColor: "#FFFDD0" }}>
                                                 <td>{res.date}</td>
                                                 <td>{res.payment_mode}</td>
                                                 <td>{res.bank_name}</td>
                                                 <td>{res.rwgst}</td>
-                                                <td>{Math.round((res.rwgst)*100/105)}</td>
-                                                <td>{Math.round(res.rwgst-(res.rwgst)*100/105)}</td>
+                                                <td>{Math.round((res.rwgst) * 100 / 105)}</td>
+                                                <td>{Math.round(res.rwgst - (res.rwgst) * 100 / 105)}</td>
                                                 <td>{res.clearing_bank}</td>
                                                 <td>{res.clearing_date}</td>
                                                 <td>{res.receipt_no}</td>
@@ -402,14 +433,14 @@ function Unit() {
                                         )}
                                         {currentTableData2.map((res) => {
                                             arrRwgst.push(res.rwgst)
-                                            arrRwogst.push(Math.round((res.rwgst)*100/105))
+                                            arrRwogst.push(Math.round((res.rwgst) * 100 / 105))
                                             return (<tr className="Postform" style={{ backgroundColor: "#FFFDD0" }}>
                                                 <td>{res.date}</td>
                                                 <td>{res.payment_mode}</td>
                                                 <td>{res.bank_name}</td>
                                                 <td>{res.rwgst}</td>
-                                                <td>{Math.round((res.rwgst)*100/105)}</td>
-                                                <td>{Math.round(res.rwgst-(res.rwgst)*100/105)}</td>
+                                                <td>{Math.round((res.rwgst) * 100 / 105)}</td>
+                                                <td>{Math.round(res.rwgst - (res.rwgst) * 100 / 105)}</td>
                                                 <td>{res.clearing_bank}</td>
                                                 <td>{res.clearing_date}</td>
                                                 <td>{res.receipt_no}</td>
@@ -470,10 +501,10 @@ function Unit() {
                                                 return (<tr className="Postform" style={{ backgroundColor: "#FFFDD0" }}>
                                                     <td>{res.description}</td>
                                                     <td>{res.due_date}</td>
-                                                    <td>{Math.round(parseInt(res.due_amt)*100/105)}</td>
-                                                    <td>{Math.round(parseInt(res.received_amt)*100/105)}</td>
+                                                    <td>{Math.round(parseInt(res.due_amt) * 100 / 105)}</td>
+                                                    <td>{Math.round(parseInt(res.received_amt) * 100 / 105)}</td>
                                                     <td>{res.received_date}</td>
-                                                    <td>{Math.round((parseInt(res.due_amt)*100/105) - (parseInt(res.received_amt)*100/105))}</td>
+                                                    <td>{Math.round((parseInt(res.due_amt) * 100 / 105) - (parseInt(res.received_amt) * 100 / 105))}</td>
                                                     <td>{getDifferenceInDays(new Date(res.due_date), new Date(res.received_date))}</td>
                                                     <td>0</td>
                                                     <td>{getDifferenceInDays(new Date(res.due_date), new Date(res.received_date))}</td>
@@ -481,20 +512,20 @@ function Unit() {
                                                     <td>0</td>
                                                 </tr>)
                                             }
-                                            else if (parseInt(parseInt(res.due_amt)*100/105) < (parseInt(res.received_amt)*100/105) && getDifferenceInDays(new Date(res.due_date), new Date(res.received_date)) > 0) {
-                                                arr.push(Math.round((parseInt(res.due_amt)*100/105) * getDifferenceInDays(new Date(res.due_date), new Date(res.received_date)) * 0.1 / 365))
+                                            else if (parseInt(parseInt(res.due_amt) * 100 / 105) < (parseInt(res.received_amt) * 100 / 105) && getDifferenceInDays(new Date(res.due_date), new Date(res.received_date)) > 0) {
+                                                arr.push(Math.round((parseInt(res.due_amt) * 100 / 105) * getDifferenceInDays(new Date(res.due_date), new Date(res.received_date)) * 0.1 / 365))
                                                 return (<tr className="Postform" style={{ backgroundColor: "#FFFDD0" }}>
                                                     <td>{res.description}</td>
                                                     <td>{res.due_date}</td>
-                                                    <td>{Math.round(parseInt(res.due_amt)*100/105)}</td>
-                                                    <td>{Math.round(parseInt(res.received_amt)*100/105)}</td>
+                                                    <td>{Math.round(parseInt(res.due_amt) * 100 / 105)}</td>
+                                                    <td>{Math.round(parseInt(res.received_amt) * 100 / 105)}</td>
                                                     <td>{res.received_date}</td>
-                                                    <td>{Math.round((parseInt(res.due_amt)*100/105) - (parseInt(res.received_amt)*100/105))}</td>
+                                                    <td>{Math.round((parseInt(res.due_amt) * 100 / 105) - (parseInt(res.received_amt) * 100 / 105))}</td>
                                                     <td>{getDifferenceInDays(new Date(res.due_date), new Date(res.received_date))}</td>
                                                     <td>0</td>
                                                     <td>{getDifferenceInDays(new Date(res.due_date), new Date(res.received_date))}</td>
                                                     <td>10</td>
-                                                    <td>{Math.round((parseInt(res.due_amt)*100/105) * getDifferenceInDays(new Date(res.due_date), new Date(res.received_date)) * 0.1 / 365)}</td>
+                                                    <td>{Math.round((parseInt(res.due_amt) * 100 / 105) * getDifferenceInDays(new Date(res.due_date), new Date(res.received_date)) * 0.1 / 365)}</td>
                                                 </tr>)
                                             } else if ((res.due_date === '')) {
                                                 return (<tr className="Postform" style={{ backgroundColor: "#FFFDD0" }}>
@@ -506,19 +537,19 @@ function Unit() {
                                                 </tr>)
                                             }
                                             else {
-                                                arr.push(Math.round((parseInt(res.received_amt)*100/105) * getDifferenceInDays(new Date(res.due_date), new Date(res.received_date)) * 0.1 / 365))
+                                                arr.push(Math.round((parseInt(res.received_amt) * 100 / 105) * getDifferenceInDays(new Date(res.due_date), new Date(res.received_date)) * 0.1 / 365))
                                                 return (<tr className="Postform" style={{ backgroundColor: "#FFFDD0" }}>
                                                     <td>{res.description}</td>
                                                     <td>{res.due_date}</td>
-                                                    <td>{Math.round(parseInt(res.due_amt)*100/105)}</td>
-                                                    <td>{Math.round(parseInt(res.received_amt)*100/105)}</td>
+                                                    <td>{Math.round(parseInt(res.due_amt) * 100 / 105)}</td>
+                                                    <td>{Math.round(parseInt(res.received_amt) * 100 / 105)}</td>
                                                     <td>{res.received_date}</td>
-                                                    <td>{Math.round((parseInt(res.due_amt)*100/105) - (parseInt(res.received_amt)*100/105))}</td>
+                                                    <td>{Math.round((parseInt(res.due_amt) * 100 / 105) - (parseInt(res.received_amt) * 100 / 105))}</td>
                                                     <td>{getDifferenceInDays(new Date(res.due_date), new Date(res.received_date))}</td>
                                                     <td>0</td>
                                                     <td>{getDifferenceInDays(new Date(res.due_date), new Date(res.received_date))}</td>
                                                     <td>10</td>
-                                                    <td>{Math.round(parseInt(res.received_amt)*100/105 * getDifferenceInDays(new Date(res.due_date), new Date(res.received_date)) * 0.1 / 365)}</td>
+                                                    <td>{Math.round(parseInt(res.received_amt) * 100 / 105 * getDifferenceInDays(new Date(res.due_date), new Date(res.received_date)) * 0.1 / 365)}</td>
                                                 </tr>)
                                             }
                                         }
@@ -554,10 +585,86 @@ function Unit() {
                         </div>
                     </React.Fragment>
 
+                    <React.Fragment>
+                        <div className="row">
+                            <div >
+                                <h3 className="mt-3 text-dark"><b><u><center>{from} Other Charges</center></u></b></h3>
+
+                                <table className="table-bordered text-black">
+                                    <thead>
+                                        <tr style={{ backgroundColor: "#0078AA" }}>
+                                            <th className="table">PARAMETERS</th>
+                                            <th className="table">BASIC COST</th>
+                                            <th className="table">GST</th>
+                                            <th className="table">TOTAL COST</th>
+                                            <th className="table">PAID</th>
+                                            <th className="table">BALANCE</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody className="table">
+                                        {currentTableDataOtherCharges.map((res) => {
+                                            if((res.parameters)==="INTEREST FREE MAINTENANCE SECURITY (IFMS)"){
+                                                arrbasic_cost.push(res.basic_cost)
+                                                arrgst.push(0)
+                                                arrtotal_cost.push(res.basic_cost)
+                                                arrpaid_cost.push(res.paid_cost)
+                                                arrbalance.push(res.basic_cost - res.paid_cost)
+                                                return (<tr className="Postform" style={{ backgroundColor: "#FFFDD0" }}>
+                                                    <td>{res.parameters}</td>
+                                                    <td>{res.basic_cost}</td>
+                                                    <td>0</td>
+                                                    <td>{res.basic_cost}</td>
+                                                    <td>{res.paid_cost}</td>
+                                                    <td>{res.basic_cost - res.paid_cost}</td>
+                                                </tr>)
+                                            }else{
+                                                arrbasic_cost.push(res.basic_cost)
+                                                arrgst.push(res.basic_cost*0.18)
+                                                arrtotal_cost.push(res.basic_cost+res.basic_cost*0.18)
+                                                arrpaid_cost.push(res.paid_cost)
+                                                arrbalance.push(res.basic_cost+res.basic_cost*0.18-res.paid_cost)
+                                                return (<tr className="Postform" style={{ backgroundColor: "#FFFDD0" }}>
+                                                    <td>{res.parameters}</td>
+                                                    <td>{res.basic_cost}</td>
+                                                    <td>{res.basic_cost*0.18}</td>
+                                                    <td>{res.basic_cost+res.basic_cost*0.18}</td>
+                                                    <td>{res.paid_cost}</td>
+                                                    <td>{res.basic_cost+res.basic_cost*0.18-res.paid_cost}</td>
+                                                </tr>)
+                                            }
+                                        }
+                                        )}
+                                        {
+
+                                            <tr className="Postform" style={{ backgroundColor: "#FFFDD0" }}>
+                                                <td className="Postform"><b>Total: </b></td>
+                                                <td className="Postform"><b>Rs. <br />{sumArray(arrbasic_cost)}</b></td>
+                                                <td className="Postform"><b>Rs. <br />{sumArray(arrgst)}</b></td>
+                                                <td className="Postform"><b>Rs. <br />{sumArray(arrtotal_cost)}</b></td>
+                                                <td className="Postform"><b>Rs. <br />{sumArray(arrpaid_cost)}</b></td>
+                                                <td className="Postform"><b>Rs. <br />{sumArray(arrbalance)}</b></td>
+                                            </tr>
+
+                                        }
+                                    </tbody>
+                                </table>
+                                <Pagination
+                                    className="pagination-bar"
+                                    currentPage={currentPage2}
+                                    totalCount={resultInterest.length - 1}
+                                    pageSize={PageSize}
+                                    onPageChange={page => setCurrentPage2(page)}
+                                />
+
+                            </div>
+                        </div>
+                    </React.Fragment>
+
                 </PDFExport>
                 <Link to='/receipt' state={{ unit_no: (from), tower: (tower), gst_choice: (gst_choice) }} className='applicant' style={{ backgroundColor: "#3AB4F2" }}><b>See Receipt Report</b></Link>
                 <Link to='/reportD' state={{ unit_no: (from), tower: (tower), gst_choice: (gst_choice) }} className='applicant' style={{ backgroundColor: "#3AB4F2" }}><b>See Demand Report</b></Link>
                 <Link to='/addReceipt' state={{ unit_no: (from), tower: (tower), gst_choice: (gst_choice) }} className='applicant' style={{ backgroundColor: "#3AB4F2" }}><b>Add Receipt</b></Link>
+                <Link to='/otherCharges' state={{ unit_no: (from), tower: (tower), gst_choice: (gst_choice) }} className='applicant' style={{ backgroundColor: "#3AB4F2" }}><b>Other Charges</b></Link>
 
                 <button
                     className='applicant' style={{ backgroundColor: "#3AB4F2" }}
@@ -622,11 +729,10 @@ function Unit() {
                                         </tr>
                                     </thead>
                                     <tbody className="table">
-                                        {currentTableDataDemand2.map((res) =>
-                                            {
-                                                arrNet_due.push(res.net_due)
-                                                arrNet_bsp.push(res.net_due)
-                                                return(<tr className="Postform" style={{ backgroundColor: "#FFFDD0" }}>
+                                        {currentTableDataDemand2.map((res) => {
+                                            arrNet_due.push(res.net_due)
+                                            arrNet_bsp.push(res.net_due)
+                                            return (<tr className="Postform" style={{ backgroundColor: "#FFFDD0" }}>
                                                 <td>{res.description}</td>
                                                 <td>{res.due_date}</td>
                                                 <td>{res.net_due}</td>
@@ -634,13 +740,13 @@ function Unit() {
                                                 <td>{res.recieved}</td>
                                                 <td>{res.pending_amount}</td>
                                                 <Link to='/dueDate' state={{ from: (res.id), unit_no: (from), tower: (tower), gst_choice: (gst_choice), interest_value: arr }}>{res.id}</Link>
-                                            </tr>)}
+                                            </tr>)
+                                        }
                                         )}
-                                        {currentTableDataDemand.map((res) =>
-                                            {
-                                                arrNet_due.push(res.net_due)
-                                                arrNet_bsp.push(res.net_due)
-                                                return(<tr className="Postform" style={{ backgroundColor: "#FFFDD0" }}>
+                                        {currentTableDataDemand.map((res) => {
+                                            arrNet_due.push(res.net_due)
+                                            arrNet_bsp.push(res.net_due)
+                                            return (<tr className="Postform" style={{ backgroundColor: "#FFFDD0" }}>
                                                 <td>{res.description}</td>
                                                 <td>{res.due_date}</td>
                                                 <td>{res.net_due}</td>
@@ -648,13 +754,13 @@ function Unit() {
                                                 <td>{res.recieved}</td>
                                                 <td>{res.pending_amount}</td>
                                                 <Link to='/dueDate' state={{ from: (res.id), unit_no: (from), tower: (tower), gst_choice: (gst_choice), interest_value: arr }}>{res.id}</Link>
-                                            </tr>)}
+                                            </tr>)
+                                        }
                                         )}
-                                        {currentTableDataDemand1.map((res) =>
-                                            {
-                                                arrNet_due.push(res.net_due)
-                                                arrNet_bsp.push(res.due)
-                                                return(<tr className="Postform" style={{ backgroundColor: "#FFFDD0" }}>
+                                        {currentTableDataDemand1.map((res) => {
+                                            arrNet_due.push(res.net_due)
+                                            arrNet_bsp.push(res.due)
+                                            return (<tr className="Postform" style={{ backgroundColor: "#FFFDD0" }}>
                                                 <td>{res.description}</td>
                                                 <td>{res.due_date}</td>
                                                 <td>{res.due}</td>
@@ -662,7 +768,8 @@ function Unit() {
                                                 <td>{res.recieved}</td>
                                                 <td>{res.pending_amount}</td>
                                                 <Link to='/dueDate' state={{ from: (res.id), unit_no: (from), tower: (tower), gst_choice: (gst_choice), interest_value: arr }}>{res.id}</Link>
-                                            </tr>)}
+                                            </tr>)
+                                        }
                                         )}
                                         {
                                             <tr className="Postform" style={{ backgroundColor: "#FFFDD0" }}>
@@ -880,10 +987,86 @@ function Unit() {
                         </div>
                     </React.Fragment>
 
+                    <React.Fragment>
+                        <div className="row">
+                            <div >
+                                <h3 className="mt-3 text-dark"><b><u><center>{from} Other Charges</center></u></b></h3>
+
+                                <table className="table-bordered text-black">
+                                    <thead>
+                                        <tr style={{ backgroundColor: "#0078AA" }}>
+                                            <th className="table">PARAMETERS</th>
+                                            <th className="table">BASIC COST</th>
+                                            <th className="table">GST</th>
+                                            <th className="table">TOTAL COST</th>
+                                            <th className="table">PAID</th>
+                                            <th className="table">BALANCE</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody className="table">
+                                        {currentTableDataOtherCharges.map((res) => {
+                                            if((res.parameters)==="INTEREST FREE MAINTENANCE SECURITY (IFMS)"){
+                                                arrbasic_cost.push(res.basic_cost)
+                                                arrgst.push(0)
+                                                arrtotal_cost.push(res.basic_cost)
+                                                arrpaid_cost.push(res.paid_cost)
+                                                arrbalance.push(res.basic_cost - res.paid_cost)
+                                                return (<tr className="Postform" style={{ backgroundColor: "#FFFDD0" }}>
+                                                    <td>{res.parameters}</td>
+                                                    <td>{res.basic_cost}</td>
+                                                    <td>0</td>
+                                                    <td>{res.basic_cost}</td>
+                                                    <td>{res.paid_cost}</td>
+                                                    <td>{res.basic_cost - res.paid_cost}</td>
+                                                </tr>)
+                                            }else{
+                                                arrbasic_cost.push(res.basic_cost)
+                                                arrgst.push(res.basic_cost*0.18)
+                                                arrtotal_cost.push(res.basic_cost+res.basic_cost*0.18)
+                                                arrpaid_cost.push(res.paid_cost)
+                                                arrbalance.push(res.basic_cost+res.basic_cost*0.18-res.paid_cost)
+                                                return (<tr className="Postform" style={{ backgroundColor: "#FFFDD0" }}>
+                                                    <td>{res.parameters}</td>
+                                                    <td>{res.basic_cost}</td>
+                                                    <td>{res.basic_cost*0.18}</td>
+                                                    <td>{res.basic_cost+res.basic_cost*0.18}</td>
+                                                    <td>{res.paid_cost}</td>
+                                                    <td>{res.basic_cost+res.basic_cost*0.18-res.paid_cost}</td>
+                                                </tr>)
+                                            }
+                                        }
+                                        )}
+                                        {
+
+                                            <tr className="Postform" style={{ backgroundColor: "#FFFDD0" }}>
+                                                <td className="Postform"><b>Total: </b></td>
+                                                <td className="Postform"><b>Rs. <br />{sumArray(arrbasic_cost)}</b></td>
+                                                <td className="Postform"><b>Rs. <br />{sumArray(arrgst)}</b></td>
+                                                <td className="Postform"><b>Rs. <br />{sumArray(arrtotal_cost)}</b></td>
+                                                <td className="Postform"><b>Rs. <br />{sumArray(arrpaid_cost)}</b></td>
+                                                <td className="Postform"><b>Rs. <br />{sumArray(arrbalance)}</b></td>
+                                            </tr>
+
+                                        }
+                                    </tbody>
+                                </table>
+                                <Pagination
+                                    className="pagination-bar"
+                                    currentPage={currentPage2}
+                                    totalCount={resultInterest.length - 1}
+                                    pageSize={PageSize}
+                                    onPageChange={page => setCurrentPage2(page)}
+                                />
+
+                            </div>
+                        </div>
+                    </React.Fragment>
+
                 </PDFExport>
                 <Link to='/receipt' state={{ unit_no: (from), tower: (tower), gst_choice: (gst_choice) }} className='applicant' style={{ backgroundColor: "#3AB4F2" }}><b>See Receipt Report</b></Link>
                 <Link to='/reportD' state={{ unit_no: (from), tower: (tower), gst_choice: (gst_choice) }} className='applicant' style={{ backgroundColor: "#3AB4F2" }}><b>See Demand Report</b></Link>
                 <Link to='/addReceipt' state={{ unit_no: (from), tower: (tower), gst_choice: (gst_choice) }} className='applicant' style={{ backgroundColor: "#3AB4F2" }}><b>Add Receipt</b></Link>
+                <Link to='/otherCharges' state={{ unit_no: (from), tower: (tower), gst_choice: (gst_choice) }} className='applicant' style={{ backgroundColor: "#3AB4F2" }}><b>Other Charges</b></Link>
 
                 <button
                     className='applicant' style={{ backgroundColor: "#3AB4F2" }}
