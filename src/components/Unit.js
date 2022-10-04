@@ -599,37 +599,40 @@ function Unit() {
                                             <th className="table">TOTAL COST</th>
                                             <th className="table">PAID</th>
                                             <th className="table">BALANCE</th>
+                                            <th className="table">ID</th>
                                         </tr>
                                     </thead>
                                     <tbody className="table">
                                         {currentTableDataOtherCharges.map((res) => {
-                                            if((res.parameters)==="INTEREST FREE MAINTENANCE SECURITY (IFMS)"){
-                                                arrbasic_cost.push(res.basic_cost)
+                                            if ((res.parameters) === "INTEREST FREE MAINTENANCE SECURITY (IFMS)") {
+                                                arrbasic_cost.push(Math.round(res.basic_cost))
                                                 arrgst.push(0)
-                                                arrtotal_cost.push(res.basic_cost)
-                                                arrpaid_cost.push(res.paid_cost)
-                                                arrbalance.push(res.basic_cost - res.paid_cost)
+                                                arrtotal_cost.push(Math.round(res.basic_cost))
+                                                arrpaid_cost.push(Math.round(res.paid_cost))
+                                                arrbalance.push(Math.round(res.basic_cost - res.paid_cost))
                                                 return (<tr className="Postform" style={{ backgroundColor: "#FFFDD0" }}>
                                                     <td>{res.parameters}</td>
-                                                    <td>{res.basic_cost}</td>
+                                                    <td>{Math.round(res.basic_cost)}</td>
                                                     <td>0</td>
-                                                    <td>{res.basic_cost}</td>
-                                                    <td>{res.paid_cost}</td>
-                                                    <td>{res.basic_cost - res.paid_cost}</td>
+                                                    <td>{Math.round(res.basic_cost)}</td>
+                                                    <td>{Math.round(res.paid_cost)}</td>
+                                                    <td>{Math.round(res.basic_cost - res.paid_cost)}</td>
+                                                    <Link to='/editOtherCharges' state={{ id: (res.id), unit_no: (from), tower: (tower), gst_choice: (gst_choice), parameters: (res.parameters), basic_cost: Math.round(res.basic_cost), paid_cost: Math.round(res.paid_cost) }}>{res.id}</Link>
                                                 </tr>)
-                                            }else{
-                                                arrbasic_cost.push(res.basic_cost)
-                                                arrgst.push(res.basic_cost*0.18)
-                                                arrtotal_cost.push(res.basic_cost+res.basic_cost*0.18)
-                                                arrpaid_cost.push(res.paid_cost)
-                                                arrbalance.push(res.basic_cost+res.basic_cost*0.18-res.paid_cost)
+                                            } else {
+                                                arrbasic_cost.push(Math.round(res.basic_cost))
+                                                arrgst.push(Math.round(res.basic_cost * 0.18))
+                                                arrtotal_cost.push(Math.round(res.basic_cost + res.basic_cost * 0.18))
+                                                arrpaid_cost.push(Math.round(res.paid_cost))
+                                                arrbalance.push(Math.round(res.basic_cost + res.basic_cost * 0.18 - res.paid_cost))
                                                 return (<tr className="Postform" style={{ backgroundColor: "#FFFDD0" }}>
                                                     <td>{res.parameters}</td>
-                                                    <td>{res.basic_cost}</td>
-                                                    <td>{res.basic_cost*0.18}</td>
-                                                    <td>{res.basic_cost+res.basic_cost*0.18}</td>
-                                                    <td>{res.paid_cost}</td>
-                                                    <td>{res.basic_cost+res.basic_cost*0.18-res.paid_cost}</td>
+                                                    <td>{Math.round(res.basic_cost)}</td>
+                                                    <td>{Math.round(res.basic_cost * 0.18)}</td>
+                                                    <td>{Math.round(res.basic_cost + res.basic_cost * 0.18)}</td>
+                                                    <td>{Math.round(res.paid_cost)}</td>
+                                                    <td>{Math.round(res.basic_cost + res.basic_cost * 0.18 - res.paid_cost)}</td>
+                                                    <Link to='/editOtherCharges' state={{ id: (res.id), unit_no: (from), tower: (tower), gst_choice: (gst_choice), parameters: (res.parameters), basic_cost: Math.round(res.basic_cost), paid_cost: Math.round(res.paid_cost) }}>{res.id}</Link>
                                                 </tr>)
                                             }
                                         }
@@ -643,6 +646,7 @@ function Unit() {
                                                 <td className="Postform"><b>Rs. <br />{sumArray(arrtotal_cost)}</b></td>
                                                 <td className="Postform"><b>Rs. <br />{sumArray(arrpaid_cost)}</b></td>
                                                 <td className="Postform"><b>Rs. <br />{sumArray(arrbalance)}</b></td>
+                                                <td className="Postform"><b></b></td>
                                             </tr>
 
                                         }
@@ -1001,37 +1005,40 @@ function Unit() {
                                             <th className="table">TOTAL COST</th>
                                             <th className="table">PAID</th>
                                             <th className="table">BALANCE</th>
+                                            <th className="table">ID</th>
                                         </tr>
                                     </thead>
                                     <tbody className="table">
                                         {currentTableDataOtherCharges.map((res) => {
-                                            if((res.parameters)==="INTEREST FREE MAINTENANCE SECURITY (IFMS)"){
-                                                arrbasic_cost.push(res.basic_cost)
+                                            if ((res.parameters) === "INTEREST FREE MAINTENANCE SECURITY (IFMS)") {
+                                                arrbasic_cost.push(Math.round(res.basic_cost))
                                                 arrgst.push(0)
-                                                arrtotal_cost.push(res.basic_cost)
-                                                arrpaid_cost.push(res.paid_cost)
-                                                arrbalance.push(res.basic_cost - res.paid_cost)
+                                                arrtotal_cost.push(Math.round(res.basic_cost))
+                                                arrpaid_cost.push(Math.round(res.paid_cost))
+                                                arrbalance.push(Math.round(res.basic_cost - res.paid_cost))
                                                 return (<tr className="Postform" style={{ backgroundColor: "#FFFDD0" }}>
                                                     <td>{res.parameters}</td>
-                                                    <td>{res.basic_cost}</td>
+                                                    <td>{Math.round(res.basic_cost)}</td>
                                                     <td>0</td>
-                                                    <td>{res.basic_cost}</td>
-                                                    <td>{res.paid_cost}</td>
-                                                    <td>{res.basic_cost - res.paid_cost}</td>
+                                                    <td>{Math.round(res.basic_cost)}</td>
+                                                    <td>{Math.round(res.paid_cost)}</td>
+                                                    <td>{Math.round(res.basic_cost - res.paid_cost)}</td>
+                                                    <Link to='/editOtherCharges' state={{ id: (res.id), unit_no: (from), tower: (tower), gst_choice: (gst_choice), parameters: (res.parameters), basic_cost: Math.round(res.basic_cost), paid_cost: Math.round(res.paid_cost) }}>{res.id}</Link>
                                                 </tr>)
-                                            }else{
-                                                arrbasic_cost.push(res.basic_cost)
-                                                arrgst.push(res.basic_cost*0.18)
-                                                arrtotal_cost.push(res.basic_cost+res.basic_cost*0.18)
-                                                arrpaid_cost.push(res.paid_cost)
-                                                arrbalance.push(res.basic_cost+res.basic_cost*0.18-res.paid_cost)
+                                            } else {
+                                                arrbasic_cost.push(Math.round(res.basic_cost))
+                                                arrgst.push(Math.round(res.basic_cost * 0.18))
+                                                arrtotal_cost.push(Math.round(res.basic_cost + res.basic_cost * 0.18))
+                                                arrpaid_cost.push(Math.round(res.paid_cost))
+                                                arrbalance.push(Math.round(res.basic_cost + res.basic_cost * 0.18 - res.paid_cost))
                                                 return (<tr className="Postform" style={{ backgroundColor: "#FFFDD0" }}>
                                                     <td>{res.parameters}</td>
-                                                    <td>{res.basic_cost}</td>
-                                                    <td>{res.basic_cost*0.18}</td>
-                                                    <td>{res.basic_cost+res.basic_cost*0.18}</td>
-                                                    <td>{res.paid_cost}</td>
-                                                    <td>{res.basic_cost+res.basic_cost*0.18-res.paid_cost}</td>
+                                                    <td>{Math.round(res.basic_cost)}</td>
+                                                    <td>{Math.round(res.basic_cost * 0.18)}</td>
+                                                    <td>{Math.round(res.basic_cost + res.basic_cost * 0.18)}</td>
+                                                    <td>{Math.round(res.paid_cost)}</td>
+                                                    <td>{Math.round(res.basic_cost + res.basic_cost * 0.18 - res.paid_cost)}</td>
+                                                    <Link to='/editOtherCharges' state={{ id: (res.id), unit_no: (from), tower: (tower), gst_choice: (gst_choice), parameters: (res.parameters), basic_cost: Math.round(res.basic_cost), paid_cost: Math.round(res.paid_cost) }}>{res.id}</Link>
                                                 </tr>)
                                             }
                                         }
@@ -1045,6 +1052,7 @@ function Unit() {
                                                 <td className="Postform"><b>Rs. <br />{sumArray(arrtotal_cost)}</b></td>
                                                 <td className="Postform"><b>Rs. <br />{sumArray(arrpaid_cost)}</b></td>
                                                 <td className="Postform"><b>Rs. <br />{sumArray(arrbalance)}</b></td>
+                                                <td className="Postform"><b></b></td>
                                             </tr>
 
                                         }

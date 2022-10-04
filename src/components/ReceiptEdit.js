@@ -20,7 +20,7 @@ function ReceiptEdit() {
 
     const register = (e) => {
         e.preventDefault();
-        alert("Form submitted for unit - " + (receipt_no));
+        alert("Form submitted for unit - " + (unit_no));
         Api.put("/receipt_edit/" + "'" + (receipt_no) + "'", {
             unit_no: (unit_no),
             payment_mode: new_paymode,
