@@ -60,6 +60,9 @@ const Navbar3 = (props) => {
 						<NavLink to='/bookings' state={{ tower: (props.value) }} activeStyle><b>
 							All bookings</b>
 						</NavLink>
+						<NavLink to='/brokers' state={{ tower: (props.value) }} activeStyle><b>
+							Brokers</b>
+						</NavLink>
 						{/* Third Nav */}
 						{/* <NavBtnLink to='/sign-in'>Sign In</NavBtnLink> */}
 					</NavMenu>
