@@ -1,10 +1,9 @@
 import React, { useState } from "react";
 import AsyncSelect from 'react-select/async';
 import Api from "./Api";
-import api from './Api';
 import { NavBtn, NavBtnLink } from "./NavbarElements";
 
-function BrokerAdd(props) {
+function BrokerAdd() {
 
     const [broker_code, setbroker_code] = useState("");
     const [bcn, setbcn] = useState("");
