@@ -138,6 +138,7 @@ function BrokerReport() {
                         </table>
                     </PDFExport>
                 </div>
+                <Link to='/brokerDetails' state={{ bcn: (bcn) }} className='applicant' style={{ backgroundColor: "#3AB4F2" }}><b>See Details</b></Link>
                 <button
                     className='applicant' style={{ backgroundColor: "#3AB4F2" }}
                     onClick={() => {

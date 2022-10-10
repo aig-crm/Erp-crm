@@ -140,6 +140,7 @@ function Brokers() {
                         </table>
                     </PDFExport>
                 </div>
+                <Link to='/brokerAdd' className='applicant' style={{ backgroundColor: "#3AB4F2" }}><b>Add Broker</b></Link>
                 <button
                     className='applicant' style={{ backgroundColor: "#3AB4F2" }}
                     onClick={() => {

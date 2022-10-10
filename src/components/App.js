@@ -27,6 +27,8 @@ import OtherCharges from './OtherCharges';
 import EditOtherCharges from './EditOtherCharges';
 import Brokers from './Brokers';
 import BrokerReport from './BrokerReport';
+import BrokerAdd from './BrokerAdd';
+import BrokerDetails from './BrokerDetails';
 
 function App() {
   return (
@@ -82,6 +84,8 @@ function App() {
         <Route exact path='/otherCharges' element={<OtherCharges />} />
         <Route exact path='/editOtherCharges' element={<EditOtherCharges />} />
         <Route exact path='/brokerReport' element={<BrokerReport />} />
+        <Route exact path='/brokerAdd' element={<BrokerAdd />} />
+        <Route exact path='/brokerDetails' element={<BrokerDetails />} />
       </Routes>
     </div>
   );

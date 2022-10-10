@@ -163,15 +163,15 @@ function Table() {
                                         <td></td>
                                         <td></td>
                                         <td></td>
-                                        <td>Rs.{sumArray(arr_rate)}</td>
-                                        <td>Rs.{sumArray(arr_nbp)}</td>
-                                        <td>Rs.{sumArray(arr_gst)}</td>
-                                        <td>Rs.{sumArray(arr_nbp) + sumArray(arr_gst)}</td>
-                                        <td>Rs.{sumArray(arr_rwgst)}</td>
-                                        <td>Rs.{sumArray(arr_rwgst) - sumArray(arr_rwogst)}</td>
-                                        <td>Rs.{sumArray(arr_rwogst)}</td>
+                                        <td>Rs.<br/>{sumArray(arr_rate)}</td>
+                                        <td>Rs.<br/>{sumArray(arr_nbp)}</td>
+                                        <td>Rs.<br/>{sumArray(arr_gst)}</td>
+                                        <td>Rs.<br/>{sumArray(arr_nbp) + sumArray(arr_gst)}</td>
+                                        <td>Rs.<br/>{sumArray(arr_rwgst)}</td>
+                                        <td>Rs.<br/>{sumArray(arr_rwgst) - sumArray(arr_rwogst)}</td>
+                                        <td>Rs.<br/>{sumArray(arr_rwogst)}</td>
                                         <td></td>
-                                        <td>Rs.{sumArray(arr_balance)}</td>
+                                        <td>Rs.<br/>{sumArray(arr_balance)}</td>
                                     </tr>
                                 }
                             </tbody>
