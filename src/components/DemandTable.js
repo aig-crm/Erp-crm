@@ -244,7 +244,7 @@ function DemandTable() {
                                                 <td>{res.gst}</td>
                                                 <td>{res.net_due}</td>
                                                 <td>{res.recieved}</td>
-                                                <td>{res.pending_amount}</td>
+                                                <td>{res.net_due - res.recieved}</td>
                                                 <td></td>
                                             </tr>
                                         )}
@@ -273,7 +273,7 @@ function DemandTable() {
                                                     <td className="Postform"><b>₹{res.gst}</b></td>
                                                     <td className="Postform"><b>₹{res.net_due}</b></td>
                                                     <td className="Postform"><b>₹{res.recieved}</b></td>
-                                                    <td className="Postform"><b>₹{res.pending_amount}</b></td>
+                                                    <td className="Postform"><b>₹{res.net_due - res.recieved}</b></td>
                                                     <td className="Postform"><b>₹0</b></td>
                                                 </tr>)
                                             }
@@ -375,7 +375,7 @@ function DemandTable() {
                                                 <td>{res.gst}</td>
                                                 <td>{res.net_due}</td>
                                                 <td>{res.recieved}</td>
-                                                <td>{res.pending_amount}</td>
+                                                <td>{res.net_due - res.recieved}</td>
                                             </tr>
                                         )}
                                         {currentTableDataDemand3.map((res) =>
@@ -388,7 +388,7 @@ function DemandTable() {
                                                 <td className="Postform"><b>₹{res.gst}</b></td>
                                                 <td className="Postform"><b>₹{res.net_due}</b></td>
                                                 <td className="Postform"><b>₹{res.recieved}</b></td>
-                                                <td className="Postform"><b>₹{res.pending_amount}</b></td>
+                                                <td className="Postform"><b>₹{res.net_due - res.recieved}</b></td>
                                             </tr>
                                         )}
                                     </tbody>
@@ -480,7 +480,7 @@ function DemandTable() {
                                                 <td>{res.net_due}</td>
                                                 <td>{res.net_due}</td>
                                                 <td>{res.recieved}</td>
-                                                <td>{res.pending_amount}</td>
+                                                <td>{res.net_due - res.recieved}</td>
                                                 <td></td>
                                             </tr>
                                         )}
@@ -491,7 +491,7 @@ function DemandTable() {
                                                 <td className="Postform"><b>₹{res.net_due}</b></td>
                                                 <td className="Postform"><b>₹{res.net_due}</b></td>
                                                 <td className="Postform"><b>₹{res.recieved}</b></td>
-                                                <td className="Postform"><b>₹{res.pending_amount}</b></td>
+                                                <td className="Postform"><b>₹{res.net_due - res.recieved}</b></td>
                                                 <td className="Postform"><b>₹{sumArray(interest_val)}</b></td>
                                             </tr>
                                         )}
@@ -582,7 +582,7 @@ function DemandTable() {
                                                 <td>{res.net_due}</td>
                                                 <td>{res.net_due}</td>
                                                 <td>{res.recieved}</td>
-                                                <td>{res.pending_amount}</td>
+                                                <td>{res.net_due - res.recieved}</td>
                                             </tr>
                                         )}
                                         {currentTableDataDemand3.map((res) =>
@@ -592,7 +592,7 @@ function DemandTable() {
                                                 <td className="Postform"><b>₹{res.net_due}</b></td>
                                                 <td className="Postform"><b>₹{res.net_due}</b></td>
                                                 <td className="Postform"><b>₹{res.recieved}</b></td>
-                                                <td className="Postform"><b>₹{res.pending_amount}</b></td>
+                                                <td className="Postform"><b>₹{res.net_due - res.recieved}</b></td>
                                             </tr>
                                         )}
                                     </tbody>

@@ -344,7 +344,7 @@ function Unit() {
                                                 <td>{res.gst}</td>
                                                 <td>{res.net_due}</td>
                                                 <td>{res.recieved}</td>
-                                                <td>{res.pending_amount}</td>
+                                                <td>{res.net_due - res.recieved}</td>
                                                 <Link to='/dueDate' state={{ from: (res.id), unit_no: (from), tower: (tower), gst_choice: (gst_choice), interest_value: arr }}>{res.id}</Link>
                                             </tr>)
                                         }
@@ -756,7 +756,7 @@ function Unit() {
                                                 <td>{res.net_due}</td>
                                                 <td>{res.net_due}</td>
                                                 <td>{res.recieved}</td>
-                                                <td>{res.pending_amount}</td>
+                                                <td>{res.net_due - res.recieved}</td>
                                                 <Link to='/dueDate' state={{ from: (res.id), unit_no: (from), tower: (tower), gst_choice: (gst_choice), interest_value: arr }}>{res.id}</Link>
                                             </tr>)
                                         }
