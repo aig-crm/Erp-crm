@@ -144,9 +144,9 @@ function ReminderTable() {
 
         pdf.addImage(data, 'PNG', 0, 0, pdfWidth, pdfHeight);
         if (unit_no != null) {
-            pdf.save((unit_no) + '-demand reminder report.pdf');
+            pdf.save((unit_no) + '-reminder report.pdf');
         } else {
-            pdf.save('Demand reminder report.pdf');
+            pdf.save('Reminder report.pdf');
         }
     };
 
@@ -159,18 +159,6 @@ function ReminderTable() {
                 </button>
                 <div ref={printRef} className='Demand'>
                     <Grid container spacing={3} className='Postform'>
-                        <Grid item xs={12} sm={4}>
-                            <img src={pic1} alt="project" />
-                        </Grid>
-                        <Grid item xs={12} sm={4}>
-                            <div>
-                                <h2 style={{ color: "#D18700" }}><b>ALPINE INFRA PROJECTS PVT LTD</b></h2>
-                                <h6 ><b>CIN- U70200UP2010PTC120257, GSTIN: O9AAICA7055L1Z8</b></h6>
-                            </div>
-                        </Grid>
-                        <Grid item xs={12} sm={4}>
-                            <img className='img' src={pic2} alt="project2" />
-                        </Grid>
                         <Grid item xs={12}>
                             <h6 className="Postform"><b><u><center>Reminder Letter</center></u></b></h6>
                         </Grid>
@@ -271,18 +259,6 @@ function ReminderTable() {
                 </button>
                 <div ref={printRef} className='Demand'>
                     <Grid container spacing={3} className='Postform'>
-                        <Grid item xs={12} sm={3}>
-                            <img src={pic1} alt="project" />
-                        </Grid>
-                        <Grid item xs={12} sm={6}>
-                            <div className='Postform'>
-                                <h2 style={{ color: "#D18700" }}><b>ALPINE INFRA PROJECTS PVT LTD</b></h2>
-                                <h6 ><b>CIN- U70200UP2010PTC120257, GSTIN: O9AAICA7055L1Z8</b></h6>
-                            </div>
-                        </Grid>
-                        <Grid item xs={12} sm={3}>
-                            <img className='img' src={pic2} alt="project2" />
-                        </Grid>
                         <Grid item xs={12}>
                             <h6 className="mt-3 text-dark"><b><u><center>Reminder Letter</center></u></b></h6>
                         </Grid>
