@@ -30,6 +30,7 @@ import BrokerReport from './BrokerReport';
 import BrokerAdd from './BrokerAdd';
 import BrokerDetails from './BrokerDetails';
 import BrokerEdit from './BrokerEdit';
+import Welcome from './Welcome';
 
 function App() {
   return (
@@ -88,6 +89,7 @@ function App() {
         <Route exact path='/brokerAdd' element={<BrokerAdd />} />
         <Route exact path='/brokerDetails' element={<BrokerDetails />} />
         <Route exact path='/brokerEdit' element={<BrokerEdit />} />
+        <Route exact path='/welcome' element={<Welcome />} />
       </Routes>
     </div>
   );
