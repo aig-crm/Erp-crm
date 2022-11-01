@@ -675,6 +675,7 @@ function Unit() {
                 <Link to='/addReceipt' state={{ unit_no: (from), tower: (tower), gst_choice: (gst_choice) }} className='applicant' style={{ backgroundColor: "#3AB4F2" }}><b>Add Receipt</b></Link>
                 <Link to='/otherCharges' state={{ unit_no: (from), tower: (tower), gst_choice: (gst_choice) }} className='applicant' style={{ backgroundColor: "#3AB4F2" }}><b>Other Charges</b></Link>
                 <Link to='/welcome' state={{ unit_no: (from), tower: (tower), gst_choice: (gst_choice) }} className='applicant' style={{ backgroundColor: "#3AB4F2" }}><b>Generate Welcome Letter</b></Link>
+                <Link to='/uploadFile' state={{ unit_no: (from), tower: (tower), gst_choice: (gst_choice) }} className='applicant' style={{ backgroundColor: "#3AB4F2" }}><b>Upload Documents</b></Link>
 
                 <button
                     className='applicant' style={{ backgroundColor: "#3AB4F2" }}
@@ -1097,6 +1098,7 @@ function Unit() {
                 <Link to='/addReceipt' state={{ unit_no: (from), tower: (tower), gst_choice: (gst_choice) }} className='applicant' style={{ backgroundColor: "#3AB4F2" }}><b>Add Receipt</b></Link>
                 <Link to='/otherCharges' state={{ unit_no: (from), tower: (tower), gst_choice: (gst_choice) }} className='applicant' style={{ backgroundColor: "#3AB4F2" }}><b>Other Charges</b></Link>
                 <Link to='/welcome' state={{ unit_no: (from), tower: (tower), gst_choice: (gst_choice) }} className='applicant' style={{ backgroundColor: "#3AB4F2" }}><b>Generate Welcome Letter</b></Link>
+                <Link to='/uploadFile' state={{ unit_no: (from), tower: (tower), gst_choice: (gst_choice) }} className='applicant' style={{ backgroundColor: "#3AB4F2" }}><b>Upload Documents</b></Link>
 
                 <button
                     className='applicant' style={{ backgroundColor: "#3AB4F2" }}

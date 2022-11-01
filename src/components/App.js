@@ -31,6 +31,8 @@ import BrokerAdd from './BrokerAdd';
 import BrokerDetails from './BrokerDetails';
 import BrokerEdit from './BrokerEdit';
 import Welcome from './Welcome';
+import UploadFile from './UploadFile';
+
 
 function App() {
   return (
@@ -90,6 +92,7 @@ function App() {
         <Route exact path='/brokerDetails' element={<BrokerDetails />} />
         <Route exact path='/brokerEdit' element={<BrokerEdit />} />
         <Route exact path='/welcome' element={<Welcome />} />
+        <Route exact path='/uploadFile' element={<UploadFile />} />
       </Routes>
     </div>
   );
