@@ -1,6 +1,6 @@
 import './App.css';
 import React, { useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import Api from './Api';
 
 function UploadFile() {
@@ -13,6 +13,7 @@ function UploadFile() {
     const [filetype, setFiletype] = useState("");
     const [filelastModifiedDate, setFilelastModifiedDate] = useState("");
     const [selected, setselected] = useState(0);
+    const [createObjectURL, setCreateObjectURL] = useState(null);
 
     const saveFile = (e) => {
         setFile(e.target.files[0]);
@@ -20,6 +21,7 @@ function UploadFile() {
         setFiletype(e.target.files[0].type);
         setFilelastModifiedDate(e.target.files[0].lastModifiedDate.toDateString());
         setselected(1);
+        setCreateObjectURL(URL.createObjectURL(e.target.files[0]));
     };
 
     const uploadFile = async (e) => {
@@ -28,7 +30,9 @@ function UploadFile() {
         const formData = new FormData();
         formData.append("file", file);
         formData.append("filename", filename);
+        formData.append("filetype", filetype);
         formData.append("unit_no", unit_no);
+        formData.append("blob_key", createObjectURL);
         try {
             const res = await Api.post(
                 "/uploadFile",
@@ -69,6 +73,7 @@ function UploadFile() {
             </div>
         );
     }
+
 }
 
 export default UploadFile;
