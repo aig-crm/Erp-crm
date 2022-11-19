@@ -2,6 +2,7 @@
   "name": "api-call",
   "version": "0.1.0",
   "private": true,
+  "proxy": "https://00c0-103-163-109-162.in.ngrok.io",
   "dependencies": {
     "@material-ui/core": "^4.12.4",
     "@material-ui/lab": "^4.0.0-alpha.61",

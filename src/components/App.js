@@ -32,6 +32,7 @@ import BrokerDetails from './BrokerDetails';
 import BrokerEdit from './BrokerEdit';
 import Welcome from './Welcome';
 import UploadFile from './UploadFile';
+import SeeFile from './SeeFile';
 
 
 function App() {
@@ -93,6 +94,7 @@ function App() {
         <Route exact path='/brokerEdit' element={<BrokerEdit />} />
         <Route exact path='/welcome' element={<Welcome />} />
         <Route exact path='/uploadFile' element={<UploadFile />} />
+        <Route exact path='/seeFile' element={<SeeFile />} />
       </Routes>
     </div>
   );
