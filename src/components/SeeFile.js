@@ -3,7 +3,6 @@ import React, { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import Api from './Api';
 import { useEffect } from 'react';
-import pic1 from '../assets/pic1.jpg';
 
 function SeeFile() {
 
@@ -40,7 +39,7 @@ function SeeFile() {
                     result.length > 0 ? result.map((el, i) => {
                         return (
                             <>
-                                <a href={el.file} target="_blank">{el.filename}</a>
+                                <a href={"https://1b6c-103-163-108-188.in.ngrok.io/uploads/" + el.file} >{el.file}</a>
                                 <br />
                                 <br />
                             </>
