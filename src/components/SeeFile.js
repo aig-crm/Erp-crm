@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import Api from './Api';
 import { useEffect } from 'react';
-import { Card } from 'react-bootstrap';
+import pic1 from '../assets/pic1.jpg';
 
 function SeeFile() {
 
@@ -15,16 +15,9 @@ function SeeFile() {
     const getData = async () => {
 
         if (unit_no != null) {
-            return await Api.get('/file/' + "'" + (unit_no) + "'", {
-                headers: {
-                    "Content-Type": "application/json"
-                }
-            }).then(res => {
-                if (res.data.status == 201) {
-                    setResult(res.data.data)
-                } else {
-                    console.log("error")
-                }
+            return await Api.get('/file/' + "'" + (unit_no) + "'"
+            ).then(res => {
+                setResult(res.data)
             });
         } else {
             return await Api.get('/file/').then(result => {
@@ -44,15 +37,15 @@ function SeeFile() {
             <br />
             <div className="Postform">
                 {
-                    result.length > 0 ? result.map((el, i)=>{
+                    result.length > 0 ? result.map((el, i) => {
                         return (
                             <>
-                            <img src={`/uploads/${el.file}`} />
-                            <br />
-                            <br />
+                                <a href={el.file} target="_blank">{el.filename}</a>
+                                <br />
+                                <br />
                             </>
                         )
-                    }):""
+                    }) : ""
                 }
             </div>
         </div>
