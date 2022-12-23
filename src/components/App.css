@@ -77,6 +77,19 @@ body {
   font-size: 10px;
 }
 
+.table2 {
+  align-items: center;
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  padding-top: 10px;
+  padding-bottom: 20px;
+  padding-left: 30px;
+  padding-right: 30px;
+  color: black;
+  font-size: 15px;
+  overflow-wrap: break-word;
+  white-space: pre-wrap;
+}
+
 .row {
   display: flex;
   flex-direction: row;

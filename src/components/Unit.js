@@ -265,7 +265,7 @@ function Unit() {
         return (
             <div className='Demand'>
                 <PDFExport pageTemplate={PageTemplate} fileName={(from) + '.pdf'}
-                    paperSize="A2"
+                    paperSize="A1"
                     ref={pdfExportComponent}>
                     <Grid container spacing={3} className='Postform'>
                         <Grid item xs={12}>
@@ -296,7 +296,7 @@ function Unit() {
                     </Grid>
 
                     <PDFExport pageTemplate={PageTemplate} fileName={'payment structure of-' + (from) + '.pdf'}
-                        paperSize="A2"
+                        paperSize="A1"
                         ref={pdfExportComponent2}>
                         <React.Fragment>
                             <div className="row">
@@ -322,7 +322,7 @@ function Unit() {
                                             {currentTableDataDemand2.map((res) => {
                                                 arrNet_due.push(res.net_due)
                                                 arrNet_bsp.push(res.net_bsp)
-                                                return (<tr className="Postform" style={{ backgroundColor: "#FFFDD0" }}>
+                                                return (<tr className="table2" style={{ backgroundColor: "#FFFDD0" }}>
                                                     <td>{res.description}</td>
                                                     <td>{res.due_date}</td>
                                                     <td>{res.net_bsp}</td>
@@ -339,7 +339,7 @@ function Unit() {
                                             {currentTableDataDemand.map((res) => {
                                                 arrNet_due.push(res.net_due)
                                                 arrNet_bsp.push(res.net_bsp)
-                                                return (<tr className="Postform" style={{ backgroundColor: "#FFFDD0" }}>
+                                                return (<tr className="table2" style={{ backgroundColor: "#FFFDD0" }}>
                                                     <td>{res.description}</td>
                                                     <td>{res.due_date}</td>
                                                     <td>{res.net_bsp}</td>
@@ -356,7 +356,7 @@ function Unit() {
                                             {currentTableDataDemand1.map((res) => {
                                                 arrNet_due.push(res.net_due)
                                                 arrNet_bsp.push(res.net_bsp)
-                                                return (<tr className="Postform" style={{ backgroundColor: "#FFFDD0" }}>
+                                                return (<tr className="table2" style={{ backgroundColor: "#FFFDD0" }}>
                                                     <td>{res.description}</td>
                                                     <td>{res.due_date}</td>
                                                     <td>{res.net_bsp}</td>
@@ -422,7 +422,7 @@ function Unit() {
                                         {currentTableData.map((res) => {
                                             arrRwgst.push(res.rwgst)
                                             arrRwogst.push(Math.round((res.rwgst) * 100 / 105))
-                                            return (<tr className="Postform" style={{ backgroundColor: "#FFFDD0" }}>
+                                            return (<tr className="table2" style={{ backgroundColor: "#FFFDD0" }}>
                                                 <td>{res.date}</td>
                                                 <td>{res.payment_mode}</td>
                                                 <td>{res.bank_name}</td>
@@ -439,7 +439,7 @@ function Unit() {
                                         {currentTableData2.map((res) => {
                                             arrRwgst.push(res.rwgst)
                                             arrRwogst.push(Math.round((res.rwgst) * 100 / 105))
-                                            return (<tr className="Postform" style={{ backgroundColor: "#FFFDD0" }}>
+                                            return (<tr className="table2" style={{ backgroundColor: "#FFFDD0" }}>
                                                 <td>{res.date}</td>
                                                 <td>{res.payment_mode}</td>
                                                 <td>{res.bank_name}</td>
@@ -503,7 +503,7 @@ function Unit() {
                                         {currentTableDataInterest.map((res) => {
                                             if (getDifferenceInDays(new Date(res.due_date), new Date(res.received_date)) < 0) {
                                                 arr.push(0)
-                                                return (<tr className="Postform" style={{ backgroundColor: "#FFFDD0" }}>
+                                                return (<tr className="table2" style={{ backgroundColor: "#FFFDD0" }}>
                                                     <td>{res.description}</td>
                                                     <td>{res.due_date}</td>
                                                     <td>{Math.round(parseInt(res.due_amt) * 100 / 105)}</td>
@@ -519,7 +519,7 @@ function Unit() {
                                             }
                                             else if (parseInt(parseInt(res.due_amt) * 100 / 105) < (parseInt(res.received_amt) * 100 / 105) && getDifferenceInDays(new Date(res.due_date), new Date(res.received_date)) > 0) {
                                                 arr.push(Math.round((parseInt(res.due_amt) * 100 / 105) * getDifferenceInDays(new Date(res.due_date), new Date(res.received_date)) * 0.1 / 365))
-                                                return (<tr className="Postform" style={{ backgroundColor: "#FFFDD0" }}>
+                                                return (<tr className="table2" style={{ backgroundColor: "#FFFDD0" }}>
                                                     <td>{res.description}</td>
                                                     <td>{res.due_date}</td>
                                                     <td>{Math.round(parseInt(res.due_amt) * 100 / 105)}</td>
@@ -533,17 +533,17 @@ function Unit() {
                                                     <td>{Math.round((parseInt(res.due_amt) * 100 / 105) * getDifferenceInDays(new Date(res.due_date), new Date(res.received_date)) * 0.1 / 365)}</td>
                                                 </tr>)
                                             } else if ((res.due_date === '')) {
-                                                return (<tr className="Postform" style={{ backgroundColor: "#FFFDD0" }}>
+                                                return (<tr className="table2" style={{ backgroundColor: "#FFFDD0" }}>
 
                                                 </tr>)
                                             } else if ((isNaN(res.due_amt))) {
-                                                return (<tr className="Postform" style={{ backgroundColor: "#FFFDD0" }}>
+                                                return (<tr className="table2" style={{ backgroundColor: "#FFFDD0" }}>
 
                                                 </tr>)
                                             }
                                             else {
                                                 arr.push(Math.round((parseInt(res.received_amt) * 100 / 105) * getDifferenceInDays(new Date(res.due_date), new Date(res.received_date)) * 0.1 / 365))
-                                                return (<tr className="Postform" style={{ backgroundColor: "#FFFDD0" }}>
+                                                return (<tr className="table2" style={{ backgroundColor: "#FFFDD0" }}>
                                                     <td>{res.description}</td>
                                                     <td>{res.due_date}</td>
                                                     <td>{Math.round(parseInt(res.due_amt) * 100 / 105)}</td>
@@ -604,46 +604,161 @@ function Unit() {
                                             <th className="table">TOTAL COST</th>
                                             <th className="table">PAID</th>
                                             <th className="table">BALANCE</th>
-                                            <th className="table">ID</th>
                                         </tr>
                                     </thead>
                                     <tbody className="table">
                                         {currentTableDataOtherCharges.map((res) => {
-                                            if ((res.parameters) === "INTEREST FREE MAINTENANCE SECURITY (IFMS)") {
-                                                arrbasic_cost.push(Math.round(res.basic_cost))
-                                                arrgst.push(0)
-                                                arrtotal_cost.push(Math.round(res.basic_cost))
-                                                arrpaid_cost.push(Math.round(res.paid_cost))
-                                                arrbalance.push(Math.round(res.basic_cost - res.paid_cost))
-                                                return (<tr className="Postform" style={{ backgroundColor: "#FFFDD0" }}>
-                                                    <td>{res.parameters}</td>
-                                                    <td>{Math.round(res.basic_cost)}</td>
-                                                    <td>0</td>
-                                                    <td>{Math.round(res.basic_cost)}</td>
-                                                    <td>{Math.round(res.paid_cost)}</td>
-                                                    <td>{Math.round(res.basic_cost - res.paid_cost)}</td>
-                                                    <Link to='/editOtherCharges' state={{ id: (res.id), unit_no: (from), tower: (tower), gst_choice: (gst_choice), parameters: (res.parameters), basic_cost: Math.round(res.basic_cost), paid_cost: Math.round(res.paid_cost) }}>{res.id}</Link>
-                                                </tr>)
-                                            } else {
-                                                arrbasic_cost.push(Math.round(res.basic_cost))
-                                                arrgst.push(Math.round(res.basic_cost * 0.18))
-                                                arrtotal_cost.push(Math.round(res.basic_cost + res.basic_cost * 0.18))
-                                                arrpaid_cost.push(Math.round(res.paid_cost))
-                                                arrbalance.push(Math.round(res.basic_cost + res.basic_cost * 0.18 - res.paid_cost))
-                                                return (<tr className="Postform" style={{ backgroundColor: "#FFFDD0" }}>
-                                                    <td>{res.parameters}</td>
-                                                    <td>{Math.round(res.basic_cost)}</td>
-                                                    <td>{Math.round(res.basic_cost * 0.18)}</td>
-                                                    <td>{Math.round(res.basic_cost + res.basic_cost * 0.18)}</td>
-                                                    <td>{Math.round(res.paid_cost)}</td>
-                                                    <td>{Math.round(res.basic_cost + res.basic_cost * 0.18 - res.paid_cost)}</td>
-                                                    <Link to='/editOtherCharges' state={{ id: (res.id), unit_no: (from), tower: (tower), gst_choice: (gst_choice), parameters: (res.parameters), basic_cost: Math.round(res.basic_cost), paid_cost: Math.round(res.paid_cost) }}>{res.id}</Link>
-                                                </tr>)
-                                            }
+                                            arrbasic_cost.push(Math.round(res.bc_otlr))
+                                            arrgst.push(Math.round(res.bc_otlr * 0.18))
+                                            arrtotal_cost.push(Math.round(res.bc_otlr + res.bc_otlr * 0.18))
+                                            arrpaid_cost.push(Math.round(res.pc_otlr))
+                                            arrbalance.push(Math.round(res.bc_otlr + res.bc_otlr * 0.18 - res.pc_otlr))
+                                            return (<tr className="table2" style={{ backgroundColor: "#FFFDD0" }}>
+                                                <td>ONE TIME LEASE RENT</td>
+                                                <td>{Math.round(res.bc_otlr)}</td>
+                                                <td>{Math.round(res.bc_otlr * 0.18)}</td>
+                                                <td>{Math.round(res.bc_otlr + res.bc_otlr * 0.18)}</td>
+                                                <td>{Math.round(res.pc_otlr)}</td>
+                                                <td>{Math.round(res.bc_otlr + res.bc_otlr * 0.18 - res.pc_otlr)}</td>
+                                            </tr>)
+                                        }
+                                        )}{currentTableDataOtherCharges.map((res) => {
+                                            arrbasic_cost.push(Math.round(res.bc_2yamc))
+                                            arrgst.push(Math.round(res.bc_2yamc * 0.18))
+                                            arrtotal_cost.push(Math.round(res.bc_2yamc + res.bc_2yamc * 0.18))
+                                            arrpaid_cost.push(Math.round(res.pc_2yamc))
+                                            arrbalance.push(Math.round(res.bc_2yamc + res.bc_2yamc * 0.18 - res.pc_2yamc))
+                                            return (<tr className="table2" style={{ backgroundColor: "#FFFDD0" }}>
+                                                <td>2 YEARS ADVANCE MAINTENANCE CHARGES</td>
+                                                <td>{Math.round(res.bc_2yamc)}</td>
+                                                <td>{Math.round(res.bc_2yamc * 0.18)}</td>
+                                                <td>{Math.round(res.bc_2yamc + res.bc_2yamc * 0.18)}</td>
+                                                <td>{Math.round(res.pc_2yamc)}</td>
+                                                <td>{Math.round(res.bc_2yamc + res.bc_2yamc * 0.18 - res.pc_2yamc)}</td>
+                                            </tr>)
+                                        }
+                                        )}{currentTableDataOtherCharges.map((res) => {
+                                            arrbasic_cost.push(Math.round(res.bc_emc))
+                                            arrgst.push(Math.round(res.bc_emc * 0.18))
+                                            arrtotal_cost.push(Math.round(res.bc_emc + res.bc_emc * 0.18))
+                                            arrpaid_cost.push(Math.round(res.pc_emc))
+                                            arrbalance.push(Math.round(res.bc_emc + res.bc_emc * 0.18 - res.pc_emc))
+                                            return (<tr className="table2" style={{ backgroundColor: "#FFFDD0" }}>
+                                                <td>ELECTRICITY METER CHARGES</td>
+                                                <td>{Math.round(res.bc_emc)}</td>
+                                                <td>{Math.round(res.bc_emc * 0.18)}</td>
+                                                <td>{Math.round(res.bc_emc + res.bc_emc * 0.18)}</td>
+                                                <td>{Math.round(res.pc_emc)}</td>
+                                                <td>{Math.round(res.bc_emc + res.bc_emc * 0.18 - res.pc_emc)}</td>
+                                            </tr>)
+                                        }
+                                        )}{currentTableDataOtherCharges.map((res) => {
+                                            arrbasic_cost.push(Math.round(res.bc_dcpb))
+                                            arrgst.push(Math.round(res.bc_dcpb * 0.18))
+                                            arrtotal_cost.push(Math.round(res.bc_dcpb + res.bc_dcpb * 0.18))
+                                            arrpaid_cost.push(Math.round(res.pc_dcpb))
+                                            arrbalance.push(Math.round(res.bc_dcpb + res.bc_dcpb * 0.18 - res.pc_dcpb))
+                                            return (<tr className="table2" style={{ backgroundColor: "#FFFDD0" }}>
+                                                <td>DG POWER BACK-UP ELECTRIC METER CHARGES</td>
+                                                <td>{Math.round(res.bc_dcpb)}</td>
+                                                <td>{Math.round(res.bc_dcpb * 0.18)}</td>
+                                                <td>{Math.round(res.bc_dcpb + res.bc_dcpb * 0.18)}</td>
+                                                <td>{Math.round(res.pc_dcpb)}</td>
+                                                <td>{Math.round(res.bc_dcpb + res.bc_dcpb * 0.18 - res.pc_dcpb)}</td>
+                                            </tr>)
+                                        }
+                                        )}{currentTableDataOtherCharges.map((res) => {
+                                            arrbasic_cost.push(Math.round(res.bc_eic))
+                                            arrgst.push(Math.round(res.bc_eic * 0.18))
+                                            arrtotal_cost.push(Math.round(res.bc_eic + res.bc_eic * 0.18))
+                                            arrpaid_cost.push(Math.round(res.pc_eic))
+                                            arrbalance.push(Math.round(res.bc_eic + res.bc_eic * 0.18 - res.pc_eic))
+                                            return (<tr className="table2" style={{ backgroundColor: "#FFFDD0" }}>
+                                                <td>ELECTRICAL INFRASTRUCTURE CHARGES AS PER APPOROVED DRAWING BY RESPECTIVE AUTHORITES</td>
+                                                <td>{Math.round(res.bc_eic)}</td>
+                                                <td>{Math.round(res.bc_eic * 0.18)}</td>
+                                                <td>{Math.round(res.bc_eic + res.bc_eic * 0.18)}</td>
+                                                <td>{Math.round(res.pc_eic)}</td>
+                                                <td>{Math.round(res.bc_eic + res.bc_eic * 0.18 - res.pc_eic)}</td>
+                                            </tr>)
+                                        }
+                                        )}{currentTableDataOtherCharges.map((res) => {
+                                            arrbasic_cost.push(Math.round(res.bc_cap))
+                                            arrgst.push(Math.round(res.bc_cap * 0.18))
+                                            arrtotal_cost.push(Math.round(res.bc_cap + res.bc_cap * 0.18))
+                                            arrpaid_cost.push(Math.round(res.pc_cap))
+                                            arrbalance.push(Math.round(res.bc_cap + res.bc_cap * 0.18 - res.pc_cap))
+                                            return (<tr className="table2" style={{ backgroundColor: "#FFFDD0" }}>
+                                                <td>CHARGES FOR ADDITIONAL PROVISION OF 1 KVA DG POWER BACKUP FACILITY AS PER UPDATED APPROVE DRAWING BY RESPECTIVE AUTHORITES</td>
+                                                <td>{Math.round(res.bc_cap)}</td>
+                                                <td>{Math.round(res.bc_cap * 0.18)}</td>
+                                                <td>{Math.round(res.bc_cap + res.bc_cap * 0.18)}</td>
+                                                <td>{Math.round(res.pc_cap)}</td>
+                                                <td>{Math.round(res.bc_cap + res.bc_cap * 0.18 - res.pc_cap)}</td>
+                                            </tr>)
+                                        }
+                                        )}{currentTableDataOtherCharges.map((res) => {
+                                            arrbasic_cost.push(Math.round(res.bc_wsc))
+                                            arrgst.push(Math.round(res.bc_wsc * 0.18))
+                                            arrtotal_cost.push(Math.round(res.bc_wsc + res.bc_wsc * 0.18))
+                                            arrpaid_cost.push(Math.round(res.pc_wsc))
+                                            arrbalance.push(Math.round(res.bc_wsc + res.bc_wsc * 0.18 - res.pc_wsc))
+                                            return (<tr className="table2" style={{ backgroundColor: "#FFFDD0" }}>
+                                                <td>WATER & SEWAGE CONNECTION CHARGES ^^</td>
+                                                <td>{Math.round(res.bc_wsc)}</td>
+                                                <td>{Math.round(res.bc_wsc * 0.18)}</td>
+                                                <td>{Math.round(res.bc_wsc + res.bc_wsc * 0.18)}</td>
+                                                <td>{Math.round(res.pc_wsc)}</td>
+                                                <td>{Math.round(res.bc_wsc + res.bc_wsc * 0.18 - res.pc_wsc)}</td>
+                                            </tr>)
+                                        }
+                                        )}{currentTableDataOtherCharges.map((res) => {
+                                            arrbasic_cost.push(Math.round(res.bc_iglc))
+                                            arrgst.push(Math.round(res.bc_iglc * 0.18))
+                                            arrtotal_cost.push(Math.round(res.bc_iglc + res.bc_iglc * 0.18))
+                                            arrpaid_cost.push(Math.round(res.pc_iglc))
+                                            arrbalance.push(Math.round(res.bc_iglc + res.bc_iglc * 0.18 - res.pc_iglc))
+                                            return (<tr className="table2" style={{ backgroundColor: "#FFFDD0" }}>
+                                                <td>IGL GAS CONNECTION INFRASTRUCTURE DEVELOPMENT CHARGES</td>
+                                                <td>{Math.round(res.bc_iglc)}</td>
+                                                <td>{Math.round(res.bc_iglc * 0.18)}</td>
+                                                <td>{Math.round(res.bc_iglc + res.bc_iglc * 0.18)}</td>
+                                                <td>{Math.round(res.pc_iglc)}</td>
+                                                <td>{Math.round(res.bc_iglc + res.bc_iglc * 0.18 - res.pc_iglc)}</td>
+                                            </tr>)
+                                        }
+                                        )}{currentTableDataOtherCharges.map((res) => {
+                                            arrbasic_cost.push(Math.round(res.bc_1ycuc))
+                                            arrgst.push(Math.round(res.bc_1ycuc * 0.18))
+                                            arrtotal_cost.push(Math.round(res.bc_1ycuc + res.bc_1ycuc * 0.18))
+                                            arrpaid_cost.push(Math.round(res.pc_1ycuc))
+                                            arrbalance.push(Math.round(res.bc_1ycuc + res.bc_1ycuc * 0.18 - res.pc_1ycuc))
+                                            return (<tr className="table2" style={{ backgroundColor: "#FFFDD0" }}>
+                                                <td>CLUB USAGE CHARGES FOR 1 YEAR</td>
+                                                <td>{Math.round(res.bc_1ycuc)}</td>
+                                                <td>{Math.round(res.bc_1ycuc * 0.18)}</td>
+                                                <td>{Math.round(res.bc_1ycuc + res.bc_1ycuc * 0.18)}</td>
+                                                <td>{Math.round(res.pc_1ycuc)}</td>
+                                                <td>{Math.round(res.bc_1ycuc + res.bc_1ycuc * 0.18 - res.pc_1ycuc)}</td>
+                                            </tr>)
+                                        }
+                                        )}{currentTableDataOtherCharges.map((res) => {
+                                            arrbasic_cost.push(Math.round(res.bc_ifms))
+                                            arrgst.push(Math.round(0))
+                                            arrtotal_cost.push(Math.round(res.bc_ifms + 0))
+                                            arrpaid_cost.push(Math.round(res.pc_ifms))
+                                            arrbalance.push(Math.round(res.bc_ifms + 0 - res.pc_ifms))
+                                            return (<tr className="table2" style={{ backgroundColor: "#FFFDD0" }}>
+                                                <td>INTEREST FREE MAINTENANCE SECURITY</td>
+                                                <td>{Math.round(res.bc_ifms)}</td>
+                                                <td>{Math.round(0)}</td>
+                                                <td>{Math.round(res.bc_ifms + 0)}</td>
+                                                <td>{Math.round(res.pc_ifms)}</td>
+                                                <td>{Math.round(res.bc_ifms + 0 - res.pc_ifms)}</td>
+                                            </tr>)
                                         }
                                         )}
                                         {
-
                                             <tr className="Postform" style={{ backgroundColor: "#FFFDD0" }}>
                                                 <td className="Postform"><b>Total: </b></td>
                                                 <td className="Postform"><b>Rs. <br />{sumArray(arrbasic_cost)}</b></td>
@@ -651,9 +766,7 @@ function Unit() {
                                                 <td className="Postform"><b>Rs. <br />{sumArray(arrtotal_cost)}</b></td>
                                                 <td className="Postform"><b>Rs. <br />{sumArray(arrpaid_cost)}</b></td>
                                                 <td className="Postform"><b>Rs. <br />{sumArray(arrbalance)}</b></td>
-                                                <td className="Postform"><b></b></td>
                                             </tr>
-
                                         }
                                     </tbody>
                                 </table>
@@ -674,7 +787,6 @@ function Unit() {
                 <Link to='/reportD' state={{ unit_no: (from), tower: (tower), gst_choice: (gst_choice) }} className='applicant' style={{ backgroundColor: "#3AB4F2" }}><b>See Demand Report</b></Link>
                 <Link to='/seeFile' state={{ unit_no: (from), tower: (tower), gst_choice: (gst_choice) }} className='applicant' style={{ backgroundColor: "#3AB4F2" }}><b>See Documents</b></Link>
                 <Link to='/addReceipt' state={{ unit_no: (from), tower: (tower), gst_choice: (gst_choice) }} className='applicant' style={{ backgroundColor: "#3AB4F2" }}><b>Add Receipt</b></Link>
-                <Link to='/otherCharges' state={{ unit_no: (from), tower: (tower), gst_choice: (gst_choice) }} className='applicant' style={{ backgroundColor: "#3AB4F2" }}><b>Add Other Charges</b></Link>
                 <Link to='/welcome' state={{ unit_no: (from), tower: (tower), gst_choice: (gst_choice) }} className='applicant' style={{ backgroundColor: "#3AB4F2" }}><b>Generate Welcome Letter</b></Link>
                 <Link to='/uploadFile' state={{ unit_no: (from), tower: (tower), gst_choice: (gst_choice) }} className='applicant' style={{ backgroundColor: "#3AB4F2" }}><b>Upload Documents</b></Link>
 
@@ -704,7 +816,7 @@ function Unit() {
         return (
             <div className='Demand'>
                 <PDFExport pageTemplate={PageTemplate} fileName={(from) + '.pdf'}
-                    paperSize="A2"
+                    paperSize="A1"
                     ref={pdfExportComponent}>
                     <Grid container spacing={3} className='Postform'>
                         <Grid item xs={12}>
@@ -735,7 +847,7 @@ function Unit() {
                     </Grid>
 
                     <PDFExport pageTemplate={PageTemplate} fileName={'payment structure of-' + (from) + '.pdf'}
-                        paperSize="A2"
+                        paperSize="A1"
                         ref={pdfExportComponent2}>
                         <React.Fragment>
                             <div className="row">
@@ -758,7 +870,7 @@ function Unit() {
                                             {currentTableDataDemand2.map((res) => {
                                                 arrNet_due.push(res.net_due)
                                                 arrNet_bsp.push(res.net_due)
-                                                return (<tr className="Postform" style={{ backgroundColor: "#FFFDD0" }}>
+                                                return (<tr className="table2" style={{ backgroundColor: "#FFFDD0" }}>
                                                     <td>{res.description}</td>
                                                     <td>{res.due_date}</td>
                                                     <td>{res.net_due}</td>
@@ -772,7 +884,7 @@ function Unit() {
                                             {currentTableDataDemand.map((res) => {
                                                 arrNet_due.push(res.net_due)
                                                 arrNet_bsp.push(res.net_due)
-                                                return (<tr className="Postform" style={{ backgroundColor: "#FFFDD0" }}>
+                                                return (<tr className="table2" style={{ backgroundColor: "#FFFDD0" }}>
                                                     <td>{res.description}</td>
                                                     <td>{res.due_date}</td>
                                                     <td>{res.net_due}</td>
@@ -786,7 +898,7 @@ function Unit() {
                                             {currentTableDataDemand1.map((res) => {
                                                 arrNet_due.push(res.net_due)
                                                 arrNet_bsp.push(res.due)
-                                                return (<tr className="Postform" style={{ backgroundColor: "#FFFDD0" }}>
+                                                return (<tr className="table2" style={{ backgroundColor: "#FFFDD0" }}>
                                                     <td>{res.description}</td>
                                                     <td>{res.due_date}</td>
                                                     <td>{res.due}</td>
@@ -846,7 +958,7 @@ function Unit() {
                                         {currentTableData.map((res) => {
                                             arrRwgst.push(res.rwgst)
                                             arrRwogst.push(res.rwogst)
-                                            return (<tr className="Postform" style={{ backgroundColor: "#FFFDD0" }}>
+                                            return (<tr className="table2" style={{ backgroundColor: "#FFFDD0" }}>
                                                 <td>{res.date}</td>
                                                 <td>{res.payment_mode}</td>
                                                 <td>{res.bank_name}</td>
@@ -863,7 +975,7 @@ function Unit() {
                                         {currentTableData2.map((res) => {
                                             arrRwgst.push(res.rwgst)
                                             arrRwogst.push(res.rwogst)
-                                            return (<tr className="Postform" style={{ backgroundColor: "#FFFDD0" }}>
+                                            return (<tr className="table2" style={{ backgroundColor: "#FFFDD0" }}>
                                                 <td>{res.date}</td>
                                                 <td>{res.payment_mode}</td>
                                                 <td>{res.bank_name}</td>
@@ -927,7 +1039,7 @@ function Unit() {
                                         {currentTableDataInterest.map((res) => {
                                             if (getDifferenceInDays(new Date(res.due_date), new Date(res.received_date)) < 0) {
                                                 arr.push(0)
-                                                return (<tr className="Postform" style={{ backgroundColor: "#FFFDD0" }}>
+                                                return (<tr className="table2" style={{ backgroundColor: "#FFFDD0" }}>
                                                     <td>{res.description}</td>
                                                     <td>{res.due_date}</td>
                                                     <td>{res.due_amt}</td>
@@ -943,7 +1055,7 @@ function Unit() {
                                             }
                                             else if (parseInt(res.due_amt) < parseInt(res.received_amt) && getDifferenceInDays(new Date(res.due_date), new Date(res.received_date)) > 0) {
                                                 arr.push(Math.round(res.due_amt * getDifferenceInDays(new Date(res.due_date), new Date(res.received_date)) * 0.1 / 365))
-                                                return (<tr className="Postform" style={{ backgroundColor: "#FFFDD0" }}>
+                                                return (<tr className="table2" style={{ backgroundColor: "#FFFDD0" }}>
                                                     <td>{res.description}</td>
                                                     <td>{res.due_date}</td>
                                                     <td>{res.due_amt}</td>
@@ -957,17 +1069,17 @@ function Unit() {
                                                     <td>{Math.round(res.due_amt * getDifferenceInDays(new Date(res.due_date), new Date(res.received_date)) * 0.1 / 365)}</td>
                                                 </tr>)
                                             } else if ((res.due_date === '')) {
-                                                return (<tr className="Postform" style={{ backgroundColor: "#FFFDD0" }}>
+                                                return (<tr className="table2" style={{ backgroundColor: "#FFFDD0" }}>
 
                                                 </tr>)
                                             } else if ((isNaN(res.due_amt))) {
-                                                return (<tr className="Postform" style={{ backgroundColor: "#FFFDD0" }}>
+                                                return (<tr className="table2" style={{ backgroundColor: "#FFFDD0" }}>
 
                                                 </tr>)
                                             }
                                             else {
                                                 arr.push(Math.round(res.received_amt * getDifferenceInDays(new Date(res.due_date), new Date(res.received_date)) * 0.1 / 365))
-                                                return (<tr className="Postform" style={{ backgroundColor: "#FFFDD0" }}>
+                                                return (<tr className="table2" style={{ backgroundColor: "#FFFDD0" }}>
                                                     <td>{res.description}</td>
                                                     <td>{res.due_date}</td>
                                                     <td>{res.due_amt}</td>
@@ -1028,46 +1140,161 @@ function Unit() {
                                             <th className="table">TOTAL COST</th>
                                             <th className="table">PAID</th>
                                             <th className="table">BALANCE</th>
-                                            <th className="table">ID</th>
                                         </tr>
                                     </thead>
                                     <tbody className="table">
                                         {currentTableDataOtherCharges.map((res) => {
-                                            if ((res.parameters) === "INTEREST FREE MAINTENANCE SECURITY (IFMS)") {
-                                                arrbasic_cost.push(Math.round(res.basic_cost))
-                                                arrgst.push(0)
-                                                arrtotal_cost.push(Math.round(res.basic_cost))
-                                                arrpaid_cost.push(Math.round(res.paid_cost))
-                                                arrbalance.push(Math.round(res.basic_cost - res.paid_cost))
-                                                return (<tr className="Postform" style={{ backgroundColor: "#FFFDD0" }}>
-                                                    <td>{res.parameters}</td>
-                                                    <td>{Math.round(res.basic_cost)}</td>
-                                                    <td>0</td>
-                                                    <td>{Math.round(res.basic_cost)}</td>
-                                                    <td>{Math.round(res.paid_cost)}</td>
-                                                    <td>{Math.round(res.basic_cost - res.paid_cost)}</td>
-                                                    <Link to='/editOtherCharges' state={{ id: (res.id), unit_no: (from), tower: (tower), gst_choice: (gst_choice), parameters: (res.parameters), basic_cost: Math.round(res.basic_cost), paid_cost: Math.round(res.paid_cost) }}>{res.id}</Link>
-                                                </tr>)
-                                            } else {
-                                                arrbasic_cost.push(Math.round(res.basic_cost))
-                                                arrgst.push(Math.round(res.basic_cost * 0.18))
-                                                arrtotal_cost.push(Math.round(res.basic_cost + res.basic_cost * 0.18))
-                                                arrpaid_cost.push(Math.round(res.paid_cost))
-                                                arrbalance.push(Math.round(res.basic_cost + res.basic_cost * 0.18 - res.paid_cost))
-                                                return (<tr className="Postform" style={{ backgroundColor: "#FFFDD0" }}>
-                                                    <td>{res.parameters}</td>
-                                                    <td>{Math.round(res.basic_cost)}</td>
-                                                    <td>{Math.round(res.basic_cost * 0.18)}</td>
-                                                    <td>{Math.round(res.basic_cost + res.basic_cost * 0.18)}</td>
-                                                    <td>{Math.round(res.paid_cost)}</td>
-                                                    <td>{Math.round(res.basic_cost + res.basic_cost * 0.18 - res.paid_cost)}</td>
-                                                    <Link to='/editOtherCharges' state={{ id: (res.id), unit_no: (from), tower: (tower), gst_choice: (gst_choice), parameters: (res.parameters), basic_cost: Math.round(res.basic_cost), paid_cost: Math.round(res.paid_cost) }}>{res.id}</Link>
-                                                </tr>)
-                                            }
+                                            arrbasic_cost.push(Math.round(res.bc_otlr))
+                                            arrgst.push(Math.round(res.bc_otlr * 0.18))
+                                            arrtotal_cost.push(Math.round(res.bc_otlr + res.bc_otlr * 0.18))
+                                            arrpaid_cost.push(Math.round(res.pc_otlr))
+                                            arrbalance.push(Math.round(res.bc_otlr + res.bc_otlr * 0.18 - res.pc_otlr))
+                                            return (<tr className="table2" style={{ backgroundColor: "#FFFDD0" }}>
+                                                <td>ONE TIME LEASE RENT</td>
+                                                <td>{Math.round(res.bc_otlr)}</td>
+                                                <td>{Math.round(res.bc_otlr * 0.18)}</td>
+                                                <td>{Math.round(res.bc_otlr + res.bc_otlr * 0.18)}</td>
+                                                <td>{Math.round(res.pc_otlr)}</td>
+                                                <td>{Math.round(res.bc_otlr + res.bc_otlr * 0.18 - res.pc_otlr)}</td>
+                                            </tr>)
+                                        }
+                                        )}{currentTableDataOtherCharges.map((res) => {
+                                            arrbasic_cost.push(Math.round(res.bc_2yamc))
+                                            arrgst.push(Math.round(res.bc_2yamc * 0.18))
+                                            arrtotal_cost.push(Math.round(res.bc_2yamc + res.bc_2yamc * 0.18))
+                                            arrpaid_cost.push(Math.round(res.pc_2yamc))
+                                            arrbalance.push(Math.round(res.bc_2yamc + res.bc_2yamc * 0.18 - res.pc_2yamc))
+                                            return (<tr className="table2" style={{ backgroundColor: "#FFFDD0" }}>
+                                                <td>2 YEARS ADVANCE MAINTENANCE CHARGES</td>
+                                                <td>{Math.round(res.bc_2yamc)}</td>
+                                                <td>{Math.round(res.bc_2yamc * 0.18)}</td>
+                                                <td>{Math.round(res.bc_2yamc + res.bc_2yamc * 0.18)}</td>
+                                                <td>{Math.round(res.pc_2yamc)}</td>
+                                                <td>{Math.round(res.bc_2yamc + res.bc_2yamc * 0.18 - res.pc_2yamc)}</td>
+                                            </tr>)
+                                        }
+                                        )}{currentTableDataOtherCharges.map((res) => {
+                                            arrbasic_cost.push(Math.round(res.bc_emc))
+                                            arrgst.push(Math.round(res.bc_emc * 0.18))
+                                            arrtotal_cost.push(Math.round(res.bc_emc + res.bc_emc * 0.18))
+                                            arrpaid_cost.push(Math.round(res.pc_emc))
+                                            arrbalance.push(Math.round(res.bc_emc + res.bc_emc * 0.18 - res.pc_emc))
+                                            return (<tr className="table2" style={{ backgroundColor: "#FFFDD0" }}>
+                                                <td>ELECTRICITY METER CHARGES</td>
+                                                <td>{Math.round(res.bc_emc)}</td>
+                                                <td>{Math.round(res.bc_emc * 0.18)}</td>
+                                                <td>{Math.round(res.bc_emc + res.bc_emc * 0.18)}</td>
+                                                <td>{Math.round(res.pc_emc)}</td>
+                                                <td>{Math.round(res.bc_emc + res.bc_emc * 0.18 - res.pc_emc)}</td>
+                                            </tr>)
+                                        }
+                                        )}{currentTableDataOtherCharges.map((res) => {
+                                            arrbasic_cost.push(Math.round(res.bc_dcpb))
+                                            arrgst.push(Math.round(res.bc_dcpb * 0.18))
+                                            arrtotal_cost.push(Math.round(res.bc_dcpb + res.bc_dcpb * 0.18))
+                                            arrpaid_cost.push(Math.round(res.pc_dcpb))
+                                            arrbalance.push(Math.round(res.bc_dcpb + res.bc_dcpb * 0.18 - res.pc_dcpb))
+                                            return (<tr className="table2" style={{ backgroundColor: "#FFFDD0" }}>
+                                                <td>DG POWER BACK-UP ELECTRIC METER CHARGES</td>
+                                                <td>{Math.round(res.bc_dcpb)}</td>
+                                                <td>{Math.round(res.bc_dcpb * 0.18)}</td>
+                                                <td>{Math.round(res.bc_dcpb + res.bc_dcpb * 0.18)}</td>
+                                                <td>{Math.round(res.pc_dcpb)}</td>
+                                                <td>{Math.round(res.bc_dcpb + res.bc_dcpb * 0.18 - res.pc_dcpb)}</td>
+                                            </tr>)
+                                        }
+                                        )}{currentTableDataOtherCharges.map((res) => {
+                                            arrbasic_cost.push(Math.round(res.bc_eic))
+                                            arrgst.push(Math.round(res.bc_eic * 0.18))
+                                            arrtotal_cost.push(Math.round(res.bc_eic + res.bc_eic * 0.18))
+                                            arrpaid_cost.push(Math.round(res.pc_eic))
+                                            arrbalance.push(Math.round(res.bc_eic + res.bc_eic * 0.18 - res.pc_eic))
+                                            return (<tr className="table2" style={{ backgroundColor: "#FFFDD0" }}>
+                                                <td>ELECTRICAL INFRASTRUCTURE CHARGES AS PER APPOROVED DRAWING BY RESPECTIVE AUTHORITES</td>
+                                                <td>{Math.round(res.bc_eic)}</td>
+                                                <td>{Math.round(res.bc_eic * 0.18)}</td>
+                                                <td>{Math.round(res.bc_eic + res.bc_eic * 0.18)}</td>
+                                                <td>{Math.round(res.pc_eic)}</td>
+                                                <td>{Math.round(res.bc_eic + res.bc_eic * 0.18 - res.pc_eic)}</td>
+                                            </tr>)
+                                        }
+                                        )}{currentTableDataOtherCharges.map((res) => {
+                                            arrbasic_cost.push(Math.round(res.bc_cap))
+                                            arrgst.push(Math.round(res.bc_cap * 0.18))
+                                            arrtotal_cost.push(Math.round(res.bc_cap + res.bc_cap * 0.18))
+                                            arrpaid_cost.push(Math.round(res.pc_cap))
+                                            arrbalance.push(Math.round(res.bc_cap + res.bc_cap * 0.18 - res.pc_cap))
+                                            return (<tr className="table2" style={{ backgroundColor: "#FFFDD0" }}>
+                                                <td>CHARGES FOR ADDITIONAL PROVISION OF 1 KVA DG POWER BACKUP FACILITY AS PER UPDATED APPROVE DRAWING BY RESPECTIVE AUTHORITES</td>
+                                                <td>{Math.round(res.bc_cap)}</td>
+                                                <td>{Math.round(res.bc_cap * 0.18)}</td>
+                                                <td>{Math.round(res.bc_cap + res.bc_cap * 0.18)}</td>
+                                                <td>{Math.round(res.pc_cap)}</td>
+                                                <td>{Math.round(res.bc_cap + res.bc_cap * 0.18 - res.pc_cap)}</td>
+                                            </tr>)
+                                        }
+                                        )}{currentTableDataOtherCharges.map((res) => {
+                                            arrbasic_cost.push(Math.round(res.bc_wsc))
+                                            arrgst.push(Math.round(res.bc_wsc * 0.18))
+                                            arrtotal_cost.push(Math.round(res.bc_wsc + res.bc_wsc * 0.18))
+                                            arrpaid_cost.push(Math.round(res.pc_wsc))
+                                            arrbalance.push(Math.round(res.bc_wsc + res.bc_wsc * 0.18 - res.pc_wsc))
+                                            return (<tr className="table2" style={{ backgroundColor: "#FFFDD0" }}>
+                                                <td>WATER & SEWAGE CONNECTION CHARGES ^^</td>
+                                                <td>{Math.round(res.bc_wsc)}</td>
+                                                <td>{Math.round(res.bc_wsc * 0.18)}</td>
+                                                <td>{Math.round(res.bc_wsc + res.bc_wsc * 0.18)}</td>
+                                                <td>{Math.round(res.pc_wsc)}</td>
+                                                <td>{Math.round(res.bc_wsc + res.bc_wsc * 0.18 - res.pc_wsc)}</td>
+                                            </tr>)
+                                        }
+                                        )}{currentTableDataOtherCharges.map((res) => {
+                                            arrbasic_cost.push(Math.round(res.bc_iglc))
+                                            arrgst.push(Math.round(res.bc_iglc * 0.18))
+                                            arrtotal_cost.push(Math.round(res.bc_iglc + res.bc_iglc * 0.18))
+                                            arrpaid_cost.push(Math.round(res.pc_iglc))
+                                            arrbalance.push(Math.round(res.bc_iglc + res.bc_iglc * 0.18 - res.pc_iglc))
+                                            return (<tr className="table2" style={{ backgroundColor: "#FFFDD0" }}>
+                                                <td>IGL GAS CONNECTION INFRASTRUCTURE DEVELOPMENT CHARGES</td>
+                                                <td>{Math.round(res.bc_iglc)}</td>
+                                                <td>{Math.round(res.bc_iglc * 0.18)}</td>
+                                                <td>{Math.round(res.bc_iglc + res.bc_iglc * 0.18)}</td>
+                                                <td>{Math.round(res.pc_iglc)}</td>
+                                                <td>{Math.round(res.bc_iglc + res.bc_iglc * 0.18 - res.pc_iglc)}</td>
+                                            </tr>)
+                                        }
+                                        )}{currentTableDataOtherCharges.map((res) => {
+                                            arrbasic_cost.push(Math.round(res.bc_1ycuc))
+                                            arrgst.push(Math.round(res.bc_1ycuc * 0.18))
+                                            arrtotal_cost.push(Math.round(res.bc_1ycuc + res.bc_1ycuc * 0.18))
+                                            arrpaid_cost.push(Math.round(res.pc_1ycuc))
+                                            arrbalance.push(Math.round(res.bc_1ycuc + res.bc_1ycuc * 0.18 - res.pc_1ycuc))
+                                            return (<tr className="table2" style={{ backgroundColor: "#FFFDD0" }}>
+                                                <td>CLUB USAGE CHARGES FOR 1 YEAR</td>
+                                                <td>{Math.round(res.bc_1ycuc)}</td>
+                                                <td>{Math.round(res.bc_1ycuc * 0.18)}</td>
+                                                <td>{Math.round(res.bc_1ycuc + res.bc_1ycuc * 0.18)}</td>
+                                                <td>{Math.round(res.pc_1ycuc)}</td>
+                                                <td>{Math.round(res.bc_1ycuc + res.bc_1ycuc * 0.18 - res.pc_1ycuc)}</td>
+                                            </tr>)
+                                        }
+                                        )}{currentTableDataOtherCharges.map((res) => {
+                                            arrbasic_cost.push(Math.round(res.bc_ifms))
+                                            arrgst.push(Math.round(0))
+                                            arrtotal_cost.push(Math.round(res.bc_ifms + 0))
+                                            arrpaid_cost.push(Math.round(res.pc_ifms))
+                                            arrbalance.push(Math.round(res.bc_ifms + 0 - res.pc_ifms))
+                                            return (<tr className="table2" style={{ backgroundColor: "#FFFDD0" }}>
+                                                <td>INTEREST FREE MAINTENANCE SECURITY</td>
+                                                <td>{Math.round(res.bc_ifms)}</td>
+                                                <td>{Math.round(0)}</td>
+                                                <td>{Math.round(res.bc_ifms + 0)}</td>
+                                                <td>{Math.round(res.pc_ifms)}</td>
+                                                <td>{Math.round(res.bc_ifms + 0 - res.pc_ifms)}</td>
+                                            </tr>)
                                         }
                                         )}
                                         {
-
                                             <tr className="Postform" style={{ backgroundColor: "#FFFDD0" }}>
                                                 <td className="Postform"><b>Total: </b></td>
                                                 <td className="Postform"><b>Rs. <br />{sumArray(arrbasic_cost)}</b></td>
@@ -1075,9 +1302,7 @@ function Unit() {
                                                 <td className="Postform"><b>Rs. <br />{sumArray(arrtotal_cost)}</b></td>
                                                 <td className="Postform"><b>Rs. <br />{sumArray(arrpaid_cost)}</b></td>
                                                 <td className="Postform"><b>Rs. <br />{sumArray(arrbalance)}</b></td>
-                                                <td className="Postform"><b></b></td>
                                             </tr>
-
                                         }
                                     </tbody>
                                 </table>
@@ -1098,7 +1323,6 @@ function Unit() {
                 <Link to='/reportD' state={{ unit_no: (from), tower: (tower), gst_choice: (gst_choice) }} className='applicant' style={{ backgroundColor: "#3AB4F2" }}><b>See Demand Report</b></Link>
                 <Link to='/seeFile' state={{ unit_no: (from), tower: (tower), gst_choice: (gst_choice) }} className='applicant' style={{ backgroundColor: "#3AB4F2" }}><b>See Documents</b></Link>
                 <Link to='/addReceipt' state={{ unit_no: (from), tower: (tower), gst_choice: (gst_choice) }} className='applicant' style={{ backgroundColor: "#3AB4F2" }}><b>Add Receipt</b></Link>
-                <Link to='/otherCharges' state={{ unit_no: (from), tower: (tower), gst_choice: (gst_choice) }} className='applicant' style={{ backgroundColor: "#3AB4F2" }}><b>Add Other Charges</b></Link>
                 <Link to='/welcome' state={{ unit_no: (from), tower: (tower), gst_choice: (gst_choice) }} className='applicant' style={{ backgroundColor: "#3AB4F2" }}><b>Generate Welcome Letter</b></Link>
                 <Link to='/uploadFile' state={{ unit_no: (from), tower: (tower), gst_choice: (gst_choice) }} className='applicant' style={{ backgroundColor: "#3AB4F2" }}><b>Upload Documents</b></Link>
 
