@@ -76,18 +76,18 @@ function InventoryTable() {
 
                     <table className="table-bordered text-black">
                         <thead>
-                            <tr style={{ backgroundColor: "#0078AA" }}>
-                                <th className="table">Unit Type</th>
-                                <th className="table">Unit No.</th>
-                                <th className="table">Tower</th>
-                                <th className="table">Area Sq. Ft.</th>
-                                <th className="table">Booked/Empty</th>
+                            <tr className="table2" style={{ backgroundColor: "#0078AA" }}>
+                                <th>Unit Type</th>
+                                <th>Unit No.</th>
+                                <th>Tower</th>
+                                <th>Area Sq. Ft.</th>
+                                <th>Booked/Empty</th>
                             </tr>
                         </thead>
-                        <tbody className="table">
+                        <tbody className="table2">
                             {currentTableData.map((res) =>
 
-                                <tr className="Postform" style={{ backgroundColor: "#FFFDD0" }}>
+                                <tr className="table2" style={{ backgroundColor: "#FFFDD0" }}>
                                     <td>{res.unit_type}</td>
                                     <td>{res.unit_no}</td>
                                     <td>{res.tower}</td>

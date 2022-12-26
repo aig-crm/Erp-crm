@@ -4,9 +4,7 @@ import Api from "./Api";
 import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
 import { useLocation } from "react-router-dom";
-import { Grid, Paper } from '@material-ui/core';
-import pic1 from '../assets/pic1.jpg';
-import pic2 from '../assets/pic2.png';
+import { Grid } from '@material-ui/core';
 import ApplicantDetails from "./ApplicantDetails";
 import StatementSubject from "./StatementSubject";
 import DemandStatement from "./DemandStatement";
@@ -196,7 +194,7 @@ function ReminderTable() {
                                     </thead>
                                     <tbody className="table">
                                         {currentTableDataDemand2.map((res) =>
-                                            <tr className="Postform" style={{ backgroundColor: "#FFFDD0" }}>
+                                            <tr className="table2" style={{ backgroundColor: "#FFFDD0" }}>
                                                 <td>{res.description}</td>
                                                 <td>{res.due_date}</td>
                                                 <td>{res.net_bsp}</td>
@@ -209,7 +207,7 @@ function ReminderTable() {
                                             </tr>
                                         )}
                                         {currentTableDataDemand.map((res) =>
-                                            <tr className="Postform" style={{ backgroundColor: "#FFFDD0" }}>
+                                            <tr className="table2" style={{ backgroundColor: "#FFFDD0" }}>
                                                 <td>{res.description}</td>
                                                 <td>{res.due_date}</td>
                                                 <td>{res.net_bsp}</td>

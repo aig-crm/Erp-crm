@@ -518,7 +518,7 @@ function DemandTable() {
                                     </thead>
                                     <tbody className="table">
                                         {currentTableDataDemand2.map((res) =>
-                                            <tr className="Postform" style={{ backgroundColor: "#FFFDD0" }}>
+                                            <tr className="table2" style={{ backgroundColor: "#FFFDD0" }}>
                                                 <td>{res.description}</td>
                                                 <td>{res.due_date}</td>
                                                 <td>{res.net_due}</td>
@@ -528,7 +528,7 @@ function DemandTable() {
                                             </tr>
                                         )}
                                         {currentTableDataDemand.map((res) =>
-                                            <tr className="Postform" style={{ backgroundColor: "#FFFDD0" }}>
+                                            <tr className="table2" style={{ backgroundColor: "#FFFDD0" }}>
                                                 <td>{res.description}</td>
                                                 <td>{res.due_date}</td>
                                                 <td>{res.net_due}</td>
